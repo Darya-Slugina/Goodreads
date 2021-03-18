@@ -1,0 +1,7 @@
+/* CSS Modules */
+
+.button {
+    color: red;
+    font-size: 2em;
+    border-radius: 20%;
+}

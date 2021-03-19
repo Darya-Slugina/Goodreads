@@ -1,3 +1,6 @@
-export default function HomePage() {
-    return null;
+export default function HomePageLoggedIn() {
+    return (
+        <h2>HomePageLoggedIn</h2>
+    )
+
 }

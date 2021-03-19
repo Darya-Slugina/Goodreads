@@ -7,6 +7,7 @@ import Registration from "./RegistrationPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
 import Terms from "./Footer/Terms";
+import Pravicy from "./Footer/Pravicy";
 // import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
@@ -62,6 +63,10 @@ function App() {
 
           <Route path="/terms">
             <Terms />
+          </Route>
+
+          <Route path="/pravicy">
+            <Pravicy />
           </Route>
 
           <Route path="*">

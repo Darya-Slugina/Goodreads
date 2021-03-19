@@ -1,4 +1,4 @@
-import "../styles/HomePage.css"
+import styles from "./HomePage.module.css"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import React from "react"
@@ -7,7 +7,7 @@ export default function HomePage() {
     return (
         <React.Fragment>
             <header>
-                <div className="nav-wrapper">
+                <div className={styles.navWrapper}>
                     <nav>
                         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
                         <a href="/" className="logo"></a>

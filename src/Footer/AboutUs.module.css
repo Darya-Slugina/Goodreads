@@ -1,0 +1,74 @@
+.carouselContainer {
+    height: 347px;
+    width: 782px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.mainContent {
+    margin: 0px auto;
+    text-align: left;
+    width: 970px;
+    background: #FFFFFF;
+}
+
+.aboutPageTitle {
+    color: #181818;
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    text-align: left;
+}
+
+.copy {
+    color: white;
+    bottom: 0;
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    line-height: 29px;
+    margin: 0px auto 30px auto;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    z-index: 6;
+    padding:0 15px;
+}
+
+.aboutCenterColumn {
+    width: 860px;
+    padding-bottom: 20px;
+    padding-left: 110px;
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    font-size: 14px;
+}
+
+p {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.otisSig {
+    background-image: url(./../img/signature.png);
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 62px;
+    margin-bottom: 40px;
+}
+
+.goodreadsFeaturesList {
+    padding-left: 20px;
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    line-height: 21px;
+    list-style: none;
+}
+
+h2 {
+    color: #181818;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+

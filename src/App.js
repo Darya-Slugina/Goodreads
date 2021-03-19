@@ -8,6 +8,7 @@ import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
 import Terms from "./Footer/Terms";
 import Pravicy from "./Footer/Pravicy";
+import AboutUs from "./Footer/AboutUs";
 // import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
@@ -25,20 +26,20 @@ import React from "react";
 // }
 
 function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   // const [user, setUser] = useState({});
 
   return (
     <BrowserRouter>
       <div className="App">
-      {/* <Header user={user}/> */}
+        {/* <Header user={user}/> */}
 
-      {/* {user.isLoggedIn ? <Header />: <GuestUserHeader />} */}
+        {/* {user.isLoggedIn ? <Header />: <GuestUserHeader />} */}
 
         <Switch>
           <Route exact path="/">
-          {isLoggedIn ? <HomePageLoggedIn /> : <HomePage/>}
+            {isLoggedIn ? <HomePageLoggedIn /> : <HomePage />}
           </Route>
 
           <Route path="/login">
@@ -69,14 +70,18 @@ function App() {
             <Pravicy />
           </Route>
 
+          <Route path="/aboutUs">
+            <AboutUs />
+          </Route>
+
           <Route path="*">
             <h2>Not Found Page</h2>
           </Route>
         </Switch>
 
-       
 
-        {isLoggedIn ? <Footer /> : null }
+
+        {isLoggedIn ? <Footer /> : null}
       </div>
     </BrowserRouter>
   );

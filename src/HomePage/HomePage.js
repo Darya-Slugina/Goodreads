@@ -1,4 +1,5 @@
 import styles from "./HomePage.module.css"
+import "../styles/HomePage.css"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import React from "react"

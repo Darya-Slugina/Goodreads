@@ -10,6 +10,33 @@ export default function AboutUs() {
             <div className={styles.aboutPageTitle}>
                 About Goodreads
             </div>
+            <div className={styles.aboutLeftColumn}>
+                <div className={styles.aboutFollowUs}>
+                    FOLLOW US
+                <ul>
+                        <li>
+                            <a href="https://www.facebook.com/Goodreads"><div className={styles.followUsFacebook}></div>
+                        /goodreads
+                        </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/goodreads"><div className={styles.followUsTwitter}></div>
+                        @goodreads
+                        </a>
+                        </li>
+                        <li>
+                            <a href="http://www.linkedin.com/company/goodreads.com"><div className={styles.followUsLinkedin}></div>
+                        goodreads.com
+                        </a>
+                        </li>
+                        <li>
+                            <a href="http://pinterest.com/goodreads/"><div className={styles.followUsPinterest}></div>
+                        /goodreads
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div className={styles.carouselContainer}>
                 <Carousel controls={false} indicators={false}>
                     <Carousel.Item>

@@ -2,14 +2,14 @@ import "./App.css";
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import HomePageLoggedIn from "./HomePage/HomePageLoggedIn";
-import Registration from "./RegistrationRage/Registration";
+import Registration from "./RegistrationPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
 import Footer from "./Footer/Footer";
 import React from "react";
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <BrowserRouter>
@@ -32,7 +32,7 @@ function App() {
           </Route>
 
           <Route path="/books/:bookId">
-            <Books />
+            {/* <Books /> */}
           </Route>
 
           <Route path="*">

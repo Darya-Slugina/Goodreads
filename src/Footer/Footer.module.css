@@ -1,4 +1,6 @@
 .siteFooter {
+    position: fixed;
+    bottom: 0;
     background: #f9f8f4;
     padding-bottom: 32px;
     padding-top: 32px;

@@ -6,8 +6,9 @@ import Login from "./LoginPage/Login";
 import Registration from "./RegistrationPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
-import Books from "./BooksPage/Books";
-// import Footer from "./Footer/Footer";
+import Terms from "./Footer/Terms";
+// import Books from "./BooksPage/Books";
+import Footer from "./Footer/Footer";
 import React from "react";
 
 // function Header({user}) {
@@ -59,12 +60,18 @@ function App() {
             {/* <Books /> */}
           </Route>
 
+          <Route path="/terms">
+            <Terms />
+          </Route>
+
           <Route path="*">
             <h2>Not Found Page</h2>
           </Route>
         </Switch>
 
-        {/* <Footer /> */}
+       
+
+        {isLoggedIn ? <Footer /> : null }
       </div>
     </BrowserRouter>
   );

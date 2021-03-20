@@ -11,7 +11,7 @@ import Privacy from "./Footer/Privacy";
 import AboutUs from "./Footer/AboutUs";
 import AdPrefs from "./Footer/AdPrefs";
 import Cookies from "./Footer/Cookies";
-// import Books from "./BooksPage/Books";
+import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
 
@@ -60,8 +60,8 @@ function App() {
             <Genres />
           </Route>
 
-          <Route path="/books/:bookId">
-            {/* <Books /> */}
+          <Route path="/books">
+            <Books />
           </Route>
 
           <Route path="/terms">

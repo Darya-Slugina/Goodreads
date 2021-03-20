@@ -1,5 +1,5 @@
 import styles from './Cookies.module.css';
-
+import { Link } from "react-router-dom";
 
 
 export default function Cookies() {
@@ -49,7 +49,7 @@ export default function Cookies() {
                             <li className={styles.paddingBottomSmall}>
                                 Delivering content, including ads, relevant to your interests on sites belonging to us and our affiliates and
                                 third-party sites (see the
-                                <a class="gr-hyperlink" href="https://help.goodreads.com/s/article/Goodreads-Interest-Based-Ads-Notice">Interest Based Ads</a>
+                                <a class="gr-hyperlink" href="https://help.goodreads.com/s/article/Goodreads-Interest-Based-Ads-Notice">&nbsp;Interest Based Ads&nbsp;</a>
                                 notice for how we use cookies in serving interest-based ads).
                             </li>
                             <li className={styles.paddingBottomSmall}>
@@ -76,7 +76,7 @@ export default function Cookies() {
                         </p>
                         <p>
                             See our
-                            <a class="gr-hyperlink" href="https://www.goodreads.com/about/privacy">Privacy Notice</a>
+                            <Link to="/privacy" class="gr-hyperlink">&nbsp;Privacy Notice&nbsp;</Link>
                             for more information about the types of information we gather.
                         </p>
                     </div>
@@ -86,10 +86,10 @@ export default function Cookies() {
                     </h3>
                         <ul className={styles.guidelinesSidebar}>
                             <li className={styles.unstyledListItem}>
-                                <a className={styles.hyperlink} href="/terms">Terms of Use</a>
+                                <Link to="/terms" className={styles.hyperlink}>Terms of Use</Link>
                             </li>
                             <li className={styles.unstyledListItem}>
-                                <a className={styles.hyperlink} href="/privacy">Privacy Policy</a>
+                                <Link to="/privacy" className={styles.hyperlink}>Privacy Policy</Link>
                             </li>
                             <li className={styles.unstyledListItem}>
                                 <div className={styles.bold}> Cookies Notice </div>

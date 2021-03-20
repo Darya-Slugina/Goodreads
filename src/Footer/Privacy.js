@@ -1,4 +1,5 @@
 import styles from './Privacy.module.css';
+import { Link } from "react-router-dom";
 
 
 
@@ -14,8 +15,7 @@ export default function Privacy() {
                 <div className={styles.grRow}>
                     <div className={styles.grCol8}>
                         <p>
-                            Last updated: June 30, 2020. To see prior version, click
-                        <a href="#updates">here</a>
+                            Last updated: June 30, 2020. 
                         </p>
                         <p>
                             Goodreads LLC (together with its affiliates, “Goodreads,” “we,” or “us”) knows that you care how information about
@@ -33,7 +33,7 @@ export default function Privacy() {
                         <h2> User Content and Messages</h2>
                         <p>
                             The Service allows you to post User Content, as defined in our
-                        <a class="gr-hyperlink" href="/terms">&nbsp;Terms of Use&nbsp;</a>.
+                        <Link to="/terms" class="gr-hyperlink">&nbsp;Terms of Use&nbsp;</Link>.
                         Any User Content you post becomes available to the public via the Service. User Content includes, but is not
                         limited to, reviews, comments, and visual content. If you remove User Content, copies may remain viewable in
                         cached and archived pages or if other users have copied or stored your User Content.
@@ -74,15 +74,14 @@ export default function Privacy() {
                         <p>
                             To enable our systems to recognize your browser or device and to provide and improve the Service, we use cookies
                             and other identifiers. For more information about cookies and how we use them, please read our
-                        <a class="gr-hyperlink" href="https://www.goodreads.com/about/cookies_notice">&nbsp;Cookies&nbsp;</a>
+                        <Link to="/cookies" class="gr-hyperlink">&nbsp;Cookies&nbsp;</Link>
                         notice.
                     </p>
                         <h2> Advertising</h2>
                         <p>
                             We use your personal information to display interest-based ads for features, products, and services that might be of
                             interest to you. We do not use information that personally identifies you to display interest-based ads. To learn
-                            more, please read our
-                        <a class="gr-hyperlink" href="https://help.goodreads.com/s/article/Goodreads-Interest-Based-Ads-Notice">&nbsp;Interest Based Ads&nbsp;</a>
+                            more, please read our Interest Based Ads.
                         notice.
                     </p>
                         <h2> Children's Privacy</h2>
@@ -98,9 +97,7 @@ export default function Privacy() {
                     </p>
                         <h2>  California Consumer Privacy Act</h2>
                         <p>
-                            Click
-                        <a class="gr-hyperlink" href="https://www.goodreads.com/about/ccpa">&nbsp;here&nbsp;</a>
-                        to read additional disclosures required under the California Consumer Privacy Act.
+                            Click to read additional disclosures required under the California Consumer Privacy Act.
                     </p>
                         <h2> Changes to Our Privacy Policy</h2>
                         <p>
@@ -110,9 +107,7 @@ export default function Privacy() {
                     </p>
                         <p>
                             If you have any questions about this Privacy Notice, the practices of this site, or your dealings with this Web site,
-                            please
-                        <a class="gr-hyperlink" href="/about/contact_us">&nbsp;contact us&nbsp;</a>,
-                        or send mail to:
+                            please contact us, or send mail to:
                     </p>
                         <p>
                             Goodreads, Inc
@@ -124,12 +119,12 @@ export default function Privacy() {
                         <h3>Updates</h3>
                         <p>
                             June 30, 2020:  We replaced our
-                        <a href="/about/privacy2">&nbsp;former privacy policy&nbsp;</a>
+                        <Link to="/privacy">&nbsp;former privacy policy&nbsp;</Link>
                         with a new one.  Please read this Privacy Policy carefully.
                     </p>
                         <p>
                             October 16, 2008:  We replaced our
-                        <a href="/about/privacy1">&nbsp;former privacy policy&nbsp;</a>
+                        <Link to="/privacy">&nbsp;former privacy policy&nbsp;</Link>
                         with a new one.  Please read this Privacy Policy carefully.
                     </p>
                     </div>
@@ -139,13 +134,13 @@ export default function Privacy() {
                     </h3>
                         <ul className={styles.guidelinesSidebar}>
                             <li className={styles.unstyledListItem}>
-                                <a className={styles.hyperlink} href="/terms">Terms of Use</a>
+                                <Link to="/terms" className={styles.hyperlink}>Terms of Use</Link>
                             </li>
                             <li className={styles.unstyledListItem}>
                                 <div className={styles.bold}>Privacy Policy</div>
                             </li>
                             <li className={styles.unstyledListItem}>
-                                <a className={styles.hyperlink} href="/cookies">Cookies Notice</a>
+                                <Link to="/cookies" className={styles.hyperlink}>Cookies Notice</Link>
                             </li>
                         </ul>
                     </div>

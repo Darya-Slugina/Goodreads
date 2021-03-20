@@ -1,4 +1,6 @@
 import styles from './Terms.module.css';
+import { Link } from "react-router-dom";
+
 
 export default function Terms() {
     return (
@@ -57,7 +59,7 @@ export default function Terms() {
                             You may change the settings on your My Account page to control your profile and
                             how other members communicate with you. By providing Goodreads your email
                             address you consent to our using the email address in accordance with our
-                        <a href="https://www.goodreads.com/about/privacy">&nbsp;Privacy Policy&nbsp;</a>.
+                        <Link to="/privacy">&nbsp;Privacy Policy&nbsp;</Link>.
                     </p>
                         <p>
                             Subject to your compliance with this Agreement and your payment of any applicable
@@ -151,7 +153,7 @@ export default function Terms() {
                             cause injury to any person or entity; and that you will indemnify Goodreads
                             for all claims resulting from content you supply.  If you submit User Content
                             via the “My Writing” or “Ebook” features, our
-                        <a href="/ebooks/terms">&nbsp;Terms of Use for Writers&nbsp;</a>
+                        <Link to="/terms">&nbsp;Terms of Use for Writers&nbsp;</Link>
                         apply to that User Content.
                     </p>
                         <h2> 4. Our Proprietary Rights</h2>
@@ -370,13 +372,13 @@ export default function Terms() {
                         </li>
                             <li>
                                 April 7, 2010:  We added
-                            <a href="/ebooks/terms">Terms of Use for Writers</a>,
+                            <Link to="/terms">Terms of Use for Writers</Link>,
                             which apply to works submitted to the Service via the "My Writing" or
                             "Ebook" features.
                         </li>
                             <li>
                                 October 16, 2008:  We replaced our
-                            <a href="/about/terms1">former terms of use agreement</a>
+                            <Link to="/terms">former terms of use agreement</Link>
                             with a new agreement.  Please read this Agreement carefully.
                         </li>
                         </ul>
@@ -390,10 +392,10 @@ export default function Terms() {
                                 <div className={styles.bold}> Terms of Use </div>
                             </li>
                             <li className={styles.unstyledListItem}>
-                                <a className={styles.hyperlink} href="/privacy">Privacy Policy</a>
+                                <Link to="/privacy" className={styles.hyperlink}>Privacy Policy</Link>
                             </li>
                             <li className={styles.unstyledListItem}>
-                                <a className={styles.hyperlink} href="/cookies">Cookies Notice</a>
+                                <Link to="/cookies" className={styles.hyperlink}>Cookies Notice</Link>
                             </li>
                         </ul>
                     </div>

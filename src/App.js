@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import HomePageLoggedIn from "./HomePage/HomePageLoggedIn";
 import Login from "./LoginPage/Login";
@@ -89,9 +89,9 @@ function App() {
           </Route>
         </Switch>
 
+        <Footer />
 
-
-        {isLoggedIn ? <Footer /> : null}
+        {/* {isLoggedIn ? <Footer /> : null} */}
       </div>
     </BrowserRouter>
   );

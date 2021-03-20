@@ -10,6 +10,7 @@ import Terms from "./Footer/Terms";
 import Privacy from "./Footer/Privacy";
 import AboutUs from "./Footer/AboutUs";
 import AdPrefs from "./Footer/AdPrefs";
+import Cookies from "./Footer/Cookies";
 // import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
@@ -77,6 +78,10 @@ function App() {
 
           <Route path="/adprefs">
             <AdPrefs />
+          </Route>
+
+          <Route path="/cookies">
+            <Cookies />
           </Route>
 
           <Route path="*">

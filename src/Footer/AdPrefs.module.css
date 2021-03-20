@@ -1,0 +1,100 @@
+body {
+    background: #fff;
+}
+
+h2 {
+    color: #333333;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.25;
+    width: 100%;
+}
+
+h3 {
+    color: #333333;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.15;
+    margin: 12px 0;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.mainContentContainer {
+    box-sizing: border-box;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 24px auto;
+    flex: 1 0 auto;
+    text-align: left;
+    font-family: "Merriweather", "Georgia", serif;
+}
+
+a {
+    color: #00635D;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.serif {
+    font-weight: bold;
+    font-family: "Merriweather", "Georgia", serif;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.grRow {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+} 
+
+.radioButton {
+    display: block;
+    margin: 8px 0;
+}
+
+.marginTopLarge {
+    margin-top: 24px;
+}
+
+.marginTopMedium {
+    margin-top: 16px;
+}
+
+.grButton {
+    border-radius: 3px;
+    border: 1px solid #D6D0C4;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 14px;
+    appearance: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #333333;
+    background-color: #F4F1EA;
+    line-height: 1;
+    padding: 8px 12px;
+}
+
+input[type="radio" i] {
+    background-color: initial;
+    cursor: default;
+    margin: 3px 3px 0px 5px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 18px;
+    font-family: "Merriweather", "Georgia", serif;
+}

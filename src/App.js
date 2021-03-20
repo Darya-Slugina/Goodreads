@@ -7,8 +7,9 @@ import Registration from "./RegistrationPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
 import Terms from "./Footer/Terms";
-import Pravicy from "./Footer/Pravicy";
+import Privacy from "./Footer/Privacy";
 import AboutUs from "./Footer/AboutUs";
+import AdPrefs from "./Footer/AdPrefs";
 // import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
@@ -66,12 +67,16 @@ function App() {
             <Terms />
           </Route>
 
-          <Route path="/pravicy">
-            <Pravicy />
+          <Route path="/privacy">
+            <Privacy />
           </Route>
 
           <Route path="/aboutUs">
             <AboutUs />
+          </Route>
+
+          <Route path="/adprefs">
+            <AdPrefs />
           </Route>
 
           <Route path="*">

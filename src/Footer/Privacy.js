@@ -1,8 +1,8 @@
-import styles from './Pravicy.module.css';
+import styles from './Privacy.module.css';
 
 
 
-export default function Pravicy() {
+export default function Privacy() {
     return (
         <div className={styles.mainContentContainer}>
             <div className={styles.container}>
@@ -32,7 +32,7 @@ export default function Pravicy() {
                     <h2> User Content and Messages</h2>
                     <p>
                         The Service allows you to post User Content, as defined in our
-                        <a class="gr-hyperlink" href="https://www.goodreads.com/about/terms">&nbsp;Terms of Use&nbsp;</a>.
+                        <a class="gr-hyperlink" href="/terms">&nbsp;Terms of Use&nbsp;</a>.
                         Any User Content you post becomes available to the public via the Service. User Content includes, but is not
                         limited to, reviews, comments, and visual content. If you remove User Content, copies may remain viewable in
                         cached and archived pages or if other users have copied or stored your User Content.

@@ -36,11 +36,10 @@ header{
     background-image: url(../img/desktop-background.png);
     background-size: auto 295px;
     min-width: 970px;
-    position: relative;
 }
 
 .nav-wrapper{
-    height: 80px;
+    height: 75px;
     padding-bottom: 10px;
     position: static;
     border: 0;
@@ -51,9 +50,11 @@ header{
 
 nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 65px;
     padding-top: 10px;
+    width: 970px;
+    margin: 0 auto;
 }
 
 .logo{
@@ -110,7 +111,7 @@ nav{
     color: #333333;
     background-color: #F4F1EA;
     line-height: 1;
-    padding: 8px 12px;
+    padding: 5px 12px;
 }
 
 .button-dark{
@@ -118,6 +119,8 @@ nav{
     border: 1px solid #382110;
     color: white;
     font-weight: normal;
+    margin: 5px;
+    margin-top: 0;
 }
 
 .button-dark:hover{
@@ -132,24 +135,29 @@ nav{
     color: white;
 }
 
+.wrapper{
+    width: 970px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
 .new-account-wrapper{
-    position: absolute;
     z-index: 1;
-    right: 180px;
+    right: 0;
     width: 290px;
-    margin: 0px 8px 0 0;
+    margin-right: 8px;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     float: right;
     position: sticky;
     padding: 12px;
     background: #F4F1EA;
     border-top: 1px solid #D8D8D8;
-    height: 290px;
+    height: 295px;
 }
 
 .new-account-wrapper>h2{
-    margin-bottom: 10px;
-    margin-top: 0;
+    margin:10px 0;
     font-size: 17px;
 }
 
@@ -169,9 +177,12 @@ nav{
     line-height: 12px;
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
+.sign-up-wrapper>p{
+    width: 180px;
+}
 
 #sign-up-btn{
     background-color: #53352D;
@@ -182,6 +193,7 @@ nav{
     line-height: 22px;
     width: 85px;
     text-align: center;
+    margin-right: 15px;
 }
 
 

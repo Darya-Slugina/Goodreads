@@ -7,9 +7,9 @@ export default function HomePage() {
     return (
         <React.Fragment>
             {/* header not logged in */}
-            <header>
+            <header className="header-notLogged">
                 <div className="nav-wrapper">
-                    <nav>
+                    <nav className="nav-notLogged">
                         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
                         <a href="/" className="logo"></a>
                         <div className="form-wrapper">

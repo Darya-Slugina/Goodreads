@@ -25,7 +25,7 @@ h2{
 
 /* Header------------------------------------------------------- */
 
-header{
+.header-notLogged{
     height: 370px;
     padding: 0;
     position: static;
@@ -48,7 +48,7 @@ header{
     background-color: #f4f2e9;
 }
 
-nav{
+.nav-notLogged{
     display: flex;
     justify-content: space-between;
     height: 65px;

@@ -227,7 +227,7 @@ export default function Terms() {
                             copyright infringement and is accessible via the Service, please send us the
                             following information:
                      </p>
-                        <ol>
+                        <ol className={styles.listStyles}>
                             <li>
                                 An electronic or physical signature of a person authorized to act on behalf
                                 of the copyright owner;
@@ -365,7 +365,7 @@ export default function Terms() {
                     </p>
                         <br />
                         <h3> Updates</h3>
-                        <ul>
+                        <ul className={styles.listStylesUpdates}>
                             <li>
                                 December 6, 2017: We have updated our terms of use agreement.  Please
                                 read this Agreement carefully.

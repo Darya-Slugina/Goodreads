@@ -1,23 +1,18 @@
 import React from 'react';
-import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
- 
-export default function SimpleRating() {
-  const [value, setValue] = React.useState(2);
+import StarRatings from 'react-star-ratings';
 
+export default function SimpleRating({stars}) {
   return (
     <div>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Controlled</Typography>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-      </Box>
+      <StarRatings
+        rating={stars}
+        starRatedColor="#e84225"
+        starDimension="18px"
+        starSpacing="0px"
+        // changeRating={(rating) => this.props.dispatch( this.setValue(rating) )}
+        numberOfStars={5}
+        name='rating'
+      />
     </div>
   );
 }

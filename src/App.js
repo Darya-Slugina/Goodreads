@@ -6,11 +6,11 @@ import Login from "./LoginPage/Login";
 import Registration from "./RegistrationPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
-import Terms from "./Footer/Terms";
-import Privacy from "./Footer/Privacy";
-import AboutUs from "./Footer/AboutUs";
-import AdPrefs from "./Footer/AdPrefs";
-import Cookies from "./Footer/Cookies";
+import Terms from "./ConditionsPages/Terms";
+import Privacy from "./ConditionsPages/Privacy";
+import AboutUs from "./AboutUs/AboutUs";
+import AdPrefs from "./ConditionsPages/AdPrefs";
+import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
@@ -60,7 +60,7 @@ function App() {
             <Genres />
           </Route>
 
-          <Route path="/books">
+          <Route path="/books/:bookId">
             <Books />
           </Route>
 
@@ -89,9 +89,9 @@ function App() {
           </Route>
         </Switch>
 
-        <Footer />
+        {/* <Footer /> */}
 
-        {/* {isLoggedIn ? <Footer /> : null} */}
+        {isLoggedIn ? <Footer /> : null}
       </div>
     </BrowserRouter>
   );

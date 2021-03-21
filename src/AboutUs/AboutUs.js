@@ -1,6 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './AboutUs.module.css';
+import Carousel1 from "./../img/carousel1.jpg"
+import Carousel2 from "./../img/carousel2.jpg"
+import Carousel3 from "./../img/carousel3.jpg"
 
 
 
@@ -13,7 +16,7 @@ export default function AboutUs() {
             <div className={styles.aboutLeftColumn}>
                 <div className={styles.aboutFollowUs}>
                     FOLLOW US
-                <ul>
+                <ul className={styles.followUsList}>
                         <li>
                             <a href="https://www.facebook.com/Goodreads"><div className={styles.followUsFacebook}></div>
                         /goodreads
@@ -38,25 +41,25 @@ export default function AboutUs() {
                 </div>
             </div>
             <div className={styles.carouselContainer}>
-                <Carousel controls={false} indicators={false}>
+                <Carousel controls={true} indicators={false}>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://s.gr-assets.com/assets/about/headerImages/About-Carousel-1-4ecdb327a458a36e6e897abe7839e3b9.jpg"
+                            src={Carousel1}
                             alt="First slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://s.gr-assets.com/assets/about/headerImages/About-Carousel-2-9009546b74c49cece686733bbbf5e5d7.jpg"
+                            src={Carousel2}
                             alt="Second slide"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="https://s.gr-assets.com/assets/about/headerImages/About-Carousel-3-735e3eb6fd44644fc310139d9e2ebbed.jpg"
+                            src={Carousel3}
                             alt="Third slide"
                         />
                     </Carousel.Item>

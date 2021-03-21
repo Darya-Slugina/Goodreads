@@ -9,7 +9,7 @@
     text-align: left;
     width: 970px;
     background: #FFF;
-    height: 900px;
+    /* height: 900px; */
 }
 
 .leftContainer {
@@ -110,7 +110,7 @@
     margin-top: 3px;
 }
 
-.ratingCount, .reviewCount {
+.ratingCount, .reviewCount{
     color: #00635D;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 15px;
@@ -123,6 +123,7 @@
     line-height: 21px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
+    margin-top: 20px;
 }
 
 .moreDetails {
@@ -134,17 +135,17 @@
 
 .bigBox {
     width: 100%;
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
 }
 
 .h2Container {
-    height: 28px;
+    /* height: 28px; */
     overflow: hidden;
     white-space: nowrap;
     margin-top: 30px;
 }
 
-h2 {
+.h2Title {
     border-bottom: 1px solid #D8D8D8;
     width: 750px;
     color: #382110;
@@ -152,4 +153,30 @@ h2 {
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.imgListContainer {
+    height: 130px;
+}
+
+.moreBooksContainer {
+    height: 150px;
+    width: 750px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 30px;
+}
+
+.bookImg {
+    margin: 15px;
+    cursor: pointer;
+}
+
+.sortComment {
+    color: #02524b;
+    font-weight: bold;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 15px;
+    margin-left: 35px;
+    cursor: pointer;
 }

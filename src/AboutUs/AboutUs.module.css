@@ -32,7 +32,7 @@
     position: absolute;
     width: 100%;
     z-index: 6;
-    padding: 0 15px;
+    padding: 0 50px;
 }
 
 .aboutCenterColumn {
@@ -80,7 +80,7 @@ h2 {
     text-align: left;
 }
 
-.aboutFollowUs a {
+.followUsFacebook, .followUsTwitter, .followUsLinkedin, .followUsPinterest {
     color: #181818;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 10px;
@@ -120,7 +120,7 @@ h2 {
     background-image: url(./../img/pinterest-aboutUs.gif);
 }
 
-ul {
+.followUsList {
     list-style: none;
     padding-left: 5px;
 }

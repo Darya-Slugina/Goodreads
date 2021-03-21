@@ -1,5 +1,5 @@
 body {
-    background: #fff;
+    background: none;
 }
 
 h2 {
@@ -60,23 +60,15 @@ a {
     margin-left: -15px;
 } 
 
-
-.guidelinesSidebar {
-    margin: 16px 0 32px 0;
-}
-
-.unstyledListItem {
-    list-style-type: none;
-    margin: 12px 0 12px 4px;
-}
-
-.hyperlink {
-    color: #00635D;
-    text-decoration: none;
-}
-
-.bold {
-    font-weight: bold;
+.grCol {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    flex: 1 0 0;
+    max-width: 100%;
 }
 
 .grCol8 {
@@ -101,6 +93,16 @@ a {
     box-sizing: border-box;
 }
 
+.paddingLeftMedium {
+    padding-left: 16px;
+    list-style-type: disc;
+    font-size: 15px;
+}
+
+.paddingBottomSmall {
+    padding-bottom: 12px;
+}
+
 .grH3 {
     color: #333333;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -110,4 +112,23 @@ a {
     margin: 12px 0;
     text-transform: uppercase;
     margin-top: 0;
+}
+
+.guidelinesSidebar {
+    margin: 16px 0 32px 0;
+    font-size: 15px;
+}
+
+.unstyledListItem {
+    list-style-type: none;
+    margin: 12px 0 12px 4px;
+}
+
+.hyperlink {
+    color: #00635D;
+    text-decoration: none;
+}
+
+.bold {
+    font-weight: bold;
 }

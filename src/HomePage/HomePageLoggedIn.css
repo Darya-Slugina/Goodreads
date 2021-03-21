@@ -17,7 +17,6 @@
 .logo-logged{
     display: inline-block;
     height: 50px;
-    /* order: initial; */
     background: url(../img/header_logo.png) no-repeat;
     background-position: center;
     background-size: 140px 30px;
@@ -34,9 +33,9 @@
     display: flex;
 }
 
-.nav-logged li:hover{
+/* .nav-logged li:hover{
     background-color: #382110;
-}
+} */
 
 .nav-logged>ul>li>a{
     display: inline-block;

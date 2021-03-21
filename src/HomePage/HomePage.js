@@ -1,4 +1,3 @@
-// import styles from "./HomePage.module.css"
 import "./HomePage.css"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -7,6 +6,7 @@ import React from "react"
 export default function HomePage() {
     return (
         <React.Fragment>
+            {/* header not logged in */}
             <header>
                 <div className="nav-wrapper">
                     <nav>

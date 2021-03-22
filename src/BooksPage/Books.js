@@ -1,13 +1,10 @@
 import styles from './Books.module.css';
 import React, { useState } from 'react';
-// import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 import BooksList from "./BookList";
 import ReviewModul from "./ReviewModul";
 import SimpleRating from "./Rating";
-// import StarRating from 'react-bootstrap-star-rating';
+import Comments from "./Comments";
 
-import StarRatings from 'react-star-ratings';
 
 const bookList = [
   "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1369453733l/6953508.jpg",
@@ -19,14 +16,16 @@ const bookList = [
 ]
 
 
-export default function Books() {
+export default function Books({isLoggedIn}) {
+
   const [value, setValue] = useState(2);
+
 
   // React hooks
   //  const [inputValue, setInputValue] = useState();
 
-  return (
-    <div className={styles.mainContentContainer}>
+  return(
+    <div className = { styles.mainContentContainer } >
       <div className={styles.mainContent}>
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
@@ -36,7 +35,7 @@ export default function Books() {
               <div className={styles.ratingText}>Rate this book</div>
               <div className={styles.clearRating}>Clear rating</div>
               <div>
-                  <SimpleRating stars={0}/>
+                <SimpleRating stars={0} active={true} />
               </div>
             </div>
           </div>
@@ -52,7 +51,7 @@ export default function Books() {
             </div>
             <div className={styles.bookMeta}>
               <div className={styles.staticRatingStars}>
-                  <SimpleRating stars={3.78}/>
+                <SimpleRating stars={3.78} />
               </div>
               <span itemprop="ratingValue" className={styles.staticRating}> 3.78 </span>
               <div itemprop="ratingCount" className={styles.ratingCount} content="7613"> 7,613 ratings </div>
@@ -97,7 +96,7 @@ export default function Books() {
             <h2 className={styles.h2Title}>Community Reviews</h2>
             <div className={styles.bookMeta}>
               <div className={styles.staticRatingStars}>
-              <SimpleRating stars={3.78}/>
+                <SimpleRating stars={3.78} />
               </div>
               <span itemprop="ratingValue" className={styles.staticRating}> 3.78 </span>
               <div itemprop="ratingCount" className={styles.ratingCount} content="7613"> 7,613 ratings </div>
@@ -107,6 +106,9 @@ export default function Books() {
           </div>
           <div className={styles.h2Container}>
             <ReviewModul />
+          </div>
+          <div className={styles.h2Container}>
+            <Comments />
           </div>
         </div>
       </div>

@@ -49,3 +49,10 @@
     padding-top: 30px;
     width: 750px;
 }
+
+.ownReviewContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+
+}

@@ -14,6 +14,7 @@ import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
+import Error from "./ErrorPage/Error";
 
 // function Header({user}) {
 
@@ -61,7 +62,7 @@ function App() {
           </Route>
 
           <Route path="/books/:bookId">
-            <Books />
+            <Books isLoggedIn={isLoggedIn} />
           </Route>
 
           <Route path="/terms">
@@ -85,7 +86,7 @@ function App() {
           </Route>
 
           <Route path="*">
-            <h2>Not Found Page</h2>
+            <Error />
           </Route>
         </Switch>
 

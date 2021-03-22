@@ -6,8 +6,8 @@ import Login from "./LoginPage/Login";
 import Registration from "./RegistrationPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
-import Books from "./BooksPage/Books";
-// import Footer from "./Footer/Footer";
+// import Books from "./BooksPage/Books";
+import Footer from "./Footer/Footer";
 import React from "react";
 
 // function Header({user}) {
@@ -64,7 +64,7 @@ function App() {
           </Route>
         </Switch>
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </BrowserRouter>
   );

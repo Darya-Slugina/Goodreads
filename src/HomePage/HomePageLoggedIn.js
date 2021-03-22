@@ -2,6 +2,7 @@ import React from "react";
 import './HomePageLoggedIn.css'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
+import MyBooks from "../MyBooks/MyBooks.js"
 
 export default function HomePageLoggedIn() {
     return (
@@ -40,6 +41,9 @@ export default function HomePageLoggedIn() {
                     </nav>
                 </div>
             </header>
+            <main className="main-container">
+                <MyBooks />
+            </main>
         </React.Fragment>
     )
 

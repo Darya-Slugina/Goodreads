@@ -18,16 +18,15 @@ export default function HomePageLoggedIn() {
                     </nav>
                     <input type="text" placeholder="Search books" className="search-logged" />
                     <nav className="personal-nav">
-                        <a href="">
-                            <div className="dropdown-profile">
-                                <div className="dropdown-profile-wrapper">
-                                    <span className="profile-name">Olga</span>
-                                    <ul>
-                                        <li><a href="" className="sign-out-link">Sign out</a></li>
-                                    </ul>
-                                </div>
+                        <a href=""></a>
+                        <div className="dropdown-profile">
+                            <div className="dropdown-profile-wrapper">
+                                <span className="profile-name">Olga</span>
+                                <ul>
+                                    <li><a href="" className="sign-out-link">Sign out</a></li>
+                                </ul>
                             </div>
-                        </a>
+                        </div>
                     </nav>
 
                 </div>

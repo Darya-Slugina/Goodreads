@@ -43,8 +43,7 @@ export default function Registration() {
               <p className={styles.privacyNotice}> By clicking “Sign up” I agree to the Goodreads &nbsp;
                 <a target="_blank" rel="noopener noreferrer" href="/about/terms"> Terms of Service</a>
                 &nbsp; and confirm that I am at least 13 years of age.
-                  <a target="_blank" rel="noopener noreferrer" href="/about/privacy"> &nbsp; Read our Privacy Policy.
-                </a>
+                  <Link to="/privacy"> &nbsp; Read our Privacy Policy.</Link>
               </p>
             </div>
           </div>

@@ -1,0 +1,9 @@
+.bookContainer {
+    margin: 10px;
+}
+
+.bookImg {
+    width: 120px;
+    height: 220px ;
+    cursor: pointer;
+}

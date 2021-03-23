@@ -57,11 +57,11 @@ function App() {
             <Categories />
           </Route>
 
-          <Route path="/genres">
+          <Route path="/genres/:currentGenre">
             <Genres />
           </Route>
 
-          <Route path="/books/:bookId">
+          <Route path="/books/:currentGenre/:bookId">
             <Books isLoggedIn={isLoggedIn} />
           </Route>
 

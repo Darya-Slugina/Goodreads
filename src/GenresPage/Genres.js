@@ -31,7 +31,7 @@ export default function Genres() {
             </div>
             <div className={styles.bigBoxBody}>
               {currentBooks.map((book) => (
-                <Book img={book.img} key={book.id} id={book.id} genre={currentGenre} />
+                <Book key={book.id} genre={currentGenre} {...book}/>
               ))}
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function Genres() {
             </div>
             <div className={styles.bigBoxBody}>
               {mostWanted.map((book) => (
-                <Book img={book.img} key={book.id} id={book.id} genre={book.genre} />
+                <Book key={book.id} {...book} />
               ))}
             </div>
           </div>

@@ -5,6 +5,7 @@ import HomePageLoggedIn from "./HomePage/HomePageLoggedIn";
 import Login from "./RegistrationAndLoginPage/Login";
 import Registration from "./RegistrationAndLoginPage/Registration";
 import Categories from "./CategoriesPage/Categories";
+import AllGenres from "./GenresPage/AllGenres";
 import Genres from "./GenresPage/Genres";
 import Terms from "./ConditionsPages/Terms";
 import Privacy from "./ConditionsPages/Privacy";
@@ -60,6 +61,10 @@ function App() {
 
           <Route path="/genres/:currentGenre">
             <Genres />
+          </Route>
+
+          <Route path="/genres">
+            <AllGenres />
           </Route>
 
           <Route path="/books/:currentGenre/:bookId">

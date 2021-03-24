@@ -10,6 +10,16 @@
         background: #FFFFFF;
         margin-top: 15px;
 
+        .breadcrumbs {
+            font-size: 12px;
+
+            .link {
+                color: #00635d;
+                text-decoration: none;
+                font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+        }
+
         .genreHeader {
             margin: 10px 0;
 

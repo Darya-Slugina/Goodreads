@@ -1,6 +1,6 @@
 import styles from './Genres.module.scss';
 import genresList from "./../Data/Books/GenresList"
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Book from "./BookImg";
 import books from "./../Data/Books/Books"
 
@@ -19,6 +19,9 @@ export default function Genres() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainContent}>
+        <div className={styles.breadcrumbs}>
+          <Link to="/genres" className={styles.link}>Genres</Link> &gt; <Link to={"/genres/"+currentGenre} className={styles.link}>{thisGenre[0].genre}</Link>
+        </div>
         <div className={styles.genreHeader}>
           <h1 className={styles.left}> {thisGenre[0].genre} </h1>
           <div className={styles.reviewText}>
@@ -31,7 +34,7 @@ export default function Genres() {
             </div>
             <div className={styles.bigBoxBody}>
               {currentBooks.map((book) => (
-                <Book key={book.id} genre={currentGenre} {...book}/>
+                <Book key={book.id} genre={currentGenre} {...book} />
               ))}
             </div>
           </div>
@@ -48,6 +51,5 @@ export default function Genres() {
         </div>
       </div>
     </div>
-
   );
 }

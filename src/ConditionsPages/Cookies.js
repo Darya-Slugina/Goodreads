@@ -1,4 +1,4 @@
-import styles from './Cookies.module.css';
+import styles from './Cookies.module.scss';
 import { Link } from "react-router-dom";
 
 
@@ -48,9 +48,7 @@ export default function Cookies() {
                             </li>
                             <li className={styles.paddingBottomSmall}>
                                 Delivering content, including ads, relevant to your interests on sites belonging to us and our affiliates and
-                                third-party sites (see the
-                                <a class="gr-hyperlink" href="https://help.goodreads.com/s/article/Goodreads-Interest-Based-Ads-Notice">&nbsp;Interest Based Ads&nbsp;</a>
-                                notice for how we use cookies in serving interest-based ads).
+                                third-party sites (see the Interest Based Ads notice for how we use cookies in serving interest-based ads).
                             </li>
                             <li className={styles.paddingBottomSmall}>
                                 Reporting. This allows us to measure and analyze the performance of our services.
@@ -76,14 +74,14 @@ export default function Cookies() {
                         </p>
                         <p>
                             See our
-                            <Link to="/privacy" class="gr-hyperlink">&nbsp;Privacy Notice&nbsp;</Link>
+                            <Link to="/privacy" className={styles.hyperlink}>&nbsp;Privacy Notice&nbsp;</Link>
                             for more information about the types of information we gather.
                         </p>
                     </div>
                     <div className={styles.grCol4}>
                         <h3 className={styles.grH3}>
                             Guidelines and Terms
-                    </h3>
+                        </h3>
                         <ul className={styles.guidelinesSidebar}>
                             <li className={styles.unstyledListItem}>
                                 <Link to="/terms" className={styles.hyperlink}>Terms of Use</Link>

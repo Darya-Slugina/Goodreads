@@ -1,0 +1,19 @@
+.bookContainer {
+    margin: 10px;
+    position: relative;
+
+    .bookImg {
+        width: 120px;
+        height: 220px ;
+        cursor: pointer;
+    }
+}
+
+.bookInfoContainer {
+    position: absolute;
+    background:green;
+    border: 3px solid brown;
+    width: 250px;
+    height: 400px;
+
+}

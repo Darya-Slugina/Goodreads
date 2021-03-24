@@ -4,8 +4,6 @@ import SimpleRating from "./Rating";
 
 // export default function Comments({ comments }) {
 
-//     console.log(comments);
-
 class Comments extends React.Component {
     state = {
         displayComment: false,

@@ -1,0 +1,137 @@
+.mainContentContainer {
+    box-sizing: border-box;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 24px auto;
+    flex: 1 0 auto;
+    text-align: left;
+    font-family: "Merriweather", "Georgia", serif;
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+        .grRow {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+
+            .grCol {
+                position: relative;
+                width: 100%;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+                box-sizing: border-box;
+                flex: 1 0 0;
+                max-width: 100%;
+
+                .serif {
+                    font-weight: bold;
+                    font-family: "Merriweather", "Georgia", serif;
+                    font-size: 24px;
+                    line-height: 1.25;
+                    margin-bottom: 30px;
+                    margin-left: -20px;
+                }
+            }
+            .grCol8 {
+                flex: 0 0 66.66667%;
+                max-width: 66.66667%;
+                position: relative;
+                width: 100%;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+                box-sizing: border-box;
+                font-size: 16px;
+                font-family: "Merriweather", "Georgia", serif;
+
+                .paddingLeftMedium {
+                    padding-left: 16px;
+                    list-style-type: disc;
+                    font-size: 15px;
+
+                    .paddingBottomSmall {
+                        padding-bottom: 12px;
+                    }
+                }
+
+                .hyperlink {
+                    color: #00635D;
+                    text-decoration: none;
+                }
+            }
+            .grCol4 {
+                flex: 0 0 33.33333%;
+                max-width: 33.33333%;
+                position: relative;
+                width: 100%;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+                box-sizing: border-box;
+
+                .grH3 {
+                    color: #333333;
+                    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                    font-size: 14px;
+                    font-weight: bold;
+                    line-height: 1.15;
+                    margin: 12px 0;
+                    text-transform: uppercase;
+                    margin-top: 0;
+                }
+
+                .guidelinesSidebar {
+                    margin: 16px 0 32px 0;
+                    font-size: 15px;
+
+                    .unstyledListItem {
+                        list-style-type: none;
+                        margin: 12px 0 12px 4px;
+
+                        .hyperlink {
+                            color: #00635D;
+                            text-decoration: none;
+                        }
+
+                        .bold {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

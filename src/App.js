@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import HomePageLoggedIn from "./HomePage/HomePageLoggedIn";
-import Login from "./LoginPage/Login";
-import Registration from "./RegistrationPage/Registration";
+import Login from "./RegistrationAndLoginPage/Login";
+import Registration from "./RegistrationAndLoginPage/Registration";
 import Categories from "./CategoriesPage/Categories";
 import Genres from "./GenresPage/Genres";
 import Terms from "./ConditionsPages/Terms";
@@ -12,6 +12,7 @@ import AboutUs from "./AboutUs/AboutUs";
 import AdPrefs from "./ConditionsPages/AdPrefs";
 import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
+// import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
 import Error from "./ErrorPage/Error";
@@ -90,9 +91,7 @@ function App() {
           </Route>
         </Switch>
 
-        {/* <Footer /> */}
-
-        {isLoggedIn ? <Footer /> : null}
+        <Footer />
       </div>
     </BrowserRouter>
   );

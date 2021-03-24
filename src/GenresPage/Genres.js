@@ -1,4 +1,4 @@
-import styles from './Genres.module.css';
+import styles from './Genres.module.scss';
 import genresList from "./../Data/Books/GenresList"
 import { useParams } from "react-router-dom";
 import Book from "./BookImg";

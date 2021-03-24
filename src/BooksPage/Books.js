@@ -1,4 +1,4 @@
-import styles from './Books.module.css';
+import styles from './Books.module.scss';
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import BooksList from "./BookList";
@@ -50,8 +50,8 @@ export default function Books() {
             <div className={styles.rating} id="rating">
               <div className={styles.ratingText}>Rate this book</div>
               <div className={styles.clearRating}>Clear rating</div>
-              <div>
-                <SimpleRating stars={0} active={true} />
+              <div className={styles.ratingCenter}>
+                <SimpleRating stars={0} active={true} big={false}/>
               </div>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function Books() {
                 {thisBook[0].title}
               </h1>
               <div id="bookAuthor" className={styles.bookAuthor}>
-                <span class="by">by&nbsp;</span>
-                <span itemprop="name">{thisBook[0].author}</span>
+                <span>by&nbsp;</span>
+                <span>{thisBook[0].author}</span>
               </div>
             </div>
             <div className={styles.bookMeta}>
@@ -112,7 +112,5 @@ export default function Books() {
         </div>
       </div>
     </div>
-
-
   )
 }

@@ -1,4 +1,4 @@
-import styles from './Terms.module.css';
+import styles from './Privacy.module.scss';
 import { Link } from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ export default function Terms() {
                 </div>
                 <div className={styles.grRow}>
                     <div className={styles.grCol8}>
-                        <p> This Agreement was last revised on Dec 6, 2017.</p>
+                        <p> <strong>This Agreement was last revised on Dec 6, 2017.</strong></p>
                         <p>
                             Welcome to Goodreads.com, the website and online service of Goodreads LLC
                             (together with its affiliates, "Goodreads" "we," or "us"). This page explains
@@ -21,7 +21,7 @@ export default function Terms() {
                             services, website and software provided through or in connection with the
                             service ("Service"), you signify that you have read, understood, and agree to
                             be bound by this Terms of Use Agreement, the Goodreads Privacy Policy, the
-                        <a href="https://www.amazon.com/gp/help/customer/display.html/?nodeId=508088">&nbsp;Amazon.com Conditions of Use&nbsp;</a>,
+                        <a className={styles.hyperlink} href="https://www.amazon.com/gp/help/customer/display.html/?nodeId=508088">&nbsp;Amazon.com Conditions of Use&nbsp;</a>,
                         and the other applicable rules, policies and terms posted on the Goodreads.com
                         website or provided with the Service (collectively, this "Agreement"), whether
                         or not you are a registered user of our Service.
@@ -33,7 +33,7 @@ export default function Terms() {
                             revised Agreement. This Agreement applies to all visitors, users, and others
                             who access the Service ("Users").
                     </p>
-                        <h2> 1. Use of Our Service </h2>
+                        <h2 className={styles.subTitle}> 1. Use of Our Service </h2>
                         <br />
                         <p>
                             Goodreads provides a place for you to discover, track, and talk about books with
@@ -59,7 +59,7 @@ export default function Terms() {
                             You may change the settings on your My Account page to control your profile and
                             how other members communicate with you. By providing Goodreads your email
                             address you consent to our using the email address in accordance with our
-                        <Link to="/privacy">&nbsp;Privacy Policy&nbsp;</Link>.
+                        <Link className={styles.hyperlink} to="/privacy">&nbsp;Privacy Policy&nbsp;</Link>.
                     </p>
                         <p>
                             Subject to your compliance with this Agreement and your payment of any applicable
@@ -108,7 +108,7 @@ export default function Terms() {
                             and other Users. Goodreads shall have no liability for your interactions with
                             other Users, or for any User’s action or inaction.
                     </p>
-                        <h2> 2. User Content </h2>
+                        <h2 className={styles.subTitle}> 2. User Content </h2>
                         <p>
                             Some areas of the Service may allow Users to upload, publish, display, link to
                             or otherwise make available (hereinafter, "post") reviews, comments, questions,
@@ -141,7 +141,7 @@ export default function Terms() {
                             of such User Content. Goodreads may provide tools for you to remove some User
                             Content, but does not guarantee that all or any User Content will be removable.
                      </p>
-                        <h2> 3. License Grant </h2>
+                        <h2 className={styles.subTitle}> 3. License Grant </h2>
                         <p>
                             By posting any User Content on the Service, you expressly grant to Goodreads a
                             nonexclusive, royalty-free, perpetual, irrevocable, and fully sublicensable
@@ -153,10 +153,10 @@ export default function Terms() {
                             cause injury to any person or entity; and that you will indemnify Goodreads
                             for all claims resulting from content you supply.  If you submit User Content
                             via the “My Writing” or “Ebook” features, our
-                        <Link to="/terms">&nbsp;Terms of Use for Writers&nbsp;</Link>
+                        <Link to="/terms" className={styles.hyperlink}>&nbsp;Terms of Use for Writers&nbsp;</Link>
                         apply to that User Content.
                     </p>
-                        <h2> 4. Our Proprietary Rights</h2>
+                        <h2 className={styles.subTitle}> 4. Our Proprietary Rights</h2>
                         <p>
                             Except for your User Content, the Service and all materials therein or transferred
                             thereby, including, without limitation, software, images, text, graphics,
@@ -184,7 +184,7 @@ export default function Terms() {
                             similar or related ideas previously known to Goodreads, or developed by its
                             employees, or obtained from sources other than you.
                     </p>
-                        <h2> 5. Eligibility </h2>
+                        <h2 className={styles.subTitle}> 5. Eligibility </h2>
                         <p>
                             This Service is intended solely for Users who are thirteen (13) years of age or
                             older, and any registration, use or access to the Service by anyone under 13 is
@@ -195,7 +195,7 @@ export default function Terms() {
                             representations, and warranties set forth in this Agreement, and to abide by
                             and comply with this Agreement.
                     </p>
-                        <h2>6. Paid Services</h2>
+                        <h2 className={styles.subTitle}>6. Paid Services</h2>
                         <p>
                             <strong>&nbsp;Billing Policies.&nbsp;</strong>  Certain aspects of the Service may be
                         provided for a fee or other charge. These fees and charges, if any, are
@@ -221,7 +221,7 @@ export default function Terms() {
                         intentionally or unintentionally, and for any reason or no reason, without any
                         liability of any kind to you or any other party.
                     </p>
-                        <h2> 7. Copyright Complaints</h2>
+                        <h2 className={styles.subTitle}> 7. Copyright Complaints</h2>
                         <p>
                             If you believe that your copyrighted work has been copied in a way that constitutes
                             copyright infringement and is accessible via the Service, please send us the
@@ -267,7 +267,7 @@ export default function Terms() {
                             Please note that this procedure is exclusively for notifying Goodreads and its
                             affiliates that your copyrighted material has been infringed.
                     </p>
-                        <h2> 8.  Third-Party Websites, Advertisers or Services</h2>
+                        <h2 className={styles.subTitle}> 8.  Third-Party Websites, Advertisers or Services</h2>
                         <p>
                             Goodreads may contain links to third-party websites, advertisers, or services
                             that are not owned or controlled by Goodreads. Goodreads has no control over,
@@ -290,7 +290,7 @@ export default function Terms() {
                             terms and conditions and privacy policy of any third-party website or service
                             that you visit.
                     </p>
-                        <h2> 9. Indemnity</h2>
+                        <h2 className={styles.subTitle}> 9. Indemnity</h2>
                         <p>
                             You agree to defend, indemnify and hold harmless Goodreads and its subsidiaries,
                             agents, managers, and other affiliated companies, and their employees,
@@ -308,7 +308,7 @@ export default function Terms() {
                             other party’s access and use of the Service with your unique username, password
                             or other appropriate security code.
                     </p>
-                        <h2> 10. Disclaimers of Warranties and Limitation of Liability</h2>
+                        <h2 className={styles.subTitle}> 10. Disclaimers of Warranties and Limitation of Liability</h2>
                         <p>
                             THE SERVICE AND ALL INFORMATION, CONTENT, MATERIALS, PRODUCTS (INCLUDING SOFTWARE)
                             AND OTHER SERVICES INCLUDED ON OR OTHERWISE MADE AVAILABLE TO YOU THROUGH THE
@@ -349,7 +349,7 @@ export default function Terms() {
                         Software, the Digital Content or the Service is subject to the binding
                         arbitration, governing law, disclaimer of warranties, limitation of liability
                         and all other terms in the
-                        <a href="https://www.amazon.com/gp/help/customer/display.html/?nodeId=508088">Amazon.com Conditions of Use</a>.
+                        <a href="https://www.amazon.com/gp/help/customer/display.html/?nodeId=508088" className={styles.hyperlink}>Amazon.com Conditions of Use</a>.
                         You agree to those terms by entering into this Agreement or using a Kindle,
                         any Reading Application, or the Service.
                     </p>
@@ -360,11 +360,11 @@ export default function Terms() {
                         not constitute a waiver of such right or provision.
                     </p>
                         <p>
-                            Please <a href="/about/contact_us">&nbsp;contact us&nbsp;</a>
+                            Please <a href="/about/contact_us" className={styles.hyperlink}>&nbsp;contact us&nbsp;</a>
                         with any questions regarding this Agreement.
                     </p>
                         <br />
-                        <h3> Updates</h3>
+                        <h3 className={styles.updates}> Updates</h3>
                         <ul className={styles.listStylesUpdates}>
                             <li>
                                 December 6, 2017: We have updated our terms of use agreement.  Please
@@ -372,13 +372,13 @@ export default function Terms() {
                         </li>
                             <li>
                                 April 7, 2010:  We added
-                            <Link to="/terms">Terms of Use for Writers</Link>,
+                            <Link to="/terms" className={styles.hyperlink}>Terms of Use for Writers</Link>,
                             which apply to works submitted to the Service via the "My Writing" or
                             "Ebook" features.
                         </li>
                             <li>
                                 October 16, 2008:  We replaced our
-                            <Link to="/terms">former terms of use agreement</Link>
+                            <Link to="/terms" className={styles.hyperlink}>former terms of use agreement</Link>
                             with a new agreement.  Please read this Agreement carefully.
                         </li>
                         </ul>

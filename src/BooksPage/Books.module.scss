@@ -1,0 +1,411 @@
+.mainContentContainer {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.mainContent {
+    margin: 0px auto;
+    text-align: left;
+    width: 870px;
+    background: #FFF;
+    /* height: 900px; */
+}
+
+.leftContainer {
+    display: flex;
+    width: 625px;
+    padding-right: 10px;
+    padding-left: 8px;
+    text-align: center;
+}
+
+.mainInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgCol {
+    float: left;
+    margin: 20px 20px 10px 0;
+    width: 150px;
+    height: 100%;
+    text-align: center;
+}
+
+.coverImage {
+    max-width: 150px;
+    margin: 0 auto 10px;
+}
+
+.ratingButton {
+    width: 110px;
+    background-color: #409D69;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    height: 28px;
+    padding: 3px;
+    text-align: center;
+}
+
+.ratingText {
+    color: #999;
+    background: transparent;
+    border: 0;
+    box-sizing: content-box;
+    display: block;
+    font-size: 11px;
+    height: 16px;
+    line-height: 14px;
+    margin: 0 auto;
+    padding: 3px 6px 0 6px;
+    width: 100px;
+    text-align: center;
+}
+
+.clearRating {
+    color: #00635d;
+    cursor: pointer;
+    box-sizing: content-box;
+    display: none;
+    font-size: 11px;
+    height: 16px;
+    line-height: 14px;
+    margin: 0 auto;
+    padding: 3px 6px 0 6px;
+    width: 100px;
+}
+
+.mainInfo {
+    width: 550px;
+    float: left;
+    margin: 20px 20px 10px 0;
+}
+
+.bookTitle {
+    font-weight: bold;
+    font-family: "Merriweather", "Georgia", serif;
+    font-size: 24px;
+    margin: 4px 0px 4px 0px;
+}
+
+.bookAuthor {
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 18px;
+    font-family: "Merriweather", "Georgia", serif;
+    line-height: 150%;
+}
+
+.bookMeta {
+    text-align: left;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.staticRating {
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.staticRatingStars {
+    margin-top: -6px;
+}
+
+.ratingCount, .reviewCount{
+    color: #00635D;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 15px;
+    margin-left: 35px;
+}
+
+.description {
+    font-size: 16px;
+    font-family: "Merriweather", "Georgia", serif;
+    line-height: 21px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.moreDetails {
+    padding: 5px 0;
+    font-size: 12px;
+    color: #333;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+.bigBox {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.h2Container {
+    /* height: 28px; */
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 30px;
+}
+
+.h2Title {
+    border-bottom: 1px solid #D8D8D8;
+    width: 750px;
+    color: #382110;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.imgListContainer {
+    height: 130px;
+}
+
+.moreBooksContainer {
+    height: 150px;
+    width: 750px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.bookImg {
+    height: 130px;
+    width: 95px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.sortComment {
+    color: #02524b;
+    font-weight: bold;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 15px;
+    margin-left: 35px;
+    cursor: pointer;
+}
+
+.ratingButtonClicked {
+    width: 110px;
+    background-color: #fff  !important;;
+    border: none;
+    color: #409D69 !important;
+    font-size: 14px;
+    height: 28px;
+    padding: 3px;
+}
+
+.ratingCenter {
+    text-align: center;
+}
+
+
+
+// .mainContentContainer {
+//     width: 100%;
+//     text-align: center;
+//     padding-bottom: 25px;
+
+//     .mainContent {
+//         margin: 0px auto;
+//         text-align: left;
+//         width: 970px;
+//         background: #fff;
+//         /* height: 900px; */
+
+//         .leftContainer {
+//             display: flex;
+//             width: 750px;
+//             padding-right: 10px;
+//             padding-left: 8px;
+//             text-align: center;
+
+//             .imgCol {
+//                 float: left;
+//                 margin: 20px 20px 10px 0;
+//                 width: 150px;
+//                 height: 100%;
+//                 text-align: center;
+
+//                 .coverImage {
+//                     max-width: 150px;
+//                     margin: 0 auto 10px;
+//                 }
+
+//                 .ratingButton {
+//                     width: 110px;
+//                     background-color: #409d69;
+//                     border: none;
+//                     color: #fff;
+//                     font-size: 14px;
+//                     height: 28px;
+//                     padding: 3px;
+//                     text-align: center;
+//                 }
+
+//                 .rating {
+//                     text-align: center;
+
+//                     .ratingText {
+//                         color: #999;
+//                         background: transparent;
+//                         border: 0;
+//                         box-sizing: content-box;
+//                         display: block;
+//                         font-size: 11px;
+//                         height: 16px;
+//                         line-height: 14px;
+//                         margin: 0 auto;
+//                         padding: 3px 6px 0 6px;
+//                         width: 100px;
+//                         text-align: center;
+//                     }
+
+//                     .clearRating {
+//                         color: #00635d;
+//                         cursor: pointer;
+//                         box-sizing: content-box;
+//                         display: none;
+//                         font-size: 11px;
+//                         height: 16px;
+//                         line-height: 14px;
+//                         margin: 0 auto;
+//                         padding: 3px 6px 0 6px;
+//                         width: 100px;
+//                     }
+
+//                     .ratingCenter {
+//                         text-align: center;
+//                     }
+//                 }
+
+//                 .mainInfoContainer {
+//                     display: flex;
+//                     flex-direction: column;
+
+//                     .mainInfo {
+//                         width: 550px;
+//                         float: left;
+//                         margin: 20px 20px 10px 0;
+
+//                         .bookTitle {
+//                             font-weight: bold;
+//                             font-family: "Merriweather", "Georgia", serif;
+//                             font-size: 20px;
+//                             margin: 4px 0px 4px 0px;
+//                         }
+
+//                         .bookAuthor {
+//                             margin-bottom: 8px;
+//                             color: #333;
+//                             font-size: 18px;
+//                             font-family: "Merriweather", "Georgia", serif;
+//                             line-height: 150%;
+//                         }
+//                     }
+
+//                     .bookMeta {
+//                         text-align: left;
+//                         display: flex;
+//                         flex-direction: row;
+//                         flex-wrap: nowrap;
+
+//                         .staticRatingStars {
+//                             margin-top: -6px;
+//                         }
+
+//                         .staticRating {
+//                             font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+//                             font-size: 15px;
+//                             margin-left: 5px;
+//                         }
+
+//                         .ratingCount,
+//                         .reviewCount {
+//                             color: #00635d;
+//                             font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+//                             font-size: 15px;
+//                             margin-left: 35px;
+//                         }
+
+//                         .sortComment {
+//                             color: #02524b;
+//                             font-weight: bold;
+//                             font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+//                             font-size: 15px;
+//                             margin-left: 35px;
+//                             cursor: pointer;
+//                         }
+//                     }
+
+//                     .description {
+//                         font-size: 16px;
+//                         font-family: "Merriweather", "Georgia", serif;
+//                         line-height: 21px;
+//                         border-bottom: 1px solid #ddd;
+//                         padding-bottom: 20px;
+//                         margin-top: 20px;
+//                     }
+
+//                     .moreDetails {
+//                         padding: 5px 0;
+//                         font-size: 12px;
+//                         color: #333;
+//                         font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+//                     }
+//                 }
+
+//                 .bigBox {
+//                     width: 100%;
+//                     padding-bottom: 10px;
+
+//                     .h2Container {
+//                         /* height: 28px; */
+//                         overflow: hidden;
+//                         white-space: nowrap;
+//                         margin-top: 30px;
+
+//                         .h2Title {
+//                             border-bottom: 1px solid #d8d8d8;
+//                             width: 750px;
+//                             color: #382110;
+//                             font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//                             font-size: 12px;
+//                             font-weight: bold;
+//                             text-transform: uppercase;
+//                         }
+
+//                         .moreBooksContainer {
+//                             height: 150px;
+//                             width: 750px;
+//                             display: flex;
+//                             flex-wrap: nowrap;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .imgListContainer {
+//     height: 130px;
+// }
+
+// .bookImg {
+//     height: 130px;
+//     width: 95px;
+//     margin: 15px;
+//     cursor: pointer;
+// }
+
+// .ratingButtonClicked {
+//     width: 110px;
+//     background-color: #fff !important;
+//     border: none;
+//     color: #409d69 !important;
+//     font-size: 14px;
+//     height: 28px;
+//     padding: 3px;
+// }

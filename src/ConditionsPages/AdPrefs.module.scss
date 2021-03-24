@@ -1,0 +1,105 @@
+.mainContentContainer {
+    box-sizing: border-box;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 24px auto;
+    flex: 1 0 auto;
+    text-align: left;
+    font-family: "Merriweather", "Georgia", serif;
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+        .grRow {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+
+            .serif {
+                font-weight: bold;
+                font-family: "Merriweather", "Georgia", serif;
+                font-size: 24px;
+                line-height: 1.25;
+            }
+
+            .grRowtext {
+                font-size: 16px;
+                line-height: 18px;
+                font-family: "Merriweather", "Georgia", serif;
+            }
+
+            .grRowH2 {
+                color: #333333;
+                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                font-size: 22px;
+                font-weight: normal;
+                line-height: 1.25;
+                width: 100%;
+            }
+
+            .radioButton {
+                display: block;
+                margin: 8px 0;
+                font-size: 12px;
+
+                .radioButtonInput {
+                    background-color: initial;
+                    cursor: default;
+                    margin: 3px 3px 0px 5px;
+                }
+            }
+
+            .grButton {
+                border-radius: 3px;
+                border: 1px solid #D6D0C4;
+                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                font-size: 14px;
+                appearance: none;
+                cursor: pointer;
+                display: inline-block;
+                text-decoration: none;
+                color: #333333;
+                background-color: #F4F1EA;
+                line-height: 1;
+                padding: 8px 12px;
+            }
+
+            .marginTopLarge {
+                margin-top: 24px;
+
+                .link {
+                    color: #00635D;
+                    text-decoration: none;
+                }
+            }
+            
+            .marginTopMedium {
+                margin-top: 16px;
+
+                .link {
+                    color: #00635D;
+                    text-decoration: none;
+                }
+            }
+
+
+        } 
+    }
+}
+
+
+// h3 {
+//     color: #333333;
+//     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+//     font-size: 14px;
+//     font-weight: bold;
+//     line-height: 1.15;
+//     margin: 12px 0;
+//     text-transform: uppercase;
+//     width: 100%;
+// }

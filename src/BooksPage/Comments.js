@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from './Comments.module.css';
 import SimpleRating from "./Rating";
+import { Link } from "react-router-dom";
 
-export default function Comments({commentId, userName, userImg, date, rate, likes, review, hiddenReview }) {
+export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview }) {
 
     const [displayComment, setDisplayComment] = useState(false);
 
@@ -23,42 +24,42 @@ export default function Comments({commentId, userName, userImg, date, rate, like
 
     return (
         <React.Fragment>
-                <div className={styles.commentsContainer}>
-                    <div className={styles.userImgContainer}>
-                        <img src={userImg} alt={userName} className={styles.userImg} />
+            <div className={styles.commentsContainer}>
+                <div className={styles.userImgContainer}>
+                    <Link to={"/user/" + userName}><img src={userImg} alt={userName} className={styles.userImg} /></Link>
+                </div>
+                <div className={styles.commentsInfoContainer}>
+                    <div className={styles.metaInfo}>
+                        <div>
+                            <Link to={"/user/" + userName}><span className={styles.userName}> {userName} </span></Link>
+                            <span className={styles.rating}>  rated  it </span>
+                            <SimpleRating stars={rate} />
+                        </div>
+                        <span className={styles.date}>{date}</span>
                     </div>
-                    <div className={styles.commentsInfoContainer}>
-                        <div className={styles.metaInfo}>
-                            <div>
-                                <span className={styles.userName}> {userName} </span>
-                                <span className={styles.rating}>  rated  it </span>
-                                <SimpleRating stars={rate} />
-                            </div>
-                            <span className={styles.date}>{date}</span>
-                        </div>
-                        <div className={styles.commentInfo}>
-                            {hiddenReview &&
-                                <React.Fragment>
-                                    <span className={styles.description}>{review}</span>
-                                    {displayComment ?
-                                        <React.Fragment>
-                                            <span className={styles.description}>{hiddenReview}</span>
-                                            <span className={styles.more} onClick={displayOnScreen}>...less</span>
-                                        </React.Fragment>
-                                        : <span className={styles.more} onClick={displayOnScreen}>...more</span>}
-                                </React.Fragment>
-                            }
-                            <span className={styles.description}>{review}</span>
-                        </div>
-                        <div className={styles.footerInfo}>
-                            <span className={styles.likeItContainer}>
-                                <span className={styles.likesCount}>{likes}&nbsp; likes</span>
+                    <div className={styles.commentInfo}>
+                        {hiddenReview &&
+                            <React.Fragment>
+                                <span className={styles.description}>{review}</span>
+                                {displayComment ?
+                                    <React.Fragment>
+                                        <span className={styles.description}>{hiddenReview}</span>
+                                        <span className={styles.more} onClick={displayOnScreen}>...less</span>
+                                    </React.Fragment>
+                                    : <span className={styles.more} onClick={displayOnScreen}>...more</span>}
+                            </React.Fragment>
+                        }
+                        <span className={styles.description}>{review}</span>
+                    </div>
+                    <div className={styles.footerInfo}>
+                        <span className={styles.likeItContainer}>
+                            <span className={styles.likesCount}>{likes}&nbsp; likes</span>
                                     &nbsp;·&nbsp;
-                                    <span className={styles.likeBtn} onClick={() => {}} id={commentId}>Like </span>
-                            </span>
-                        </div>
+                                    <span className={styles.likeBtn} onClick={() => { }} id={commentId}>Like </span>
+                        </span>
                     </div>
                 </div>
+            </div>
         </React.Fragment>
     );
 }

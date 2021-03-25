@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import books from "./../Data/Books/Books"
 import BooksList from "../BooksPage/BookList";
 import Button from "./../common/Button";
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 export default function AllGenres() {
 
@@ -14,15 +14,20 @@ export default function AllGenres() {
         setInputValue(ev.target.value);
     };
 
-    const mygenres = [...genresList]
-    mygenres.sort(() => Math.random() - 0.5);
-    mygenres.length = 3; //Magic number
-    const genreList = mygenres.map(el => el.genre);
+    const {genreList, shuffled} = useMemo(() => {
+        const mygenres = [...genresList]
+        mygenres.sort(() => Math.random() - 0.5);
+        mygenres.length = 3; //Magic number
+        const genreList = mygenres.map(el => el.genre);
+    
+        const booksByGenre = books.filter(el => el.genre.toLowerCase() === "art");
+        const shuffled = [...booksByGenre];
+        shuffled.sort(() => Math.random() - 0.5);
+        shuffled.length = 5; //Magic number
 
-    const booksByGenre = books.filter(el => el.genre.toLowerCase() === "art");
-    const shuffled = [...booksByGenre];
-    shuffled.sort(() => Math.random() - 0.5);
-    shuffled.length = 5; //Magic number
+        return {genreList, shuffled}
+    }, [])
+
 
     return (
         <div className={styles.mainContainer}>

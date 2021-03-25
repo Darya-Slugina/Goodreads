@@ -31,6 +31,19 @@
     width: 150px;
     height: 100%;
     text-align: center;
+
+    :global(.dropdown) {
+        text-align: center;
+    
+        :global(.btn) {
+            font-size: 12px;
+        }
+
+        :global(.dropdown-menu) {
+            font-size: 12px;
+        }
+    }
+    
 }
 
 .coverImage {
@@ -38,16 +51,8 @@
     margin: 0 auto 10px;
 }
 
-.ratingButton {
-    width: 110px;
-    background-color: #409d69;
-    border: none;
-    color: #fff;
-    font-size: 14px;
-    height: 28px;
-    padding: 3px;
-    text-align: center;
-}
+
+
 
 .ratingText {
     color: #999;

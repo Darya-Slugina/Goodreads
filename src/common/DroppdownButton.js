@@ -1,20 +1,25 @@
-// import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import { useState } from "react";
 
 
 export default function DropdownButton() {
-    const changeButton = (e) => {
-        console.log(e);
-    }
+
+    const [ buttonValue, setButtonValue ] = useState("Want to Read");
+
+    const changeButton = (eventKey) => {
+        console.log(eventKey);
+        setButtonValue(eventKey);
+    };
+
     return (
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Want to Read
+        <Dropdown onSelect={changeButton} eventKey={buttonValue} >
+            <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                {buttonValue}
             </Dropdown.Toggle>
             <Dropdown.Menu>
-                <Dropdown.Item onSelect={changeButton}> Currently Reading </Dropdown.Item>
-                <Dropdown.Item onSelect={changeButton}>Read</Dropdown.Item>
-                <Dropdown.Item onSelect={changeButton}>Want to Read</Dropdown.Item>
+                <Dropdown.Item eventKey="Currently Reading"> Currently Reading </Dropdown.Item>
+                <Dropdown.Item eventKey="Read">Read</Dropdown.Item>
+                <Dropdown.Item eventKey="Want to Read">Want to Read</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     )

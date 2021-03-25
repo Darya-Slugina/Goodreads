@@ -6,8 +6,7 @@ import ReviewModul from "./ReviewModul";
 import SimpleRating from "./Rating";
 import Comments from "./Comments";
 import books from "./../Data/Books/Books"
-import Dropdown from 'react-bootstrap/Dropdown'
-// import DropdownButton from "../common/DroppdownButton"
+import DropdownButton from "../common/DroppdownButton"
 
 
 export default function Books() {
@@ -48,15 +47,6 @@ export default function Books() {
   }
 
 
-  // TODO: don't work
-  const changeButton = (e) => {
-    console.log(e)
-    e.target.classList.remove("ratingButton");
-    e.target.classList.add("ratingButtonClicked");
-  }
-
-
-
   // React hooks
   //  const [inputValue, setInputValue] = useState();
 
@@ -66,8 +56,8 @@ export default function Books() {
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={thisBook[0].img} alt={thisBook[0].title} />
-            {/* <DropdownButton className={styles.ratingButton}/> */}
-            <button className={styles.ratingButton} onClick={changeButton}>Want to Read</button>
+            <DropdownButton className={styles.ratingButton}/>
+            {/* <button className={styles.ratingButton}>Want to Read</button> */}
             <div className={styles.rating} id="rating">
               <div className={styles.ratingText}>{isItRated? "My rating" : "Rate this book"}</div>
               <div className={styles.clearRating}>Clear rating</div>

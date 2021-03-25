@@ -1,7 +1,6 @@
 import styles from "./BookImg.module.scss"
 import { Link } from "react-router-dom";
 import React from "react";
-import BlockInfo from "./BlockInfo";
 import SimpleRating from "../BooksPage/Rating";
 
 

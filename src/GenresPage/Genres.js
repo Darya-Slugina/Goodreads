@@ -3,8 +3,9 @@ import genresList from "./../Data/Books/GenresList"
 import { useParams, Link } from "react-router-dom";
 import Book from "./BookImg";
 import books from "./../Data/Books/Books"
+import Button from "./../common/Button";
 
-export default function Genres() {
+export default function Genres({ isLoggedIn }) {
 
   const { currentGenre } = useParams();
 
@@ -20,10 +21,16 @@ export default function Genres() {
     <div className={styles.mainContainer}>
       <div className={styles.mainContent}>
         <div className={styles.breadcrumbs}>
-          <Link to="/genres" className={styles.link}>Genres</Link> &gt; <Link to={"/genres/"+currentGenre} className={styles.link}>{thisGenre[0].genre}</Link>
+          <Link to="/genres" className={styles.link}>Genres</Link> &gt; <Link to={"/genres/" + currentGenre} className={styles.link}>{thisGenre[0].genre}</Link>
         </div>
         <div className={styles.genreHeader}>
           <h1 className={styles.left}> {thisGenre[0].genre} </h1>
+          {isLoggedIn &&
+            <div className={styles.right}>
+              <div className={styles.favoriteGenresButtonContainer}>
+                <Button value={"Add to favourite"} />
+              </div>
+            </div>}
           <div className={styles.reviewText}>
             <span>{thisGenre[0].description}</span>
           </div>

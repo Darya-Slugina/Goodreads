@@ -1,74 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './Comments.module.css';
 import SimpleRating from "./Rating";
 
-// export default function Comments({ comments }) {
+export default function Comments({commentId, userName, userImg, date, rate, likes, review, hiddenReview }) {
 
-class Comments extends React.Component {
-    state = {
-        displayComment: false,
-        comment: this.props.comments,
+    const [displayComment, setDisplayComment] = useState(false);
+
+    const displayOnScreen = () => {
+        setDisplayComment(!displayComment)
     }
 
-    displayComment = () => {
-        this.setState({
-            displayComment: !this.state.displayComment
-        })
-    }
+    //     addLike = (e) => {
+    //         console.log(e);
+    //         let currentComment = this.state.comment.filter(el => el.id === e.target.id)
+    //         currentComment.likes += 1;
 
-    addLike = (e) => {
-        console.log(e);
-        let currentComment = this.state.comment.filter(el => el.id === e.target.id)
-        currentComment.likes += 1;
+    //         this.setState({
+    //             comment: [...this.state.comment, currentComment.likes ]
+    //         })
+    //     }
 
-        this.setState({
-            comment: [...this.state.comment, currentComment.likes ]
-        })
-    }
 
-    render() {
-        return (
-            <React.Fragment>
-                {this.state.comment.map((comment, id) => (
-                    <div key={id} className={styles.commentsContainer}>
-                        <div className={styles.userImgContainer}>
-                            <img src={comment.userImg} alt={comment.userName} className={styles.userImg} />
+    return (
+        <React.Fragment>
+                <div className={styles.commentsContainer}>
+                    <div className={styles.userImgContainer}>
+                        <img src={userImg} alt={userName} className={styles.userImg} />
+                    </div>
+                    <div className={styles.commentsInfoContainer}>
+                        <div className={styles.metaInfo}>
+                            <div>
+                                <span className={styles.userName}> {userName} </span>
+                                <span className={styles.rating}>  rated  it </span>
+                                <SimpleRating stars={rate} />
+                            </div>
+                            <span className={styles.date}>{date}</span>
                         </div>
-                        <div className={styles.commentsInfoContainer}>
-                            <div className={styles.metaInfo}>
-                                <div>
-                                    <span className={styles.userName}> {comment.userName} </span>
-                                    <span className={styles.rating}>  rated  it </span>
-                                    <SimpleRating stars={comment.rate} />
-                                </div>
-                                <span className={styles.date}>{comment.date}</span>
-                            </div>
-                            <div className={styles.commentInfo}>
-                                {comment.hiddenReview &&
-                                    <React.Fragment>
-                                        <span className={styles.description}>{comment.review}</span>
-                                        {this.state.displayComment ?
-                                            <React.Fragment>
-                                                <span className={styles.description}>{comment.hiddenReview}</span>
-                                                <span className={styles.more} onClick={this.displayComment}>...less</span>
-                                            </React.Fragment>
-                                            : <span className={styles.more} onClick={this.displayComment}>...more</span>}
-                                    </React.Fragment>
-                                }
-                                <span className={styles.description}>{comment.review}</span>
-                            </div>
-                            <div className={styles.footerInfo}>
-                                <span className={styles.likeItContainer}>
-                                    <span className={styles.likesCount}>{comment.likes}&nbsp; likes</span>
+                        <div className={styles.commentInfo}>
+                            {hiddenReview &&
+                                <React.Fragment>
+                                    <span className={styles.description}>{review}</span>
+                                    {displayComment ?
+                                        <React.Fragment>
+                                            <span className={styles.description}>{hiddenReview}</span>
+                                            <span className={styles.more} onClick={displayOnScreen}>...less</span>
+                                        </React.Fragment>
+                                        : <span className={styles.more} onClick={displayOnScreen}>...more</span>}
+                                </React.Fragment>
+                            }
+                            <span className={styles.description}>{review}</span>
+                        </div>
+                        <div className={styles.footerInfo}>
+                            <span className={styles.likeItContainer}>
+                                <span className={styles.likesCount}>{likes}&nbsp; likes</span>
                                     &nbsp;·&nbsp;
-                                    <span className={styles.likeBtn} onClick={this.addLike} id={comment.commentId}>Like </span>
-                                </span>
-                            </div>
+                                    <span className={styles.likeBtn} onClick={() => {}} id={commentId}>Like </span>
+                            </span>
                         </div>
                     </div>
-                ))}
-            </React.Fragment>
-        );
-    }
+                </div>
+        </React.Fragment>
+    );
 }
-export default Comments;

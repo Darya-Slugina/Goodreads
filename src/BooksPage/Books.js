@@ -6,25 +6,46 @@ import ReviewModul from "./ReviewModul";
 import SimpleRating from "./Rating";
 import Comments from "./Comments";
 import books from "./../Data/Books/Books"
+import Dropdown from 'react-bootstrap/Dropdown'
 // import DropdownButton from "../common/DroppdownButton"
 
 
 export default function Books() {
 
   // const [value, setValue] = useState(2);
+  const [isItRated, setIsItRated] = useState(false);
+
 
   const { currentGenre, bookId } = useParams();
   console.log(bookId, currentGenre);
 
-
   const genre = books.filter(el => el.genre.toLowerCase() === currentGenre);
   const thisBook = genre.filter(el => el.id === Number(bookId));
-  console.log(thisBook);
 
+  const [comments, setComments] = useState(thisBook[0].reviews);
 
   const shuffled = [...genre];
   shuffled.sort(() => Math.random() - 0.5);
   shuffled.length = 6; //Magic number
+
+
+  const showSorters = (e) => {
+    e.target.nextSibling.classList.toggle("show");
+  }
+
+  const ascendingSort =() => {
+    comments.sort((a, b) => a.rate - b.rate);
+    setComments(comments);
+  }
+
+  const descendingSort =() => {
+    comments.sort((a, b) => b.rate - a.rate);
+    setComments(comments);
+  }
+
+  const changeRating = () => {
+    setIsItRated(true);
+  }
 
 
   // TODO: don't work
@@ -48,10 +69,10 @@ export default function Books() {
             {/* <DropdownButton className={styles.ratingButton}/> */}
             <button className={styles.ratingButton} onClick={changeButton}>Want to Read</button>
             <div className={styles.rating} id="rating">
-              <div className={styles.ratingText}>Rate this book</div>
+              <div className={styles.ratingText}>{isItRated? "My rating" : "Rate this book"}</div>
               <div className={styles.clearRating}>Clear rating</div>
               <div className={styles.ratingCenter}>
-                <SimpleRating stars={0} active={true} big={false}/>
+                <SimpleRating stars={0} active={true} big={false} onChange={changeRating}/>
               </div>
             </div>
           </div>
@@ -100,14 +121,21 @@ export default function Books() {
               <span className={styles.staticRating}> {thisBook[0].rating} </span>
               <div className={styles.ratingCount} > {thisBook[0].ratingsCount} ratings </div>
               <div className={styles.reviewCount} > {thisBook[0].reviewsCount} reviews </div>
-              <span className={styles.sortComment}>Sort order</span>
+              <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
+              <div className={styles.sorterContainer}>
+                <span className={styles.sortOption} onClick={ascendingSort}>Heighest rating</span>
+                <span className={styles.sortOption} onClick={descendingSort}>Lowest rating</span>
+              </div>
             </div>
           </div>
           <div className={styles.h2Container}>
             <ReviewModul />
           </div>
           <div className={styles.h2Container}>
-            <Comments comments={thisBook[0].reviews} />
+            {comments.map(review => (
+              <Comments key={review.id} {...review} />
+            ))}
+
           </div>
         </div>
       </div>

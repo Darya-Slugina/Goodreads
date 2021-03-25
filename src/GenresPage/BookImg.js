@@ -15,7 +15,6 @@ export default function Book({ img, id, genre, title, description, author, ratin
 
   const onMouseEnterHandler = (e) => {
     e.target.nextSibling.style.display = "block";
-
   }
 
   const onMouseLeaveHandler = (e) => {

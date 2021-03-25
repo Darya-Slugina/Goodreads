@@ -30,9 +30,9 @@ class Comments extends React.Component {
         return (
             <React.Fragment>
                 {this.state.comment.map((comment, id) => (
-                    <div className={styles.commentsContainer}>
+                    <div key={id} className={styles.commentsContainer}>
                         <div className={styles.userImgContainer}>
-                            <img key={id} src={comment.userImg} alt={comment.userName} className={styles.userImg} />
+                            <img src={comment.userImg} alt={comment.userName} className={styles.userImg} />
                         </div>
                         <div className={styles.commentsInfoContainer}>
                             <div className={styles.metaInfo}>

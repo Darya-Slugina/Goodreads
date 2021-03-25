@@ -6,24 +6,26 @@
     .mainContent {
         margin: 0px auto;
         text-align: left;
-        width: 870px;
-        height: 800px;
+        width: 970px;
+        height: auto;
         background: #ffffff;
         margin-top: 15px;
 
+        .header {
+            font-size: 24px;
+            color: #382110;
+            padding: 0px 0px 2px 0px;
+            font-family: "Merriweather", Georgia, "Times New Roman", serif;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 24px;
+        }
+
         .genreWrapper {
             margin: 10px 0;
-
-            .header {
-                font-size: 24px;
-                color: #382110;
-                padding: 0px 0px 2px 0px;
-                font-family: "Merriweather", Georgia, "Times New Roman", serif;
-                font-weight: bold;
-                margin-top: 0;
-                margin-bottom: 15px;
-                line-height: 24px;
-            }
+            display: flex;
+            flex-direction: row;
 
             .leftContainer {
                 float: left;
@@ -151,7 +153,15 @@
 
                     .boxContainerBody {
                         padding: 0 0 10px 0;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        height: 400px;
 
+                        .genreName {
+                            color: #00635d;
+                            font-size: 12px;
+                        }
                     }
                 }
             }

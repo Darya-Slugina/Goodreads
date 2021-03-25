@@ -33,19 +33,19 @@
 }
 
 .nav-logged-btn:hover, .profile-btn:hover{
-    background-color: #382110 !important;
-    color: white !important;
+    background-color: #382110;
+    color: white;
 }
 
 .nav-logged-btn{
     display: inline-block;
-    color: #382110 !important;
+    color: #382110;
     font-size: 16px;
     line-height: 50px;
     padding: 0 15px;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background-color: transparent !important;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
 }
 
 
@@ -69,7 +69,7 @@
 }
 
 .search-logged{
-    margin-bottom: 0px !important;
+    margin-bottom: 0px;
     margin-top: 9px;
     vertical-align: top;
     flex: 1;

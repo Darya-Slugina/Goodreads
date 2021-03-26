@@ -50,6 +50,7 @@
         background-repeat: no-repeat;
         font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
         width: 500px;
+        height: 250px;
         padding-left: 20px;
 
         .userProfileName {
@@ -67,6 +68,18 @@
             color: #382110;
             font-family: "Merriweather", Georgia, "Times New Roman", serif;
             font-weight: bold;
+
+            .smallText {
+                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                font-size: 11px;
+                line-height: 14px;
+                color: #00635d;
+                text-decoration: none;
+                display: flex;
+                align-items: flex-end;
+                margin-bottom: 3px;
+                margin-left: 3px;
+            }
         }
 
         .friendFollowModule {

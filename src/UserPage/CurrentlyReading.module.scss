@@ -67,7 +67,8 @@
             }
 
             .rating,
-            .review {
+            .review,
+            .edit {
                 vertical-align: bottom;
                 text-align: left;
                 padding: 12px 5px 5px 5px;
@@ -140,6 +141,28 @@
                 line-height: 18px;
 
                 .link {
+                    color: #00635d;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+
+            .myRatingInfo {
+                vertical-align: top;
+                padding: 12px 5px 5px 0;
+                font-size: 14px;
+                font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                line-height: 18px;
+            }
+
+            .clearRatingInfo {
+                vertical-align: top;
+                padding: 12px 5px 5px 0;
+                font-size: 14px;
+                font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                line-height: 18px;
+
+                .clearRating {
                     color: #00635d;
                     text-decoration: none;
                     cursor: pointer;

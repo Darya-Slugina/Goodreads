@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styles from './UserPage.module.scss';
 import { Nav } from "react-bootstrap";
 import CurrentlyReading from "./CurrentlyReading";
+import Rated from "./Rated";
 
 
 export default function UserPage() {
 
     const [selectedTab, setSelectedTab] = useState("Currently Reading");
-
+    const userProfile = true;
 
     const { userName } = useParams();
 
@@ -40,11 +41,17 @@ export default function UserPage() {
                 </div>
             </div>
             <div className={styles.userInfoBox}>
-                <h1 className={styles.userProfileName}> Angela M </h1>
-
-                <div className={styles.friendFollowModule}>
-                    <button className={styles.friendFollowButton}>Follow</button>
-                </div>
+                {userProfile ? (<h1 className={styles.userProfileName}> Angela M
+                    <Link to="/user/edit" className={styles.smallText}>(edit profile)</Link>
+                </h1>
+                ) :
+                    (<React.Fragmet>
+                        <h1 className={styles.userProfileName}> Angela M </h1>
+                        <div className={styles.friendFollowModule}>
+                            <button className={styles.friendFollowButton}>Follow</button>
+                        </div>
+                    </React.Fragmet>)
+                }
                 <div className={styles.infoBoxWrapper}>
                     <div className={styles.infoBoxRowTitle}>Details</div>
                     <div className={styles.infoBoxRowItem}> The United States </div>
@@ -78,11 +85,15 @@ export default function UserPage() {
                         <Nav.Item>
                             <Nav.Link eventKey="Read">Read</Nav.Link>
                         </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="Rated">Rated</Nav.Link>
+                        </Nav.Item>
                     </Nav>
                 </div>
                 {selectedTab === "Currently Reading" && <CurrentlyReading />}
                 {selectedTab === "Want to Read" && <h2>Want to Read</h2>}
                 {selectedTab === "Read" && <h2>Read</h2>}
+                {selectedTab === "Rated" && <Rated isItUser={userProfile} />}
             </div>
         </div>
     )

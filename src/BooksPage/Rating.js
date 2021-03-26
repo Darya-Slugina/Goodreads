@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function SimpleRating({ stars, active, big }) {
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(stars);
 
   return (
     <span>

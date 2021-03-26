@@ -14,6 +14,7 @@ import AdPrefs from "./ConditionsPages/AdPrefs";
 import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
 import UserPage from "./UserPage/UserPage";
+import UserEditPage from "./UserPage/UserEditPage"
 // import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React from "react";
@@ -70,6 +71,10 @@ function App() {
 
           <Route path="/books/:currentGenre/:bookId">
             <Books isLoggedIn={isLoggedIn} />
+          </Route>
+
+          <Route path="/user/edit">
+            <UserEditPage isLoggedIn={isLoggedIn}/>
           </Route>
 
           <Route path="/user/:userName">

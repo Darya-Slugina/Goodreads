@@ -32,12 +32,12 @@ export default function Books() {
     e.target.nextSibling.classList.toggle("show");
   }
 
-  const ascendingSort =() => {
+  const ascendingSort = () => {
     comments.sort((a, b) => a.rate - b.rate);
     setComments(comments);
   }
 
-  const descendingSort =() => {
+  const descendingSort = () => {
     comments.sort((a, b) => b.rate - a.rate);
     setComments(comments);
   }
@@ -56,13 +56,13 @@ export default function Books() {
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={thisBook[0].img} alt={thisBook[0].title} />
-            <DropdownButton className={styles.ratingButton}/>
+            <DropdownButton className={styles.ratingButton} />
             {/* <button className={styles.ratingButton}>Want to Read</button> */}
             <div className={styles.rating} id="rating">
-              <div className={styles.ratingText}>{isItRated? "My rating" : "Rate this book"}</div>
+              <div className={styles.ratingText}>{isItRated ? "My rating" : "Rate this book"}</div>
               <div className={styles.clearRating}>Clear rating</div>
               <div className={styles.ratingCenter}>
-                <SimpleRating stars={0} active={true} big={false} onChange={changeRating}/>
+                <SimpleRating stars={0} active={true} big={false} onChange={changeRating} />
               </div>
             </div>
           </div>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom"
-import styles from './UserPage.module.scss'
+import { useParams } from "react-router-dom";
+import styles from './UserPage.module.scss';
 import { Nav } from "react-bootstrap";
+import CurrentlyReading from "./CurrentlyReading";
+
 
 export default function UserPage() {
 
@@ -78,7 +80,7 @@ export default function UserPage() {
                         </Nav.Item>
                     </Nav>
                 </div>
-                {selectedTab === "Currently Reading" && <h2>Currently Reading</h2>}
+                {selectedTab === "Currently Reading" && <CurrentlyReading />}
                 {selectedTab === "Want to Read" && <h2>Want to Read</h2>}
                 {selectedTab === "Read" && <h2>Read</h2>}
             </div>

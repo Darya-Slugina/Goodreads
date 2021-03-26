@@ -1,0 +1,157 @@
+.mainBooksBox {
+    width: 725px;
+    font-size: 14px;
+
+    .screenControls {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+
+        .icons {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    .table {
+        border-collapse: collapse;
+        margin-bottom: 10px;
+
+        .header {
+            padding: 12px 5px 5px 0;
+            font-weight: bold;
+            text-align: left;
+            border-bottom: 2px solid #ebe8d5;
+            margin-left: auto;
+            margin-right: auto;
+            color: #382110;
+            font-size: 12px;
+            font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 18px;
+
+            .cover {
+                width: 60px;
+                vertical-align: bottom;
+                margin: 0;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+
+                .link {
+                    color: #382110;
+                    text-decoration: none;
+                }
+            }
+
+            .title {
+                width: 25%;
+                vertical-align: bottom;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+
+                .link {
+                    color: #382110;
+                    text-decoration: none;
+                }
+            }
+
+            .author {
+                width: 20%;
+                vertical-align: bottom;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+
+                .link {
+                    color: #382110;
+                    text-decoration: none;
+                }
+            }
+
+            .rating,
+            .review {
+                vertical-align: bottom;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+
+                .link {
+                    color: #382110;
+                    text-decoration: none;
+                }
+            }
+        }
+        .body {
+            text-align: left;
+            font-size: 14px;
+            border-bottom: 1px solid #ebe8d5;
+
+            .coverInfo {
+                width: 60px;
+                margin: 0;
+                vertical-align: top;
+                padding: 12px 5px 5px 0;
+                text-align: left;
+
+                .bookImg {
+                    width: 50px;
+                }
+            }
+
+            .titleInfo {
+                width: 25%;
+                vertical-align: top;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+
+                .link {
+                    color: #00635d;
+                    text-decoration: none;
+                }
+            }
+
+            .authorInfo {
+                width: 20%;
+                vertical-align: top;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+
+                .link {
+                    color: #00635d;
+                    text-decoration: none;
+                }
+            }
+
+            .ratingInfo {
+                vertical-align: top;
+                text-align: left;
+                padding: 12px 5px 5px 5px;
+                font-size: 14px;
+
+                .value {
+                    color: #181818;
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    line-height: 18px;
+                }
+            }
+
+            .reviewInfo {
+                vertical-align: top;
+                padding: 12px 5px 5px 0;
+                font-size: 14px;
+                font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                line-height: 18px;
+
+                .link {
+                    color: #00635d;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .bookImgContainer {
+        width: 725px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

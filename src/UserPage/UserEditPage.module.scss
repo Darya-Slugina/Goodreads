@@ -60,10 +60,22 @@
                         }
                     }
 
-                    .firstNameInput {
-                        background: #FFFFFF;
+                    .formClassInput {
+                        background: #ffffff;
                         border-radius: 3px;
-                        border: #DCD6CC 1px solid;
+                        border: #dcd6cc 1px solid;
+                        color: #333333;
+                        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                        resize: none;
+                        font-size: 14px;
+                        padding: 4px;
+                    }
+
+                    .formClassInputBig {
+                        width: 500px;
+                        background: #ffffff;
+                        border-radius: 3px;
+                        border: #dcd6cc 1px solid;
                         color: #333333;
                         font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
                         resize: none;
@@ -77,6 +89,22 @@
                 display: flex;
                 flex-direction: column;
                 flex-wrap: nowrap;
+            }
+
+            .submitBtn {
+                border-radius: 3px;
+                border: 1px solid #d6d0c4;
+                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                font-size: 14px;
+                appearance: none;
+                cursor: pointer;
+                display: inline-block;
+                text-decoration: none;
+                color: #333333;
+                background-color: #f4f1ea;
+                line-height: 1;
+                padding: 8px 12px;
+                margin-left: 8px;
             }
         }
     }

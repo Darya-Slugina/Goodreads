@@ -17,8 +17,12 @@ import UserPage from "./UserPage/UserPage";
 import UserEditPage from "./UserPage/UserEditPage"
 // import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Error from "./ErrorPage/Error";
+import firebase from "./firebase";
+
+
+
 
 // function Header({user}) {
 
@@ -33,9 +37,22 @@ import Error from "./ErrorPage/Error";
 // }
 
 function App() {
-  const isLoggedIn = true;
 
-  // const [user, setUser] = useState({});
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        console.log("Signed in user: ", user);
+        setUser(user);
+      } else {
+        // No user is signed in.
+        console.log("No user: ", user);
+      }
+    });
+  }, []);
 
   return (
     <BrowserRouter>
@@ -46,7 +63,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            {isLoggedIn ? <HomePageLoggedIn /> : <HomePage />}
+            {user ? <HomePageLoggedIn /> : <HomePage />}
           </Route>
 
           <Route path="/login">
@@ -62,7 +79,7 @@ function App() {
           </Route>
 
           <Route path="/genres/:currentGenre">
-            <Genres isLoggedIn={isLoggedIn}/>
+            <Genres isLoggedIn={user}/>
           </Route>
 
           <Route path="/genres">
@@ -70,14 +87,14 @@ function App() {
           </Route>
 
           <Route path="/books/:currentGenre/:bookId">
-            <Books isLoggedIn={isLoggedIn} />
+            <Books isLoggedIn={user} />
           </Route>
 
-          <Route path="/user/edit">
-            <UserEditPage isLoggedIn={isLoggedIn}/>
+          <Route exact path="/user/edit">
+            <UserEditPage isLoggedIn={user}/>
           </Route>
 
-          <Route path="/user/:userName">
+          <Route exact path="/user/:userName">
             <UserPage />
           </Route>
 

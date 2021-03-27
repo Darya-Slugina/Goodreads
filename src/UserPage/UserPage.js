@@ -56,13 +56,13 @@ export default function UserPage() {
                     <div className={styles.infoBoxRowTitle}>Details</div>
                     <div className={styles.infoBoxRowItem}> The United States </div>
                 </div>
-                <div className={styles.infoBoxWrapper}>
+                {/* <div className={styles.infoBoxWrapper}>
                     <div className={styles.infoBoxRowTitle}>Activity</div>
                     <div className={styles.infoBoxRowItem}>
                         Joined in December 2010,
                         last active this month
                              </div>
-                </div>
+                </div> */}
                 <div className={styles.infoBoxWrapper}>
                     <div className={styles.infoBoxRowTitle}>Interests</div>
                     <div className={styles.infoBoxRowItem}> Reading and writing reviews, spending time with family. </div>

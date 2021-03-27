@@ -34,63 +34,100 @@
     .userInfoBox {
         .userData {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: wrap;
 
-            .leftBox {
+            .flexContainer {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 flex-wrap: nowrap;
-                width: 625px;
-                padding-right: 10px;
-                padding-left: 8px;
-                word-wrap: break-word;
 
-                .formInput {
-                    margin: 18px 0;
-                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    line-height: 18px;
-                    padding: 0;
+                .leftBox {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    width: 625px;
+                    padding-right: 10px;
+                    padding-left: 8px;
+                    word-wrap: break-word;
 
-                    .formLabel {
-                        margin-bottom: 0;
+                    .formInput {
+                        margin: 18px 0;
+                        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        line-height: 18px;
+                        padding: 0;
 
-                        .required {
-                            color: red;
+                        .formLabel {
+                            margin-bottom: 0;
+
+                            .required {
+                                color: red;
+                            }
+                        }
+
+                        .formClassInput {
+                            background: #ffffff;
+                            border-radius: 3px;
+                            border: #dcd6cc 1px solid;
+                            color: #333333;
+                            font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                            resize: none;
+                            font-size: 14px;
+                            padding: 4px;
+                        }
+
+                        .formClassInputBig {
+                            width: 500px;
+                            background: #ffffff;
+                            border-radius: 3px;
+                            border: #dcd6cc 1px solid;
+                            color: #333333;
+                            font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                            resize: none;
+                            font-size: 14px;
+                            padding: 4px;
                         }
                     }
+                }
 
-                    .formClassInput {
-                        background: #ffffff;
-                        border-radius: 3px;
-                        border: #dcd6cc 1px solid;
-                        color: #333333;
-                        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-                        resize: none;
-                        font-size: 14px;
-                        padding: 4px;
-                    }
+                .rightBox {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
 
-                    .formClassInputBig {
-                        width: 500px;
-                        background: #ffffff;
-                        border-radius: 3px;
-                        border: #dcd6cc 1px solid;
-                        color: #333333;
-                        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-                        resize: none;
-                        font-size: 14px;
-                        padding: 4px;
+                    .formInput {
+                        margin: 18px 0;
+                        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        line-height: 18px;
+                        padding: 0;
+
+                        .smallButton {
+                            font-size: 11px;
+                            padding: 4px 12px;
+                            border-radius: 3px;
+                            border: 1px solid #d6d0c4;
+                            font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                            cursor: pointer;
+                            display: inline-block;
+                            text-decoration: none;
+                            color: #333333;
+                            background-color: #f4f1ea;
+                            line-height: 1;
+                            margin-top: 5px;
+                        }
+
+                        .actionLinkNotice {
+                            color: red;
+                            font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            text-decoration: none;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
                     }
                 }
             }
-
-            .rightBox {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-            }
-
             .submitBtn {
                 border-radius: 3px;
                 border: 1px solid #d6d0c4;

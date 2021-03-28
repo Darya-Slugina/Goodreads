@@ -15,7 +15,6 @@ export default function Registration() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
  
-
   const history = useHistory();
 
 

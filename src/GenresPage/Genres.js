@@ -1,19 +1,48 @@
 import styles from './Genres.module.scss';
-import genresList from "./../Data/Books/GenresList"
+// import genresList from "./../Data/Books/GenresList"
 import { useParams, Link } from "react-router-dom";
 import Book from "./BookImg";
 import books from "./../Data/Books/Books"
 import Button from "./../common/Button";
+import React, { useState, useEffect } from 'react';
+import { database } from "../firebase";
 
 export default function Genres({ isLoggedIn }) {
 
   const { currentGenre } = useParams();
+  const [genresList, setGenresList] = useState([]);
+  const [books, setBooks] = useState([]);
 
+  useEffect(() => {
+  database.collection("genresList").get()
+    .then((querySnapshot) => {
+      let dbGenres = [];
+      querySnapshot.forEach((doc) => {
+        dbGenres.push(doc.data());
+      });
+      // console.log(dbGenres);
+      setGenresList(dbGenres);
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   database.collection("books").get()
+  //   .then((querySnapshot) => {
+  //     let dbBooks = [];
+  //     querySnapshot.forEach((doc) => {
+  //       dbBooks.push(doc.data());
+  //     });
+  //     console.log(dbBooks);
+  //     setBooks(dbBooks);
+  //   });
+  // }, []);
+
+  console.log(genresList);
   let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre);
+  console.log(thisGenre);
   const currentBooks = books.filter(el => el.genre.toLowerCase() === currentGenre);
 
   const mostWanted = [...books];
-  console.log(mostWanted);
   mostWanted.sort(() => Math.random() - 0.5);
   mostWanted.length = 12; //Magic number
 

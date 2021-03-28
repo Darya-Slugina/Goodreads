@@ -1,3 +1,21 @@
+// import {database} from "../../firebase"
+const firebase = require('firebase');
+require('firebase/firestore');
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDTjLCxR3pIvJ7DT_pU_H_ofSUzjnqAjbs",
+  authDomain: "goodreads-9c368.firebaseapp.com",
+  databaseURL: "https://goodreads-9c368-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "goodreads-9c368",
+  storageBucket: "goodreads-9c368.appspot.com",
+  messagingSenderId: "427942194216",
+  appId: "1:427942194216:web:86bdc3fb72e303ef90991d",
+  measurementId: "G-38S3RLP5ZK"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+
 const genresList = [
   {
     genre: "Music",
@@ -348,4 +366,20 @@ const genresList = [
   },
 ]
 
-export default genresList;
+var db = firebase.firestore();
+
+genresList.forEach(obj => {
+  db.collection("genresList").add({
+    genre: obj.genre,
+    description: obj.description,
+  })
+});
+// .then((obj) => {
+//   console.log("My genres :" + obj.genre)
+// })
+// .catch((error) => {
+//   console.log("Error" + error)
+// })
+
+
+// export default genresList;

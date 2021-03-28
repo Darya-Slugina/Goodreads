@@ -1,7 +1,7 @@
 const books = [
     {
         id: 1,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320494159l/1297985.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/1297985.jpg?alt=media&token=bb646025-9c30-45a7-9115-8f48384981ff",
         title: "Musicophilia: Tales of Music and the Brain",
         author: "Oliver Sacks",
         rating: 3.89,
@@ -158,7 +158,7 @@ const books = [
     }, 
     {
         id: 2,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1386922939l/141565.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/141565.jpg?alt=media&token=ffb622ea-ce02-4736-85cc-1599acfa954e",
         title: "This Is Your Brain on Music: The Science of a Human Obsession",
         author: "Daniel J. Levitin",
         rating: 4.18,
@@ -259,7 +259,7 @@ const books = [
     },
     {
         id: 3,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1412840109l/22693211.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/22693211.jpg?alt=media&token=f7285bef-343e-4368-9e2f-729462355ed4",
         title: "Girl in a Band",
         author: "Kim Gordon",
         rating: 3.82,
@@ -424,7 +424,7 @@ const books = [
     },
     {
         id: 4,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1588597672l/50235819._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/50235819._SY475_.jpg?alt=media&token=2927a3a3-e117-4ea1-87de-44c52a989067",
         title: "The Girl in the Love Song",
         author: "Emma Scott",
         rating: 3.83,
@@ -589,7 +589,7 @@ const books = [
     },
     {
         id: 5,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587146648l/52816566._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52816566._SY475_.jpg?alt=media&token=9db420b0-7dd1-48bc-9999-43beb0ca3697",
         title: "Liar, Liar, Hearts on Fire",
         author: "Pippa Grant",
         rating: 3.73,
@@ -762,7 +762,7 @@ const books = [
     },
     {
         id: 6,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586615121l/43554866._SX318_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/43554866._SX318_.jpg?alt=media&token=e4e1bb8a-9875-4f45-b5cd-ab0fe255884b",
         title: "Violet Bent Backwards Over the Grass",
         author: "Lana Del Rey",
         rating: 4.7,
@@ -922,7 +922,7 @@ const books = [
     },
     {
         id: 7,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1592890677l/53916522.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53916522.jpg?alt=media&token=284f01cf-882a-48c5-ac5e-1b4bb0b6737c",
         title: "Dolly Parton, Songteller: My Life in Lyrics",
         author: "Dolly Parton, Robert K. Oermann",
         rating: 3.55,
@@ -1088,7 +1088,7 @@ const books = [
     },
     {
         id: 8,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1552684566l/40611133._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/40611133._SY475_.jpg?alt=media&token=0d10420e-4173-4e86-b7ea-7a0d40c4dcc7",
         title: "Ellie and the Harpmaker",
         author: "Hazel Prior ",
         rating: 4.05,
@@ -1244,7 +1244,7 @@ const books = [
     },
     {
         id: 9,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1602773548l/55046122._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55046122._SY475_.jpg?alt=media&token=08c9ec74-0527-4ed5-a429-975139ab2d75",
         title: "The Violinist of Auschwitz",
         author: "Ellie Midwood ",
         rating: 3.84,
@@ -1415,7 +1415,7 @@ const books = [
     },
     {
         id: 10,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1592252595l/52664814._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52664814._SY475_.jpg?alt=media&token=70a32c3b-c02b-444d-a04c-568724ad37bb",
         title: "Muted",
         author: "Tami Charles",
         rating: 3.92,
@@ -1579,7 +1579,7 @@ const books = [
     },
     {
         id: 11,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1603746289l/52658293.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52658293.jpg?alt=media&token=1eb63803-fb85-4435-be2d-1fb42bfdb21e",
         title: "Love Songs for Skeptics",
         author: "Christina Pishiris ",
         rating: 3.89,
@@ -1742,7 +1742,7 @@ const books = [
     }, 
     {
         id: 12,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1608056569l/55513324.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55513324.jpg?alt=media&token=53d29f4d-792c-4350-82b3-5effa8b5320b",
         title: "The Black Church: This Is Our Story, This Is Our Song",
         author: "Henry Louis Gates Jr.",
         rating: 4.18,
@@ -1842,7 +1842,7 @@ const books = [
     },
     {
         id: 13,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597251232l/54899574.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54899574.jpg?alt=media&token=d6cfc3db-5e6f-468f-895c-03dcdf916322",
         title: "We Play Ourselves",
         author: "Jen Silverman",
         rating: 3.89,
@@ -2004,7 +2004,7 @@ const books = [
     }, 
     {
         id: 14,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1605838513l/52664730._SX318_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52664730._SX318_.jpg?alt=media&token=d5addb5b-95a5-4cba-af1a-6503489033de",
         title: "Claudia and the New Girl",
         author: "Gabriela Epstein",
         rating: 4.18,
@@ -2101,7 +2101,7 @@ const books = [
     },
     {
         id: 15,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610894702l/54303114.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54303114.jpg?alt=media&token=ed6f69bd-aca4-4929-b19b-ec280c4383b6",
         title: "Dress Codes: How the Laws of Fashion Made History",
         author: "Richard Thompson Ford",
         rating: 3.82,
@@ -2279,7 +2279,7 @@ const books = [
     },
     {
         id: 16,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1588570042l/53317371.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53317371.jpg?alt=media&token=8d178326-be21-400e-ab52-6598f9c9b6ea",
         title: "Homo Irrealis: Essays",
         author: "André Aciman",
         rating: 3.83,
@@ -2443,7 +2443,7 @@ const books = [
     },
     {
         id: 17,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1603141964l/49088643.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49088643.jpg?alt=media&token=a4603f3d-7b6d-4a79-86ba-b643eb6baced",
         title: "Every Body: An Honest and Open Look at Sex from Every Angle",
         author: "Julia Rothman",
         rating: 3.73,
@@ -2608,7 +2608,7 @@ const books = [
     },
     {
         id: 18,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1604380056l/54222468._SX318_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54222468._SX318_.jpg?alt=media&token=6ae69091-ccb4-4e3b-b3db-1de402e5e873",
         title: "Unspeakable: The Tulsa Race Massacre",
         author: "Carole Boston Weatherford, Floyd Cooper (Illustrations)",
         rating: 4.7,
@@ -2765,7 +2765,7 @@ const books = [
     },
     {
         id: 19,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1580816830l/49127644.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49127644.jpg?alt=media&token=6e086c13-1cf5-40c7-b16f-0436534882d9",
         title: "Craft: An American History",
         author: "Glenn Adamson",
         rating: 3.55,
@@ -2933,7 +2933,7 @@ const books = [
     },
     {
         id: 20,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1588570016l/52005438.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52005438.jpg?alt=media&token=be45b3cd-c515-4d49-a513-31d3f52263ba",
         title: "Francis Bacon: Revelations",
         author: "Mark Stevens, Annalyn Swan",
         rating: 4.05,
@@ -3102,7 +3102,7 @@ const books = [
     },
     {
         id: 21,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1411210646l/567616.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/567616.jpg?alt=media&token=aa8a5629-2216-49b6-8f0d-3bd1c131da12",
         title: "The Art Book",
         author: "Phaidon Press",
         rating: 3.84,
@@ -3259,7 +3259,7 @@ const books = [
     },
     {
         id: 22,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1378710146l/17333223.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/17333223.jpg?alt=media&token=a5d07bd3-2cb3-4b37-89cd-d36a16df18b0",
         title: "The Goldfinch",
         author: "Donna Tartt",
         rating: 3.92,
@@ -3422,7 +3422,7 @@ const books = [
     },
     {
         id: 23,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1515808681l/37922875._SX318_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/37922875._SX318_.jpg?alt=media&token=c5ea2543-006c-40f1-9853-3b6e85ac61a3",
         title: "Eraser",
         author: "Anna Kang, Christopher Weyant",
         rating: 3.77,
@@ -3581,7 +3581,7 @@ const books = [
     },
     {
         id: 24,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1522162108l/38664775._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/38664775._SY475_.jpg?alt=media&token=299d46d9-9ef2-4cc1-8c95-4cf955526f05",
         title: "Sea Prayer",
         author: "Khaled Hosseini, Dan Williams (Illustrator)",
         rating: 4.05,
@@ -3742,7 +3742,7 @@ const books = [
     },
     {
         id: 25,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1531263026l/40779082._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/40779082._SY475_.jpg?alt=media&token=1c77622d-525b-4beb-bf87-fa57d9db1ee2",
         title: "The Guns of August",
         author: "Oliver Sacks",
         rating: 3.89,
@@ -3899,7 +3899,7 @@ const books = [
     }, 
     {
         id: 26,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327861115l/8664353.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/8664353.jpg?alt=media&token=70205d67-e3e8-43b8-a727-1c5d9971e2ad",
         title: "Unbroken: A World War II Story of Survival, Resilience and Redemption",
         author: "Daniel J. Levitin",
         rating: 4.18,
@@ -4000,7 +4000,7 @@ const books = [
     },
     {
         id: 27,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327878144l/6493208.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/6493208.jpg?alt=media&token=151b396b-f279-47be-bc7b-6140b08fa226",
         title: "The Immortal Life of Henrietta Lacks",
         author: "Kim Gordon",
         rating: 3.82,
@@ -4165,7 +4165,7 @@ const books = [
     },
     {
         id: 28,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1473867911l/29780253.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/29780253.jpg?alt=media&token=fe31e78a-b20c-4ba0-b57b-cab02ec4254b",
         title: "Born a Crime: Stories From a South African Childhood",
         author: "Emma Scott",
         rating: 3.83,
@@ -4330,7 +4330,7 @@ const books = [
     },
     {
         id: 29,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1434682864l/92057.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/92057.jpg?alt=media&token=3ead4a27-c5d8-4d3f-b03d-d741034ecea1",
         title: "The Autobiography of Malcolm X",
         author: "Pippa Grant",
         rating: 3.73,
@@ -4503,7 +4503,7 @@ const books = [
     },
     {
         id: 30,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328011405l/10884.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/10884.jpg?alt=media&token=b7f34eb9-91e2-4c13-9708-2d756fe25357",
         title: "Einstein: His Life and Universe",
         author: "Lana Del Rey",
         rating: 4.7,
@@ -4663,7 +4663,7 @@ const books = [
     },
     {
         id: 31,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1436131915l/16130._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/16130._SY475_.jpg?alt=media&token=bbfb6811-35af-4abb-bb93-1075a494be91",
         title: "Alexander Hamilton",
         author: "Dolly Parton, Robert K. Oermann",
         rating: 3.55,
@@ -4829,7 +4829,7 @@ const books = [
     },
     {
         id: 32,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1518291452l/25541028.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/25541028.jpg?alt=media&token=3f5efddd-2086-4479-80a0-0f4a4c04e0a0",
         title: "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",
         author: "Hazel Prior ",
         rating: 4.05,
@@ -4985,7 +4985,7 @@ const books = [
     },
     {
         id: 33,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1478144278l/2203._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/2203._SY475_.jpg?alt=media&token=574ce707-7027-4f0b-b9d2-30dfb9004299",
         title: "John Adams",
         author: "Ellie Midwood ",
         rating: 3.84,
@@ -5156,7 +5156,7 @@ const books = [
     },
     {
         id: 34,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327861115l/8664353.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/8664353.jpg?alt=media&token=70205d67-e3e8-43b8-a727-1c5d9971e2ad",
         title: "Unbroken: A World War II Story of Survival, Resilience and Redemption",
         author: "Tami Charles",
         rating: 3.92,
@@ -5320,7 +5320,7 @@ const books = [
     },
     {
         id: 35,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1560816565l/48855.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/48855.jpg?alt=media&token=04fd5c61-882f-4822-b56c-865c4d3a5581",
         title: "The Diary of a Young Girl",
         author: "Anne Frank, Eleanor Roosevelt",
         rating: 3.89,
@@ -5480,7 +5480,7 @@ const books = [
     }, 
     {
         id: 36,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1511288482l/11084145._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/11084145._SY475_.jpg?alt=media&token=40eb9c20-c063-4ad3-9830-a8af0157bc61",
         title: "Steve Jobs",
         author: "Walter Isaacson ",
         rating: 4.18,
@@ -5585,7 +5585,7 @@ const books = [
     },
     {
         id: 37,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1391275636l/6732019.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/6732019.jpg?alt=media&token=d4b73d2e-eb1a-487a-9fc9-44938a5e9bca",
         title: "Rework",
         author: "Jen Silverman",
         rating: 3.89,
@@ -5744,9 +5744,10 @@ const books = [
                     We Play Ourselves is an unforgettable read.`
             }
         ]
-    }, {
+    }, 
+    {
         id: 38,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1608477200l/54304208.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54304208.jpg?alt=media&token=7886e55c-9601-4281-9d25-4e9cf5c0fbaa",
         title: "Ladies Get Paid: The Ultimate Guide to Breaking Barriers, Owning Your Worth, and Taking Command of Your Career",
         author: "Gabriela Epstein",
         rating: 4.18,
@@ -5843,7 +5844,7 @@ const books = [
     },
     {
         id: 39,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1609857259l/56563411._SY475_.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/56563411._SY475_.jpg?alt=media&token=6e575bce-b11d-46ba-b4e5-0d79f96c8532",
         title: "Black, White, and the Grey: The Story of an Unexpected Friendship and a Beloved Restaurant",
         author: "Richard Thompson Ford",
         rating: 3.82,
@@ -6021,7 +6022,7 @@ const books = [
     },
     {
         id: 40,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1574286078l/48904521.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/48904521.jpg?alt=media&token=f95ec092-d773-4075-9f16-c0ee538ffff4",
         title: "Social Chemistry: Decoding the Elements of Human Connection",
         author: "André Aciman",
         rating: 3.83,
@@ -6185,7 +6186,7 @@ const books = [
     },
     {
         id: 41,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1595340671l/53287275.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53287275.jpg?alt=media&token=545f2dbd-5b03-4693-9fcf-d86e6ea98095",
         title: "Everybody Has a Podcast (Except You): A How-to Guide from the First Family of Podcasting",
         author: "Julia Rothman",
         rating: 3.73,
@@ -6350,7 +6351,7 @@ const books = [
     },
     {
         id: 42,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589262722l/49829875.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49829875.jpg?alt=media&token=e8c4d46d-5bd8-4e11-bf78-249f5c9fc53c",
         title: "Beginners: The Joy and Transformative Power of Lifelong Learning",
         author: "Carole Boston Weatherford, Floyd Cooper (Illustrations)",
         rating: 4.7,
@@ -6507,7 +6508,7 @@ const books = [
     },
     {
         id: 43,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1599562979l/54486366.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54486366.jpg?alt=media&token=d58df041-038a-4508-83e6-135d96c40e56",
         title: "Never Enough: A Navy SEAL Commander on Living a Life of Excellence, Agility, and Meaning",
         author: "Glenn Adamson",
         rating: 3.55,
@@ -6675,7 +6676,7 @@ const books = [
     },
     {
         id: 44,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589823549l/53241562.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53241562.jpg?alt=media&token=bcb33977-f5fc-415b-b341-9a51fcd291fd",
         title: "Work Won't Love You Back: How Devotion to Our Jobs Keeps Us Exploited, Exhausted, and Alone",
         author: "Mark Stevens, Annalyn Swan",
         rating: 4.05,
@@ -6844,7 +6845,7 @@ const books = [
     },
     {
         id: 45,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1604364466l/53915346.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53915346.jpg?alt=media&token=d0a40844-b644-458f-8000-50fcedb0995a",
         title: "Backable: The Surprising Truth Behind What Makes People Take a Chance on You",
         author: "Phaidon Press",
         rating: 3.84,
@@ -7001,7 +7002,7 @@ const books = [
     },
     {
         id: 46,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1606707026l/53138083.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53138083.jpg?alt=media&token=0b1a983e-6833-4e79-971b-2cad67eda418",
         title: "Working Backwards: Insights, Stories, and Secrets from Inside Amazon",
         author: "Donna Tartt",
         rating: 3.92,
@@ -7164,7 +7165,7 @@ const books = [
     },
     {
         id: 47,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1607887574l/49151008.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49151008.jpg?alt=media&token=5c0a2af7-ebbc-4a4f-b8c6-052246876980",
         title: "Made in China: A Prisoner, an SOS Letter, and the Hidden Cost of America's Cheap Goods",
         author: "Anna Kang, Christopher Weyant",
         rating: 3.77,
@@ -7323,7 +7324,7 @@ const books = [
     },
     {
         id: 48,
-        img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1602574232l/55539565.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55539565.jpg?alt=media&token=e0beeae0-95f0-4561-87e1-70f0938a1929",
         title: "Think Again: The Power of Knowing What You Don't Know",
         author: "Khaled Hosseini, Dan Williams (Illustrator)",
         rating: 4.05,

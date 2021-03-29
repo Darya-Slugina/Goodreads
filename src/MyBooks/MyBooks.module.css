@@ -35,10 +35,43 @@
 .controls{
     /* float: right; */
     padding-bottom: 2px;
+    display: flex;
 }
 
 .searchField{
     /* float: left; */
     /* margin-right: -30px; */
     color: #666;
+    display: flex;
 }
+
+.searchIcon{
+    background-image: url(../img/search_icon.png);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: 2px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+}
+
+.listViewIcon, .gridViewIcon{
+    position: relative;
+    right: 5px;
+    top: 7px;
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 23px;
+    width: 21px;
+}
+
+.listViewIcon{
+    background-image: url(../img/list_view_icon.png);
+}
+
+/* .gridViewIcon{
+    background-image: url("../img/grid_view_icon.png");
+} */

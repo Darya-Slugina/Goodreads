@@ -40,6 +40,8 @@ function App() {
 
 
   const [user, setUser] = useState(null);
+  const [books, setBooks] = useState(null);
+  const [genres, setGenres] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -54,6 +56,10 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+
+  }, [])
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -63,7 +69,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            {user ? <HomePageLoggedIn /> : <HomePage />}
+            {user ? <HomePageLoggedIn /> : <HomePage books={books} />}
           </Route>
 
           <Route path="/login">
@@ -75,11 +81,11 @@ function App() {
           </Route>
 
           <Route path="/categories">
-            <Categories />
+            <Categories books={books} />
           </Route>
 
           <Route path="/genres/:currentGenre">
-            <Genres isLoggedIn={user}/>
+            <Genres isLoggedIn={user} books={books} />
           </Route>
 
           <Route path="/genres">
@@ -91,7 +97,7 @@ function App() {
           </Route>
 
           <Route exact path="/user/edit">
-            <UserEditPage isLoggedIn={user}/>
+            <UserEditPage isLoggedIn={user} />
           </Route>
 
           <Route exact path="/user/:userName">

@@ -37,16 +37,16 @@ export default function Books() {
     })
 // },  []);
 
-// useEffect(() => {
-//   database.collection("reviewsList").get()
-//     .then((querySnapshot) => {
-//       let dbReviews = [];
-//       querySnapshot.forEach((doc) => {
-//         dbReviews.push(doc.data());
-//       });
-//       setReviews(dbReviews);
-//     });
-// }, [bookId]);
+useEffect(() => {
+  database.collection("reviewsList").where('forBookId', "==", currentId).get()
+    .then((querySnapshot) => {
+      let dbReviews = [];
+      querySnapshot.forEach((doc) => {
+        dbReviews.push(doc.data());
+      });
+      setReviews(dbReviews);
+    });
+}, [currentId]);
 
 // console.log(books);
 
@@ -91,12 +91,14 @@ const changeRating = () => {
 // React hooks
 //  const [inputValue, setInputValue] = useState();
 
+const currentBook = thisBook[0] ? thisBook[0] : {};
+
 return (
   <div className={styles.mainContentContainer} >
     <div className={styles.mainContent}>
       <div className={styles.leftContainer}>
         <div className={styles.imgCol}>
-          <img className={styles.coverImage} src={thisBook[0].img} alt={thisBook[0].title} />
+          <img className={styles.coverImage} src={currentBook.img} alt={currentBook.title} />
           <DropdownButton className={styles.ratingButton} />
           {/* <button className={styles.ratingButton}>Want to Read</button> */}
           <div className={styles.rating} id="rating">
@@ -110,27 +112,27 @@ return (
         <div className={styles.mainInfoContainer}>
           <div className={styles.mainInfo}>
             <h1 id="bookTitle" className={styles.bookTitle}>
-              {thisBook[0].title}
+              {currentBook.title}
             </h1>
             <div id="bookAuthor" className={styles.bookAuthor}>
               <span>by&nbsp;</span>
-              <span>{thisBook[0].author}</span>
+              <span>{currentBook.author}</span>
             </div>
           </div>
           <div className={styles.bookMeta}>
             <div className={styles.staticRatingStars}>
-              <SimpleRating stars={thisBook[0].rating} />
+              <SimpleRating stars={currentBook.rating} />
             </div>
-            <span className={styles.staticRating}> {thisBook[0].rating} </span>
-            <div className={styles.ratingCount} > {thisBook[0].ratingsCount} ratings </div>
-            <div className={styles.reviewCount} > {thisBook[0].reviewsCount} reviews </div>
+            <span className={styles.staticRating}> {currentBook.rating} </span>
+            <div className={styles.ratingCount} > {currentBook.ratingsCount} ratings </div>
+            <div className={styles.reviewCount} > {currentBook.reviewsCount} reviews </div>
           </div>
           <div id="description" className={styles.description}>
-            <span >{thisBook[0].description}</span>
+            <span >{currentBook.description}</span>
           </div>
           <div id="details" className={styles.moreDetails}>
-            <div><span>{thisBook[0].info}</span></div>
-            <div> {thisBook[0].published}</div>
+            <div><span>{currentBook.info}</span></div>
+            <div> {currentBook.published}</div>
           </div>
         </div>
       </div>
@@ -147,11 +149,11 @@ return (
           <h2 className={styles.h2Title}>Community Reviews</h2>
           <div className={styles.bookMeta}>
             <div className={styles.staticRatingStars}>
-              <SimpleRating stars={thisBook[0].rating} />
+              <SimpleRating stars={currentBook.rating} />
             </div>
-            <span className={styles.staticRating}> {thisBook[0].rating} </span>
-            <div className={styles.ratingCount} > {thisBook[0].ratingsCount} ratings </div>
-            <div className={styles.reviewCount} > {thisBook[0].reviewsCount} reviews </div>
+            <span className={styles.staticRating}> {currentBook.rating} </span>
+            <div className={styles.ratingCount} > {currentBook.ratingsCount} ratings </div>
+            <div className={styles.reviewCount} > {currentBook.reviewsCount} reviews </div>
             <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
             <div className={styles.sorterContainer}>
               <span className={styles.sortOption} onClick={ascendingSort}>Heighest rating</span>

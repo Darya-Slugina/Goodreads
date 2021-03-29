@@ -15,11 +15,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
 const genresList = [
   {
     genre: "Music",
-    description: "Books about music history, music genres and musicians.",
+    description: "Books about music history, music genres and musicians.", 
   },
   {
     genre: "Art",
@@ -187,24 +186,6 @@ const genresList = [
          literary work that aims primarily to provoke laughter, but this isn't always as obvious as it first may seem.`
   },
   {
-    genre: "History",
-    description: `History (from Greek ἱστορία - historia, meaning "inquiry, knowledge acquired by investigation") is the discovery,
-         collection, organization, and presentation of information about past events. History can also mean the period of time after writing 
-         was invented. Scholars who write about history are called historians. It is a field of research which uses a narrative to examine
-          and analyse the sequence of events, and it sometimes attempts to investigate objectively the patterns of cause and effect that 
-          determine events. Historians debate the nature of history and its usefulness. This includes discussing the study of the discipline 
-          as an end in itself and as a way of providing "perspective" on the problems of the present. The stories common to a particular culture,
-           but not supported by external sources (such as the legends surrounding King Arthur) are usually classified as cultural heritage rather
-            than the "disinterested investigation" needed by the discipline of history. Events of the past prior to written record are considered 
-            prehistory.
-        Amongst scholars, the fifth century BC Greek historian Herodotus is considered to be the "father of history", and, along with his 
-        contemporary Thucydides, forms the foundations for the modern study of history. Their influence, along with other historical traditions 
-        in other parts of their world, have spawned many different interpretations of the nature of history which has evolved over the centuries 
-        and are continuing to change. The modern study of history has many different fields including those that focus on certain regions and those 
-        which focus on certain topical or thematical elements of historical investigation. Often history is taught as part of primary and secondary 
-        education, and the academic study of history is a major discipline in University studies.`
-  },
-  {
     genre: "Memoir",
     description: `As a literary genre, a memoir (from the French: mémoire from the Latin memoria, meaning "memory", or a reminiscence),
          forms a subclass of autobiography – although the terms 'memoir' and 'autobiography' are almost interchangeable in modern parlance. 
@@ -226,10 +207,6 @@ const genresList = [
         
         Humorist Will Rogers put it a little more pithily: "Memoirs means when you put down the good things you ought to have done and 
         leave out the bad ones you did do."`
-  },
-  {
-    genre: "Music",
-    description: `Books about music history, music genres and musicians.`
   },
   {
     genre: "Mystery",

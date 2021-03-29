@@ -2,12 +2,12 @@ import styles from './Genres.module.scss';
 // import genresList from "./../Data/Books/GenresList"
 import { useParams, Link } from "react-router-dom";
 import Book from "./BookImg";
-import books from "./../Data/Books/Books"
+// import books from "./../Data/Books/Books"
 import Button from "./../common/Button";
 import React, { useState, useEffect } from 'react';
 import { database } from "../firebase";
 
-export default function Genres({ isLoggedIn }) {
+export default function Genres({ isLoggedIn}) {
 
   const { currentGenre } = useParams();
   const [genresList, setGenresList] = useState([]);
@@ -25,20 +25,21 @@ export default function Genres({ isLoggedIn }) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   database.collection("books").get()
-  //   .then((querySnapshot) => {
-  //     let dbBooks = [];
-  //     querySnapshot.forEach((doc) => {
-  //       dbBooks.push(doc.data());
-  //     });
-  //     console.log(dbBooks);
-  //     setBooks(dbBooks);
-  //   });
-  // }, []);
+  useEffect(() => {
+    database.collection("books").get()
+    .then((querySnapshot) => {
+      let dbBooks = [];
+      querySnapshot.forEach((doc) => {
+        dbBooks.push(doc.data());
+      });
+      console.log(dbBooks);
+      setBooks(dbBooks);
+    });
+  }, []);
 
   console.log(genresList);
-  let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre);
+
+  let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre); // []
   console.log(thisGenre);
   const currentBooks = books.filter(el => el.genre.toLowerCase() === currentGenre);
 
@@ -46,14 +47,16 @@ export default function Genres({ isLoggedIn }) {
   mostWanted.sort(() => Math.random() - 0.5);
   mostWanted.length = 12; //Magic number
 
+  let firstGenre = thisGenre[0] ? thisGenre[0] : {};
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainContent}>
         <div className={styles.breadcrumbs}>
-          <Link to="/genres" className={styles.link}>Genres</Link> &gt; <Link to={"/genres/" + currentGenre} className={styles.link}>{thisGenre[0].genre}</Link>
+          <Link to="/genres" className={styles.link}>Genres</Link> &gt; <Link to={"/genres/" + currentGenre} className={styles.link}>{firstGenre.genre}</Link>
         </div>
         <div className={styles.genreHeader}>
-          <h1 className={styles.left}> {thisGenre[0].genre} </h1>
+          <h1 className={styles.left}> {firstGenre.genre} </h1>
           {isLoggedIn &&
             <div className={styles.right}>
               <div className={styles.favoriteGenresButtonContainer}>
@@ -61,7 +64,7 @@ export default function Genres({ isLoggedIn }) {
               </div>
             </div>}
           <div className={styles.reviewText}>
-            <span>{thisGenre[0].description}</span>
+            <span>{firstGenre.description}</span>
           </div>
           <br />
           <div className={styles.coverBigBox}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from './UserEditPage.module.scss';
 import { Link } from "react-router-dom";
 import { useState, useCallback } from "react";
@@ -6,6 +6,10 @@ import { database, storage } from "../firebase";
 import firebase from "../firebase";
 import { useDropzone } from "react-dropzone";
 
+const getCountries = () => {
+    return fetch('https://restcountries.eu/rest/v2/all')
+        .then(res => res.json());
+}
 
 
 
@@ -19,19 +23,50 @@ export default function UserEditPage({ isLoggedIn, userName }) {
     const [country, setCountry] = useState("");
     const [interests, setInterests] = useState("");
     const [favouriteBooks, setFavouriteBooks] = useState("");
+    const [userImage, setUserImage] = useState("");
 
     const user = firebase.auth().currentUser;
+    console.log(user);
 
     const onDrop = useCallback((acceptedFiles) => {
         setImage(acceptedFiles[0]);
-      }, []);
-      const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+    });
+
+    // useEffect(() => {
+    //     // TODO:" Get current user:
+
+    //     db.collection('users').where('userId', '==', user.uuid)
+    // }, [])
+
+
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+
+    useEffect(() => {
+        getCountries()
+            .then(res => {
+                res.forEach(country => {
+                    let datalist = document.getElementById('country');
+                    let option = document.createElement('option');
+                    option.value = country.name;
+                    option.innerHTML = country.name;
+                    datalist.append(option);
+                });
+            })
+    }, [])
+
+    const checkCountry = (ev) => {
+        setCountry(ev.target.value);
+    }
+
+
 
     const upload = (ev) => {
         ev.preventDefault();
         const uploadTask = storage
             .ref()
-            .child("images/" + Date.now())
+            .child("images/" + fname + Date.now())
             .put(image);
 
         uploadTask.on(
@@ -44,7 +79,7 @@ export default function UserEditPage({ isLoggedIn, userName }) {
             () => {
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
                     console.log("File available at", downloadURL);
-
+                    setUserImage(downloadURL);
                     database
                         .collection("users")
                         .doc(user.uid)
@@ -56,8 +91,8 @@ export default function UserEditPage({ isLoggedIn, userName }) {
                             country: country,
                             interests: interests,
                             favouriteBooks: favouriteBooks,
-                            image: downloadURL,
-                        })
+                            userImg: downloadURL,
+                        }, { merge: true })
                         .then(() => {
                             console.log("Document successfully written!");
                         })
@@ -92,20 +127,13 @@ export default function UserEditPage({ isLoggedIn, userName }) {
                                 <br />
                                 <input size="30" maxlength="50" className={styles.formClassInput} type="text" id="user_last_name" value={lname} onInput={(ev) => setLname(ev.target.value)} />
                             </p>
-                            {/* <p className={styles.formInput}>
-                            <label for="user_user_name" className={styles.formLabel}>User Name</label>
-                            <span class="greyText smallText">(customize your URL — goodreads.com/user_name)</span>
-                            <br />
-                            <input className={styles.formClassInput} autocomplete="off" size="30" type="text" name="user[user_name]" id="user_user_name" />
-                        </p> */}
-
                             <div id="gender_fields">
                                 <div id="gender_selector">
                                     <label for="user_gender" className={styles.formLabel}>Gender</label><br />
-                                    <select id="user_gender" value={gender} onSelect={(ev) => setGender(ev.target.value)}>
+                                    <select id="user_gender" value={gender} onChange={(ev) => setGender(ev.target.value)}>
                                         <option value="--">Select</option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                             </div>
@@ -114,10 +142,9 @@ export default function UserEditPage({ isLoggedIn, userName }) {
                                 <input size="30" className={styles.formClassInput} type="text" id="user_city" value={city} onInput={(ev) => setCity(ev.target.value)} />
                             </p>
                             <p className={styles.formInput}>
-                                <label for="user_country_code" className={styles.formLabel}>Country</label><br />
-                                <select onchange="checkCountry();" name="user[country_code]" id="user_country_code" value={country} onSelect={(ev) => setCountry(ev.target.value)}>
-                                    <option selected="selected" value="--">Select</option>
-                                    <option value="US">United States</option>
+                                <label for="country" className={styles.formLabel}>Country</label><br />
+                                <select id="country" value={country} onChange={checkCountry}>
+                                    <option value="select">select</option>
                                 </select>
                             </p>
 
@@ -133,7 +160,7 @@ export default function UserEditPage({ isLoggedIn, userName }) {
                         </div>
                         <div className={styles.rightBox}>
                             <p className={styles.formInput}>
-                                <img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/default-profile-big.png?alt=media&token=e1cc93c3-ccd2-4269-8fd3-156fb157dd5a" alt="default prifile" value={image} />
+                                {userImage? <img src={userImage} alt="Your prifile" value={image} className={styles.formInputImg}/>: (<img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/default-profile-big.png?alt=media&token=e1cc93c3-ccd2-4269-8fd3-156fb157dd5a" alt="default prifile" value={image} />)}
                                 <br />
                                 {/* <input size="25" type="file" id="user_photo" onInput={(ev) => setImage(ev.target.value)} />
                                 <br />

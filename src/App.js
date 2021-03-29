@@ -24,7 +24,7 @@ import React from "react";
 // }
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   // const [user, setUser] = useState({});
 

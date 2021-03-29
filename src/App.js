@@ -16,7 +16,8 @@ import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
 import UserPage from "./UserPage/UserPage";
 import UserEditPage from "./UserPage/UserEditPage"
-// import Books from "./BooksPage/Books";
+import Header from "./Headers/Header";
+import GuestUserHeader from "./Headers/GuestUserHeader";
 import Footer from "./Footer/Footer";
 import React, { useEffect, useState } from "react";
 import Error from "./ErrorPage/Error";
@@ -83,7 +84,7 @@ function App() {
       <div className="App">
         {/* <Header user={user}/> */}
 
-        {/* {user.isLoggedIn ? <Header />: <GuestUserHeader />} */}
+        {user ? <Header />: <GuestUserHeader />}
 
         <Switch>
           <Route exact path="/">

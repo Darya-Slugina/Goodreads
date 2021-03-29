@@ -1,11 +1,11 @@
 import "./HomePage.css"
 import React from "react"
-import GuestUserHeader from '../Headers/GuestUserHeader'
+import HomePageHeader from "../Headers/HomePageHeader"
 
 export default function HomePage() {
     return (
         <React.Fragment>
-            <GuestUserHeader />
+        <HomePageHeader />
             <main>
                 <div className="main-container">
                     <div className="text-box-wrapper">

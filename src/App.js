@@ -20,6 +20,7 @@ import Footer from "./Footer/Footer";
 import React, { useEffect, useState } from "react";
 import Error from "./ErrorPage/Error";
 import firebase from "./firebase";
+import { database } from "./firebase";
 
 
 
@@ -38,10 +39,9 @@ import firebase from "./firebase";
 
 function App() {
 
-
   const [user, setUser] = useState(null);
-  const [books, setBooks] = useState(null);
-  const [genres, setGenres] = useState(null);
+  const [books, setBooks] = useState([]);
+  const [genresList, setGenresList] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -57,7 +57,24 @@ function App() {
   }, []);
 
   useEffect(() => {
+    database.collection("books").get()
+    .then((querySnapshot) => {
+      let dbBooks = [];
+      querySnapshot.forEach((doc) => {
+        dbBooks.push(doc.data());
+      });
+      console.log(dbBooks);
+      setBooks(dbBooks);
+    });
 
+    database.collection("genresList").get()
+    .then((querySnapshot) => {
+      let dbGenres = [];
+      querySnapshot.forEach((doc) => {
+        dbGenres.push(doc.data());
+      });
+      setGenresList(dbGenres);
+    });
   }, [])
 
   return (
@@ -85,15 +102,15 @@ function App() {
           </Route>
 
           <Route path="/genres/:currentGenre">
-            <Genres isLoggedIn={user} books={books} />
+            <Genres isLoggedIn={user} books={books} genresList={genresList}/>
           </Route>
 
           <Route path="/genres">
-            <AllGenres />
+            <AllGenres books={books} genresList={genresList}/>
           </Route>
 
           <Route path="/books/:currentGenre/:bookId">
-            <Books isLoggedIn={user} />
+            <Books isLoggedIn={user} books={books}/>
           </Route>
 
           <Route exact path="/user/edit">

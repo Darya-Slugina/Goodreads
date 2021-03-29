@@ -7,22 +7,22 @@ import { database } from "../firebase";
 
 
 
-export default function AllGenres() {
+export default function AllGenres({genresList, books}) {
 
     const [inputValue, setInputValue] = useState("");
-    const [genresList, setGenresList] = useState([]);
+    // const [genresList, setGenresList] = useState([]);
 
-    useEffect(() => {
-        database.collection("genresList").get()
-            .then((querySnapshot) => {
-                let dbGenres = [];
-                querySnapshot.forEach((doc) => {
-                    dbGenres.push(doc.data());
-                });
+    // useEffect(() => {
+    //     database.collection("genresList").get()
+    //         .then((querySnapshot) => {
+    //             let dbGenres = [];
+    //             querySnapshot.forEach((doc) => {
+    //                 dbGenres.push(doc.data());
+    //             });
 
-                setGenresList(dbGenres);
-            });
-    }, []);
+    //             setGenresList(dbGenres);
+    //         });
+    // }, []);
 
 
     const onInputChange = (ev) => {
@@ -57,7 +57,7 @@ export default function AllGenres() {
                                         <h2><Link to={"/genres/" + genre.toLowerCase()} className={styles.h2Title}>{genre}</Link></h2>
                                     </div>
                                     <div className={styles.boxBody}>
-                                        <BooksList isShuffled={true} genre={genre}/>
+                                        <BooksList isShuffled={true} genre={genre} books={books} length={5}/>
                                         <div className={styles.moreLink}>
                                             <Link to={"/genres/" + genre.toLowerCase()} className={styles.actionLink}>More {genre} ... </Link>
                                         </div>

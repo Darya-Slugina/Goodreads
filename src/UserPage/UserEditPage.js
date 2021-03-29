@@ -11,8 +11,6 @@ const getCountries = () => {
         .then(res => res.json());
 }
 
-
-
 export default function UserEditPage({ isLoggedIn, userName }) {
 
     const [image, setImage] = useState("");

@@ -41,7 +41,7 @@ import { database } from "./firebase";
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('Olga');
   const [books, setBooks] = useState([]);
   const [genresList, setGenresList] = useState([]);
 

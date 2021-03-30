@@ -66,12 +66,33 @@
     background-position: center;
     height: 23px;
     width: 21px;
+    background-color: transparent;
+    border: 0;
+}
+
+.listViewIcon:hover, .gridViewIcon:hover{
+    background-color: #f4f2e9;
+}
+
+.listViewIcon:active, .gridViewIcon:active{
+    background-color: #f4f2e9;
+    border: 0;
 }
 
 .listViewIcon{
     background-image: url(../img/list_view_icon.png);
 }
 
-/* .gridViewIcon{
+.gridViewIcon{
     background-image: url("../img/grid_view_icon.png");
-} */
+}
+
+.filters{
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+.filters label{
+    margin: 0 5px;
+}

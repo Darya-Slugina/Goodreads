@@ -107,3 +107,66 @@
     border: 1px solid #382110;
     color: white;
 }
+
+// banner-------------------------------------------------
+
+.wrapper{
+    width: 970px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.newAccountWrapper{
+    z-index: 1;
+    right: 0;
+    width: 290px;
+    margin-right: 8px;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    float: right;
+    position: sticky;
+    padding: 12px;
+    background: #F4F1EA;
+    border-top: 1px solid #D8D8D8;
+    height: 295px;
+
+    h2{
+        margin:10px 0;
+        font-size: 17px;
+    }
+
+    form input{
+        position: relative;
+        width: 270px;
+        padding: 7px 5px;
+        margin: 0;
+        font-size: 16px;
+        font-weight: lighter;
+        margin-top: 5px;
+    }
+}
+
+.signUpWrapper{
+    color: #706b5f;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    p{
+        width: 180px;
+    }
+}
+
+.signUpBtn{
+    background-color: #53352D;
+    padding: 8px;
+    border: 0px;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 22px;
+    width: 85px;
+    text-align: center;
+    margin-right: 15px;
+}

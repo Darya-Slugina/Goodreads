@@ -1,13 +1,12 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import styles from './MyBooks.module.css'
 import Button from 'react-bootstrap/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
-import Image from 'react-bootstrap/Image'
 
 export default function MyBooks() {
-    // const [show, setShow] = useState(false);
-    // const target = useRef(null);
+    
+// get books for user
 
     return (
         <React.Fragment>

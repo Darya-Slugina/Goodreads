@@ -25,15 +25,15 @@ export default function HomePageHeader() {
                 </nav>
             </div>
             {/* banner */}
-            <div className='wrapper'>
-                <div className="new-account-wrapper">
+            <div className={styles.wrapper}>
+                <div className={styles.newAccountWrapper}>
                     <h2>New here? Create a free account!</h2>
                     <form>
                         <input aria-label="Name" placeholder="Name" maxLength="50" size="50" type="text" id="user_first_name"></input>
                         <input aria-label="Email address" placeholder="Email address" type="email" id="user_email"></input>
                         <input id="user_password_signup" aria-label="Password" placeholder="Password" maxLength="128" size="128" type="password" ></input>
-                        <div className="sign-up-wrapper">
-                            <Button variant="dark" className="button button-dark" id="sign-up-btn">Sign up</Button>
+                        <div className={styles.signUpWrapper}>
+                            <Button variant="dark" className={`button button-dark ${styles.signUpBtn}`}>Sign up</Button>
                             <p>By clicking “Sign up” I agree to the Goodreads Terms of Service and confirm that I am at least 13 years old.</p>
                         </div>
                     </form>

@@ -41,7 +41,7 @@ import { database } from "./firebase";
 
 function App() {
 
-  const [user, setUser] = useState('Olga');
+  const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
   const [genresList, setGenresList] = useState([]);
 
@@ -88,7 +88,7 @@ console.log(user)
 
         <Switch>
           <Route exact path="/">
-            {user ? <HomePageLoggedIn /> : <HomePage books={books} />}
+            {user ? <HomePageLoggedIn /> : <HomePage books={books} genresList={genresList}/>}
           </Route>
 
           <Route path="/login">

@@ -32,7 +32,6 @@ export default function AllGenres({genresList, books}) {
     const { genreList} = useMemo(() => {
         const mygenres = [...genresList]
         mygenres.sort(() => Math.random() - 0.5);
-        console.log(mygenres)
         mygenres.length = 3; //Magic number
         const genreList = mygenres.map(el => el.genre);
 

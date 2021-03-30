@@ -3,8 +3,18 @@ import './HomePageLoggedIn.css'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
 import MyBooks from "../MyBooks/MyBooks.js"
+import firebase from "../firebase";
 
 export default function HomePageLoggedIn() {
+
+    const logoutUser = () => {
+        firebase.auth().signOut().then(() => {
+            console.log("Sign-out successful");
+          }).catch((error) => {
+            console.log("An error happened." + error);
+          });
+    }
+   
     return (
         <React.Fragment>
             {/* header logged in */}
@@ -35,7 +45,7 @@ export default function HomePageLoggedIn() {
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="profile-btn-dropdown">
                                 <Dropdown.Item href="#/action-1" className="profile-name">Olga</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2" className="sign-out-link">Sign out</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2" className="sign-out-link" onClick={logoutUser}>Sign out</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </nav>

@@ -15,67 +15,53 @@ import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
 import UserPage from "./UserPage/UserPage";
 import UserEditPage from "./UserPage/UserEditPage"
-// import Books from "./BooksPage/Books";
 import Footer from "./Footer/Footer";
 import React, { useEffect, useState } from "react";
 import Error from "./ErrorPage/Error";
 import firebase from "./firebase";
-import { database } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBooks } from "./Reducers/Books.actions";
+import { fetchGenres } from "./Reducers/Genres.actions";
+import { fetchUser } from "./RegistrationAndLoginPage/User.actions";
 
-
-
-
-// function Header({user}) {
-
-//   return (
-//     <div>
-//       HomePage
-//       <input></input>
-
-//       {user.isLoggedIn ? }
-//     </div>
-//   )
-// }
 
 function App() {
 
-  const [user, setUser] = useState(null);
-  const [books, setBooks] = useState([]);
-  const [genresList, setGenresList] = useState([]);
+  const loggedInUser = firebase.auth().currentUser;
+  console.log(loggedInUser);
+
+  // const [user, setUser] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const books = useSelector((state) => state.books.books);
+  const genresList = useSelector((state) => state.genres.genres);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        console.log("Signed in user: ", user);
-        setUser(user);
-      } else {
-        // No user is signed in.
-        console.log("No user: ", user);
-      }
-    });
+    dispatch(fetchBooks());
+    dispatch(fetchGenres());
   }, []);
 
-  useEffect(() => {
-    database.collection("books").get()
-    .then((querySnapshot) => {
-      let dbBooks = [];
-      querySnapshot.forEach((doc) => {
-        dbBooks.push(doc.data());
-      });
-      console.log(dbBooks);
-      setBooks(dbBooks);
-    });
+  //  firebase.auth().signOut().then(() => {
+  //   // Sign-out successful.
+  // }).catch((error) => {
+  //   // An error happened.
+  // });
 
-    database.collection("genresList").get()
-    .then((querySnapshot) => {
-      let dbGenres = [];
-      querySnapshot.forEach((doc) => {
-        dbGenres.push(doc.data());
-      });
-      setGenresList(dbGenres);
-    });
-  }, [])
+  // useEffect(() => {
+  //   // firebase.auth().onAuthStateChanged(function (user) {
+  //   //   if (user) {
+  //   //     // User is signed in.
+  //   //     console.log("Signed in user: ", user);
+  //   //     setUser(user);
+  //   //   } else {
+  //   //     // No user is signed in.
+  //   //     console.log("No user: ", user);
+  //   //   }
+  //   // });
+  //   dispatch(fetchUser());
+  // }, []);
 
   return (
     <BrowserRouter>
@@ -86,7 +72,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            {user ? <HomePageLoggedIn /> : <HomePage books={books} />}
+            {loggedInUser ? <HomePageLoggedIn /> : <HomePage books={books} />}
           </Route>
 
           <Route path="/login">
@@ -102,23 +88,23 @@ function App() {
           </Route>
 
           <Route path="/genres/:currentGenre">
-            <Genres isLoggedIn={user} books={books} genresList={genresList}/>
+            <Genres books={books} genresList={genresList} isLoggedIn={loggedInUser}/>
           </Route>
 
           <Route path="/genres">
-            <AllGenres books={books} genresList={genresList}/>
+            <AllGenres books={books} genresList={genresList} />
           </Route>
 
           <Route path="/books/:currentGenre/:bookId">
-            <Books isLoggedIn={user} books={books}/>
+            <Books books={books} />
           </Route>
 
           <Route exact path="/user/edit">
-            <UserEditPage isLoggedIn={user} />
+            {loggedInUser && <UserEditPage />}
           </Route>
 
-          <Route exact path="/user/:userName">
-            <UserPage />
+          <Route exact path="/user/:userName" >
+            <UserPage isLoggedIn={loggedInUser}/>
           </Route>
 
           <Route path="/terms">

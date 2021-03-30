@@ -7,7 +7,6 @@ export default function DropdownButton() {
     const [ buttonValue, setButtonValue ] = useState("Want to Read");
 
     const changeButton = (eventKey) => {
-        console.log(eventKey);
         setButtonValue(eventKey);
     };
 

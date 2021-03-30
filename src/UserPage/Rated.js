@@ -12,12 +12,10 @@ const myBooks = [...books];
 
 
 export default function Rated({isItUser}) {
-    console.log(isItUser);
 
     const [isGridView, setIsGridView] = useState(true);
 
     const toggleView = (e) => {
-        console.log(e.target);
         e.target.classList.add("active");
         setIsGridView(!isGridView);
     };

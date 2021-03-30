@@ -10,7 +10,6 @@ export default function Genres({ isLoggedIn, genresList, books }) {
   const { currentGenre } = useParams();
 
   let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre); // []
-  console.log(thisGenre);
   const currentBooks = books.filter(el => el.genre.toLowerCase() === currentGenre);
 
   const mostWanted = [...books];

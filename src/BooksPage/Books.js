@@ -28,7 +28,6 @@ export default function Books({ books }) {
         querySnapshot.forEach((doc) => {
           dbReviews.push(doc.data());
         });
-        console.log(dbReviews);
         setReviews(dbReviews);
       });
   }, [currentId]);

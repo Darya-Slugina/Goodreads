@@ -1,10 +1,13 @@
 import styles from './Registration.module.scss';
 import LoginFooter from "../Footer/LoginFooter"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import firebase from "../firebase";
 import { loginWithCredentials } from './service';
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "./User.actions";
+import { authenticateUser } from "./User.actions"
 
 export default function Login() {
 
@@ -13,18 +16,47 @@ export default function Login() {
   const [error, setError] = useState("");
   const history = useHistory();
 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
 
-  const onLogin = () => {
-    loginWithCredentials(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        history.push("/");
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-        setError(error.message);
-      });
-  };
+  const userLogin = () => {
+    dispatch(authenticateUser(email, password));
+  }
+
+  // useEffect(() => {
+  //   if(user !== null){
+  //     history.push("/");
+  //   }
+  // }, [history, user])
+
+
+  // firebase.auth().signOut().then(() => {
+  //   // Sign-out successful.
+  // }).catch((error) => {
+  //   // An error happened.
+  // });
+
+
+  // const loggedinUser = useSelector((state) => state.user.user);
+
+
+  // const onLogin = () => {
+  //   loginWithCredentials(email, password)
+  //     .then((userCredential) => {
+  //       const user = userCredential.user;
+  //       history.push("/");
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error: ", error);
+  //       setError(error.message);
+  //     });
+
+  //     dispatch(fetchUser());
+  // };
+
+  // const addUserToStore = () => {
+  //   dispatch(fetchUser());
+  // }
 
   const onGoogleLogin = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -34,8 +66,6 @@ export default function Login() {
       .signInWithPopup(provider)
       .then((result) => {
         console.log("Success: ", result);
-
-
       })
       .catch((error) => {
         console.log("Error: ", error);
@@ -57,6 +87,7 @@ export default function Login() {
 
       });
   };
+
   return (
     <React.Fragment>
       <div className={styles.texture}>
@@ -93,7 +124,7 @@ export default function Login() {
               </div>
               {error && <p className={styles.errorContainer}>{error}</p>}
               <div className={styles.submitPara}>
-                <input className={styles.submitBtn} name="next" type="submit" value="Sign in" onClick={onLogin}/>
+                <input className={styles.submitBtn} name="next" type="submit" value="Sign in" onClick={userLogin} />
                 <div className={styles.signUpOption}>
                   <span>
                     Not a member?

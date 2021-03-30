@@ -78,7 +78,7 @@ function App() {
       setGenresList(dbGenres);
     });
   }, [])
-
+console.log(user)
   return (
     <BrowserRouter>
       <div className="App"> 
@@ -104,7 +104,7 @@ function App() {
           </Route>
 
           <Route path="/genres/:currentGenre">
-            <Genres isLoggedIn={user} books={books} genresList={genresList}/>
+            <Genres user={user} books={books} genresList={genresList}/>
           </Route>
 
           <Route path="/genres">
@@ -112,11 +112,11 @@ function App() {
           </Route>
 
           <Route path="/books/:currentGenre/:bookId">
-            <Books isLoggedIn={user} books={books}/>
+            <Books user={user} books={books}/>
           </Route>
 
           <Route exact path="/user/edit">
-            <UserEditPage isLoggedIn={user} />
+           {user && <UserEditPage user={user} />}
           </Route>
 
           <Route exact path="/user/:userName">

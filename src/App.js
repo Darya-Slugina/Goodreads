@@ -81,7 +81,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App"> 
         {/* <Header user={user}/> */}
 
         {user ? <Header />: <GuestUserHeader />}

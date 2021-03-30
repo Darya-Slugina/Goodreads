@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
@@ -15,6 +16,8 @@ import Cookies from "./ConditionsPages/Cookies";
 import Books from "./BooksPage/Books";
 import UserPage from "./UserPage/UserPage";
 import UserEditPage from "./UserPage/UserEditPage"
+import Header from "./Headers/Header";
+import GuestUserHeader from "./Headers/GuestUserHeader";
 import Footer from "./Footer/Footer";
 import React, { useEffect, useState } from "react";
 import Error from "./ErrorPage/Error";
@@ -37,11 +40,18 @@ function App() {
   const books = useSelector((state) => state.books.books);
   const genresList = useSelector((state) => state.genres.genres);
   const user = useSelector((state) => state.user.user);
+  // const [user, setUser] = useState('olga');
+  // const [books, setBooks] = useState([]);
+  // const [genresList, setGenresList] = useState([]);
 
   useEffect(() => {
     dispatch(fetchBooks());
     dispatch(fetchGenres());
-  }, []);
+    if(loggedInUser) {    console.log('loggedInUser', loggedInUser);
+      dispatch(fetchUser(loggedInUser.uid));
+    }
+    
+  }, [loggedInUser, dispatch]);
 
   //  firebase.auth().signOut().then(() => {
   //   // Sign-out successful.
@@ -65,14 +75,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App"> 
         {/* <Header user={user}/> */}
 
-        {/* {user.isLoggedIn ? <Header />: <GuestUserHeader />} */}
+        {loggedInUser ? <Header />: <GuestUserHeader />}
 
         <Switch>
           <Route exact path="/">
-            {loggedInUser ? <HomePageLoggedIn /> : <HomePage books={books} />}
+            {loggedInUser ? <HomePageLoggedIn /> : <HomePage books={books} genresList={genresList}/>}
+            {/* {user ? <HomePageLoggedIn /> : <HomePage books={books} genresList={genresList}/>} */}
           </Route>
 
           <Route path="/login">
@@ -81,10 +92,6 @@ function App() {
 
           <Route path="/registration">
             <Registration />
-          </Route>
-
-          <Route path="/categories">
-            <Categories books={books} />
           </Route>
 
           <Route path="/genres/:currentGenre">
@@ -100,7 +107,7 @@ function App() {
           </Route>
 
           <Route exact path="/user/edit">
-            {loggedInUser && <UserEditPage />}
+            {loggedInUser && <UserEditPage user={loggedInUser}/>}
           </Route>
 
           <Route exact path="/user/:userName" >

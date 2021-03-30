@@ -1,9 +1,10 @@
 import React from "react";
-import './HomePageLoggedIn.css'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Button from 'react-bootstrap/Button'
 import MyBooks from "../MyBooks/MyBooks.js"
 import firebase from "../firebase";
+import Dropdown from 'react-bootstrap/Dropdown'
+import Button from "../common/Button"
+
+
 
 export default function HomePageLoggedIn() {
 
@@ -56,5 +57,4 @@ export default function HomePageLoggedIn() {
             </main>
         </React.Fragment>
     )
-
 }

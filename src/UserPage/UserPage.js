@@ -14,10 +14,15 @@ export default function UserPage() {
     const { userName } = useParams();
 
     // useEffect(() => {
-    //     fetch("https://jsonplaceholder.typicode.com/users/" + userId)
-    //       .then((res) => res.json())
-    //       .then((res) => setUser(res));
-    //   }, [userId]);
+    //     database.collection("reviewsList").where("forBookId", "==", currentId).get()
+    //       .then((querySnapshot) => {
+    //         let dbReviews = [];
+    //         querySnapshot.forEach((doc) => {
+    //           dbReviews.push(doc.data());
+    //         });
+    //         setReviews(dbReviews);
+    //       });
+    //   }, [currentId]);
 
 
     //   useEffect(() => {

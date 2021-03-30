@@ -3,7 +3,7 @@ import { database } from "../firebase";
 // Requests
 
 export const getUser = (id) => {
-    database.collection("users").where("id", "==", id).get();
+    return database.collection("users").where("id", "==", id).get();
 }
 
 export const setUser = (id, fname, email) => {

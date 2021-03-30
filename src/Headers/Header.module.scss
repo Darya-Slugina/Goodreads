@@ -1,4 +1,4 @@
-.header-logged{
+.headerLogged{
     position: fixed;
     top: 0px;
     width: 100%;
@@ -6,14 +6,14 @@
     background: #F4F1EA;
 }
 
-.header-wrapper{
+.headerWrapper{
     height: 50px;
     margin: 0 auto;
     display: flex;
     width: 1220px;
 }
 
-.logo-logged{
+.logoLogged{
     display: inline-block;
     height: 50px;
     background: url(../img/header_logo.png) no-repeat;
@@ -23,32 +23,33 @@
     width: 140px;
 }
 
-.nav-logged{
+.navLogged{
     vertical-align: top;
     margin: 0 15px;
+
+    ul{
+        display: flex;
+    }
 }
 
-.nav-logged>ul, .personal-nav>ul{
-    display: flex;
-}
-
-.nav-logged-btn:hover, .profile-btn:hover{
+.navLoggedBtn:hover, .profileBtn:hover{
     background-color: #382110;
     color: white;
 }
 
-.nav-logged-btn{
+.navLoggedBtn{
     display: inline-block;
     color: #382110;
     font-size: 16px;
     line-height: 50px;
     padding: 0 15px;
     border: 0;
+    border-radius: 0;
     background-color: transparent;
 }
 
 
-.nav-logged-btn-dropdown{
+.navLoggedBtnDropdown{
     left: auto;
     right: auto;
     margin-left: 0;
@@ -59,16 +60,16 @@
     background-color: #FFFFFF;
     position: absolute;
     z-index: 70;
-    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+    // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
     padding: 8px;
+
+    *{
+        margin: 2px;
+    }
 }
 
-.nav-logged-btn-dropdown > *{
-    margin: 2px;
-}
-
-.search-logged{
-    margin-bottom: 0px !important;
+.searchLogged{
+    margin-bottom: 0px;
     margin-top: 9px;
     vertical-align: top;
     flex: 1;
@@ -79,17 +80,21 @@
     padding: 4px 26px 4px 8px;
 }
 
-.personal-nav{
+.personalNav{
     margin-right: 8px;
     float: none;
+
+    ul{
+        display:flex;
+    }
 }
 
-.profile-btn{
+.profileBtn{
     border: 0;
     background-color: transparent;
 }
 
-.profile-pic{
+.profilePic{
     box-sizing: border-box;
     display: inline-block;
     height: 45px;
@@ -101,7 +106,7 @@
     
 }
 
-.profile-btn-dropdown{
+.profileBtnDropdown{
     background-color: #FFFFFF;
     position: absolute;
     right: -50px;
@@ -109,10 +114,10 @@
     padding: 8px 0;
     float: left;
     z-index: 70;
-    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+    // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
 }
 
-.profile-name{
+.profileName{
     color: #333333;
     display: block;
     font-size: 14px;
@@ -122,16 +127,11 @@
     text-transform: uppercase;
 }
 
-.sign-out-link{
+.signOutLink{
     color: #333333;
     display: block;
     font-size: 14px;
     line-height: 32px;
     padding: 0 16px;
     border-top: 1px solid #DCD6CC;
-}
-
-.main-container{
-    background: #FFFFFF;
-    margin-top: 50px;
 }

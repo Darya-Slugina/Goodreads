@@ -53,11 +53,6 @@ function App() {
     
   }, [loggedInUser, dispatch]);
 
-  //  firebase.auth().signOut().then(() => {
-  //   // Sign-out successful.
-  // }).catch((error) => {
-  //   // An error happened.
-  // });
 
   // useEffect(() => {
   //   // firebase.auth().onAuthStateChanged(function (user) {
@@ -110,7 +105,7 @@ function App() {
             {loggedInUser && <UserEditPage user={loggedInUser}/>}
           </Route>
 
-          <Route exact path="/user/:userName" >
+          <Route exact path="/user/:id" >
             <UserPage isLoggedIn={loggedInUser}/>
           </Route>
 

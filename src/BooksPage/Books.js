@@ -58,14 +58,13 @@ export default function Books({ books }) {
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={firstBook.img} alt={firstBook.title} />
             <DropdownButton className={styles.ratingButton} />
-            {/* <button className={styles.ratingButton}>Want to Read</button> */}
-            <div className={styles.rating} id="rating">
+            {/* <div className={styles.rating} id="rating">
               <div className={styles.ratingText}>{isItRated ? "My rating" : "Rate this book"}</div>
               <div className={styles.clearRating}>Clear rating</div>
               <div className={styles.ratingCenter}>
                 <SimpleRating stars={0} active={true} big={false} onChange={changeRating} />
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={styles.mainInfoContainer}>
             <div className={styles.mainInfo}>

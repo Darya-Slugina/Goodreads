@@ -5,13 +5,15 @@ import { TiThMenu } from "react-icons/ti";
 import Book from "../GenresPage/BookImg";
 import books from "./../Data/Books/Books"
 import SimpleRating from "../BooksPage/Rating";
+import { useSelector } from "react-redux";
 
 const myBooks = [...books];
   myBooks.sort(() => Math.random() - 0.5);
   myBooks.length = 12; //Magic number
 
+//   const books = useSelector((state) => state.books.books);
 
-export default function Rated({isItUser}) {
+export default function Rated({isItUser, ratedBooks}) {
 
     const [isGridView, setIsGridView] = useState(true);
 

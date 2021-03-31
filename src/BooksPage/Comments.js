@@ -3,7 +3,7 @@ import styles from './Comments.module.css';
 import SimpleRating from "./Rating";
 import { Link } from "react-router-dom";
 
-export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview }) {
+export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview, id }) {
 
     const [displayComment, setDisplayComment] = useState(false);
 
@@ -26,12 +26,12 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         <React.Fragment>
             <div className={styles.commentsContainer}>
                 <div className={styles.userImgContainer}>
-                    <Link to={"/user/" + userName}><img src={userImg} alt={userName} className={styles.userImg} /></Link>
+                    <Link to={"/user/" + id}><img src={userImg} alt={userName} className={styles.userImg} /></Link>
                 </div>
                 <div className={styles.commentsInfoContainer}>
                     <div className={styles.metaInfo}>
                         <div>
-                            <Link to={"/user/" + userName}><span className={styles.userName}> {userName} </span></Link>
+                            <Link to={"/user/" + id}><span className={styles.userName}> {userName} </span></Link>
                             <span className={styles.rating}>  rated  it </span>
                             <SimpleRating stars={rate} />
                         </div>

@@ -35,6 +35,7 @@ export default function UserEditPage({ user }) {
     setFile(acceptedFiles[0]);
   });
 
+  console.log(user);
   useEffect(() => {
     database
       .collection("users")
@@ -102,7 +103,7 @@ export default function UserEditPage({ user }) {
     <div className={styles.mainContent}>
       <h1 className={styles.h1Title}>
         <div className={styles.mediumText}>
-          <Link to={"/user/userName"} className={styles.mediumTextLink}>
+          <Link to={"/user/" + user.uid} className={styles.mediumTextLink}>
             View My Profile
           </Link>
         </div>

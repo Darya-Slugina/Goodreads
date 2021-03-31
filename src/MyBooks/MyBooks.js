@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styles from './MyBooks.module.scss'
 import Button from 'react-bootstrap/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
-import BooksTable from './BooksTable'
-
+import BooksTableView from './BooksTableView'
+import BooksCoverView from './BooksCoverView'
+import { Link } from "react-router-dom";
 
 export default function MyBooks() {
 
     const [isTableView, setTableView] = useState(true);
+    const books = useSelector((state) => state.books.books);
 
     // get books for user
     return (
@@ -57,33 +60,45 @@ export default function MyBooks() {
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.mainContainer}>
-                            {isTableView ? <BooksTable /> : <h2>List view</h2>}
-
-                        </div>
-                        <div className={styles.filters}>
-                            <div className={styles.pagination}>
-                                <label for="per_page">per page</label>
-                                <select name="per_page">
-                                    <option>10</option>
-                                    <option selected>20</option>
-                                    <option>30</option>
-                                </select>
+                        <div className={styles.contentWrapper}>
+                            <div className={styles.sidebar}>
+                                <div className={styles.shelvesSection}>
+                                    <p className={styles.heading}>Bookshelves</p>
+                                    <Link className={styles.subheading}>All ({books.length})</Link>
+                                    <Link className={styles.subheading}>Read</Link>
+                                    <Link className={styles.subheading}>Currently Reading</Link>
+                                    <Link className={styles.subheading}>Want to Read</Link>
+                                </div>
                             </div>
                             <div>
-                                <label for="sort">sort</label>
-                                <select name="sort">
-                                    <option>Author</option>
-                                    <option>Random</option>
-                                    <option>Rating</option>
-                                    <option>Title</option>
-                                </select>
-                            </div>
-                            <div>
-                                <input type="radio" name="order" id='order_a'></input>
-                                <label for="order_a">asc.</label>
-                                <input type="radio" name="order" id='order_d'></input>
-                                <label for="order_d" selected>desc.</label>
+                                <div className={styles.booksViewWrapper}>
+                                    {isTableView ? <BooksTableView /> : <BooksCoverView />}
+                                </div>
+                                <div className={styles.filters}>
+                                    <div className={styles.pagination}>
+                                        <label for="per_page">per page</label>
+                                        <select name="per_page">
+                                            <option>10</option>
+                                            <option selected>20</option>
+                                            <option>30</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="sort">sort</label>
+                                        <select name="sort">
+                                            <option>Author</option>
+                                            <option>Random</option>
+                                            <option>Rating</option>
+                                            <option>Title</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="order" id='order_a'></input>
+                                        <label for="order_a">asc.</label>
+                                        <input type="radio" name="order" id='order_d'></input>
+                                        <label for="order_d" selected>desc.</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

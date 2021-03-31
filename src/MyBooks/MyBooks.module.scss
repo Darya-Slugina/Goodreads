@@ -1,6 +1,8 @@
 .mainContainer{
     background: #FFFFFF;    
     margin-top: 50px;
+    display: flex;
+    height: 100%;
 }
 
 .myBooksWrapper{
@@ -8,7 +10,7 @@
     margin: 0px auto;
     padding-bottom: 25px;
     width: 970px;
-    min-height: 400px;
+    
 }
 
 
@@ -18,7 +20,7 @@
     margin-top: 15px;
     margin-left: 5px;
     font-size: 12px;
-    min-height: 400px;
+    
 }
 
 
@@ -92,6 +94,38 @@
 .gridViewIcon{
     background-image: url("../img/grid_view_icon.png");
 }
+
+.contentWrapper{
+    display: flex;
+
+    .sidebar{
+        margin-right: 20px;
+        
+        .shelvesSection{
+            border-bottom: 1px solid #D8D8D8;
+            width: 100px;
+
+            *{
+                display: block;
+                color: #00635d;
+            }
+        }
+        .heading{
+            font-weight: bold;
+            font-size: larger;
+            margin-bottom: 5px;
+        }
+
+        .subheading{
+            margin-bottom: 5px;
+        }
+    }
+
+    .booksViewWrapper{
+        margin-top: 20px;
+    }
+}
+
 
 .filters{
     display: flex;

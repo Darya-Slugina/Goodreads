@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './MyBooks.module.scss'
 import Button from 'react-bootstrap/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
+import BooksTable from './BooksTable'
+
 
 export default function MyBooks() {
 
-    // get books for user
+    const [isTableView, setTableView] = useState(true);
 
+    // get books for user
     return (
         <React.Fragment>
             <div className={styles.mainContainer}>
@@ -31,6 +34,7 @@ export default function MyBooks() {
                                                 ref={ref}
                                                 {...triggerHandler}
                                                 className={styles.listViewIcon}
+                                                onClick={() => setTableView(true)}
                                             >
                                             </Button>
                                         )}
@@ -45,6 +49,7 @@ export default function MyBooks() {
                                                 ref={ref}
                                                 {...triggerHandler}
                                                 className={styles.gridViewIcon}
+                                                onClick={() => setTableView(false)}
                                             >
                                             </Button>
                                         )}
@@ -52,7 +57,10 @@ export default function MyBooks() {
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.mainContainer}>Books container</div>
+                        <div className={styles.mainContainer}>
+                            {isTableView ? <BooksTable /> : <h2>List view</h2>}
+
+                        </div>
                         <div className={styles.filters}>
                             <div className={styles.pagination}>
                                 <label for="per_page">per page</label>

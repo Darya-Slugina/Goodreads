@@ -41,8 +41,8 @@ export default function MyBooks({ books }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {books.map((book) => (
-                                    <tr className={styles.body} key={book.id}>
+                                {books.map((book, index) => (
+                                    <tr className={styles.body} key={index}>
                                         <td className={styles.coverInfo}>
                                             <a href="book/{genre}/id">
                                                 <img className={styles.bookImg} alt={book.title} src={book.img} />

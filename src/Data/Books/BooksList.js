@@ -21,13 +21,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/1297985.jpg?alt=media&token=bb646025-9c30-45a7-9115-8f48384981ff",
         title: "Musicophilia: Tales of Music and the Brain",
         author: "Oliver Sacks",
-        rating: 3.89,
-        myRating: 0,
         info: "Kindle Edition, 336 pages",
         published: "February 9th 2021 by Random House",
         genre: "music",
-        ratingsCount: 211,
-        reviewsCount: 198,
         description: `With the same trademark compassion and erudition he brought to The Man Who Mistook His Wife for a Hat,
          Oliver Sacks explores the place music occupies in the brain and how it affects the human condition. In Musicophilia,
           he shows us a variety of what he calls “musical misalignments.” Among them: a man struck by lightning who suddenly 
@@ -42,8 +38,6 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/141565.jpg?alt=media&token=ffb622ea-ce02-4736-85cc-1599acfa954e",
         title: "This Is Your Brain on Music: The Science of a Human Obsession",
         author: "Daniel J. Levitin",
-        rating: 4.18,
-        myRating: 0,
         info: "Hardcover, 176 pages",
         published: "February 2nd 2021 by Graphix",
         genre: "music",
@@ -68,13 +62,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/22693211.jpg?alt=media&token=f7285bef-343e-4368-9e2f-729462355ed4",
         title: "Girl in a Band",
         author: "Kim Gordon",
-        rating: 3.82,
-        myRating: 0,
         info: "Hardcover, 464 pages",
         published: "February 9th 2021 by Simon Schuster",
         genre: "music",
-        ratingsCount: 22,
-        reviewsCount: 8,
         description: `Kim Gordon, founding member of Sonic Youth, fashion icon, and role model for a generation of women,
          now tells her story—a memoir of life as an artist, of music, marriage, motherhood, independence, and as one of the
           first women of rock and roll, written with the lyricism and haunting beauty of Patti Smith's Just Kids.
@@ -96,13 +86,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/50235819._SY475_.jpg?alt=media&token=2927a3a3-e117-4ea1-87de-44c52a989067",
         title: "The Girl in the Love Song",
         author: "Emma Scott",
-        rating: 3.83,
-        myRating: 0,
         info: "Hardcover, 256 pages",
         published: "January 19th 2021 by Farrar, Straus and Giroux",
         genre: "music",
-        ratingsCount: 103,
-        reviewsCount: 26,
         description: `Miller Stratton is a survivor. After a harrowing childhood of poverty, he will do anything it takes
          to find security for himself and his mom. He’s putting all his hopes and dreams in the fragile frame of his guitar
           and the beauty he creates with its strings and his soulful voice.
@@ -124,13 +110,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52816566._SY475_.jpg?alt=media&token=9db420b0-7dd1-48bc-9999-43beb0ca3697",
         title: "Liar, Liar, Hearts on Fire",
         author: "Pippa Grant",
-        rating: 3.73,
-        myRating: 0,
         info: "Hardcover, 272 pages",
         published: "January 5th 2021 by Voracious",
         genre: "music",
-        ratingsCount: 83,
-        reviewsCount: 14,
         description: `The lies will come back to bite you every time...
 
         Never borrow pants from your brother. Especially if he’s a size smaller than you are, because all that pressure
@@ -160,13 +142,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/43554866._SX318_.jpg?alt=media&token=e4e1bb8a-9875-4f45-b5cd-ab0fe255884b",
         title: "Violet Bent Backwards Over the Grass",
         author: "Lana Del Rey",
-        rating: 4.7,
-        myRating: 0,
         info: "Hardcover, 32 pages",
         published: "February 2nd 2021 by Carolrhoda Books (R)",
         genre: "music",
-        ratingsCount: 351,
-        reviewsCount: 136,
         description: `The highly anticipated spoken word poetry collection from Lana Del Rey, Violet Bent Backwards over the Grass
 
         “'Violet Bent Backwards over the Grass' is the title poem of the book and the first poem 
@@ -187,13 +165,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53916522.jpg?alt=media&token=284f01cf-882a-48c5-ac5e-1b4bb0b6737c",
         title: "Dolly Parton, Songteller: My Life in Lyrics",
         author: "Dolly Parton, Robert K. Oermann",
-        rating: 3.55,
-        myRating: 0,
         info: "Hardcover, 400 pages",
         published: "January 19th 2021 by Bloomsbury Publishing",
         genre: "music",
-        ratingsCount: 38,
-        reviewsCount: 9,
         description: `Dolly Parton, Songteller: My Life in Lyrics is a landmark celebration of the remarkable life and career
          of a country music and pop culture legend.
 
@@ -220,13 +194,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/40611133._SY475_.jpg?alt=media&token=0d10420e-4173-4e86-b7ea-7a0d40c4dcc7",
         title: "Ellie and the Harpmaker",
         author: "Hazel Prior ",
-        rating: 4.05,
-        myRating: 0,
         info: "Hardcover, 880 pages",
         published: "March 23rd 2021 by Knopf Publishing Group",
         genre: "music",
-        ratingsCount: 21,
-        reviewsCount: 5,
         description: `In the rolling hills of beautiful Exmoor, there’s a barn. And in that barn, you’ll find Dan. He’s a maker
          of exquisite harps - but not a great maker of conversation. He’s content in his own company, quietly working and away 
          from social situations that he doesn’t always get right.
@@ -243,13 +213,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55046122._SY475_.jpg?alt=media&token=08c9ec74-0527-4ed5-a429-975139ab2d75",
         title: "The Violinist of Auschwitz",
         author: "Ellie Midwood ",
-        rating: 3.84,
-        myRating: 0,
         info: "Paperback, 515 pages",
         published: " April 17th 1997 by Phaidon Pres",
         genre: "music",
-        ratingsCount: 140.774,
-        reviewsCount: 276,
         description: `Auschwitz, 1943: In the depths of hell, can hope rise? And can love triumph over hatred?
 
         Based on the unforgettable true story of Alma Rosé, The Violinist of Auschwitz brings to life one of history’s most fearless,
@@ -281,13 +247,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52664814._SY475_.jpg?alt=media&token=70a32c3b-c02b-444d-a04c-568724ad37bb",
         title: "Muted",
         author: "Tami Charles",
-        rating: 3.92,
-        myRating: 0,
         info: "Hardcover, First American Edition, 771 pages",
         published: "October 22nd 2013 by Little, Brown and Company",
         genre: "music",
-        ratingsCount: 753.458,
-        reviewsCount: 62.824,
         description: `A ripped-from-the-headlines novel of ambition, music, and innocence lost, perfect for fans of
          Elizabeth Acevedo and Jason Reynolds!
         Be bold. Get seen. Be Heard.
@@ -312,13 +274,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52658293.jpg?alt=media&token=1eb63803-fb85-4435-be2d-1fb42bfdb21e",
         title: "Love Songs for Skeptics",
         author: "Christina Pishiris ",
-        rating: 3.89,
-        myRating: 0,
         info: "Kindle Edition, 336 pages",
         published: "February 9th 2021 by Random House",
         genre: "music",
-        ratingsCount: 211,
-        reviewsCount: 198,
         description: `For fans of Josie Silver and Emily Henry comes a debut romcom about the life-changing magic of second chances.
 
         Zoë Frixos gets the whole love song thing. Truly, she does. As an editor at a major music magazine in London, it's part of
@@ -338,13 +296,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55513324.jpg?alt=media&token=53d29f4d-792c-4350-82b3-5effa8b5320b",
         title: "The Black Church: This Is Our Story, This Is Our Song",
         author: "Henry Louis Gates Jr.",
-        rating: 4.18,
-        myRating: 0,
         info: "Hardcover, 176 pages",
         published: "February 2nd 2021 by Graphix",
         genre: "music",
-        ratingsCount: 745,
-        reviewsCount: 66,
         description: `From the New York Times-bestselling author of Stony the Road and one of our most important voices on the African-American 
         experience, a powerful new history of the Black church in America as the Black community's abiding rock and its fortress.
 
@@ -363,13 +317,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54899574.jpg?alt=media&token=d6cfc3db-5e6f-468f-895c-03dcdf916322",
         title: "We Play Ourselves",
         author: "Jen Silverman",
-        rating: 3.89,
-        myRating: 0,
         info: "Kindle Edition, 336 pages",
         published: "February 9th 2021 by Random House",
         genre: "art",
-        ratingsCount: 211,
-        reviewsCount: 198,
         description: `After a humiliating scandal, a young writer flees to the West Coast to start over, where she is drawn into 
               the morally-ambiguous orbit of a charismatic filmmaker and the teenage girls who are her next subjects.
               Not too long ago, Cass was a promising young playwright in New York, hailed as "a fierce new voice" and "queer, feminist,
@@ -388,13 +338,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52664730._SX318_.jpg?alt=media&token=d5addb5b-95a5-4cba-af1a-6503489033de",
         title: "Claudia and the New Girl",
         author: "Gabriela Epstein",
-        rating: 4.18,
-        myRating: 0,
         info: "Hardcover, 176 pages",
         published: "February 2nd 2021 by Graphix",
         genre: "art",
-        ratingsCount: 745,
-        reviewsCount: 66,
         description: `A brand-new Baby-sitters Club graphic novel adapted by newcomer Gabriela Epstein!
 
               Claudia has always been the most creative kid in her class... until Ashley Wyeth comes along. 
@@ -410,13 +356,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54303114.jpg?alt=media&token=ed6f69bd-aca4-4929-b19b-ec280c4383b6",
         title: "Dress Codes: How the Laws of Fashion Made History",
         author: "Richard Thompson Ford",
-        rating: 3.82,
-        myRating: 0,
         info: "Hardcover, 464 pages",
         published: "February 9th 2021 by Simon Schuster",
         genre: "art",
-        ratingsCount: 22,
-        reviewsCount: 8,
         description: `A revelatory exploration of fashion through the ages that asks what our clothing reveals
                about ourselves and our society.
 
@@ -451,13 +393,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53317371.jpg?alt=media&token=8d178326-be21-400e-ab52-6598f9c9b6ea",
         title: "Homo Irrealis: Essays",
         author: "André Aciman",
-        rating: 3.83,
-        myRating: 0,
         info: "Hardcover, 256 pages",
         published: "January 19th 2021 by Farrar, Straus and Giroux",
         genre: "art",
-        ratingsCount: 103,
-        reviewsCount: 26,
         description: `The New York Times-bestselling author of Find Me and Call Me by Your Name returns to the essay form with his
                collection of thoughts on time, the creative mind, and great lives and works
 
@@ -478,13 +416,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49088643.jpg?alt=media&token=a4603f3d-7b6d-4a79-86ba-b643eb6baced",
         title: "Every Body: An Honest and Open Look at Sex from Every Angle",
         author: "Julia Rothman",
-        rating: 3.73,
-        myRating: 0,
         info: "Hardcover, 272 pages",
         published: "January 5th 2021 by Voracious",
         genre: "art",
-        ratingsCount: 83,
-        reviewsCount: 14,
         description: `Experience a radically inclusive and informative collection of stories, essays, interviews, and art
                about sex, relationships, and body confidence.
 
@@ -506,13 +440,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54222468._SX318_.jpg?alt=media&token=6ae69091-ccb4-4e3b-b3db-1de402e5e873",
         title: "Unspeakable: The Tulsa Race Massacre",
         author: "Carole Boston Weatherford, Floyd Cooper (Illustrations)",
-        rating: 4.7,
-        myRating: 0,
         info: "Hardcover, 32 pages",
         published: "February 2nd 2021 by Carolrhoda Books (R)",
         genre: "art",
-        ratingsCount: 351,
-        reviewsCount: 136,
         description: `Celebrated author Carole Boston Weatherford and illustrator Floyd Cooper provide a powerful
                look at the Tulsa Race Massacre, one of the worst incidents of racial violence in our nation's history.
                 The book traces the history of African Americans in Tulsa's Greenwood district and chronicles the 
@@ -526,13 +456,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49127644.jpg?alt=media&token=6e086c13-1cf5-40c7-b16f-0436534882d9",
         title: "Craft: An American History",
         author: "Glenn Adamson",
-        rating: 3.55,
-        myRating: 0,
         info: "Hardcover, 400 pages",
         published: "January 19th 2021 by Bloomsbury Publishing",
         genre: "art",
-        ratingsCount: 38,
-        reviewsCount: 9,
         description: `A groundbreaking and endlessly surprising history of how artisans created America, from
                the nation's origins to the present day.
 
@@ -557,13 +483,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/52005438.jpg?alt=media&token=be45b3cd-c515-4d49-a513-31d3f52263ba",
         title: "Francis Bacon: Revelations",
         author: "Mark Stevens, Annalyn Swan",
-        rating: 4.05,
-        myRating: 0,
         info: "Hardcover, 880 pages",
         published: "March 23rd 2021 by Knopf Publishing Group",
         genre: "art",
-        ratingsCount: 21,
-        reviewsCount: 5,
         description: `A decade in the making: the first comprehensive look at the life and art of Francis Bacon,
                one of the iconic painters of the twentieth century--from the Pulitzer Prize-winning authors of de Kooning:
                 An American Master.
@@ -589,13 +511,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/567616.jpg?alt=media&token=aa8a5629-2216-49b6-8f0d-3bd1c131da12",
         title: "The Art Book",
         author: "Phaidon Press",
-        rating: 3.84,
-        myRating: 0,
         info: "Paperback, 515 pages",
         published: " April 17th 1997 by Phaidon Pres",
         genre: "art",
-        ratingsCount: 140.774,
-        reviewsCount: 276,
         description: `An A to Z guide to 500 great painters and sculptors from medieval to modern times, it debunks
                art historical classifications by throwing together brilliant examples of all periods, schools, visions and 
                techniques. Each artist is represented by a full-page colour plate of a definitive work, accompanied by explanatory 
@@ -609,13 +527,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/17333223.jpg?alt=media&token=a5d07bd3-2cb3-4b37-89cd-d36a16df18b0",
         title: "The Goldfinch",
         author: "Donna Tartt",
-        rating: 3.92,
-        myRating: 0,
         info: "Hardcover, First American Edition, 771 pages",
         published: "October 22nd 2013 by Little, Brown and Company",
         genre: "art",
-        ratingsCount: 753.458,
-        reviewsCount: 62.824,
         description: `Winner of the Pulitzer Prize for Fiction 2014
 
               Aged thirteen, Theo Decker, son of a devoted mother and a reckless, largely absent father, survives an accident
@@ -635,13 +549,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/37922875._SX318_.jpg?alt=media&token=c5ea2543-006c-40f1-9853-3b6e85ac61a3",
         title: "Eraser",
         author: "Anna Kang, Christopher Weyant",
-        rating: 3.77,
-        myRating: 0,
         info: "Kindle Edition, 21 pages",
         published: "September 1st 2018 by Two Lions",
         genre: "art",
-        ratingsCount: 12.196,
-        reviewsCount: 6.403,
         description: `Eraser is always cleaning up everyone else’s mistakes. Except for Ruler and Pencil Sharpener, none
              of the other school supplies seem to appreciate her. They all love how sharp Pencil is and how Tape and Glue help
               everyone stick together. Eraser wants to create so that she can shine like the others. She decides to give it a
@@ -656,13 +566,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/38664775._SY475_.jpg?alt=media&token=299d46d9-9ef2-4cc1-8c95-4cf955526f05",
         title: "Sea Prayer",
         author: "Khaled Hosseini, Dan Williams (Illustrator)",
-        rating: 4.05,
-        myRating: 0,
         info: "Kindle Edition, 48 pages",
         published: "September 18th 2018 by Riverhead Books",
         genre: "art",
-        ratingsCount: 45.496,
-        reviewsCount: 4.687,
         description: `A short, powerful, illustrated book written by Khaled Hosseini in response to the current refugee crisis,
            Sea Prayer is composed in the form of a letter, from a father to his son, on the eve of their journey. Watching over his
             sleeping son, the father reflects on the dangerous sea-crossing that lies before them. It is also a vivid portrait of
@@ -680,13 +586,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/40779082._SY475_.jpg?alt=media&token=1c77622d-525b-4beb-bf87-fa57d9db1ee2",
         title: "The Guns of August",
         author: "Oliver Sacks",
-        rating: 3.89,
-        myRating: 0,
         info: "Kindle Edition, 336 pages",
         published: "February 9th 2021 by Random House",
         genre: "Biography",
-        ratingsCount: 211,
-        reviewsCount: 198,
         description: `With the same trademark compassion and erudition he brought to The Man Who Mistook His Wife for a Hat,
          Oliver Sacks explores the place music occupies in the brain and how it affects the human condition. In Musicophilia,
           he shows us a variety of what he calls “musical misalignments.” Among them: a man struck by lightning who suddenly 
@@ -700,13 +602,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/8664353.jpg?alt=media&token=70205d67-e3e8-43b8-a727-1c5d9971e2ad",
         title: "Unbroken: A World War II Story of Survival, Resilience and Redemption",
         author: "Daniel J. Levitin",
-        rating: 4.18,
-        myRating: 0,
         info: "Hardcover, 176 pages",
         published: "February 2nd 2021 by Graphix",
         genre: "Biography",
-        ratingsCount: 745,
-        reviewsCount: 66,
         description: `Whether you load your iPod with Bach or Bono, music has a significant role in your life—even if you never
          realized it. Why does music evoke such powerful moods? The answers are at last be- coming clear, thanks to revolutionary
           neuroscience and the emerging field of evolutionary psychology. Both a cutting-edge study and a tribute to the beauty
@@ -726,13 +624,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/6493208.jpg?alt=media&token=151b396b-f279-47be-bc7b-6140b08fa226",
         title: "The Immortal Life of Henrietta Lacks",
         author: "Kim Gordon",
-        rating: 3.82,
-        myRating: 0,
         info: "Hardcover, 464 pages",
         published: "February 9th 2021 by Simon Schuster",
         genre: "Biography",
-        ratingsCount: 22,
-        reviewsCount: 8,
         description: `Kim Gordon, founding member of Sonic Youth, fashion icon, and role model for a generation of women,
          now tells her story—a memoir of life as an artist, of music, marriage, motherhood, independence, and as one of the
           first women of rock and roll, written with the lyricism and haunting beauty of Patti Smith's Just Kids.
@@ -754,13 +648,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/29780253.jpg?alt=media&token=fe31e78a-b20c-4ba0-b57b-cab02ec4254b",
         title: "Born a Crime: Stories From a South African Childhood",
         author: "Emma Scott",
-        rating: 3.83,
-        myRating: 0,
         info: "Hardcover, 256 pages",
         published: "January 19th 2021 by Farrar, Straus and Giroux",
         genre: "Biography",
-        ratingsCount: 103,
-        reviewsCount: 26,
         description: `Miller Stratton is a survivor. After a harrowing childhood of poverty, he will do anything it takes
          to find security for himself and his mom. He’s putting all his hopes and dreams in the fragile frame of his guitar
           and the beauty he creates with its strings and his soulful voice.
@@ -782,13 +672,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/92057.jpg?alt=media&token=3ead4a27-c5d8-4d3f-b03d-d741034ecea1",
         title: "The Autobiography of Malcolm X",
         author: "Pippa Grant",
-        rating: 3.73,
-        myRating: 0,
         info: "Hardcover, 272 pages",
         published: "January 5th 2021 by Voracious",
         genre: "Biography",
-        ratingsCount: 83,
-        reviewsCount: 14,
         description: `The lies will come back to bite you every time...
 
         Never borrow pants from your brother. Especially if he’s a size smaller than you are, because all that pressure
@@ -818,13 +704,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/10884.jpg?alt=media&token=b7f34eb9-91e2-4c13-9708-2d756fe25357",
         title: "Einstein: His Life and Universe",
         author: "Lana Del Rey",
-        rating: 4.7,
-        myRating: 0,
         info: "Hardcover, 32 pages",
         published: "February 2nd 2021 by Carolrhoda Books (R)",
         genre: "Biography",
-        ratingsCount: 351,
-        reviewsCount: 136,
         description: `The highly anticipated spoken word poetry collection from Lana Del Rey, Violet Bent Backwards over the Grass
 
         “'Violet Bent Backwards over the Grass' is the title poem of the book and the first poem 
@@ -845,13 +727,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/16130._SY475_.jpg?alt=media&token=bbfb6811-35af-4abb-bb93-1075a494be91",
         title: "Alexander Hamilton",
         author: "Dolly Parton, Robert K. Oermann",
-        rating: 3.55,
-        myRating: 0,
         info: "Hardcover, 400 pages",
         published: "January 19th 2021 by Bloomsbury Publishing",
         genre: "Biography",
-        ratingsCount: 38,
-        reviewsCount: 9,
         description: `Dolly Parton, Songteller: My Life in Lyrics is a landmark celebration of the remarkable life and career
          of a country music and pop culture legend.
 
@@ -878,13 +756,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/25541028.jpg?alt=media&token=3f5efddd-2086-4479-80a0-0f4a4c04e0a0",
         title: "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",
         author: "Hazel Prior ",
-        rating: 4.05,
-        myRating: 0,
         info: "Hardcover, 880 pages",
         published: "March 23rd 2021 by Knopf Publishing Group",
         genre: "Biography",
-        ratingsCount: 21,
-        reviewsCount: 5,
         description: `In the rolling hills of beautiful Exmoor, there’s a barn. And in that barn, you’ll find Dan. He’s a maker
          of exquisite harps - but not a great maker of conversation. He’s content in his own company, quietly working and away 
          from social situations that he doesn’t always get right.
@@ -901,13 +775,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/2203._SY475_.jpg?alt=media&token=574ce707-7027-4f0b-b9d2-30dfb9004299",
         title: "John Adams",
         author: "Ellie Midwood ",
-        rating: 3.84,
-        myRating: 0,
         info: "Paperback, 515 pages",
         published: " April 17th 1997 by Phaidon Pres",
         genre: "Biography",
-        ratingsCount: 140.774,
-        reviewsCount: 276,
         description: `Auschwitz, 1943: In the depths of hell, can hope rise? And can love triumph over hatred?
 
         Based on the unforgettable true story of Alma Rosé, The Violinist of Auschwitz brings to life one of history’s most fearless,
@@ -939,13 +809,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/8664353.jpg?alt=media&token=70205d67-e3e8-43b8-a727-1c5d9971e2ad",
         title: "Unbroken: A World War II Story of Survival, Resilience and Redemption",
         author: "Tami Charles",
-        rating: 3.92,
-        myRating: 0,
         info: "Hardcover, First American Edition, 771 pages",
         published: "October 22nd 2013 by Little, Brown and Company",
         genre: "Biography",
-        ratingsCount: 753.458,
-        reviewsCount: 62.824,
         description: `A ripped-from-the-headlines novel of ambition, music, and innocence lost, perfect for fans of
          Elizabeth Acevedo and Jason Reynolds!
         Be bold. Get seen. Be Heard.
@@ -970,13 +836,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/48855.jpg?alt=media&token=04fd5c61-882f-4822-b56c-865c4d3a5581",
         title: "The Diary of a Young Girl",
         author: "Anne Frank, Eleanor Roosevelt",
-        rating: 3.89,
-        myRating: 0,
         info: "Kindle Edition, 336 pages",
         published: "February 9th 2021 by Random House",
         genre: "Biography",
-        ratingsCount: 211,
-        reviewsCount: 198,
         description: `Discovered in the attic in which she spent the last years of her life, Anne Frank’s remarkable 
         diary has become a world classic—a powerful reminder of the horrors of war and an eloquent testament to the human spirit.
 
@@ -993,13 +855,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/11084145._SY475_.jpg?alt=media&token=40eb9c20-c063-4ad3-9830-a8af0157bc61",
         title: "Steve Jobs",
         author: "Walter Isaacson ",
-        rating: 4.18,
-        myRating: 0,
         info: "Hardcover, 176 pages",
         published: "February 2nd 2021 by Graphix",
         genre: "Biography",
-        ratingsCount: 745,
-        reviewsCount: 66,
         description: `Walter Isaacson's "enthralling" (The New Yorker) worldwide bestselling biography of Apple cofounder
          Steve Jobs. Based on more than forty interviews with Steve Jobs conducted over two years--as well as interviews
           with more than 100 family members, friends, adversaries, competitors, and colleagues--Walter Isaacson has written
@@ -1023,13 +881,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/6732019.jpg?alt=media&token=d4b73d2e-eb1a-487a-9fc9-44938a5e9bca",
         title: "Rework",
         author: "Jen Silverman",
-        rating: 3.89,
-        myRating: 0,
         info: "Kindle Edition, 336 pages",
         published: "February 9th 2021 by Random House",
         genre: "Business",
-        ratingsCount: 211,
-        reviewsCount: 198,
         description: `After a humiliating scandal, a young writer flees to the West Coast to start over, where she is drawn into 
               the morally-ambiguous orbit of a charismatic filmmaker and the teenage girls who are her next subjects.
               Not too long ago, Cass was a promising young playwright in New York, hailed as "a fierce new voice" and "queer, feminist,
@@ -1048,13 +902,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54304208.jpg?alt=media&token=7886e55c-9601-4281-9d25-4e9cf5c0fbaa",
         title: "Ladies Get Paid: The Ultimate Guide to Breaking Barriers, Owning Your Worth, and Taking Command of Your Career",
         author: "Gabriela Epstein",
-        rating: 4.18,
-        myRating: 0,
         info: "Hardcover, 176 pages",
         published: "February 2nd 2021 by Graphix",
         genre: "Business",
-        ratingsCount: 745,
-        reviewsCount: 66,
         description: `A brand-new Baby-sitters Club graphic novel adapted by newcomer Gabriela Epstein!
 
               Claudia has always been the most creative kid in her class... until Ashley Wyeth comes along. 
@@ -1070,13 +920,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/56563411._SY475_.jpg?alt=media&token=6e575bce-b11d-46ba-b4e5-0d79f96c8532",
         title: "Black, White, and the Grey: The Story of an Unexpected Friendship and a Beloved Restaurant",
         author: "Richard Thompson Ford",
-        rating: 3.82,
-        myRating: 0,
         info: "Hardcover, 464 pages",
         published: "February 9th 2021 by Simon Schuster",
         genre: "Business",
-        ratingsCount: 22,
-        reviewsCount: 8,
         description: `A revelatory exploration of fashion through the ages that asks what our clothing reveals
                about ourselves and our society.
 
@@ -1111,13 +957,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/48904521.jpg?alt=media&token=f95ec092-d773-4075-9f16-c0ee538ffff4",
         title: "Social Chemistry: Decoding the Elements of Human Connection",
         author: "André Aciman",
-        rating: 3.83,
-        myRating: 0,
         info: "Hardcover, 256 pages",
         published: "January 19th 2021 by Farrar, Straus and Giroux",
         genre: "Business",
-        ratingsCount: 103,
-        reviewsCount: 26,
         description: `The New York Times-bestselling author of Find Me and Call Me by Your Name returns to the essay form with his
                collection of thoughts on time, the creative mind, and great lives and works
 
@@ -1138,13 +980,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53287275.jpg?alt=media&token=545f2dbd-5b03-4693-9fcf-d86e6ea98095",
         title: "Everybody Has a Podcast (Except You): A How-to Guide from the First Family of Podcasting",
         author: "Julia Rothman",
-        rating: 3.73,
-        myRating: 0,
         info: "Hardcover, 272 pages",
         published: "January 5th 2021 by Voracious",
         genre: "Business",
-        ratingsCount: 83,
-        reviewsCount: 14,
         description: `Experience a radically inclusive and informative collection of stories, essays, interviews, and art
                about sex, relationships, and body confidence.
 
@@ -1166,13 +1004,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49829875.jpg?alt=media&token=e8c4d46d-5bd8-4e11-bf78-249f5c9fc53c",
         title: "Beginners: The Joy and Transformative Power of Lifelong Learning",
         author: "Carole Boston Weatherford, Floyd Cooper (Illustrations)",
-        rating: 4.7,
-        myRating: 0,
         info: "Hardcover, 32 pages",
         published: "February 2nd 2021 by Carolrhoda Books (R)",
         genre: "Business",
-        ratingsCount: 351,
-        reviewsCount: 136,
         description: `Celebrated author Carole Boston Weatherford and illustrator Floyd Cooper provide a powerful
                look at the Tulsa Race Massacre, one of the worst incidents of racial violence in our nation's history.
                 The book traces the history of African Americans in Tulsa's Greenwood district and chronicles the 
@@ -1186,13 +1020,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54486366.jpg?alt=media&token=d58df041-038a-4508-83e6-135d96c40e56",
         title: "Never Enough: A Navy SEAL Commander on Living a Life of Excellence, Agility, and Meaning",
         author: "Glenn Adamson",
-        rating: 3.55,
-        myRating: 0,
         info: "Hardcover, 400 pages",
         published: "January 19th 2021 by Bloomsbury Publishing",
         genre: "Business",
-        ratingsCount: 38,
-        reviewsCount: 9,
         description: `A groundbreaking and endlessly surprising history of how artisans created America, from
                the nation's origins to the present day.
 
@@ -1217,13 +1047,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53241562.jpg?alt=media&token=bcb33977-f5fc-415b-b341-9a51fcd291fd",
         title: "Work Won't Love You Back: How Devotion to Our Jobs Keeps Us Exploited, Exhausted, and Alone",
         author: "Mark Stevens, Annalyn Swan",
-        rating: 4.05,
-        myRating: 0,
         info: "Hardcover, 880 pages",
         published: "March 23rd 2021 by Knopf Publishing Group",
         genre: "Business",
-        ratingsCount: 21,
-        reviewsCount: 5,
         description: `A decade in the making: the first comprehensive look at the life and art of Francis Bacon,
                one of the iconic painters of the twentieth century--from the Pulitzer Prize-winning authors of de Kooning:
                 An American Master.
@@ -1249,13 +1075,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53915346.jpg?alt=media&token=d0a40844-b644-458f-8000-50fcedb0995a",
         title: "Backable: The Surprising Truth Behind What Makes People Take a Chance on You",
         author: "Phaidon Press",
-        rating: 3.84,
-        myRating: 0,
         info: "Paperback, 515 pages",
         published: " April 17th 1997 by Phaidon Pres",
         genre: "Business",
-        ratingsCount: 140.774,
-        reviewsCount: 276,
         description: `An A to Z guide to 500 great painters and sculptors from medieval to modern times, it debunks
                art historical classifications by throwing together brilliant examples of all periods, schools, visions and 
                techniques. Each artist is represented by a full-page colour plate of a definitive work, accompanied by explanatory 
@@ -1269,13 +1091,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53138083.jpg?alt=media&token=0b1a983e-6833-4e79-971b-2cad67eda418",
         title: "Working Backwards: Insights, Stories, and Secrets from Inside Amazon",
         author: "Donna Tartt",
-        rating: 3.92,
-        myRating: 0,
         info: "Hardcover, First American Edition, 771 pages",
         published: "October 22nd 2013 by Little, Brown and Company",
         genre: "Business",
-        ratingsCount: 753.458,
-        reviewsCount: 62.824,
         description: `Winner of the Pulitzer Prize for Fiction 2014
 
               Aged thirteen, Theo Decker, son of a devoted mother and a reckless, largely absent father, survives an accident
@@ -1295,13 +1113,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49151008.jpg?alt=media&token=5c0a2af7-ebbc-4a4f-b8c6-052246876980",
         title: "Made in China: A Prisoner, an SOS Letter, and the Hidden Cost of America's Cheap Goods",
         author: "Anna Kang, Christopher Weyant",
-        rating: 3.77,
-        myRating: 0,
         info: "Kindle Edition, 21 pages",
         published: "September 1st 2018 by Two Lions",
         genre: "Business",
-        ratingsCount: 12.196,
-        reviewsCount: 6.403,
         description: `Eraser is always cleaning up everyone else’s mistakes. Except for Ruler and Pencil Sharpener, none
              of the other school supplies seem to appreciate her. They all love how sharp Pencil is and how Tape and Glue help
               everyone stick together. Eraser wants to create so that she can shine like the others. She decides to give it a
@@ -1316,13 +1130,9 @@ const books = [
         img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55539565.jpg?alt=media&token=e0beeae0-95f0-4561-87e1-70f0938a1929",
         title: "Think Again: The Power of Knowing What You Don't Know",
         author: "Khaled Hosseini, Dan Williams (Illustrator)",
-        rating: 4.05,
-        myRating: 0,
         info: "Kindle Edition, 48 pages",
         published: "September 18th 2018 by Riverhead Books",
         genre: "Business",
-        ratingsCount: 45.496,
-        reviewsCount: 4.687,
         description: `A short, powerful, illustrated book written by Khaled Hosseini in response to the current refugee crisis,
            Sea Prayer is composed in the form of a letter, from a father to his son, on the eve of their journey. Watching over his
             sleeping son, the father reflects on the dangerous sea-crossing that lies before them. It is also a vivid portrait of
@@ -1346,12 +1156,9 @@ books.forEach(obj => {
         img: obj.img,
         title: obj.title,
         author: obj.author,
-        rating: obj.rating,
         info: obj.info,
         published: obj.published,
         genre: obj.genre,
-        ratingsCount: obj.ratingsCount,
-        reviewsCount: obj.reviewsCount,
         description: obj.description
     })
         .then((obj) => {

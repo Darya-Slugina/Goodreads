@@ -31,18 +31,14 @@ import { fetchUser } from "./RegistrationAndLoginPage/User.actions";
 function App() {
 
   const loggedInUser = firebase.auth().currentUser;
-  console.log(loggedInUser);
-
-  // const [user, setUser] = useState(null);
 
   const dispatch = useDispatch();
 
   const books = useSelector((state) => state.books.books);
   const genresList = useSelector((state) => state.genres.genres);
   const user = useSelector((state) => state.user.user);
-  // const [user, setUser] = useState('olga');
-  // const [books, setBooks] = useState([]);
-  // const [genresList, setGenresList] = useState([]);
+
+
 
   useEffect(() => {
     dispatch(fetchBooks());
@@ -105,7 +101,7 @@ function App() {
             {loggedInUser && <UserEditPage user={loggedInUser}/>}
           </Route>
 
-          <Route exact path="/user/:id" >
+          <Route exact path="/user/:userId" >
             <UserPage isLoggedIn={loggedInUser}/>
           </Route>
 

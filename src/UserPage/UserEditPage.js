@@ -15,12 +15,16 @@ const getCountries = () => {
 const initialUser = {
   fname: "",
   lname: "",
+  email: "",
   gender: "",
   city: "",
   country: "",
   interests: "",
   favouriteBooks: "",
   userImg: "",
+  read: [],
+  wantToRead: [],
+  currentlyReading: [],
 };
 
 export default function UserEditPage({ user }) {

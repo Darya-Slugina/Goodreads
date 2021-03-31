@@ -3,9 +3,13 @@ import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
 import React from "react";
 import SimpleRating from "../BooksPage/Rating";
+import { useEffect } from "react";
 
-export default function BooksCoverView() {
-    const books = useSelector((state) => state.books.books);
+export default function BooksCoverView({books}) {
+
+    useEffect(() => {
+        console.log(books)
+    }, [books])
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";

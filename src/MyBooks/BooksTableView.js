@@ -2,10 +2,13 @@ import { useSelector } from "react-redux";
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
 import SimpleRating from "../BooksPage/Rating";
+import { useEffect } from "react";
 
-export default function BooksTable() {
+export default function BooksTable({ books }) {
 
-    const books = useSelector((state) => state.books.books);
+    useEffect(() => {
+        console.log(books)
+    }, [books])
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";
@@ -31,22 +34,22 @@ export default function BooksTable() {
                         <td className={styles.bookCoverWrapper}>
                             <Link to={"/books/" + book.genre + "/" + book.id} key={book.id}>
                                 <img src={book.img} alt={book.title} onMouseEnter={onMouseEnterHandler}
-                                onMouseLeave={onMouseLeaveHandler}></img>
+                                    onMouseLeave={onMouseLeaveHandler}></img>
                                 <div className={styles.bookInfoContainer}>
-                                <div className={styles.wrapper}>
-                                    <h1 id="bookTitle" className={styles.bookInfoContainerTitle}>{book.title}</h1>
-                                    <p className={styles.bookInfoContainerText}>by {book.author}</p>
-                                    <div className={styles.bookMeta}>
-                                        <div className={styles.staticRatingStars}>
-                                            <SimpleRating stars={book.rating} />
+                                    <div className={styles.wrapper}>
+                                        <h1 id="bookTitle" className={styles.bookInfoContainerTitle}>{book.title}</h1>
+                                        <p className={styles.bookInfoContainerText}>by {book.author}</p>
+                                        <div className={styles.bookMeta}>
+                                            <div className={styles.staticRatingStars}>
+                                                <SimpleRating stars={book.rating} />
+                                            </div>
+                                            <span className={styles.staticRating}> {book.rating} rating </span>
+                                            <div className={styles.ratingCount} > - {book.ratingsCount} ratings </div>
+                                            <div className={styles.reviewCount} > - {book.reviewsCount} reviews </div>
                                         </div>
-                                        <span className={styles.staticRating}> {book.rating} rating </span>
-                                        <div className={styles.ratingCount} > - {book.ratingsCount} ratings </div>
-                                        <div className={styles.reviewCount} > - {book.reviewsCount} reviews </div>
+                                        <p className={styles.bookInfoContainerText}>{book.description}</p>
                                     </div>
-                                    <p className={styles.bookInfoContainerText}>{book.description}</p>
                                 </div>
-                            </div>
                             </Link>
                         </td>
                         <td><p>{book.title}</p></td>

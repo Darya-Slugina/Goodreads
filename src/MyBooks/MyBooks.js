@@ -13,6 +13,25 @@ export default function MyBooks() {
     const [isTableView, setTableView] = useState(true);
     const books = useSelector((state) => state.books.books);
 
+    const sortBooks = (ev) => {
+        let value = ev.target.value;
+
+        switch (value) {
+            case 'Title':
+                books.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+            case 'Author':
+                books.sort((a, b) => a.author.localeCompare(b.author));
+                break;
+            case 'Random':
+                books.sort(() => Math.random() - 0.5);
+                break;
+            default:
+                books.sort((a, b) => a.author.localeCompare(b.author));
+                break;
+        }
+    }
+
     // get books for user
     return (
         <React.Fragment>
@@ -72,12 +91,12 @@ export default function MyBooks() {
                             </div>
                             <div>
                                 <div className={styles.booksViewWrapper}>
-                                    {isTableView ? <BooksTableView /> : <BooksCoverView />}
+                                    {isTableView ? <BooksTableView books={books} /> : <BooksCoverView books={books} />}
                                 </div>
                                 <div className={styles.filters}>
                                     <div className={styles.pagination}>
                                         <label for="per_page">per page</label>
-                                        <select name="per_page">
+                                        <select name="per_page" >
                                             <option>10</option>
                                             <option selected>20</option>
                                             <option>30</option>
@@ -85,10 +104,9 @@ export default function MyBooks() {
                                     </div>
                                     <div>
                                         <label for="sort">sort</label>
-                                        <select name="sort">
+                                        <select name="sort" onChange={(ev) => sortBooks(ev)}>
                                             <option>Author</option>
                                             <option>Random</option>
-                                            <option>Rating</option>
                                             <option>Title</option>
                                         </select>
                                     </div>

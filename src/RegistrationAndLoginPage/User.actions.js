@@ -1,12 +1,15 @@
 import { getUser, setUser } from "./User.service";
 import { loginWithCredentials } from './service';
 import { registerWithCredentials } from './service';
+import firebase, { database } from "../firebase";
 
 export const FETCH_USER_FAILED = "FETCH_USER_FAILED";
 export const FETCH_USER_REQUESTED = "FETCH_USER_REQUESTED";
 export const FETCH_USER_REGISTER = "FETCH_USER_REGISTER";
 export const FETCH_USER_LOGGEDIN = "FETCH_USER_LOGGEDIN";
-
+export const ADD_TO_FAVOURITE_GENRES =  "ADD_TO_FAVOURITE_GENRES";
+export const ADD_TO_FAVOURITE_USERS = "ADD_TO_FAVOURITE_USERS";
+export const REMOVE_FROM_FAVOURITE_USERS = "REMOVE_FROM_FAVOURITE_USERS";
 
 // Normal action
 export const fetchUserRegister = (user) => ({
@@ -28,6 +31,23 @@ export const fetchUserFailed = (err) => ({
 export const fetchUserRequested = () => ({
   type: FETCH_USER_REQUESTED,
 });
+
+// export const addToFavouriteGenres = (genre) => ({
+//   type: ADD_TO_FAVOURITE_GENRES,
+// });
+
+export const addToFavouriteUsers = (userId) => ({
+  type: ADD_TO_FAVOURITE_USERS,
+  payload: userId,
+});
+
+export const removeFromFavouriteUsers = (userId) => ({
+  type: REMOVE_FROM_FAVOURITE_USERS,
+  payload: userId,
+});
+
+
+
 
 // Thunk actions
 export const registerUser = (email, password, fname) => {
@@ -103,3 +123,41 @@ export const fetchUser = (id) => {
     }
   };
 };
+
+export const addToFavourite = (userId, loggedUserId) => {
+  return function (dispatch, getState) {
+    const favUser = getState().user.user.favouritesUser;
+
+    if (favUser.length > 0 && !favUser.includes(userId)) {
+      database.collection("users").doc(loggedUserId).update({
+        favouritesUser: firebase.firestore.FieldValue.arrayUnion(userId),
+    })
+        .then(() => {
+            console.log("Document successfully written!");
+            dispatch(addToFavouriteUsers(userId));
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const removeFromFavourite = (userId, loggedUserId) => {
+  return function (dispatch, getState) {
+    const favUser = getState().user.user.favouritesUser;
+
+    if (favUser.length > 0 && favUser.includes(userId)) {
+      database.collection("users").doc(loggedUserId).update({
+        favouritesUser: firebase.firestore.FieldValue.arrayRemove(userId),
+    })
+        .then(() => {
+            console.log("Document successfully written!");
+            dispatch(removeFromFavouriteUsers(userId));
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+    }
+  }
+}

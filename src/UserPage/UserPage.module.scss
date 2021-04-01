@@ -9,144 +9,190 @@
     width: 800px;
     background: #ffffff;
     font-size: 12px;
-    min-height: 400px;
+    min-height: 71vh;
     margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
-    .leftProfilePicture {
-        float: left;
-        width: 150px;
-        margin-right: 10px;
-        overflow: hidden;
-
-        .profilePictureIcon {
-            border-radius: 76px;
-            max-width: 150px;
-            object-fit: cover;
-            box-sizing: border-box;
-            background-color: #ffffff;
-            border: 1px solid #d8d8d8;
-            height: 150px;
+    .leftContainer {
+        .leftProfilePicture {
+            float: left;
             width: 150px;
+            margin-right: 10px;
+            overflow: hidden;
+
+            .profilePictureIcon {
+                border-radius: 76px;
+                max-width: 150px;
+                object-fit: cover;
+                box-sizing: border-box;
+                background-color: #ffffff;
+                border: 1px solid #d8d8d8;
+                height: 150px;
+                width: 150px;
+            }
+
+            .profilePageStatsInfo {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+
+                .link {
+                    color: #00635d;
+                    text-decoration: none;
+                    font-weight: 500;
+                    margin-top: 5px;
+                }
+            }
         }
 
-        .profilePageStatsInfo {
-            text-align: center;
+        .userInfoBox {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-top: 10px;
-
-            .link {
-                color: #00635d;
-                text-decoration: none;
-                font-weight: 500;
-                margin-top: 5px;
-            }
-        }
-    }
-
-    .userInfoBox {
-        display: flex;
-        flex-direction: column;
-        background-repeat: no-repeat;
-        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        width: 500px;
-        height: 250px;
-        padding-left: 20px;
-
-        .userProfileName {
-            border-bottom: 1px solid #d8d8d8;
-            display: flex;
-            justify-content: flex-start;
-            font-style: normal;
-            font-size: 20px;
-            line-height: 1.3;
-            margin: 0;
-            margin-bottom: 5px;
-            padding: 4px 0 4px 0;
-            top: 0;
-            width: 525px;
-            color: #382110;
-            font-family: "Merriweather", Georgia, "Times New Roman", serif;
-            font-weight: bold;
-
-            .smallText {
-                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-                font-size: 11px;
-                line-height: 14px;
-                color: #00635d;
-                text-decoration: none;
-                display: flex;
-                align-items: flex-end;
-                margin-bottom: 3px;
-                margin-left: 3px;
-            }
-        }
-
-        .friendFollowModule {
+            background-repeat: no-repeat;
             font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            margin-bottom: 20px;
-            margin-top: 5px;
+            width: 500px;
+            height: 250px;
+            padding-left: 20px;
 
-            .friendFollowButton {
-                background-color: #382110;
-                border: 1px solid #382110;
-                color: white;
-                font-weight: normal;
-                border-radius: 3px;
-                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-                appearance: none;
-                cursor: pointer;
-                display: inline-block;
-                text-decoration: none;
-                line-height: 1;
-                font-size: 16px;
-                box-sizing: border-box;
-                text-align: center;
-                min-width: 150px;
-                height: 42px;
-                padding: 12px 0;
+            .userProfileName {
+                border-bottom: 1px solid #d8d8d8;
+                display: flex;
+                justify-content: flex-start;
+                font-style: normal;
+                font-size: 20px;
+                line-height: 1.3;
+                margin: 0;
+                margin-bottom: 5px;
+                padding: 4px 0 4px 0;
+                top: 0;
+                width: 525px;
+                color: #382110;
+                font-family: "Merriweather", Georgia, "Times New Roman", serif;
+                font-weight: bold;
+
+                .smallText {
+                    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                    font-size: 11px;
+                    line-height: 14px;
+                    color: #00635d;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: flex-end;
+                    margin-bottom: 3px;
+                    margin-left: 3px;
+                }
+            }
+
+            .friendFollowModule {
+                font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                margin-bottom: 20px;
+                margin-top: 5px;
+
+                .friendFollowButton {
+                    background-color: #382110;
+                    border: 1px solid #382110;
+                    color: white;
+                    font-weight: normal;
+                    border-radius: 3px;
+                    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                    appearance: none;
+                    cursor: pointer;
+                    display: inline-block;
+                    text-decoration: none;
+                    line-height: 1;
+                    font-size: 16px;
+                    box-sizing: border-box;
+                    text-align: center;
+                    min-width: 150px;
+                    height: 42px;
+                    padding: 12px 0;
+                }
+            }
+
+            .infoBoxWrapper {
+                display: flex;
+                flex-direction: row;
+
+                .infoBoxRowTitle {
+                    display: flex;
+                    width: 25%;
+                    font-size: 14px;
+                    margin-bottom: 4px;
+                    color: #382110;
+                    font-weight: bold;
+                    margin: 1px 0px;
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                }
+
+                .infoBoxRowItem {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 67%;
+                    font-size: 14px;
+                    margin-bottom: 4px;
+                    margin: 1px 0px;
+                    text-align: left;
+                }
             }
         }
 
-        .infoBoxWrapper {
-            display: flex;
-            flex-direction: row;
+        .bigBoxInfo {
+            width: 725px;
+            padding-bottom: 10px;
 
-            .infoBoxRowTitle {
+            .h2Container {
+                border-bottom: 1px solid #d8d8d8;
+                overflow: hidden;
+                white-space: nowrap;
+                margin-top: 30px;
                 display: flex;
-                width: 25%;
-                font-size: 14px;
-                margin-bottom: 4px;
-                color: #382110;
-                font-weight: bold;
-                margin: 1px 0px;
-                font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            }
+                flex-direction: row;
+                justify-content: space-between;
 
-            .infoBoxRowItem {
-                display: flex;
-                flex-wrap: wrap;
-                width: 67%;
-                font-size: 14px;
-                margin-bottom: 4px;
-                margin: 1px 0px;
-                text-align: left;
+                .h2Title {
+                    display: block;
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    padding: 2px 0;
+                    width: auto;
+                    height: 24px;
+                    margin-bottom: 0;
+                    font-weight: bold;
+                    font-size: 12px;
+                    text-transform: uppercase;
+
+                    color: #382110;
+                    line-height: 24px;
+                }
+
+                .navBar {
+                    :global(.nav-link) {
+                        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        font-size: 14px;
+                        color: #382110;
+                    }
+
+                    :global(.nav-link.active) {
+                        background-color: #382110;
+                        color: white;
+                        font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        font-size: 14px;
+                    }
+                }
             }
         }
     }
 
-    .bigBoxInfo {
-        width: 725px;
-        padding-bottom: 10px;
+    .rightContainer {
 
         .h2Container {
-            background-position: top right;
-            background-repeat: no-repeat;
             border-bottom: 1px solid #d8d8d8;
             overflow: hidden;
             white-space: nowrap;
-            margin-top: 30px;
+            margin-top: 40px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -161,25 +207,15 @@
                 font-weight: bold;
                 font-size: 12px;
                 text-transform: uppercase;
-
                 color: #382110;
                 line-height: 24px;
             }
-
-            .navBar {
-                :global(.nav-link) {
-                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    font-size: 14px;
-                    color: #382110;
-                }
-
-                :global(.nav-link.active) {
-                    background-color: #382110;
-                    color: white;
-                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    font-size: 14px;
-                }
-            }
         }
+
+        .followingContainer {
+            padding: 0 0 10px 0;
+            width: 100%;
+        }
+
     }
 }

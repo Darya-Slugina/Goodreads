@@ -15,6 +15,7 @@ export default function Books({ books }) {
   const { currentGenre, bookId } = useParams();
 
   const [reviews, setReviews] = useState([]);
+  const [bookState, setBookState] = useState('Want To Read');
   const user = useSelector((state) => state.user.user);
 
   const currentId = Number(bookId);
@@ -50,25 +51,20 @@ export default function Books({ books }) {
 
   const isHavaReview = reviews.filter(el => el.userId === user.id && el.forBookId === currentId).length > 0;
 
-  const bookState = useMemo(() => {
+  useEffect( () => {
     if (user) {
       let state = 'Want To Read';
-      console.log("state!!!", user.currentlyReading, user.read, user, user['currentlyReading']);
-
-      if (user.currentlyReading && user.currentlyReading.filter(el => el === bookId).length > 0) {
-        console.log("currentlyReading", user.read.filter(el => el === bookId).length);
+      if (user.currentlyReading && user.currentlyReading.filter(el => el === currentId).length > 0) {
         state = 'Currently Reading';
-      } else if (user.read && user.read.filter(el => el === bookId).length > 0) {
-        console.log("read", user.read.filter(el => el === bookId).length);
+      } else if (user.read && user.read.filter(el => el === currentId).length > 0) {
         state = 'Read';
       }
 
-      console.log("state!!!222", state)
-
-      return state;
+      setBookState(state);
     }
-  }, [user, bookId])
+  },[user, currentId]);
 
+  
 
   function removeFromReadList() {
 
@@ -130,22 +126,24 @@ export default function Books({ books }) {
   }
 
   const ascendingSort = () => {
-    // comments.sort((a, b) => a.rate - b.rate);
-    // setComments(comments);
+   const sortedRev =  [...reviews].sort((a, b) => b.rate - a.rate);
+    setReviews(sortedRev);
   }
 
   const descendingSort = () => {
-    // comments.sort((a, b) => b.rate - a.rate);
-    // setComments(comments);
+    const sortedRev =  [...reviews].sort((a, b) => a.rate - b.rate);
+    setReviews(sortedRev);
   }
 
   const newest = () => {
     reviews.sort((a, b) => a.date - b.date);
+    // console.log(reviews)
     setReviews(reviews);
   }
 
   const oldest = () => {
     reviews.sort((a, b) => b.date - a.date);
+    // console.log(reviews)
     setReviews(reviews);
   }
 
@@ -156,7 +154,7 @@ export default function Books({ books }) {
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={firstBook.img} alt={firstBook.title} />
-            <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} />
+            <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} />
           </div>
           <div className={styles.mainInfoContainer}>
             <div className={styles.mainInfo}>
@@ -235,7 +233,7 @@ export default function Books({ books }) {
           </div>
           <div className={styles.h2Container}>
             {reviews.map(review => (
-              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId}/>
+              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId} />
             ))}
 
           </div>

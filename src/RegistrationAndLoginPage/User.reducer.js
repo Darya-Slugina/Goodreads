@@ -3,6 +3,9 @@ import {
     FETCH_USER_REQUESTED,
     FETCH_USER_REGISTER,
     FETCH_USER_LOGGEDIN,
+    ADD_TO_FAVOURITE_GENRES,
+    ADD_TO_FAVOURITE_USERS,
+    REMOVE_FROM_FAVOURITE_USERS,
   } from "./User.actions";
   
   const INITIAL_STATE = {
@@ -36,12 +39,25 @@ import {
           ...state,
           error: action.payload,
         };
+
+        // case ADD_TO_FAVOURITE_GENRES:
+        // return {
+        //   ...state,
+        //   user: action.payload,
+        // };
+
+        case ADD_TO_FAVOURITE_USERS:
+        return {
+          ...state,
+          user: {...state.user, favouritesUser: [...state.user.favouritesUser, action.payload]},
+        };
+
+        case REMOVE_FROM_FAVOURITE_USERS:
+          return {
+            ...state,
+          user: {...state.user, favouritesUser: [...state.user.favouritesUser].filter(id => id !== action.payload)},
+          };
   
-    //   case "USER_ADDED":
-    //     return {
-    //       ...state,
-    //       user: [...state.user, action.payload],
-    //     };
       default:
         return state;
     }

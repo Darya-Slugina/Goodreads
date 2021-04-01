@@ -5,7 +5,7 @@ import HomePage from "./HomePage/HomePage";
 import HomePageLoggedIn from "./HomePage/HomePageLoggedIn";
 import Login from "./RegistrationAndLoginPage/Login";
 import Registration from "./RegistrationAndLoginPage/Registration";
-import Categories from "./CategoriesPage/Categories";
+// import Categories from "./CategoriesPage/Categories";
 import AllGenres from "./GenresPage/AllGenres";
 import Genres from "./GenresPage/Genres";
 import Terms from "./ConditionsPages/Terms";

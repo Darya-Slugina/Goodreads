@@ -1,0 +1,76 @@
+.bookContainer {
+    margin: 10px;
+    position: relative;
+
+    .bookImg {
+        width: 120px;
+        height: 220px ;
+        cursor: pointer;
+        z-index: 1;
+        box-shadow: #ccc 5px 5px 5px;
+    }
+}
+
+.bookInfoContainer {
+    display: none;
+    position: absolute;
+    background:#f1f1f1;
+    border: 5px solid rgb(190, 180, 163);
+    border-radius: 5px;
+    width: 400px;
+    height: 250px;
+    top: -10px;
+    left: 125px;
+    z-index: 100;
+
+    .wrapper {
+        margin: 15px;
+        height: 210px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .bookInfoContainerTitle {
+            color: #382110;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: "Merriweather", Georgia, "Times New Roman", serif;
+        }
+    
+        .bookInfoContainerText {
+            color: #382110;
+            font-family: "Merriweather", Georgia, "Times New Roman", serif;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .bookMeta {
+            text-align: left;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-bottom: 3px;
+        
+            .staticRating {
+                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                font-size: 12px;
+                margin-left: 5px;
+                color: #382110;
+            }
+            
+            .staticRatingStars {
+                margin-top: -8px;
+            }
+            
+            .ratingCount, .reviewCount{
+                color: #382110;
+                font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                font-size: 12px;
+                margin-left: 5px;
+            }
+        }
+    } 
+}
+
+
+
+

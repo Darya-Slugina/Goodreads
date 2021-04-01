@@ -1,0 +1,126 @@
+.headerLogged{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    background: #F4F1EA;
+}
+
+.headerWrapper{
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    width: 1220px;
+    justify-content: space-evenly;
+}
+
+.logoLogged{
+    display: inline-block;
+    height: 50px;
+    background: url(../img/header_logo.png) no-repeat;
+    background-position: center;
+    background-size: 140px 30px;
+    margin-left: 15px;
+    width: 140px;
+}
+
+.navLogged{
+    vertical-align: top;
+    margin: 0 15px;
+
+    ul{
+        display: flex;
+    }
+}
+
+.navLoggedBtn:hover, .profileBtn:hover{
+    background-color: #382110;
+    color: white;
+}
+
+.navLoggedBtn{
+    display: inline-block;
+    color: #382110;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+
+.navLoggedBtnDropdown{
+    left: auto;
+    right: auto;
+    margin-left: 0;
+    margin-right: 0;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 70;
+    // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+    padding: 8px;
+
+    *{
+        margin: 2px;
+    }
+}
+
+.personalNav{
+    margin-right: 8px;
+    float: none;
+
+    ul{
+        display:flex;
+    }
+}
+
+.profileBtn{
+    border: 0;
+    background-color: transparent;
+}
+
+.profilePic{
+    box-sizing: border-box;
+    display: inline-block;
+    height: 45px;
+    width: 46px;
+    background-image: url(../img/profile_pic.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.profileBtnDropdown{
+    background-color: #FFFFFF;
+    position: absolute;
+    right: -50px;
+    width: 250px;
+    padding: 8px 0;
+    float: left;
+    z-index: 70;
+    // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+
+.profileName{
+    color: #333333;
+    display: block;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.signOutLink{
+    color: #333333;
+    display: block;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 16px;
+    border-top: 1px solid #DCD6CC;
+}

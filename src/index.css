@@ -17,14 +17,15 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}
+} 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+ article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
 	line-height: 1;
+	height: 100vh;
 }
 ol, ul {
 	list-style: none;
@@ -40,10 +41,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+} 
 
 
-body {
+  body {
   font-size: 12px;
   margin: 0;
   color: #181818;
@@ -52,15 +53,15 @@ body {
   padding: 0;
   background-color: #FFFFFF;
   height: 100%;
-}
+}  
 
-body *{
+ body *{
   box-sizing: border-box;
-  text-align: left;
-}
+  text-align: left; 
+} 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} 
 

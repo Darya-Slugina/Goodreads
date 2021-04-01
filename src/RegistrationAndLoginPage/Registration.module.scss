@@ -1,0 +1,270 @@
+.texture {
+    background: url(./../img/tan-bg-texture.jpg) repeat;
+    min-height: 93vh;
+    height: auto !important;
+
+    .clearfix {
+        width: 100%;
+        margin-bottom: 16px;
+
+        .logo {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 18px;
+            width: 140px;
+            margin-left: 20px;
+        }
+    }
+
+    .wrapper {
+        min-height: 100%;
+        height: auto !important;
+        margin: 0 auto -100px;
+        margin-top: 50px;
+
+        .mainContent {
+            margin: 0px auto;
+            text-align: center;
+            width: 970px;
+
+            .contentBox {
+                border: 1px solid #d0d0c8;
+                background-color: white;
+                border-radius: 4px;
+                box-shadow: 0px 1px 1px #d0d0c8;
+                padding: 28px 10px 34px 10px;
+                width: 600px;
+                margin: 0 auto;
+                text-align: center;
+
+                .contentBoxHeader {
+                    text-align: center;
+                    color: #382110;
+                    padding: 0px 0px 2px 0px;
+                    font-size: 20px;
+                    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+                    font-weight: bold;
+                    margin-top: 0;
+                    margin-bottom: 15px;
+                    color: #382110;
+                    line-height: 24px;
+                }
+
+                .intro {
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    margin-top: 0;
+                    margin: 10px;
+                    margin-bottom: 25px;
+                    font-size: 16px;
+                    line-height: 1.4;
+                    text-align: center;
+                }
+
+                .signUpOptions {
+                    width: 300px;
+                    margin: 0 auto;
+                    position: relative;
+
+                    .buttonGoogle {
+                        text-align: center;
+                        width: 300px;
+                        margin-bottom: 16px;
+                        align-items: center;
+                        justify-content: center;
+                        line-height: 2;
+                        background-color: #fff;
+                        color: #000;
+                        border: 1px solid #000;
+                        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                        font-size: 14px;
+                        border-radius: 3px;
+                        padding: 7px 12px;
+                    }
+
+                    .googleLogo {
+                        width: 20px;
+                        height: 20px;
+                        margin-left: -1.5em;
+                        position: absolute;
+                        top: 11px;
+                        left: 70px;
+                    }
+
+                    .buttonFacebook {
+                        width: 300px;
+                        background-color: #3b5998;
+                        color: white;
+                        font-weight: normal;
+                        border: 1px solid #3b5998;
+                        margin-bottom: 16px;
+                        align-items: center;
+                        justify-content: center;
+                        line-height: 2;
+                        border-radius: 3px;
+                        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                        font-size: 14px;
+                        padding: 8px 12px;
+                        text-align: center;
+                    }
+
+                    .facebookIcon {
+                        width: 20px;
+                        height: 20px;
+                        margin-left: -1.5em;
+                        position: absolute;
+                        top: 74px;
+                        left: 70px;
+                        border-radius: 3px;
+                    }
+                }
+
+                .gradient {
+                    border-top: 1px solid #999;
+                    font-size: 14px;
+                    color: #999;
+                    margin: 0 auto;
+                    width: 300px;
+                    text-align: center;
+                    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                    position: relative;
+                    margin-top: 10px;
+
+                    .gradientText {
+                        position: absolute;
+                        top: -12px;
+                        left: 47%;
+                        background-color: white;
+                        padding: 0 5px;
+                    }
+                }
+
+                .signup {
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-top: 10px;
+                    color: #333;
+                    text-align: center;
+                }
+
+                .emailForm {
+                    border: none;
+                    width: 300px;
+                    margin: 0 auto;
+                    padding: 0;
+                    text-align: left;
+
+                    .fieldPara {
+                        display: flex;
+                        flex-direction: column;
+                        margin-top: 10px;
+
+                        .fieldParaLabel {
+                            font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            font-size: 12px;
+                            text-align: left;
+                            color: #333;
+                            width: 100%;
+                            font-weight: 700;
+                        }
+
+                        .fieldParaInput {
+                            font-size: 15px;
+                            padding: 10px 4px;
+                            border: 1px solid #ccc;
+                            border-radius: 3px;
+                            box-shadow: 0px 2px 2px #333;
+                            font-weight: 600;
+                            font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            width: 300px;
+                            color: rgb(59, 59, 59);
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+
+                .errorContainer {
+                    color: brown;
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    text-align: center;
+                    font-weight: 600;
+                    margin-top: 10px;
+                    font-size: 13px;
+                }
+
+                .submitPara {
+                    margin-top: 30px;
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    text-align: center;
+
+                    .submitBtn {
+                        font-size: 16px;
+                        padding: 12px 24px;
+                        border-radius: 3px;
+                        border: 1px solid #d6d0c4;
+                        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                        font-size: 14px;
+                        appearance: none;
+                        cursor: pointer;
+                        display: inline-block;
+                        text-decoration: none;
+                        color: #333333;
+                        background-color: #f4f1ea;
+                        line-height: 1;
+                    }
+
+                    .submitBtn:hover {
+                        background-color: #dfdcd5;
+                    }
+
+                    .signUpOption {
+                        text-align: center;
+                        margin-top: 24px;
+                        font-size: 12px;
+
+                        .signUpOptionA {
+                            margin-left: 10px;
+                            font-weight: normal;
+                            color: #00635d;
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                .privacyNotice {
+                    color: #aaa;
+                    margin: 32px 0 0 0;
+                    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    font-size: 12px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 90%;
+
+                    .privacyNoticeLink {
+                        color: #00635d;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tfooter {
+    width: 100%;
+    background: url(./../img/bookrow.jpg) repeat-x left bottom;
+    text-align: center;
+    color: #666;
+    font-size: 10px;
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+
+    .footer {
+        width: 965px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -17px;
+        text-align: center;
+    }
+}

@@ -1,41 +1,39 @@
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
+import styles from './Header.module.scss'
+import firebase from "../firebase";
+import PersonalNavGuest from './PersonalNavGuest'
+import PersonalNavUser from './PersonalNavUser'
+import SearchBar from '../SearchBar'
+import { useSelector } from "react-redux";
 
+export default function Header() {
+    const loggedInUser = firebase.auth().currentUser;
+    const genresList = useSelector((state) => state.genres.genres);
 
-export default function Header(){
-    return(
-        <header className="header-logged">
-                <div className="header-wrapper">
-                    {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                    <a href="/" className="logo-logged"></a>
-                    <nav className="nav-logged">
-                        <ul>
-                            <Button className="nav-logged-btn">Home</Button>
-                            <Button className="nav-logged-btn">My books</Button>
-                            <Dropdown>
-                                <Dropdown.Toggle id="dropdown-basic" className="nav-logged-btn"> Browse
-                                    </Dropdown.Toggle>
-                                <Dropdown.Menu className="nav-logged-btn-dropdown">
-                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </ul>
-                    </nav>
-                    <input type="text" placeholder="Search books" className="search-logged" />
-                    <nav className="personal-nav">
+    return (
+        <header className={styles.headerLogged}>
+            <div className={styles.headerWrapper}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+                <a href="/" className={styles.logoLogged}></a>
+                <nav className={styles.navLogged}>
+                    <ul>
+                        <Button className={styles.navLoggedBtn}>Home</Button>
+                        <Button className={styles.navLoggedBtn}>My books</Button>
                         <Dropdown>
-                            <Dropdown.Toggle id="dropdown-basic" className="profile-btn">
-                                <div className="profile-pic"></div>
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu className="profile-btn-dropdown">
-                                <Dropdown.Item href="#/action-1" className="profile-name">Olga</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2" className="sign-out-link">Sign out</Dropdown.Item>
+                            <Dropdown.Toggle id="dropdown-basic" className={styles.navLoggedBtn}> Browse
+                                    </Dropdown.Toggle>
+                            <Dropdown.Menu className={styles.navLoggedBtnDropdown}>
+                                {genresList.map(genre => (
+                                    <Dropdown.Item key={genre.id}>{genre.genre}</Dropdown.Item>
+                                ))}
                             </Dropdown.Menu>
                         </Dropdown>
-                    </nav>
-                </div>
-            </header>
+                    </ul>
+                </nav>
+                <SearchBar />
+                {loggedInUser ? <PersonalNavUser /> : <PersonalNavGuest />}
+            </div>
+        </header>
     )
 }

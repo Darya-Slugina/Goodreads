@@ -6,9 +6,7 @@ import { useEffect } from "react";
 
 export default function BooksTable({ books }) {
 
-    useEffect(() => {
-        console.log(books)
-    }, [books])
+    
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";
@@ -41,7 +39,8 @@ export default function BooksTable({ books }) {
                                         <p className={styles.bookInfoContainerText}>by {book.author}</p>
                                         <div className={styles.bookMeta}>
                                             <div className={styles.staticRatingStars}>
-                                                <SimpleRating stars={book.rating} />
+                                                {/* error - expects a string, gets an object */}
+                                                {/* <SimpleRating stars={book.rating} /> */}
                                             </div>
                                             <span className={styles.staticRating}> {book.rating} rating </span>
                                             <div className={styles.ratingCount} > - {book.ratingsCount} ratings </div>

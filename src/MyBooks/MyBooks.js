@@ -83,10 +83,10 @@ export default function MyBooks() {
                             <div className={styles.sidebar}>
                                 <div className={styles.shelvesSection}>
                                     <p className={styles.heading}>Bookshelves</p>
-                                    <Link className={styles.subheading}>All ({books.length})</Link>
-                                    <Link className={styles.subheading}>Read</Link>
-                                    <Link className={styles.subheading}>Currently Reading</Link>
-                                    <Link className={styles.subheading}>Want to Read</Link>
+                                    <Link to='' className={styles.subheading}>All ({books.length})</Link>
+                                    <Link to='' className={styles.subheading}>Read</Link>
+                                    <Link to='' className={styles.subheading}>Currently Reading</Link>
+                                    <Link to='' className={styles.subheading}>Want to Read</Link>
                                 </div>
                             </div>
                             <div>

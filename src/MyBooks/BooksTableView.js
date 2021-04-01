@@ -28,7 +28,7 @@ export default function BooksTable({ books }) {
             </thead>
             <tbody>
                 {books.map(book => (
-                    <tr className={styles.row}>
+                    <tr className={styles.row} key={book.id}>
                         <td className={styles.bookCoverWrapper}>
                             <Link to={"/books/" + book.genre + "/" + book.id} key={book.id}>
                                 <img src={book.img} alt={book.title} onMouseEnter={onMouseEnterHandler}

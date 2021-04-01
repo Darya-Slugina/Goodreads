@@ -98,7 +98,7 @@ export default function MyBooks() {
                                         <label for="per_page">per page</label>
                                         <select name="per_page" >
                                             <option>10</option>
-                                            <option selected>20</option>
+                                            <option defaultValue>20</option>
                                             <option>30</option>
                                         </select>
                                     </div>
@@ -114,7 +114,7 @@ export default function MyBooks() {
                                         <input type="radio" name="order" id='order_a'></input>
                                         <label for="order_a">asc.</label>
                                         <input type="radio" name="order" id='order_d'></input>
-                                        <label for="order_d" selected>desc.</label>
+                                        <label for="order_d" defaultValue>desc.</label>
                                     </div>
                                 </div>
                             </div>

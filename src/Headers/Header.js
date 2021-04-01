@@ -4,10 +4,11 @@ import styles from './Header.module.scss'
 import firebase from "../firebase";
 import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
+import SearchBar from '../SearchBar'
 
 export default function Header() {
     const loggedInUser = firebase.auth().currentUser;
-    
+
     return (
         <header className={styles.headerLogged}>
             <div className={styles.headerWrapper}>
@@ -28,7 +29,7 @@ export default function Header() {
                         </Dropdown>
                     </ul>
                 </nav>
-                <input type="text" placeholder="Search books" className={styles.searchLogged} />
+                <SearchBar />
                 {loggedInUser ? <PersonalNavUser /> : <PersonalNavGuest />}
             </div>
         </header>

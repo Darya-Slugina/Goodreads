@@ -136,15 +136,15 @@ export default function Books({ books }) {
   }
 
   const newest = () => {
-    reviews.sort((a, b) => a.date - b.date);
-    // console.log(reviews)
-    setReviews(reviews);
+    let sortedArray = reviews.sort((a, b) => a.date - b.date);
+    console.log(sortedArray);
+    setReviews(sortedArray);
   }
 
   const oldest = () => {
-    reviews.sort((a, b) => b.date - a.date);
-    // console.log(reviews)
-    setReviews(reviews);
+    let sortedArray = reviews.sort((a, b) => a.date - b.date);
+    console.log(sortedArray);
+    setReviews(sortedArray);
   }
 
 

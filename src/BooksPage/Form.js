@@ -3,7 +3,6 @@ import Button from "./../common/Button";
 import React, { useState } from 'react';
 import { database } from "../firebase";
 import { useSelector } from "react-redux";
-import moment from 'moment';
 
 
 
@@ -17,7 +16,7 @@ export default function Form({ bookId, getReviews, rating }) {
         ev.preventDefault();
         database.collection("reviewsList").doc().set({
             review: text,
-            date: moment().format('MMMM Do YYYY'),
+            date: Date.now(),
             forBookId: bookId,
             likes: [],
             rate: rating,

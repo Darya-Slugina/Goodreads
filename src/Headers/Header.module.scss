@@ -1,12 +1,12 @@
-.headerLogged{
+.headerLogged {
     position: fixed;
     top: 0px;
     width: 100%;
     z-index: 2;
-    background: #F4F1EA;
+    background: #f4f1ea;
 }
 
-.headerWrapper{
+.headerWrapper {
     height: 50px;
     margin: 0 auto;
     display: flex;
@@ -14,7 +14,7 @@
     justify-content: space-evenly;
 }
 
-.logoLogged{
+.logoLogged {
     display: inline-block;
     height: 50px;
     background: url(../img/header_logo.png) no-repeat;
@@ -24,21 +24,22 @@
     width: 140px;
 }
 
-.navLogged{
+.navLogged {
     vertical-align: top;
     margin: 0 15px;
 
-    ul{
+    ul {
         display: flex;
     }
 }
 
-.navLoggedBtn:hover, .profileBtn:hover{
+.navLoggedBtn:hover,
+.profileBtn:hover {
     background-color: #382110;
     color: white;
 }
 
-.navLoggedBtn{
+.navLoggedBtn {
     display: inline-block;
     color: #382110;
     font-size: 16px;
@@ -49,8 +50,7 @@
     background-color: transparent;
 }
 
-
-.navLoggedBtnDropdown{
+.navLoggedBtnDropdown {
     left: auto;
     right: auto;
     margin-left: 0;
@@ -58,32 +58,34 @@
     width: 320px;
     display: flex;
     flex-direction: column;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     position: absolute;
     z-index: 70;
     // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
     padding: 8px;
 
-    *{
+    * {
         margin: 2px;
     }
 }
 
-.personalNav{
+.personalNav {
     margin-right: 8px;
     float: none;
+    display: flex;
 
-    ul{
-        display:flex;
+    ul {
+        display: flex;
     }
 }
 
-.profileBtn{
+.profileBtn {
     border: 0;
     background-color: transparent;
+    margin-left: 20px;
 }
 
-.profilePic{
+.profilePic {
     box-sizing: border-box;
     display: inline-block;
     height: 45px;
@@ -92,11 +94,11 @@
     background-size: 30px;
     background-repeat: no-repeat;
     background-position: center;
-    
+    margin-top: -5px;
 }
 
-.profileBtnDropdown{
-    background-color: #FFFFFF;
+.profileBtnDropdown {
+    background-color: #ffffff;
     position: absolute;
     right: -50px;
     width: 250px;
@@ -106,7 +108,7 @@
     // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
 }
 
-.profileName{
+.profileName {
     color: #333333;
     display: block;
     font-size: 14px;
@@ -116,11 +118,59 @@
     text-transform: uppercase;
 }
 
-.signOutLink{
+.signOutLink {
     color: #333333;
     display: block;
     font-size: 14px;
     line-height: 32px;
     padding: 0 16px;
-    border-top: 1px solid #DCD6CC;
+    border-top: 1px solid #dcd6cc;
+}
+
+.notifications {
+    margin-right: 5px;
+    width: 30px;
+    .notificationIcon {
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/icn_nav_notifications.png?alt=media&token=719922c5-e698-413d-8918-5cb569a8f919");
+        background-repeat: no-repeat;
+        background-position: center;
+        box-sizing: border-box;
+        display: inline-block;
+        height: 50px;
+        width: 46px;
+        margin-left: 5px;
+
+        padding-top: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #382110;
+        }
+    }
+
+    .dropdownContainer {
+        display: none;
+        background-color: #ffffff;
+        position: absolute;
+        top: 50px;
+        right: 432px;
+        width: 330px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0.1rem 0.3rem, rgba(0, 0, 0, 0.05) 0px 0.1rem 0.2rem,
+            rgba(0, 0, 0, 0.05) 0px 0.5rem 1.5rem;
+        padding: 8px 0;
+        text-align: center;
+        font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+        max-height: 380px;
+        overflow-y: scroll;
+
+        .dropdownText {
+            font-size: 12px;
+            font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+            color: #333;
+        }
+    }
+
+    .dropdownContainer.show {
+        display: block;
+    }
 }

@@ -7,7 +7,6 @@ import { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
 import FollowUser from "./FollowUser";
-import Friends from "./Friends"
 
 
 
@@ -100,6 +99,15 @@ export default function UserPage() {
         }
     }
 
+    const sendFriendRequest = () => {
+        if (user.id) {
+            database.collection('friendsList').where('requestTo', '==', user.id).onSnapshot(snapshot => {
+                console.log('Snapshot: ', snapshot);
+                snapshot.forEach(doc => console.log(doc.data()));
+            })
+        }
+    }
+
     console.log(user)
 
     return (
@@ -129,7 +137,7 @@ export default function UserPage() {
                             <h1 className={styles.userProfileName}>  {user.fname}</h1>
                             <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
-                                <button className={styles.friendButton} onClick={()=>{}}>Add Friend</button>
+                                <button className={styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
                             </div>
                         </React.Fragment>
 

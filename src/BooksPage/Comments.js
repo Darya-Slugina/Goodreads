@@ -5,13 +5,14 @@ import StarRatings from 'react-star-ratings';
 import { useSelector } from "react-redux";
 import Button from "./../common/Button";
 import { database } from "../firebase";
+import moment from "moment"
 
 
 export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview, userId, getReviews, bookId }) {
 
     const [displayComment, setDisplayComment] = useState(false);
     const [text, setText] = useState(review);
-    const [form, setForm] = useState(false)
+    const [form, setForm] = useState(false);
     const user = useSelector((state) => state.user.user);
 
 
@@ -24,7 +25,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
 
 
     const displayForm = () => {
-        console.log("nnn");
         setForm(!form);
     }
 
@@ -34,29 +34,39 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         setDisplayComment(!displayComment)
     }
 
-
-    // TODO: don't work adding to db after editing
     const setReview = (ev) => {
         ev.preventDefault();
-        database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).set({
-            review: text,
-        })
-            .then(() => {
-                console.log("Document successfully written!");
+        console.log('Book id ', bookId)
+        console.log('User id ', userId)
+        database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+            .then(snapshot => {
+                let id = [];
+                snapshot.forEach(doc => {
+                    console.log(doc.data());
+                    console.log(doc.id);
+                    id = doc.id;
+                })
+                database.collection("reviewsList").doc(id).update({
+                    review: text,
+                })
+                    .then(() => {
+                        console.log("Document successfully written!");
+                        setForm(!form);
+                        database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                            .then((querySnapshot) => {
+                                let dbReviews = [];
+                                querySnapshot.forEach((doc) => {
+                                    dbReviews.push(doc.data());
+                                });
+                                getReviews(dbReviews);
+                            });
 
-                database.collection("reviewsList").where("forBookId", "==", bookId).get()
-                    .then((querySnapshot) => {
-                        let dbReviews = [];
-                        querySnapshot.forEach((doc) => {
-                            dbReviews.push(doc.data());
-                        });
-                        getReviews(dbReviews);
+                    })
+                    .catch((error) => {
+                        console.error("Error writing document: ", error);
                     });
 
             })
-            .catch((error) => {
-                console.error("Error writing document: ", error);
-            });
     }
 
     //     addLike = (e) => {
@@ -90,7 +100,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                                 name='rating'
                             />
                         </div>
-                        <span className={styles.date}>{date}</span>
+                        <span className={styles.date}>{moment(date).format("MMMM Do YYYY")}</span>
                     </div>
                     <div className={styles.commentInfo}>
                         {hiddenReview &&

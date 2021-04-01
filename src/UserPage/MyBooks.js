@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { TiThLarge } from "react-icons/ti";
 import { TiThMenu } from "react-icons/ti";
 import Book from "../GenresPage/BookImg";
+import { Link } from "react-router-dom";
 
 
 export default function MyBooks({ books }) {
@@ -30,13 +31,13 @@ export default function MyBooks({ books }) {
                             <thead>
                                 <tr className={styles.header}>
                                     <th alt="cover" className={styles.cover}>
-                                        <a href="/review/list/4685500-angela-m?order=d&amp;sort=cover&amp;utf8=%E2%9C%93&amp;view=table" className={styles.link}>cover</a>
+                                        <span className={styles.link}>cover</span>
                                     </th>
                                     <th alt="title" className={styles.title}>
-                                        <a href="/review/list/4685500-angela-m?order=d&amp;sort=title&amp;utf8=%E2%9C%93&amp;view=table" className={styles.link}>title</a>
+                                        <span className={styles.link}>title</span>
                                     </th>
                                     <th alt="author" className={styles.author}>
-                                        <a href="/review/list/4685500-angela-m?order=d&amp;sort=author&amp;utf8=%E2%9C%93&amp;view=table" className={styles.link}>author</a>
+                                        <span className={styles.link}>author</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -44,18 +45,18 @@ export default function MyBooks({ books }) {
                                 {books.map((book, index) => (
                                     <tr className={styles.body} key={index}>
                                         <td className={styles.coverInfo}>
-                                            <a href="book/{genre}/id">
+                                            <Link to={"/books/"+book.genre +"/" + book.id}>
                                                 <img className={styles.bookImg} alt={book.title} src={book.img} />
-                                            </a>
+                                            </Link>
                                         </td>
                                         <td className={styles.titleInfo}>
-                                            <a title={book.title} href="/book/show/8881004-the-coming-and-going-of-strangers" className={styles.link}>
+                                            <Link to={"/books/"+book.genre +"/" + book.id} title={book.title} className={styles.link}>
                                                 {book.title}
-                                            </a>
+                                            </Link>
                                         </td>
                                         <td className={styles.authorInfo}>
                                             <div className="value">
-                                                <a href="/author/show/295297.Simon_Van_Booy" className={styles.link}>{book.author}</a>
+                                                <Link to={"/books/"+book.genre +"/" + book.id} className={styles.link}>{book.author}</Link>
                                             </div>
                                         </td>
                                     </tr>

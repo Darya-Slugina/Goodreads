@@ -4,7 +4,9 @@ import styles from './UserPage.module.scss';
 import { Nav } from "react-bootstrap";
 import MyBooks from "./MyBooks";
 import { database } from "../firebase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
+
 
 
 export default function UserPage() {
@@ -12,12 +14,13 @@ export default function UserPage() {
     const [selectedTab, setSelectedTab] = useState("Currently Reading");
     const [user, setUser] = useState({});
     const [reviews, setReviews] = useState([]);
-    const userProfile = true;
+    const [buttonState, setButtonState] = useState("Follow");
+
+    const dispatch = useDispatch();
 
     const { userId } = useParams();
     const books = useSelector((state) => state.books.books);
-
-    console.log( userId);
+    const loggedInUser = useSelector((state) => state.user.user);
 
     useEffect(() => {
         database.collection("users").where("id", "==", userId).get()
@@ -40,6 +43,18 @@ export default function UserPage() {
             });
     }, [userId]);
 
+    const isCurrentUser = useMemo(() => {
+        if (loggedInUser && userId === loggedInUser.id) {
+            return true;
+        }
+        return false;
+    }, [userId, loggedInUser])
+
+    useEffect(() => {
+        if (loggedInUser && loggedInUser.favouritesUser && loggedInUser.favouritesUser.includes(userId)) {
+            setButtonState("Unfollow");
+        }
+    }, [loggedInUser, userId])
 
     const currentlyReading = useMemo(() => {
         if (user && user.currentlyReading) {
@@ -62,19 +77,35 @@ export default function UserPage() {
         return []
     }, [books, user])
 
+    const rateCount = reviews.filter(el => el.rate).length;
 
     const onTabChange = (eventKey) => {
         setSelectedTab(eventKey);
     };
 
-    if (user) {
-        return (
-            <div className={styles.mainContent}>
+    console.log(buttonState);
+
+    const addToFolowers = () => {
+        if (user) {
+            if (buttonState === "Follow") {
+                setButtonState("Unfollow")
+                dispatch(addToFavourite(userId, loggedInUser.id))
+
+            } else if (buttonState === "Unfollow") {
+                setButtonState("Follow");
+                dispatch(removeFromFavourite(userId, loggedInUser.id))
+            }
+        }
+    }
+
+    return (
+        <div className={styles.mainContent}>
+            <div className={styles.leftContainer}>
                 <div className={styles.leftProfilePicture}>
                     <img alt={user.fname} className={styles.profilePictureIcon} src={user.userImg}></img>
                     <div className={styles.profilePageStatsInfo}>
-                        {user.rated ?
-                            <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}>{user.rated.length} ratings</a>
+                        {reviews ?
+                            <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}>{rateCount} ratings</a>
                             :
                             <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 ratings</a>
                         }
@@ -86,16 +117,17 @@ export default function UserPage() {
                     </div>
                 </div>
                 <div className={styles.userInfoBox}>
-                    {userProfile ? (<h1 className={styles.userProfileName}>  {user.fname}
+                    {isCurrentUser ? (<h1 className={styles.userProfileName}>  {user.fname}
                         <Link to="/user/edit" className={styles.smallText} user={user}>(edit profile)</Link>
                     </h1>
                     ) :
-                        (<React.Fragmet>
-                            <h1 className={styles.userProfileName}> {user.fname} </h1>
+                        <React.Fragment>
+                            <h1 className={styles.userProfileName}>  {user.fname}</h1>
                             <div className={styles.friendFollowModule}>
-                                <button className={styles.friendFollowButton}>Follow</button>
+                                <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
                             </div>
-                        </React.Fragmet>)
+                        </React.Fragment>
+
                     }
                     {(user.interests || user.city) ?
                         (
@@ -144,7 +176,26 @@ export default function UserPage() {
                     {selectedTab === "Rated" && <MyBooks books={readBooks} />}
                 </div>
             </div>
-        )
-    }
-    return null;
+            <div className={styles.rightContainer}>
+                <div >
+                    <div className={styles.h2Container}>
+                        <h2 className={styles.h2Title}>
+                            People {user.fname} is Following
+                        </h2>
+                    </div>
+                    <div className={styles.followingContainer}>
+                        <div>
+                            {user.favouritesUser.map((user) => (
+                                <Link to={"user/" + user} class="leftAlignedImage">
+                                    <img alt="jv poore" src="https://images.gr-assets.com/users/1570108420p1/5157918.jpg" />
+                                </Link>
+                            )
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
 }

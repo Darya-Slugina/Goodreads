@@ -1,6 +1,6 @@
 import styles from "./Form.module.css";
 import Button from "./../common/Button";
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { database } from "../firebase";
 import { useSelector } from "react-redux";
 import moment from 'moment';
@@ -36,8 +36,6 @@ export default function Form({ bookId, getReviews, rating }) {
                         });
                         getReviews(dbReviews);
                     });
-
-
 
             })
             .catch((error) => {

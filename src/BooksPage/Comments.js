@@ -28,14 +28,17 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         setForm(!form);
     }
 
+    console.log(form);
 
     const displayOnScreen = () => {
         setDisplayComment(!displayComment)
     }
 
+
+    // TODO: don't work adding to db after editing
     const setReview = (ev) => {
         ev.preventDefault();
-        database.collection("reviewsList").doc().update({
+        database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).set({
             review: text,
         })
             .then(() => {
@@ -49,8 +52,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                         });
                         getReviews(dbReviews);
                     });
-
-
 
             })
             .catch((error) => {
@@ -94,13 +95,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                     <div className={styles.commentInfo}>
                         {hiddenReview &&
                             <React.Fragment>
-                                {form ? (
-                                    <div id="form">
-                                        <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} > {text}
-                                        </textarea>
-                                        <Button value={"Publish your review"} onClick={setReview} />
-                                    </div>
-                                ) : <span className={styles.description} id="review">{review}</span>}
+                                <span className={styles.description} id="review">{review}</span>
                                 {displayComment ?
                                     <React.Fragment>
                                         <span className={styles.description}>{hiddenReview}</span>
@@ -109,7 +104,13 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                                     : <span className={styles.more} onClick={displayOnScreen}>...more</span>}
                             </React.Fragment>
                         }
-                        <span className={styles.description}>{review}</span>
+                        {form ? (
+                            <div id="form">
+                                <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} > {text}
+                                </textarea>
+                                <Button value={"Publish your review"} onClick={setReview} />
+                            </div>
+                        ) : <span className={styles.description}>{review}</span>}
                     </div>
                     <div className={styles.footerInfo}>
                         <span className={styles.likeItContainer}>

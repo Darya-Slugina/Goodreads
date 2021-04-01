@@ -3,7 +3,6 @@ import styles from "./UserEditPage.module.scss";
 import { Link } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { database, storage } from "../firebase";
-// import firebase from "../firebase";
 import { useDropzone } from "react-dropzone";
 
 const getCountries = () => {
@@ -21,10 +20,12 @@ const initialUser = {
   country: "",
   interests: "",
   favouriteBooks: "",
-  userImg: "",
+  userImg: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/default-profile-big.png?alt=media&token=e1cc93c3-ccd2-4269-8fd3-156fb157dd5a",
   read: [],
   wantToRead: [],
   currentlyReading: [],
+  favouritesUser: [],
+  favouriteGenres: [],
 };
 
 export default function UserEditPage({ user }) {

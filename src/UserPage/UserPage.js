@@ -6,6 +6,8 @@ import MyBooks from "./MyBooks";
 import { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
+import FollowUser from "./FollowUser";
+import Friends from "./Friends"
 
 
 
@@ -98,6 +100,8 @@ export default function UserPage() {
         }
     }
 
+    console.log(user)
+
     return (
         <div className={styles.mainContent}>
             <div className={styles.leftContainer}>
@@ -125,6 +129,7 @@ export default function UserPage() {
                             <h1 className={styles.userProfileName}>  {user.fname}</h1>
                             <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
+                                <button className={styles.friendButton} onClick={()=>{}}>Add Friend</button>
                             </div>
                         </React.Fragment>
 
@@ -185,12 +190,18 @@ export default function UserPage() {
                     </div>
                     <div className={styles.followingContainer}>
                         <div>
-                            {user.favouritesUser.map((user) => (
-                                <Link to={"user/" + user} class="leftAlignedImage">
-                                    <img alt="jv poore" src="https://images.gr-assets.com/users/1570108420p1/5157918.jpg" />
-                                </Link>
+                            {user && user.favouritesUser && user.favouritesUser.map((user) => (
+                                <FollowUser userId={user} key={user} />
                             )
                             )}
+                        </div>
+                    </div>
+                    <div className={styles.friendsContainer}>
+                        <div>
+                            {/* {user && user.friends && user.friends.map((user) => (
+                                <Friends userId={user} key={user} />
+                            )
+                            )} */}
                         </div>
                     </div>
                 </div>

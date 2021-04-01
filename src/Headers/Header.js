@@ -5,9 +5,11 @@ import firebase from "../firebase";
 import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
 import SearchBar from '../SearchBar'
+import { useSelector } from "react-redux";
 
 export default function Header() {
     const loggedInUser = firebase.auth().currentUser;
+    const genresList = useSelector((state) => state.genres.genres);
 
     return (
         <header className={styles.headerLogged}>
@@ -22,9 +24,9 @@ export default function Header() {
                             <Dropdown.Toggle id="dropdown-basic" className={styles.navLoggedBtn}> Browse
                                     </Dropdown.Toggle>
                             <Dropdown.Menu className={styles.navLoggedBtnDropdown}>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                {genresList.map(genre => (
+                                    <Dropdown.Item key={genre.id}>{genre.genre}</Dropdown.Item>
+                                ))}
                             </Dropdown.Menu>
                         </Dropdown>
                     </ul>

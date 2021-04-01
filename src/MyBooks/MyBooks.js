@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from './MyBooks.module.scss'
 import Button from 'react-bootstrap/Button'
@@ -7,11 +7,31 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import BooksTableView from './BooksTableView'
 import BooksCoverView from './BooksCoverView'
 import { Link } from "react-router-dom";
+import firebase from "../firebase";
+import { fetchUser } from "../RegistrationAndLoginPage/User.actions";
+import { useDispatch } from "react-redux";
 
 export default function MyBooks() {
 
     const [isTableView, setTableView] = useState(true);
     const books = useSelector((state) => state.books.books);
+  
+
+    // const loggedInUser = firebase.auth().currentUser;
+    // const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     if (loggedInUser) {
+    //       dispatch(fetchUser(loggedInUser.uid));
+    //     }
+    
+    //   }, [loggedInUser, dispatch]);
+
+    //   console.log('From MyBooks: ', loggedInUser.uid)
+
+
+    //   const user = useSelector((state) => state.user);
+    //   console.log('From MyBooks: ', user)
 
     const sortBooks = (ev) => {
         let value = ev.target.value;

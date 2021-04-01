@@ -17,7 +17,6 @@ import Books from "./BooksPage/Books";
 import UserPage from "./UserPage/UserPage";
 import UserEditPage from "./UserPage/UserEditPage"
 import Header from "./Headers/Header";
-import GuestUserHeader from "./Headers/GuestUserHeader";
 import Footer from "./Footer/Footer";
 import React, { useEffect, useState } from "react";
 import Error from "./ErrorPage/Error";
@@ -43,10 +42,11 @@ function App() {
   useEffect(() => {
     dispatch(fetchBooks());
     dispatch(fetchGenres());
-    if(loggedInUser) {    console.log('loggedInUser', loggedInUser);
+    if (loggedInUser) {
+      console.log('loggedInUser', loggedInUser);
       dispatch(fetchUser(loggedInUser.uid));
     }
-    
+
   }, [loggedInUser, dispatch]);
 
 
@@ -66,14 +66,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App"> 
+      <div className="App">
         {/* <Header user={user}/> */}
 
-        {loggedInUser ? <Header />: <GuestUserHeader />}
+        {/* {loggedInUser ? <Header />: <GuestUserHeader />} */}
 
         <Switch>
           <Route exact path="/">
-            {loggedInUser ? <HomePageLoggedIn /> : <HomePage books={books} genresList={genresList}/>}
+            {loggedInUser ? <HomePageLoggedIn /> : <HomePage books={books} genresList={genresList} />}
             {/* {user ? <HomePageLoggedIn /> : <HomePage books={books} genresList={genresList}/>} */}
           </Route>
 
@@ -86,46 +86,57 @@ function App() {
           </Route>
 
           <Route path="/genres/:currentGenre">
-            <Genres books={books} genresList={genresList} isLoggedIn={loggedInUser}/>
+            <Header />
+            <Genres books={books} genresList={genresList} isLoggedIn={loggedInUser} />
           </Route>
 
           <Route path="/genres">
+            <Header />
             <AllGenres books={books} genresList={genresList} />
           </Route>
 
           <Route path="/books/:currentGenre/:bookId">
+            <Header />
             <Books books={books} />
           </Route>
 
           <Route exact path="/user/edit">
-            {loggedInUser && <UserEditPage user={loggedInUser}/>}
+            <Header />
+            {loggedInUser && <UserEditPage user={loggedInUser} /> && <Header />}
           </Route>
 
           <Route exact path="/user/:userId" >
-            <UserPage isLoggedIn={loggedInUser}/>
+            <Header />
+            <UserPage isLoggedIn={loggedInUser} />
           </Route>
 
           <Route path="/terms">
+            <Header />
             <Terms />
           </Route>
 
           <Route path="/privacy">
+            <Header />
             <Privacy />
           </Route>
 
           <Route path="/aboutUs">
+            <Header />
             <AboutUs />
           </Route>
 
           <Route path="/adprefs">
+            <Header />
             <AdPrefs />
           </Route>
 
           <Route path="/cookies">
+            <Header />
             <Cookies />
           </Route>
 
           <Route path="*">
+            <Header />
             <Error />
           </Route>
         </Switch>

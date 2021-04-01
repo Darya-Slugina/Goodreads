@@ -1,13 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from './MyBooks.module.scss'
 import Button from 'react-bootstrap/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
+import BooksTableView from './BooksTableView'
+import BooksCoverView from './BooksCoverView'
+import { Link } from "react-router-dom";
+import firebase from "../firebase";
+import { fetchUser } from "../RegistrationAndLoginPage/User.actions";
+import { useDispatch } from "react-redux";
 
 export default function MyBooks() {
 
-    // get books for user
+    const [isTableView, setTableView] = useState(true);
+    const books = useSelector((state) => state.books.books);
+  
 
+    // const loggedInUser = firebase.auth().currentUser;
+    // const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     if (loggedInUser) {
+    //       dispatch(fetchUser(loggedInUser.uid));
+    //     }
+    
+    //   }, [loggedInUser, dispatch]);
+
+    //   console.log('From MyBooks: ', loggedInUser.uid)
+
+
+    //   const user = useSelector((state) => state.user);
+    //   console.log('From MyBooks: ', user)
+
+    const sortBooks = (ev) => {
+        let value = ev.target.value;
+
+        switch (value) {
+            case 'Title':
+                books.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+            case 'Author':
+                books.sort((a, b) => a.author.localeCompare(b.author));
+                break;
+            case 'Random':
+                books.sort(() => Math.random() - 0.5);
+                break;
+            default:
+                books.sort((a, b) => a.author.localeCompare(b.author));
+                break;
+        }
+    }
+
+    // get books for user
     return (
         <React.Fragment>
             <div className={styles.mainContainer}>
@@ -31,6 +76,7 @@ export default function MyBooks() {
                                                 ref={ref}
                                                 {...triggerHandler}
                                                 className={styles.listViewIcon}
+                                                onClick={() => setTableView(true)}
                                             >
                                             </Button>
                                         )}
@@ -45,6 +91,7 @@ export default function MyBooks() {
                                                 ref={ref}
                                                 {...triggerHandler}
                                                 className={styles.gridViewIcon}
+                                                onClick={() => setTableView(false)}
                                             >
                                             </Button>
                                         )}
@@ -52,30 +99,44 @@ export default function MyBooks() {
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.mainContainer}>Books container</div>
-                        <div className={styles.filters}>
-                            <div className={styles.pagination}>
-                                <label for="per_page">per page</label>
-                                <select name="per_page">
-                                    <option>10</option>
-                                    <option selected>20</option>
-                                    <option>30</option>
-                                </select>
+                        <div className={styles.contentWrapper}>
+                            <div className={styles.sidebar}>
+                                <div className={styles.shelvesSection}>
+                                    <p className={styles.heading}>Bookshelves</p>
+                                    <Link to='' className={styles.subheading}>All ({books.length})</Link>
+                                    <Link to='' className={styles.subheading}>Read</Link>
+                                    <Link to='' className={styles.subheading}>Currently Reading</Link>
+                                    <Link to='' className={styles.subheading}>Want to Read</Link>
+                                </div>
                             </div>
                             <div>
-                                <label for="sort">sort</label>
-                                <select name="sort">
-                                    <option>Author</option>
-                                    <option>Random</option>
-                                    <option>Rating</option>
-                                    <option>Title</option>
-                                </select>
-                            </div>
-                            <div>
-                                <input type="radio" name="order" id='order_a'></input>
-                                <label for="order_a">asc.</label>
-                                <input type="radio" name="order" id='order_d'></input>
-                                <label for="order_d" selected>desc.</label>
+                                <div className={styles.booksViewWrapper}>
+                                    {isTableView ? <BooksTableView books={books} /> : <BooksCoverView books={books} />}
+                                </div>
+                                <div className={styles.filters}>
+                                    <div className={styles.pagination}>
+                                        <label for="per_page">per page</label>
+                                        <select name="per_page" >
+                                            <option>10</option>
+                                            <option defaultValue>20</option>
+                                            <option>30</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="sort">sort</label>
+                                        <select name="sort" onChange={(ev) => sortBooks(ev)}>
+                                            <option>Author</option>
+                                            <option>Random</option>
+                                            <option>Title</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="order" id='order_a'></input>
+                                        <label for="order_a">asc.</label>
+                                        <input type="radio" name="order" id='order_d'></input>
+                                        <label for="order_d" defaultValue>desc.</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

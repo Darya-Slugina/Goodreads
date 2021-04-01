@@ -49,20 +49,24 @@
     background-color: transparent;
 }
 
+.dropdownWrapper{
+    
+}
 
 .navLoggedBtnDropdown{
     left: auto;
     right: auto;
     margin-left: 0;
     margin-right: 0;
-    width: 320px;
+    max-height: 400px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     background-color: #FFFFFF;
-    position: absolute;
     z-index: 70;
     // box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
     padding: 8px;
+    
 
     *{
         margin: 2px;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import styles from './MyBooks.module.scss'
 import Button from 'react-bootstrap/Button'
@@ -7,31 +7,35 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import BooksTableView from './BooksTableView'
 import BooksCoverView from './BooksCoverView'
 import { Link } from "react-router-dom";
-import firebase from "../firebase";
-import { fetchUser } from "../RegistrationAndLoginPage/User.actions";
-import { useDispatch } from "react-redux";
 
 export default function MyBooks() {
 
     const [isTableView, setTableView] = useState(true);
     const books = useSelector((state) => state.books.books);
-  
+    const user = useSelector((state) => state.user.user)
 
-    // const loggedInUser = firebase.auth().currentUser;
-    // const dispatch = useDispatch();
+    const currentlyReading = useMemo(() => {
+        if (user && user.currentlyReading) {
+            return books.filter(book => user.currentlyReading.includes(book.id));
+        }
+        return []
+    }, [books, user])
 
-    // useEffect(() => {
-    //     if (loggedInUser) {
-    //       dispatch(fetchUser(loggedInUser.uid));
-    //     }
-    
-    //   }, [loggedInUser, dispatch]);
+    const readBooks = useMemo(() => {
+        if (user && user.read) {
+            return books.filter(book => user.read.includes(book.id));
+        }
+        return []
+    }, [books, user])
 
-    //   console.log('From MyBooks: ', loggedInUser.uid)
+    const wantToRead = useMemo(() => {
+        if (user && user.wantToRead) {
+            return books.filter(book => user.wantToRead.includes(book.id));
+        }
+        return []
+    }, [books, user])
 
-
-    //   const user = useSelector((state) => state.user);
-    //   console.log('From MyBooks: ', user)
+    let userAllBooks = [...currentlyReading, ...wantToRead, ...readBooks]
 
     const sortBooks = (ev) => {
         let value = ev.target.value;
@@ -52,7 +56,6 @@ export default function MyBooks() {
         }
     }
 
-    // get books for user
     return (
         <React.Fragment>
             <div className={styles.mainContainer}>
@@ -103,15 +106,15 @@ export default function MyBooks() {
                             <div className={styles.sidebar}>
                                 <div className={styles.shelvesSection}>
                                     <p className={styles.heading}>Bookshelves</p>
-                                    <Link to='' className={styles.subheading}>All ({books.length})</Link>
-                                    <Link to='' className={styles.subheading}>Read</Link>
-                                    <Link to='' className={styles.subheading}>Currently Reading</Link>
-                                    <Link to='' className={styles.subheading}>Want to Read</Link>
+                                    <Link to='' className={styles.subheading}>All ({userAllBooks.length})</Link>
+                                    <Link to='' className={styles.subheading}>Read ({readBooks.length})</Link>
+                                    <Link to='' className={styles.subheading}>Currently Reading ({currentlyReading.length})</Link>
+                                    <Link to='' className={styles.subheading}>Want to Read ({wantToRead.length})</Link>
                                 </div>
                             </div>
                             <div>
                                 <div className={styles.booksViewWrapper}>
-                                    {isTableView ? <BooksTableView books={books} /> : <BooksCoverView books={books} />}
+                                    {isTableView ? <BooksTableView books={userAllBooks} /> : <BooksCoverView books={userAllBooks} />}
                                 </div>
                                 <div className={styles.filters}>
                                     <div className={styles.pagination}>

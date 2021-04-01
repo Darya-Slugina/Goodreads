@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 export default function BooksTable({ books }) {
 
+    console.log(books)
     
 
     const onMouseEnterHandler = (e) => {

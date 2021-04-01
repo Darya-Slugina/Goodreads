@@ -6,6 +6,7 @@ import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
 import SearchBar from '../SearchBar'
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Header() {
     const loggedInUser = firebase.auth().currentUser;
@@ -23,10 +24,13 @@ export default function Header() {
                         <Dropdown>
                             <Dropdown.Toggle id="dropdown-basic" className={styles.navLoggedBtn}> Browse
                                     </Dropdown.Toggle>
-                            <Dropdown.Menu className={styles.navLoggedBtnDropdown}>
-                                {genresList.map(genre => (
-                                    <Dropdown.Item key={genre.id}>{genre.genre}</Dropdown.Item>
-                                ))}
+                            <Dropdown.Menu className={styles.dropdownWrapper}>
+                                <div className={styles.navLoggedBtnDropdown}>
+                                    {genresList.sort((a, b) => a.genre.localeCompare(b.genre)).map(el => (
+                                        <Dropdown.Item key={el.id} ><Link to={"/genres/" + el.genre.toLowerCase()} className={styles.genreLink} >{el.genre}</Link></Dropdown.Item>
+                                    ))
+                                    }
+                                </div>
                             </Dropdown.Menu>
                         </Dropdown>
                     </ul>

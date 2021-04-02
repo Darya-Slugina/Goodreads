@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import StarRatings from 'react-star-ratings';
 
 
-export default function Books({ books }) {
+export default function Books() {
 
   const { currentGenre, bookId } = useParams();
 
@@ -18,6 +18,7 @@ export default function Books({ books }) {
   const [bookState, setBookState] = useState('Want To Read');
  
   const user = useSelector((state) => state.user.user);
+  const books = useSelector((state) => state.books.books);
 
   const currentId = Number(bookId);
   const currentBook = books.filter(book => book.id === currentId);

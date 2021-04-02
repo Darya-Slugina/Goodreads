@@ -125,6 +125,7 @@ export const fetchUser = (id) => {
 export const addToFavourite = (userId, loggedUserId) => {
   return function (dispatch, getState) {
     const favUser = getState().user.user.favouritesUser;
+    console.log("favUser");
 
     if (favUser.length > 0 && !favUser.includes(userId)) {
       database.collection("users").doc(loggedUserId).update({

@@ -79,6 +79,22 @@ export default function UserPage() {
         return []
     }, [books, user])
 
+    const ratedBooks = useMemo(() => {
+        if (user) {
+            let booksId = reviews.filter(el => el.rate).map(el => el.forBookId);
+            let rated = [];
+            books.forEach(book => {
+                if (booksId.includes(book.id)){
+                    rated.push(book);
+                }
+            });
+
+            return rated
+        }
+        return []
+    }, [reviews, user, books])
+
+
     const rateCount = reviews.filter(el => el.rate).length;
 
     const onTabChange = (eventKey) => {
@@ -88,7 +104,7 @@ export default function UserPage() {
     console.log(buttonState);
 
     const addToFolowers = () => {
-        if (user) {
+        if (loggedInUser) {
             if (buttonState === "Follow") {
                 setButtonState("Unfollow")
                 dispatch(addToFavourite(userId, loggedInUser.id))
@@ -101,14 +117,17 @@ export default function UserPage() {
     }
 
     const sendFriendRequest = () => {
-        database.collection("friendsList").doc().set({
+        database.collection("friendsRequests").doc().set({
             requestFrom: loggedInUser.id,
             requestTo: userId,
-            status: "send",
+            status: "sent",
             id: Date.now(),
         })
         setFriendRequest(!friendRequest)
     }
+
+    console.log(ratedBooks);
+    console.log(readBooks);
 
     return (
         <div className={styles.mainContent}>
@@ -138,7 +157,7 @@ export default function UserPage() {
                             <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
                                 <button className={styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
-                                <span className={friendRequest? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span> 
+                                <span className={friendRequest ? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span>
                             </div>
                         </React.Fragment>
 
@@ -187,11 +206,11 @@ export default function UserPage() {
                     {selectedTab === "Currently Reading" && <MyBooks books={currentlyReading} />}
                     {selectedTab === "Want to Read" && <MyBooks books={wantToRead} />}
                     {selectedTab === "Read" && <MyBooks books={readBooks} />}
-                    {selectedTab === "Rated" && <MyBooks books={readBooks} />}
+                    {selectedTab === "Rated" && <MyBooks books={ratedBooks} />}
                 </div>
             </div>
             <div className={styles.rightContainer}>
-                <div >
+                <div>
                     <div className={styles.h2Container}>
                         <h2 className={styles.h2Title}>
                             People {user.fname} is Following
@@ -205,14 +224,33 @@ export default function UserPage() {
                             )}
                         </div>
                     </div>
+                    <div className={styles.h2Container}>
+                        <h2 className={styles.h2Title}>
+                            {user.fname}'s Friends
+                        </h2>
+                    </div>
                     <div className={styles.friendsContainer}>
                         <div>
-                            {/* {user && user.friends && user.friends.map((user) => (
-                                <Friends userId={user} key={user} />
+                            {user && user.myFriends && user.myFriends.map((user) => (
+                                <FollowUser userId={user} key={user} />
                             )
-                            )} */}
+                            )}
                         </div>
                     </div>
+                    <div className={styles.h2Container}>
+                        <h2 className={styles.h2Title}>
+                            Favourite genres
+                        </h2>
+                    </div>
+                    <div className={styles.genresContainer}>
+                        <div>
+                            {user && user.favouriteGenres && user.favouriteGenres.map((genre) => (
+                                <Link to={"/genres/"+genre} key={genre} className={styles.genre}>{genre}</Link>
+                            )
+                            )}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

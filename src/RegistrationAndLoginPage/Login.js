@@ -24,8 +24,7 @@ export default function Login() {
   }
 
   // useEffect(() => {
-  //   console.log('tuk', user);
-  //   if(user !== null){
+  //   if(user.id){
   //     history.push("/");
   //   }
   // }, [history, user])

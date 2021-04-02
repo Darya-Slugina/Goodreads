@@ -1,20 +1,23 @@
-import React, { useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styles from './Comments.module.scss';
 import { Link } from "react-router-dom";
 import StarRatings from 'react-star-ratings';
 import { useSelector } from "react-redux";
 import Button from "./../common/Button";
-import { database } from "../firebase";
+import firebase, { database } from "../firebase";
+import moment from "moment"
 
 
 export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview, userId, getReviews, bookId }) {
 
     const [displayComment, setDisplayComment] = useState(false);
     const [text, setText] = useState(review);
-    const [form, setForm] = useState(false)
+    const [form, setForm] = useState(false);
+    const [buttonState, setButtonState] = useState("Like");
+
     const user = useSelector((state) => state.user.user);
 
-
+    console.log(buttonState);
     const currentUser = useMemo(() => {
         if (user && userId === user.id) {
             return true;
@@ -22,9 +25,13 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         return false;
     }, [userId, user])
 
+    useEffect(() => {
+        if (user && user.likes && user.likes.includes(userId)) {
+            setButtonState("Dislike");
+        }
+    }, [user, userId, setButtonState])
 
     const displayForm = () => {
-        console.log("nnn");
         setForm(!form);
     }
 
@@ -34,40 +41,103 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         setDisplayComment(!displayComment)
     }
 
-
-    // TODO: don't work adding to db after editing
     const setReview = (ev) => {
         ev.preventDefault();
-        database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).set({
-            review: text,
-        })
-            .then(() => {
-                console.log("Document successfully written!");
 
-                database.collection("reviewsList").where("forBookId", "==", bookId).get()
-                    .then((querySnapshot) => {
-                        let dbReviews = [];
-                        querySnapshot.forEach((doc) => {
-                            dbReviews.push(doc.data());
-                        });
-                        getReviews(dbReviews);
+        database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+            .then(snapshot => {
+                let id = [];
+                snapshot.forEach(doc => {
+                    console.log(doc.data());
+                    console.log(doc.id);
+                    id = doc.id;
+                })
+                database.collection("reviewsList").doc(id).update({
+                    review: text,
+                })
+                    .then(() => {
+                        console.log("Document successfully written!");
+                        setForm(!form);
+                        database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                            .then((querySnapshot) => {
+                                let dbReviews = [];
+                                querySnapshot.forEach((doc) => {
+                                    dbReviews.push(doc.data());
+                                });
+                                getReviews(dbReviews);
+                            });
+
+                    })
+                    .catch((error) => {
+                        console.error("Error writing document: ", error);
                     });
 
             })
-            .catch((error) => {
-                console.error("Error writing document: ", error);
-            });
     }
 
-    //     addLike = (e) => {
-    //         console.log(e);
-    //         let currentComment = this.state.comment.filter(el => el.id === e.target.id)
-    //         currentComment.likes += 1;
+    const addLike = () => {
+        if (buttonState === "Like") {
+            console.log(buttonState);
+            database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+                .then(snapshot => {
+                    let id = [];
+                    snapshot.forEach(doc => {
+                        id = doc.id;
+                    })
 
-    //         this.setState({
-    //             comment: [...this.state.comment, currentComment.likes ]
-    //         })
-    //     }
+                    database.collection("reviewsList").doc(id).update({
+                        likes: firebase.firestore.FieldValue.arrayUnion(userId),
+                    })
+                        .then(() => {
+                            console.log("Document successfully written!");
+                            setButtonState("Dislike");
+
+                            database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                                .then((querySnapshot) => {
+                                    let dbReviews = [];
+                                    querySnapshot.forEach((doc) => {
+                                        dbReviews.push(doc.data());
+                                    });
+                                    getReviews(dbReviews);
+                                });
+
+                        })
+                        .catch((error) => {
+                            console.error("Error writing document: ", error);
+                        });
+                })
+        } else if (buttonState === "Dislike") {
+            database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+                .then(snapshot => {
+                    let id = [];
+                    snapshot.forEach(doc => {
+                        id = doc.id;
+                    })
+
+                    database.collection("reviewsList").doc(id).update({
+                        likes: firebase.firestore.FieldValue.arrayRemove(userId),
+                    })
+                        .then(() => {
+                            setButtonState("Like")
+                            console.log("Document successfully written!");
+
+                            database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                                .then((querySnapshot) => {
+                                    let dbReviews = [];
+                                    querySnapshot.forEach((doc) => {
+                                        dbReviews.push(doc.data());
+                                    });
+                                    getReviews(dbReviews);
+                                });
+
+                        })
+                        .catch((error) => {
+                            console.error("Error writing document: ", error);
+                        });
+                });
+           
+        }
+    }
 
 
     return (
@@ -90,7 +160,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                                 name='rating'
                             />
                         </div>
-                        <span className={styles.date}>{date}</span>
+                        <span className={styles.date}>{moment(date).format("MMMM Do YYYY")}</span>
                     </div>
                     <div className={styles.commentInfo}>
                         {hiddenReview &&
@@ -114,9 +184,9 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                     </div>
                     <div className={styles.footerInfo}>
                         <span className={styles.likeItContainer}>
-                            <span className={styles.likesCount}>{likes}&nbsp; likes</span>
+                            <span className={styles.likesCount}>{likes.length}&nbsp; likes</span>
                                     &nbsp;·&nbsp;
-                                    <span className={styles.likeBtn} onClick={() => { }} id={commentId}>Like </span>
+                                    <span className={styles.likeBtn} onClick={addLike} id={commentId}>{buttonState}</span>
                             {currentUser && <span className={styles.EditBtn} onClick={displayForm} id={commentId}> Edit </span>}
                         </span>
                     </div>

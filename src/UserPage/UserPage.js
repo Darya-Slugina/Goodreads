@@ -7,7 +7,6 @@ import { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
 import FollowUser from "./FollowUser";
-import Friends from "./Friends"
 
 
 
@@ -17,6 +16,7 @@ export default function UserPage() {
     const [user, setUser] = useState({});
     const [reviews, setReviews] = useState([]);
     const [buttonState, setButtonState] = useState("Follow");
+    const [friendRequest, setFriendRequest] = useState(false)
 
     const dispatch = useDispatch();
 
@@ -100,7 +100,15 @@ export default function UserPage() {
         }
     }
 
-    console.log(user)
+    const sendFriendRequest = () => {
+        database.collection("friendsList").doc().set({
+            requestFrom: loggedInUser.id,
+            requestTo: userId,
+            status: "send",
+            id: Date.now(),
+        })
+        setFriendRequest(!friendRequest)
+    }
 
     return (
         <div className={styles.mainContent}>
@@ -129,7 +137,8 @@ export default function UserPage() {
                             <h1 className={styles.userProfileName}>  {user.fname}</h1>
                             <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
-                                <button className={styles.friendButton} onClick={()=>{}}>Add Friend</button>
+                                <button className={styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
+                                <span className={friendRequest? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span> 
                             </div>
                         </React.Fragment>
 

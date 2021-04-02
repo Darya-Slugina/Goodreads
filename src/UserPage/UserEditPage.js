@@ -258,9 +258,9 @@ export default function UserEditPage({ user }) {
                 )}
               </div>
               <p className={styles.formInput}>
-                <a className={styles.actionLinkNotice} href="/user/destroy">
+                <Link to="/user/destroy" className={styles.actionLinkNotice} >
                   Delete my account
-                </a>
+                </Link>
               </p>
             </div>
           </div>

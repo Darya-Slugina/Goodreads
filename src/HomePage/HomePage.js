@@ -3,7 +3,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 import HomePageHeader from "../Headers/HomePageHeader"
 
-export default function HomePage({ books, genresList }) {
+export default function HomePage({ genresList }) {
     return (
         <React.Fragment>
             <HomePageHeader />

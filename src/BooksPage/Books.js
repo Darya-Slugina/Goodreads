@@ -16,6 +16,7 @@ export default function Books({ books }) {
 
   const [reviews, setReviews] = useState([]);
   const [bookState, setBookState] = useState('Want To Read');
+ 
   const user = useSelector((state) => state.user.user);
 
   const currentId = Number(bookId);
@@ -64,7 +65,7 @@ export default function Books({ books }) {
     }
   },[user, currentId]);
 
-  
+
 
   function removeFromReadList() {
 
@@ -136,15 +137,15 @@ export default function Books({ books }) {
   }
 
   const newest = () => {
-    reviews.sort((a, b) => a.date - b.date);
-    // console.log(reviews)
-    setReviews(reviews);
+    let sortedArray = reviews.sort((a, b) => a.date - b.date);
+    console.log(sortedArray);
+    setReviews(sortedArray);
   }
 
   const oldest = () => {
-    reviews.sort((a, b) => b.date - a.date);
-    // console.log(reviews)
-    setReviews(reviews);
+    let sortedArray = reviews.sort((a, b) => a.date - b.date);
+    console.log(sortedArray);
+    setReviews(sortedArray);
   }
 
 
@@ -233,7 +234,7 @@ export default function Books({ books }) {
           </div>
           <div className={styles.h2Container}>
             {reviews.map(review => (
-              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId} />
+              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId}/>
             ))}
 
           </div>

@@ -18,7 +18,7 @@ export default function Form({ bookId, getReviews, rating }) {
             review: text,
             date: Date.now(),
             forBookId: bookId,
-            likes: [],
+            likes: 0,
             rate: rating,
             userId: user.id,
             userImg: user.userImg,

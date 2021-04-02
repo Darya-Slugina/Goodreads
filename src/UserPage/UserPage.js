@@ -16,6 +16,7 @@ export default function UserPage() {
     const [user, setUser] = useState({});
     const [reviews, setReviews] = useState([]);
     const [buttonState, setButtonState] = useState("Follow");
+    const [friendRequest, setFriendRequest] = useState(false)
 
     const dispatch = useDispatch();
 
@@ -100,15 +101,14 @@ export default function UserPage() {
     }
 
     const sendFriendRequest = () => {
-        if (user.id) {
-            database.collection('friendsList').where('requestTo', '==', user.id).onSnapshot(snapshot => {
-                console.log('Snapshot: ', snapshot);
-                snapshot.forEach(doc => console.log(doc.data()));
-            })
-        }
+        database.collection("friendsList").doc().set({
+            requestFrom: loggedInUser.id,
+            requestTo: userId,
+            status: "send",
+            id: Date.now(),
+        })
+        setFriendRequest(!friendRequest)
     }
-
-    console.log(user)
 
     return (
         <div className={styles.mainContent}>
@@ -138,6 +138,7 @@ export default function UserPage() {
                             <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
                                 <button className={styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
+                                <span className={friendRequest? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span> 
                             </div>
                         </React.Fragment>
 

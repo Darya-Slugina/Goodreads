@@ -99,6 +99,7 @@ function App() {
             <UserPage isLoggedIn={loggedInUser} />
           </Route>
 
+
           <Route path="/terms">
             <Header />
             <Terms />

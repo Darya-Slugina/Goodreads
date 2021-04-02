@@ -141,6 +141,19 @@
                         background-color: #f5ebd6;
                     }
                 }
+
+                .friendRequest {
+                    font-size: 13px;
+                    color: #7a2d2d;
+                    font-weight: 500;
+                    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+                    margin-top: 10px;
+                    display: block;
+                }
+
+                .friendRequestNone {
+                    display: none;
+                }
             }
 
             .infoBoxWrapper {

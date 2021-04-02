@@ -1,12 +1,13 @@
-import { useSelector } from "react-redux";
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
-import React from "react";
 import SimpleRating from "../BooksPage/Rating";
+import React from "react";
+import { useState, useCallback } from "react";
 
 export default function BooksCoverView({books}) {
 
-  
+    const [booksToDisplay, setBooksToDisplay] = useState(books);
+    console.log('BooksCoverView ', booksToDisplay)
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";

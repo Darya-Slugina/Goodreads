@@ -1,6 +1,6 @@
 import styles from './Books.module.scss';
 import React, { useState, useEffect, useMemo } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import BooksList from "./BookList";
 import ReviewModul from "./ReviewModul";
 import Comments from "./Comments";
@@ -156,7 +156,7 @@ export default function Books() {
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={firstBook.img} alt={firstBook.title} />
-            <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} />
+            {user.id? <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} /> : <Link to="/login"><DropdownButton className={styles.ratingButton} bookState={bookState}/></Link>}
           </div>
           <div className={styles.mainInfoContainer}>
             <div className={styles.mainInfo}>

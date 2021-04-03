@@ -116,10 +116,6 @@ export default function PersonalNavUser() {
 
     }, [user])
 
-
-
-    console.log([...notifications, ...rejected, ...approved]);
-
     return (
         <nav className={styles.personalNav}>
             <div className={styles.notifications}>

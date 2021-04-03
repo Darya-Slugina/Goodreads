@@ -71,7 +71,7 @@ export default function Genres() {
         </div>
         <div className={styles.genreHeader}>
           <h1 className={styles.left}> {firstGenre.genre} </h1>
-          {user &&
+          {user.id &&
             <div className={styles.right}>
               <div className={styles.favoriteGenresButtonContainer}>
                 <Button value={buttonState} onClick={addToFavourite} />

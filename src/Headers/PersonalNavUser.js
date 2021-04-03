@@ -97,7 +97,7 @@ export default function PersonalNavUser() {
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={styles.profileBtnDropdown}>
                     <Dropdown.Item href={"/user/" + user.id} className={styles.profileName}>{user.fname}</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={styles.signOutLink} onClick={logoutUser}>Sign out</Dropdown.Item>
+                    <Dropdown.Item href="/" className={styles.signOutLink} onClick={logoutUser}>Sign out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </nav>

@@ -21,8 +21,7 @@ export default function SearchBar() {
                 setDropdownContent('no-content')
             }
         } else {
-            setBooksToDisplay([])
-            setDropdownContent('not-visible')
+            setDropdownContent('not-visible');
         }
 
     }, [dropdownContent, searchContent, books])
@@ -32,11 +31,16 @@ export default function SearchBar() {
         setSearchContent(value);
     }
 
+    const hideDropdown = () => {
+        setSearchContent('');
+    }
+
 
     return (
-        <div className={styles.searchBarWrapper}>
-            <input type="text" maxLength='100' placeholder="Search books by title or author" onChange={(ev) => onSearch(ev)} className={styles.searchBar} />
+        <div className={styles.searchBarWrapper} onBlur={hideDropdown}>
+            <input type="text" maxLength='100' placeholder="Search books by title or author" onChange={onSearch} className={styles.searchBar} />
             <div className={styles.dropdown} >
+                {dropdownContent === 'not-visible' && <div />}
                 {dropdownContent === 'no-content' && <div className={styles.resultWrapper}>no books to display</div>}
                 {dropdownContent === 'visible' && !!booksToDisplay.length && booksToDisplay.map(book => (
                     <div className={styles.resultWrapper} key={book.id}>

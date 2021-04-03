@@ -15,12 +15,34 @@ export default function BooksView({ books }) {
     const [isAscOrder, setIsAscOrder] = useState(true);
 
 
+    useEffect(() => {
+        if (sortState === 'Title') {
+            // if (isAscOrder) {
+            //     books.sort((a, b) => a.title.localeCompare(b.title));
+            // } else {
+            //     books.sort((a, b) => b.title.localeCompare(a.title));
+            // }
+            books.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortState === 'Author') {
+            // if (isAscOrder) {
+            //     books.sort((a, b) => a.author.localeCompare(b.author));
+            // } else {
+            //     books.sort((a, b) => b.author.localeCompare(a.author));
+            // }
+            books.sort((a, b) => a.author.localeCompare(b.author));
+        } else if (sortState === 'Random') {
+            books.sort(() => Math.random() - 0.5);
+        }
+
+        setBooksToDisplay(books);
+
+    }, [books, booksToDisplay, isAscOrder, sortState])
+
     const handleSort = (ev) => {
         let value = ev.target.value;
-        console.log('value: ', value)
+        // console.log('value: ', value)
         setSortState(value)
-        console.log('sortState: ', sortState)
-        setBooksToDisplay(books)
+        // console.log('sortState: ', sortState)
     }
 
     const handleOrder = (ev) => {
@@ -30,52 +52,7 @@ export default function BooksView({ books }) {
         } else {
             setIsAscOrder(false)
         }
-        setBooksToDisplay(books)
     }
-
-
-    useEffect(() => {
-        if (!booksToDisplay.length) {
-            books.sort((a, b) => a.author.localeCompare(b.author));
-            // setBooksToDisplay(books)
-        } else {
-            if (sortState === 'Title') {
-                if (isAscOrder) {
-                    books.sort((a, b) => a.title.localeCompare(b.title));
-                } else {
-                    books.sort((a, b) => b.title.localeCompare(a.title));
-                }
-            }
-            
-        }
-        setBooksToDisplay(books);
-    }, [books, booksToDisplay, isAscOrder, sortState])
-
-    useEffect(() => {
-        console.log('useEffect: ', sortState)
-        switch (sortState) {
-            case 'Title':
-                if (isAscOrder) {
-                    books.sort((a, b) => a.title.localeCompare(b.title));
-                    break;
-                } else {
-                    books.sort((a, b) => b.title.localeCompare(a.title));
-                    break;
-                }
-            case 'Author':
-                books.sort((a, b) => a.author.localeCompare(b.author));
-                break;
-            case 'Random':
-                books.sort(() => Math.random() - 0.5);
-                break;
-            default:
-                books.sort((a, b) => a.author.localeCompare(b.author));
-                break;
-        }
-
-    }, [sortState, isAscOrder, books])
-
-
 
     return (
         <React.Fragment>

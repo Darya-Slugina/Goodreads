@@ -1,7 +1,8 @@
 import styles from "./HomePage.module.scss"
 import React from "react"
 import { Link } from "react-router-dom";
-import HomePageHeader from "../Headers/HomePageHeader"
+import HomePageHeader from "../Headers/HomePageHeader";
+import SearchBar from '../SearchBar'
 
 export default function HomePage({ genresList }) {
     return (
@@ -22,7 +23,7 @@ export default function HomePage({ genresList }) {
                     <div className={styles.discoveryBox}></div>
                     <div id="browseBox">
                         <h2>Search and browse books</h2>
-                        <input type="text" placeholder="Title / Author" />
+                        <SearchBar />
                         <div className= {styles.genreLinksWrapper}>
                             {genresList.sort((a, b) => a.genre.localeCompare(b.genre)).map(el => (
                                 <Link to={"/genres/" + el.genre.toLowerCase()} key={el.id} className={styles.genreLink} >{el.genre}</Link>

@@ -59,7 +59,7 @@
         width: 120px;
         padding: 5px;
         background-color: white;
-        font-size: 13px;
+        margin-left: 5px;
     }
 
     label{
@@ -116,6 +116,52 @@
     border: 1px solid #382110;
     color: white;
 }
+
+.thirdPartyLogin{
+    position: absolute;
+    bottom: 0;
+    left: 3px;
+    width: 283px;
+    height: 32px;
+    margin: 0 18px 0 0;
+    vertical-align: middle;
+    text-align: center;
+    padding: 5px;
+    background: #333333;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    justify-content: center;
+
+    .message{
+        color: #fff;
+        font-size: 14px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+
+    .facebookLogin{
+        background-image: url('../img/facebook-icon.PNG');
+        background-size: 27px;
+        background-repeat: no-repeat;
+        margin-left: 5px;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+    }
+
+    .googleLogin{
+        background-image: url('../img/google-icon.PNG');
+        background-size: 25px;
+        background-repeat: no-repeat;
+        margin-left: 5px;
+        margin-top: 1px;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+    }
+}
+
+
 
 // banner-------------------------------------------------
 

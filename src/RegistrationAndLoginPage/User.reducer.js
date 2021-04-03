@@ -11,6 +11,7 @@ import {
   const INITIAL_STATE = {
     user: {},
     error: null,
+    isLoading: false,
   };
   
   const userReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +19,7 @@ import {
       case FETCH_USER_REQUESTED:
         return {
           ...state,
+          isLoading: true,
         };
   
       case FETCH_USER_REGISTER:
@@ -25,6 +27,7 @@ import {
           ...state,
           user: action.payload,
           error: null,
+          isLoading: false,
         };
 
         case FETCH_USER_LOGGEDIN:
@@ -32,12 +35,14 @@ import {
           ...state,
           user: action.payload,
           error: null,
+          isLoading: false,
         };
   
       case FETCH_USER_FAILED:
         return {
           ...state,
           error: action.payload,
+          isLoading: false,
         };
 
         // case ADD_TO_FAVOURITE_GENRES:

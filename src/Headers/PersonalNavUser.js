@@ -24,82 +24,82 @@ export default function PersonalNavUser() {
     }
 
     const showNotifications = () => {
-        let dropdown = document.getElementById("dropdownContainer");
-        dropdown.classList.toggle("show");
+        // let dropdown = document.getElementById("dropdownContainer");
+        // dropdown.classList.toggle("show");
     }
 
     const answerOnRequest = (id, action) => {
 
-        database.collection('friendsRequests').where('id', '==', id).get()
+        // database.collection('friendsRequests').where('id', '==', id).get()
 
-            .then((querySnapshot) => {
-                let id = [];
-                (querySnapshot).forEach(doc => {
-                    console.log(doc.data());
-                    console.log(doc.id);
-                    id = doc.id;
-                })
+        //     .then((querySnapshot) => {
+        //         let id = [];
+        //         (querySnapshot).forEach(doc => {
+        //             console.log(doc.data());
+        //             console.log(doc.id);
+        //             id = doc.id;
+        //         })
 
-                database.collection('friendsRequests').doc(id).update({
-                    status: action,
-                })
-                    .then(() => {
-                        console.log("Document successfully updated!");
-                        let newNote = notifications.filter(el => el.id !== id)
-                        setNotifications(newNote);
-                    })
-                    .catch((error) => {
-                        // The document probably doesn't exist.
-                        console.error("Error updating document: ", error);
-                    })
-            })
+        //         database.collection('friendsRequests').doc(id).update({
+        //             status: action,
+        //         })
+        //             .then(() => {
+        //                 console.log("Document successfully updated!");
+        //                 let newNote = notifications.filter(el => el.id !== id)
+        //                 setNotifications(newNote);
+        //             })
+        //             .catch((error) => {
+        //                 // The document probably doesn't exist.
+        //                 console.error("Error updating document: ", error);
+        //             })
+        //     })
     }
 
     const removeFromNotifications = (id, action) => {
-        if (action === "approve") {
-            let newNotif = approved.filter(el => el.id !== id);
-            setApproved(newNotif);
-        } else if (action === "reject") {
-            let newNotif = rejected.filter(el => el.id !== id);
-            setRejected(newNotif);
-        }
+        // if (action === "approve") {
+        //     let newNotif = approved.filter(el => el.id !== id);
+        //     setApproved(newNotif);
+        // } else if (action === "reject") {
+        //     let newNotif = rejected.filter(el => el.id !== id);
+        //     setRejected(newNotif);
+        // }
     }
 
     useEffect(() => {
-        if (user.id) {
-            database.collection('friendsRequests').where('requestTo', '==', user.id).where("status", "==", "sent").onSnapshot(snapshot => {
+        // if (user.id) {
+        //     database.collection('friendsRequests').where('requestTo', '==', user.id).where("status", "==", "sent").onSnapshot(snapshot => {
 
-                let notif = [];
-                snapshot.forEach(doc =>
-                    notif.push(doc.data()))
-                    console.log("sent");
+        //         let notif = [];
+        //         snapshot.forEach(doc =>
+        //             notif.push(doc.data()))
+        //             console.log("sent");
 
-                    setNotifications(notif);
+        //             setNotifications(notif);
 
                 
 
-            })
+        //     })
 
-            database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
+        //     database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
 
-                let notif = [];
-                snapshot.forEach(doc =>
-                    notif.push(doc.data()))
-                    console.log("approve");
-                setApproved(notif);
-                user.myFriends.push(...notif);
-            })
+        //         let notif = [];
+        //         snapshot.forEach(doc =>
+        //             notif.push(doc.data()))
+        //             console.log("approve");
+        //         setApproved(notif);
+        //         user.myFriends.push(...notif);
+        //     })
 
-            database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "reject").onSnapshot(snapshot => {
+        //     database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "reject").onSnapshot(snapshot => {
 
-                let notif = [];
-                snapshot.forEach(doc =>
-                    notif.push(doc.data()))
-                setRejected(notif);
-                console.log("reject");
+        //         let notif = [];
+        //         snapshot.forEach(doc =>
+        //             notif.push(doc.data()))
+        //         setRejected(notif);
+        //         console.log("reject");
 
-            })
-        }
+        //     })
+        // }
 
     }, [user])
 

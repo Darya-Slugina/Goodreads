@@ -18,13 +18,15 @@ import UserEditPage from "./UserPage/UserEditPage";
 import Destroy from "./UserPage/Destroy";
 import Header from "./Headers/Header";
 import Footer from "./Footer/Footer";
-import React, { useEffect } from "react";
+import React, { useEffect, Link } from "react";
 import Error from "./ErrorPage/Error";
-import firebase  from "./firebase";
-import { useDispatch } from "react-redux";
+import firebase from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "./Reducers/Books.actions";
 import { fetchGenres } from "./Reducers/Genres.actions";
 import { fetchUser } from "./RegistrationAndLoginPage/User.actions";
+
+
 
 
 
@@ -32,10 +34,9 @@ function App() {
 
   const loggedInUser = firebase.auth().currentUser;
 
-  const dispatch = useDispatch();
 
-  // const books = useSelector((state) => state.books.books);
-  // const genresList = useSelector((state) => state.genres.genres);
+  const dispatch = useDispatch();
+  const { user, error, isLoading } = useSelector((state) => state.user);
 
 
   useEffect(() => {
@@ -48,14 +49,23 @@ function App() {
 
   }, [loggedInUser, dispatch]);
 
+  if(isLoading) {
+    return <div className="loader"><img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/Spinner-1s-384px.gif?alt=media&token=fb00c3cc-2dbc-4545-b238-c6181b20c473" alt="loader" className="loaderImg"/></div>
+  }
 
   return (
     <BrowserRouter>
       <div className="App">
 
+        {error && (
+          <div className="error"> Something was wrong. Please try to login/register again
+            <Link to="/login">Login</Link> or continue like a gues user..
+          </div>
+        )}
+
         <Switch>
           <Route exact path="/">
-            {loggedInUser ? <HomePageLoggedIn /> : <HomePage /> }
+            {user.id ? <HomePageLoggedIn /> : <HomePage />}
             <Footer />
           </Route>
 
@@ -81,7 +91,7 @@ function App() {
 
           <Route path="/books/:currentGenre/:bookId">
             <Header />
-            <Books  />
+            <Books />
             <Footer />
           </Route>
 
@@ -93,7 +103,7 @@ function App() {
 
           <Route exact path="/user/edit">
             <Header />
-            {loggedInUser &&  <UserEditPage />}
+            {user.id && <UserEditPage />}
             <Footer />
           </Route>
 

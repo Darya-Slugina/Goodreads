@@ -84,7 +84,7 @@ export default function UserPage() {
             let booksId = reviews.filter(el => el.rate).map(el => el.forBookId);
             let rated = [];
             books.forEach(book => {
-                if (booksId.includes(book.id)){
+                if (booksId.includes(book.id)) {
                     rated.push(book);
                 }
             });
@@ -101,10 +101,9 @@ export default function UserPage() {
         setSelectedTab(eventKey);
     };
 
-    console.log(buttonState);
 
     const addToFolowers = () => {
-        if (loggedInUser) {
+        if (loggedInUser.id) {
             if (buttonState === "Follow") {
                 setButtonState("Unfollow")
                 dispatch(addToFavourite(userId, loggedInUser.id))
@@ -125,9 +124,6 @@ export default function UserPage() {
         })
         setFriendRequest(!friendRequest)
     }
-
-    console.log(ratedBooks);
-    console.log(readBooks);
 
     return (
         <div className={styles.mainContent}>
@@ -160,7 +156,6 @@ export default function UserPage() {
                                 <span className={friendRequest ? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span>
                             </div>
                         </React.Fragment>
-
                     }
                     {(user.interests || user.city) ?
                         (
@@ -239,18 +234,15 @@ export default function UserPage() {
                     </div>
                     <div className={styles.h2Container}>
                         <h2 className={styles.h2Title}>
-                            Favourite genres
+                            <Link to={"/genres"} className={styles.h2Title}>Favourite genres</Link>
                         </h2>
                     </div>
                     <div className={styles.genresContainer}>
-                        <div>
-                            {user && user.favouriteGenres && user.favouriteGenres.map((genre) => (
-                                <Link to={"/genres/"+genre} key={genre} className={styles.genre}>{genre}</Link>
-                            )
-                            )}
-                        </div>
+                        {user && user.favouriteGenres && user.favouriteGenres.map((genre) => (
+                            <Link to={"/genres/" + genre} key={genre} className={styles.genre}>{genre}</Link>
+                        )
+                        )}
                     </div>
-
                 </div>
             </div>
         </div>

@@ -1,9 +1,10 @@
 import Dropdown from 'react-bootstrap/Dropdown'
 import styles from './Header.module.scss'
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import firebase, { database } from "../firebase";
 import { useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { addToFriendsList } from "../RegistrationAndLoginPage/User.actions";
 
 export default function PersonalNavUser() {
     const [notifications, setNotifications] = useState([]);
@@ -13,6 +14,7 @@ export default function PersonalNavUser() {
 
     const user = useSelector((state) => state.user.user);
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const logoutUser = () => {
         firebase.auth().signOut().then(() => {
@@ -24,84 +26,99 @@ export default function PersonalNavUser() {
     }
 
     const showNotifications = () => {
-        // let dropdown = document.getElementById("dropdownContainer");
-        // dropdown.classList.toggle("show");
+        let dropdown = document.getElementById("dropdownContainer");
+        dropdown.classList.toggle("show");
     }
 
-    const answerOnRequest = (id, action) => {
+    const answerOnRequest = (docId, action) => {
 
-        // database.collection('friendsRequests').where('id', '==', id).get()
+        database.collection('friendsRequests').where('id', '==', docId).get()
 
-        //     .then((querySnapshot) => {
-        //         let id = [];
-        //         (querySnapshot).forEach(doc => {
-        //             console.log(doc.data());
-        //             console.log(doc.id);
-        //             id = doc.id;
-        //         })
+            .then((querySnapshot) => {
+                let id = [];
+                (querySnapshot).forEach(doc => {
+                    console.log(doc.data());
+                    console.log(doc.id);
+                    id = doc.id;
+                })
 
-        //         database.collection('friendsRequests').doc(id).update({
-        //             status: action,
-        //         })
-        //             .then(() => {
-        //                 console.log("Document successfully updated!");
-        //                 let newNote = notifications.filter(el => el.id !== id)
-        //                 setNotifications(newNote);
-        //             })
-        //             .catch((error) => {
-        //                 // The document probably doesn't exist.
-        //                 console.error("Error updating document: ", error);
-        //             })
-        //     })
+                database.collection('friendsRequests').doc(id).update({
+                    status: action,
+                })
+                    .then(() => {
+                        console.log("Document successfully updated!!!");
+                        console.log("el.id", notifications[0].id, "id", docId)
+                        let newNote = notifications.filter(el => el.id !== docId)
+                        console.log("newNote", newNote)
+                        setNotifications(newNote);
+
+
+                    })
+                    .catch((error) => {
+                        // The document probably doesn't exist.
+                        console.error("Error updating document: ", error);
+                    })
+            })
     }
 
     const removeFromNotifications = (id, action) => {
-        // if (action === "approve") {
-        //     let newNotif = approved.filter(el => el.id !== id);
-        //     setApproved(newNotif);
-        // } else if (action === "reject") {
-        //     let newNotif = rejected.filter(el => el.id !== id);
-        //     setRejected(newNotif);
-        // }
+        if (action === "approve") {
+            let newNotif = approved.filter(el => el.id !== id);
+            setApproved(newNotif);
+        } else if (action === "reject") {
+            let newNotif = rejected.filter(el => el.id !== id);
+            setRejected(newNotif);
+        }
     }
 
     useEffect(() => {
-        // if (user.id) {
-        //     database.collection('friendsRequests').where('requestTo', '==', user.id).where("status", "==", "sent").onSnapshot(snapshot => {
+        if (user.id) {
+            database.collection('friendsRequests').where('requestTo', '==', user.id).where("status", "==", "sent").onSnapshot(snapshot => {
 
-        //         let notif = [];
-        //         snapshot.forEach(doc =>
-        //             notif.push(doc.data()))
-        //             console.log("sent");
+                let notif = [];
+                snapshot.forEach(doc =>
+                    notif.push(doc.data()))
+                console.log("sent");
 
-        //             setNotifications(notif);
+                setNotifications(notif);
+            })
+        }
+    }, [user])
 
-                
+    useEffect(() => {
+        if (user.id) {
+            database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
 
-        //     })
+                let notif = [];
+                snapshot.forEach(doc => {
+                    const request = doc.data();
+                    dispatch(addToFriendsList(request.requestTo, user.id))
+                    notif.push(request)})
+  
+                setApproved(notif);
+            })
+        }
+    }, [user, dispatch])
 
-        //     database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
+    useEffect(() => {
+        if (user.id) {
 
-        //         let notif = [];
-        //         snapshot.forEach(doc =>
-        //             notif.push(doc.data()))
-        //             console.log("approve");
-        //         setApproved(notif);
-        //         user.myFriends.push(...notif);
-        //     })
+            database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "reject").onSnapshot(snapshot => {
 
-        //     database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "reject").onSnapshot(snapshot => {
+                let notif = [];
+                snapshot.forEach(doc =>
+                    notif.push(doc.data()))
+                setRejected(notif);
+                console.log("reject");
 
-        //         let notif = [];
-        //         snapshot.forEach(doc =>
-        //             notif.push(doc.data()))
-        //         setRejected(notif);
-        //         console.log("reject");
-
-        //     })
-        // }
+            })
+        }
 
     }, [user])
+
+
+
+    console.log([...notifications, ...rejected, ...approved]);
 
     return (
         <nav className={styles.personalNav}>
@@ -128,7 +145,7 @@ export default function PersonalNavUser() {
                                     </div>
                                 </React.Fragment>}
 
-                            {el.status === "send" &&
+                            {el.status === "sent" &&
                                 <React.Fragment>
                                     <span className={styles.message} >{`You have friend request from ${el.requestFrom}`}</span>
                                     <div className={styles.buttonsContainer}>

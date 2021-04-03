@@ -48,14 +48,14 @@ export default function UserEditPage() {
   useEffect(() => {
     database
       .collection("users")
-      .where("id", "==", user.uid)
+      .where("id", "==", user.id)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setStorageUser((prevUser) => ({ ...prevUser, ...doc.data() }));
         });
       });
-  }, [user.uid]);
+  }, [user.id]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -95,7 +95,7 @@ export default function UserEditPage() {
           storageUserUpdate(downloadURL, "userImg");
           database
             .collection("users")
-            .doc(user.uid)
+            .doc(user.id)
             .set({ ...storageUser, userImg: downloadURL }, { merge: true })
             .then(() => {
               console.log("Document successfully written!");
@@ -112,7 +112,7 @@ export default function UserEditPage() {
     <div className={styles.mainContent}>
       <h1 className={styles.h1Title}>
         <div className={styles.mediumText}>
-          <Link to={"/user/" + user.uid} className={styles.mediumTextLink}>
+          <Link to={"/user/" + user.id} className={styles.mediumTextLink}>
             View My Profile
           </Link>
         </div>

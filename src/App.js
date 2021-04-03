@@ -31,10 +31,6 @@ import { fetchUser } from "./RegistrationAndLoginPage/User.actions";
 
 
 function App() {
-
-  const loggedInUser = firebase.auth().currentUser;
-
-
   const dispatch = useDispatch();
   const { user, error, isLoading } = useSelector((state) => state.user);
 
@@ -42,15 +38,18 @@ function App() {
   useEffect(() => {
     dispatch(fetchBooks());
     dispatch(fetchGenres());
-    if (loggedInUser) {
-      console.log('loggedInUser', loggedInUser);
-      dispatch(fetchUser(loggedInUser.uid));
-    }
 
-  }, [loggedInUser, dispatch]);
+    // When the user gets logged in
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user.uid) {
+        console.log('loggedInUser', user);
+        dispatch(fetchUser(user.uid));
+      }
+    });
+  }, [dispatch]);
 
-  if(isLoading) {
-    return <div className="loader"><img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/Spinner-1s-384px.gif?alt=media&token=fb00c3cc-2dbc-4545-b238-c6181b20c473" alt="loader" className="loaderImg"/></div>
+  if (isLoading) {
+    return <div className="loader"><img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/Spinner-1s-384px.gif?alt=media&token=fb00c3cc-2dbc-4545-b238-c6181b20c473" alt="loader" className="loaderImg" /></div>
   }
 
   return (

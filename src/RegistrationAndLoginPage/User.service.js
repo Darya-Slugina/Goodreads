@@ -26,6 +26,7 @@ export const setUser = (id, fname, email) => {
             currentlyReading: [],
             favouritesUser: [],
             favouriteGenres: [],
+            myFriends: [],
         })
 }
 

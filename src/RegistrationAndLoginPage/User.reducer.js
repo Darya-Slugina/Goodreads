@@ -6,6 +6,7 @@ import {
     ADD_TO_FAVOURITE_GENRES,
     ADD_TO_FAVOURITE_USERS,
     REMOVE_FROM_FAVOURITE_USERS,
+    ADD_TO_FRIENDS,
   } from "./User.actions";
   
   const INITIAL_STATE = {
@@ -45,6 +46,8 @@ import {
           isLoading: false,
         };
 
+
+
         // case ADD_TO_FAVOURITE_GENRES:
         // return {
         //   ...state,
@@ -62,6 +65,12 @@ import {
             ...state,
           user: {...state.user, favouritesUser: [...state.user.favouritesUser].filter(id => id !== action.payload)},
           };
+
+          case ADD_TO_FRIENDS:
+        return {
+          ...state,
+          user: {...state.user, favouritesUser: [...state.user.favouritesUser, action.payload]},
+        };
   
       default:
         return state;

@@ -231,6 +231,7 @@
 
     .rightContainer {
         padding-left: 15px;
+        width: 250px;
 
         .h2Container {
             border-bottom: 1px solid #d8d8d8;
@@ -272,6 +273,9 @@
             padding: 0 0 10px 0;
             width: 100%;
             min-height: 80px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
 
             .genre {
                 color: #00635d;

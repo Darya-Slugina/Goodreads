@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function SearchBar() {
     const books = useSelector((state) => state.books.books);
-
     const [booksToDisplay, setBooksToDisplay] = useState([]);
     const [dropdownContent, setDropdownContent] = useState('not-visible');
     const [searchContent, setSearchContent] = useState('');
@@ -37,9 +36,9 @@ export default function SearchBar() {
 
 
     return (
-        <div className={styles.searchBarWrapper} onBlur={hideDropdown}>
+        <div className={styles.searchBarWrapper}>
             <input type="text" maxLength='100' placeholder="Search books by title or author" onChange={onSearch} className={styles.searchBar} />
-            <div className={styles.dropdown} >
+            <div className={styles.dropdown} onBlur={hideDropdown} >
                 {dropdownContent === 'not-visible' && <div />}
                 {dropdownContent === 'no-content' && <div className={styles.resultWrapper}>no books to display</div>}
                 {dropdownContent === 'visible' && !!booksToDisplay.length && booksToDisplay.map(book => (

@@ -1,6 +1,6 @@
 import { getUser, setUser } from "./User.service";
-import { loginWithCredentials } from './service';
-import { registerWithCredentials } from './service';
+import { loginWithCredentials } from './User.service';
+import { registerWithCredentials } from './User.service';
 import firebase, { database } from "../firebase";
 
 

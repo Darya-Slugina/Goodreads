@@ -3,7 +3,8 @@ import Button from "./../common/Button";
 import React, { useState } from 'react';
 import { database } from "../firebase";
 import { useSelector } from "react-redux";
-
+import {setNewReview} from "./service"
+import { getReviewsForCurrentBook } from "../GenresPage/service";
 
 
 export default function Form({ bookId, getReviews, rating }) {
@@ -14,20 +15,23 @@ export default function Form({ bookId, getReviews, rating }) {
 
     const setReview = (ev) => {
         ev.preventDefault();
-        database.collection("reviewsList").doc().set({
-            review: text,
-            date: Date.now(),
-            forBookId: bookId,
-            likes: 0,
-            rate: rating,
-            userId: user.id,
-            userImg: user.userImg,
-            userName: user.fname,
-        })
+
+        setNewReview(text, bookId, rating, user.id, user.userImg, user.fname)
+        // database.collection("reviewsList").doc().set({
+        //     review: text,
+        //     date: Date.now(),
+        //     forBookId: bookId,
+        //     likes: 0,
+        //     rate: rating,
+        //     userId: user.id,
+        //     userImg: user.userImg,
+        //     userName: user.fname,
+        // })
             .then(() => {
                 console.log("Document successfully written!");
 
-                database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                getReviewsForCurrentBook(bookId)
+                // database.collection("reviewsList").where("forBookId", "==", bookId).get()
                     .then((querySnapshot) => {
                         let dbReviews = [];
                         querySnapshot.forEach((doc) => {

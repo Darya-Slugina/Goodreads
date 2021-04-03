@@ -8,7 +8,6 @@ import React, { useState } from 'react';
 
 export default function Destroy() {
 
-    const [btnState, setBtnState] = useState(false);
     const [errorText, setErrorText] = useState(false);
 
     const history = useHistory();

@@ -5,13 +5,8 @@ import { useState, useCallback } from "react";
 import { database, storage } from "../firebase";
 import { useDropzone } from "react-dropzone";
 import { useSelector } from "react-redux";
+import { getCountries, getCurrentUser } from "./service"
 
-
-const getCountries = () => {
-  return fetch("https://restcountries.eu/rest/v2/all").then((res) =>
-    res.json()
-  );
-};
 
 const initialUser = {
   fname: "",
@@ -46,10 +41,7 @@ export default function UserEditPage() {
 
   console.log(user);
   useEffect(() => {
-    database
-      .collection("users")
-      .where("id", "==", user.id)
-      .get()
+    getCurrentUser(user.id)
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setStorageUser((prevUser) => ({ ...prevUser, ...doc.data() }));
@@ -60,15 +52,16 @@ export default function UserEditPage() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   useEffect(() => {
-    getCountries().then((res) => {
-      res.forEach((country) => {
-        let datalist = document.getElementById("country");
-        let option = document.createElement("option");
-        option.value = country.name;
-        option.innerHTML = country.name;
-        datalist.append(option);
+    getCountries()
+      .then((res) => {
+        res.forEach((country) => {
+          let datalist = document.getElementById("country");
+          let option = document.createElement("option");
+          option.value = country.name;
+          option.innerHTML = country.name;
+          datalist.append(option);
+        });
       });
-    });
   }, []);
 
   const checkCountry = (ev) => {
@@ -88,7 +81,7 @@ export default function UserEditPage() {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
       },
-      (error) => {},
+      (error) => { },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log("File available at", downloadURL);
@@ -254,7 +247,7 @@ export default function UserEditPage() {
               </p>
 
               <div {...getRootProps()} className={styles.dragActive}>
-                <input {...getInputProps()} className={styles.dropInput}/>
+                <input {...getInputProps()} className={styles.dropInput} />
                 {isDragActive ? (
                   <p className={styles.imgInput}>Drop the files here ...</p>
                 ) : (

@@ -32,7 +32,7 @@ export default function Genres() {
   }, [user, currentGenre])
 
   const addToFavourite = () => {
-    if (user) {
+    if (user.id) {
 
       if (buttonState === "Add to favourite") {
         setButtonState("Remove from favourite")

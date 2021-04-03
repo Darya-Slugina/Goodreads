@@ -17,20 +17,42 @@ export default function BooksView({ books }) {
 
     const handleSort = (ev) => {
         let value = ev.target.value;
+        console.log('value: ', value)
         setSortState(value)
+        console.log('sortState: ', sortState)
+        setBooksToDisplay(books)
     }
 
-    const handleOrder = (ev) =>{
+    const handleOrder = (ev) => {
         let value = ev.target.id;
-        if(value === 'order_a') {
+        if (value === 'order_a') {
             setIsAscOrder(true)
         } else {
             setIsAscOrder(false)
         }
+        setBooksToDisplay(books)
     }
 
 
     useEffect(() => {
+        if (!booksToDisplay.length) {
+            books.sort((a, b) => a.author.localeCompare(b.author));
+            // setBooksToDisplay(books)
+        } else {
+            if (sortState === 'Title') {
+                if (isAscOrder) {
+                    books.sort((a, b) => a.title.localeCompare(b.title));
+                } else {
+                    books.sort((a, b) => b.title.localeCompare(a.title));
+                }
+            }
+            
+        }
+        setBooksToDisplay(books);
+    }, [books, booksToDisplay, isAscOrder, sortState])
+
+    useEffect(() => {
+        console.log('useEffect: ', sortState)
         switch (sortState) {
             case 'Title':
                 if (isAscOrder) {
@@ -41,17 +63,17 @@ export default function BooksView({ books }) {
                     break;
                 }
             case 'Author':
-                booksToDisplay.sort((a, b) => a.author.localeCompare(b.author));
+                books.sort((a, b) => a.author.localeCompare(b.author));
                 break;
             case 'Random':
-                booksToDisplay.sort(() => Math.random() - 0.5);
+                books.sort(() => Math.random() - 0.5);
                 break;
             default:
-                booksToDisplay.sort((a, b) => a.author.localeCompare(b.author));
+                books.sort((a, b) => a.author.localeCompare(b.author));
                 break;
         }
-        setBooksToDisplay(booksToDisplay)
-    }, [sortState, booksToDisplay, isAscOrder, books])
+
+    }, [sortState, isAscOrder, books])
 
 
 
@@ -95,8 +117,8 @@ export default function BooksView({ books }) {
                     </OverlayTrigger>
                 </div>
             </div>
-            {!books.length ? <p>No added books yet.</p> : <div className={styles.booksViewWrapper}>
-                {isTableView ? <BooksTableView books={books} /> : <BooksCoverView books={books} />}
+            {!booksToDisplay.length ? <p>No added books yet.</p> : <div className={styles.booksViewWrapper}>
+                {isTableView ? <BooksTableView books={booksToDisplay} /> : <BooksCoverView books={booksToDisplay} />}
             </div>}
             <div className={styles.filters}>
                 <div className={styles.pagination}>
@@ -116,10 +138,10 @@ export default function BooksView({ books }) {
                     </select>
                 </div>
                 <div onChange={handleOrder}>
-                        <input type="radio" name="order" id='order_a'></input>
-                        <label for="order_a">asc.</label>
-                        <input type="radio" name="order" id='order_d'></input>
-                        <label for="order_d" defaultValue>desc.</label>
+                    <input type="radio" name="order" id='order_a'></input>
+                    <label for="order_a">asc.</label>
+                    <input type="radio" name="order" id='order_d'></input>
+                    <label for="order_d" defaultValue>desc.</label>
                 </div>
             </div>
         </React.Fragment>

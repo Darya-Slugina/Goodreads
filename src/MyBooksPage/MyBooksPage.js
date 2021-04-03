@@ -11,7 +11,7 @@ export default function MyBooks() {
 
     const books = useSelector((state) => state.books.books);
     const user = useSelector((state) => state.user.user);
-    const [booksToDisplay, setBooksToDisplay] = useState([]);
+    // const [booksToDisplay, setBooksToDisplay] = useState([]);
     const [selectedTab, setSelectedTab] = useState("All");
 
     const currentlyReading = useMemo(() => {

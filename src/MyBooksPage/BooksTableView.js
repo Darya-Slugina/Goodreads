@@ -1,12 +1,23 @@
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
 import SimpleRating from "../BooksPage/Rating";
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export default function BooksTable({ books }) {   
     
-    const [booksToDisplay, setBooksToDisplay] = useState(books);
-    console.log('BooksTableView ', booksToDisplay)
+    // const [booksToDisplay, setBooksToDisplay] = useState(books);
+
+    // const booksToDisplay = useMemo(() => {
+    //     if(books.length) {
+    //         books.sort((a, b) => a.title.localeCompare(b.title));
+    //         return books
+    //     }
+    // }, [books])
+    // console.log('BooksTableView ', booksToDisplay)
+
+    // useEffect(() => {
+
+    // }, [books])
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";

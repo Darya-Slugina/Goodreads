@@ -65,3 +65,14 @@ code {
     monospace;
 } 
 
+.loader{
+	width: 100%;
+	min-height: 100vh;
+	background-color: #f1f1f1;
+  }
+
+  .loaderImg {
+	margin-left: 39%;
+	margin-top: 5%;
+  }
+

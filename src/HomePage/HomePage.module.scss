@@ -32,7 +32,7 @@ h2{
 }
 
 .mainContainer{
-    width: 760px;
+    width: 600px;
     margin: 0 auto;
     font-size: 12px;
     min-height: 400px;
@@ -56,10 +56,13 @@ h2{
     }
 }
 
+.searchBarWrapper{
+    width: 95%;
+    margin-bottom: 20px;
+}
 
-/* for visual purposes, might implement later */
 .discoveryBox{
-    width: 100%;
+    margin: auto;
     height: 400px;
     background-image: url(../img/discoveryBox.png);
     background-repeat: no-repeat;

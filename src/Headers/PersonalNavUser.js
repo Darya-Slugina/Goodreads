@@ -89,10 +89,9 @@ export default function PersonalNavUser() {
                     )
                     )}
                 </div>
-
             </div>
             <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic" className={styles.profileBtn}>
+                <Dropdown.Toggle id="dropdown-basic" className={styles.profileBtn} variant='light'>
                     <div className={styles.profilePic}></div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={styles.profileBtnDropdown}>

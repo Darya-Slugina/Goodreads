@@ -30,7 +30,7 @@ export default function PersonalNavUser() {
 
     const deleteRequest = (id) => {
 
-        database.collection('friendsList').where('id', '==', id).get()
+       const subscription = database.collection('friendsList').where('id', '==', id).get()
 
             .then((querySnapshot) => {
                 let id = [];
@@ -51,6 +51,9 @@ export default function PersonalNavUser() {
                         console.error("Error updating document: ", error);
                     })
             })
+            return () => {
+                subscription();
+            }
     }
 
     useEffect(() => {

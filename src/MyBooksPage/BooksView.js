@@ -2,55 +2,55 @@ import React, { useEffect } from "react";
 import BooksTableView from './BooksTableView'
 import BooksCoverView from './BooksCoverView'
 import styles from './MyBooks.module.scss'
-import { useState, useCallback, useMemo } from "react";
+import { useState } from "react";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Button from 'react-bootstrap/Button'
 import Tooltip from 'react-bootstrap/Tooltip'
+
 
 export default function BooksView({ books }) {
 
     const [isTableView, setTableView] = useState(true);
     const [booksToDisplay, setBooksToDisplay] = useState(books);
     const [sortState, setSortState] = useState('Author');
-    const [isAscOrder, setIsAscOrder] = useState(true);
+    const [isAscOrder, setIsAscOrder] = useState("order_a");
 
 
     useEffect(() => {
-        if (sortState === 'Title') {
-            // if (isAscOrder) {
-            //     books.sort((a, b) => a.title.localeCompare(b.title));
-            // } else {
-            //     books.sort((a, b) => b.title.localeCompare(a.title));
-            // }
-            books.sort((a, b) => a.title.localeCompare(b.title));
-        } else if (sortState === 'Author') {
-            // if (isAscOrder) {
-            //     books.sort((a, b) => a.author.localeCompare(b.author));
-            // } else {
-            //     books.sort((a, b) => b.author.localeCompare(a.author));
-            // }
-            books.sort((a, b) => a.author.localeCompare(b.author));
-        } else if (sortState === 'Random') {
-            books.sort(() => Math.random() - 0.5);
+        setBooksToDisplay(books)
+    }, [books])
+
+
+    const sortBooks = (value) => {
+        if (value === 'Title') {
+            let sorted = booksToDisplay.sort((a, b) => a.title.localeCompare(b.title));
+            setBooksToDisplay(sorted);
+        } else if (value === 'Author') {
+            const sorted = booksToDisplay.sort((a, b) => a.author.localeCompare(b.author));
+            setBooksToDisplay(sorted);
+        } else if (value === 'Random') {
+            const sorted = booksToDisplay.sort(() => Math.random() - 0.5);
+            setBooksToDisplay(sorted)
         }
-
-        setBooksToDisplay(books);
-
-    }, [books, booksToDisplay, isAscOrder, sortState])
+    }
 
     const handleSort = (ev) => {
         let value = ev.target.value;
-        // console.log('value: ', value)
-        setSortState(value)
-        // console.log('sortState: ', sortState)
+        setSortState(value);
+        sortBooks(value);
     }
 
     const handleOrder = (ev) => {
-        let value = ev.target.id;
+        let value = ev.target.value;
         if (value === 'order_a') {
-            setIsAscOrder(true)
+            setIsAscOrder("order_a");
+            let totalSorted = booksToDisplay.sort((a, b) => a[sortState.toLowerCase()].localeCompare(b[sortState.toLowerCase()]));
+            setBooksToDisplay(totalSorted)
+
         } else {
-            setIsAscOrder(false)
+            setIsAscOrder("order_d");
+            let totalSorted = books.sort((a, b) => b[sortState.toLowerCase()].localeCompare(a[sortState.toLowerCase()]));
+            setBooksToDisplay(totalSorted)
         }
     }
 
@@ -99,7 +99,7 @@ export default function BooksView({ books }) {
             </div>}
             <div className={styles.filters}>
                 <div className={styles.pagination}>
-                    <label for="per_page">per page</label>
+                    <label htmlFor="per_page">per page</label>
                     <select name="per_page" >
                         <option>10</option>
                         <option defaultValue>20</option>
@@ -107,18 +107,18 @@ export default function BooksView({ books }) {
                     </select>
                 </div>
                 <div>
-                    <label for="sort">sort</label>
-                    <select name="sort" onChange={handleSort}>
+                    <label htmlFor="sort">sort</label>
+                    <select name="sort" value={sortState} onChange={handleSort}>
                         <option>Author</option>
                         <option>Random</option>
                         <option>Title</option>
                     </select>
                 </div>
-                <div onChange={handleOrder}>
-                    <input type="radio" name="order" id='order_a'></input>
-                    <label for="order_a">asc.</label>
-                    <input type="radio" name="order" id='order_d'></input>
-                    <label for="order_d" defaultValue>desc.</label>
+                <div>
+                    <input type="radio" name="order" id='order_a' value='order_a'  onChange={handleOrder} checked={isAscOrder === 'order_a' ? true : false}></input>
+                    <label htmlFor="order_a">asc.</label>
+                    <input type="radio" name="order" id='order_d' value='order_d'  onChange={handleOrder} checked={isAscOrder === 'order_d' ? true : false}></input>
+                    <label htmlFor="order_d" defaultValue>desc.</label>
                 </div>
             </div>
         </React.Fragment>

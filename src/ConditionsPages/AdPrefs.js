@@ -14,22 +14,8 @@ export default function AdPrefs() {
                     <p className={styles.grRowtext}>
                         Interest-based ads are sometimes referred to as personalized or targeted ads. We show interest-based ads to
                         display features, products, and services that might be of interest to you. For more information see our
-                            <a href="/privacy">&nbsp;Interest Based Ads Notice</a>.
+                            <Link to="/privacy" className={styles.link}>&nbsp;Interest Based Ads Notice</Link>.
                         </p>
-                    <h2 className={styles.grRowH2}>
-                        Submit your preference
-                        </h2>
-                    <div>
-                        <label className={styles.radioButton}>
-                            <input className={styles.radioButtonInput} type="radio" name="user[allow_behavioral_ads]" checked="checked" id="adprefs" />
-                            <label for="adprefs">Show me interest-based ads provided by Goodreads</label>
-                        </label>
-                        <label className={styles.radioButton}>
-                            <input className={styles.radioButtonInput} type="radio" name="user[allow_behavioral_ads]"  id="adprefs1"/>
-                            <label for="adprefs1">Do not show me interest-based ads provided by Goodreads</label>
-                        </label>
-                        <input type="submit" name="commit" value="Submit" className={styles.grButton} />
-                    </div>
                     <p className={styles.marginTopLarge}>
                         If you choose not to be shown interest-based ads above, we will no longer show interest-based ads to you. Even if
                             you choose not to see interest-based ads, you may still see <a className={styles.link} href="/user/edit_fav_genres">&nbsp;personalized recommendations&nbsp;</a>

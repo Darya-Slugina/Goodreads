@@ -30,33 +30,7 @@ export default function Login() {
   // }, [history, user])
 
 
-  // firebase.auth().signOut().then(() => {
-  //   // Sign-out successful.
-  // }).catch((error) => {
-  //   // An error happened.
-  // });
-
-
-  // const loggedinUser = useSelector((state) => state.user.user);
-
-
-  // const onLogin = () => {
-  //   loginWithCredentials(email, password)
-  //     .then((userCredential) => {
-  //       const user = userCredential.user;
-  //       history.push("/");
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error: ", error);
-  //       setError(error.message);
-  //     });
-
-  //     dispatch(fetchUser());
-  // };
-
-  // const addUserToStore = () => {
-  //   dispatch(fetchUser());
-  // }
+  
 
   const onGoogleLogin = () => {
     var provider = new firebase.auth.GoogleAuthProvider();

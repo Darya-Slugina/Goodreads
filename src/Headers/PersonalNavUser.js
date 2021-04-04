@@ -10,6 +10,7 @@ export default function PersonalNavUser() {
     const [notifications, setNotifications] = useState([]);
     const [rejected, setRejected] = useState([]);
     const [approved, setApproved] = useState([]);
+    const [btnState, setBtnState] = useState(false);
 
 
     const user = useSelector((state) => state.user.user);
@@ -26,8 +27,7 @@ export default function PersonalNavUser() {
     }
 
     const showNotifications = () => {
-        let dropdown = document.getElementById("dropdownContainer");
-        dropdown.classList.toggle("show");
+        setBtnState(!btnState);
     }
 
     const answerOnRequest = (docId, action) => {
@@ -124,7 +124,7 @@ export default function PersonalNavUser() {
             <div className={styles.notifications}>
                 <span className={styles.notificationIcon} onClick={showNotifications} />
                 <span className={notifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{[...notifications, ...rejected, ...approved].length}</span>
-                <div className={styles.dropdownContainer} id="dropdownContainer">
+                <div className={btnState? styles.dropdownContainerShow : styles.dropdownContainer}  >
                     <span className={notifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
                     {[...notifications, ...rejected, ...approved].map(el => (
                         <div key={el.id} className={styles.messageContainer}>

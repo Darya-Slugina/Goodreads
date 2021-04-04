@@ -176,8 +176,8 @@
         display: none;
     }
 
-    .dropdownContainer {
-        display: none;
+    .dropdownContainerShow {
+        display: block;
         background-color: #ffffff;
         position: absolute;
         top: 50px;
@@ -188,8 +188,10 @@
         padding: 8px 0;
         text-align: center;
         font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+        font-size: 12px;
         max-height: 380px;
         overflow-y: scroll;
+    
 
         .dropdownText {
             font-size: 12px;
@@ -235,7 +237,8 @@
         
     }
 
-    .dropdownContainer.show {
-        display: block;
+    .dropdownContainer {
+        display: none;
+
     }
 }

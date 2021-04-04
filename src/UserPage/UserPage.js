@@ -7,6 +7,7 @@ import { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
 import FollowUser from "./FollowUser";
+import { getCurrentUser, getReviewsByUser } from "./service"
 
 
 
@@ -25,7 +26,7 @@ export default function UserPage() {
     const loggedInUser = useSelector((state) => state.user.user);
 
     useEffect(() => {
-        database.collection("users").where("id", "==", userId).get()
+        getCurrentUser(userId)
             .then((user) => {
                 user.forEach((doc) => {
                     setUser(doc.data());
@@ -34,7 +35,7 @@ export default function UserPage() {
     }, [userId]);
 
     useEffect(() => {
-        database.collection("reviewsList").where("userId", "==", userId).get()
+        getReviewsByUser(userId)
             .then((querySnapshot) => {
                 const dbReviews = [];
                 querySnapshot.forEach((doc) => {
@@ -116,12 +117,14 @@ export default function UserPage() {
     }
 
     const sendFriendRequest = () => {
-        database.collection("friendsRequests").doc().set({
-            requestFrom: loggedInUser.id,
-            requestTo: userId,
-            status: "sent",
-            id: Date.now(),
-        })
+        setFriendRequest(loggedInUser.id, loggedInUser.fname, userId)
+        // database.collection("friendsRequests").doc().set({
+        //     requestFrom: loggedInUser.id,
+        //     requestFromUser: loggedInUser.fname,
+        //     requestTo: userId,
+        //     status: "sent",
+        //     id: Date.now(),
+        // })
         setFriendRequest(!friendRequest)
     }
 

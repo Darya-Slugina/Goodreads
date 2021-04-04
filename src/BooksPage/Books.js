@@ -8,6 +8,7 @@ import DropdownButton from "../common/DroppdownButton"
 import firebase, { database } from "../firebase";
 import { useSelector } from "react-redux";
 import StarRatings from 'react-star-ratings';
+import { getReviewsForCurrentBook } from './service';
 
 
 export default function Books() {
@@ -26,7 +27,7 @@ export default function Books() {
 
 
   useEffect(() => {
-    database.collection("reviewsList").where("forBookId", "==", currentId).get()
+    getReviewsForCurrentBook(currentId)
       .then((querySnapshot) => {
         let dbReviews = [];
         querySnapshot.forEach((doc) => {

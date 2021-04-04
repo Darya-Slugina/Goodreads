@@ -1,37 +1,34 @@
 import styles from "./Form.module.css";
 import Button from "./../common/Button";
-import React, { useState } from 'react';
-import { database } from "../firebase";
+import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
-import {setNewReview} from "./service"
+import { setNewReview } from "./service"
 import { getReviewsForCurrentBook } from "../GenresPage/service";
 
 
 export default function Form({ bookId, getReviews, rating }) {
 
     const [text, setText] = useState("");
+    const [reviewBtn, setReviewBtn] = useState(false)
     const user = useSelector((state) => state.user.user);
     console.log(user);
+
+    useEffect(() => {
+        if (rating > 0 || (text.trim().length > 0 && text.length.trim() < 5000)) {
+            setReviewBtn(true);
+        } else if (rating <= 0 || text.trim().length <= 0) {
+            setReviewBtn(false);
+        }
+    }, [rating, text])
 
     const setReview = (ev) => {
         ev.preventDefault();
 
         setNewReview(text, bookId, rating, user.id, user.userImg, user.fname)
-        // database.collection("reviewsList").doc().set({
-        //     review: text,
-        //     date: Date.now(),
-        //     forBookId: bookId,
-        //     likes: 0,
-        //     rate: rating,
-        //     userId: user.id,
-        //     userImg: user.userImg,
-        //     userName: user.fname,
-        // })
             .then(() => {
                 console.log("Document successfully written!");
 
                 getReviewsForCurrentBook(bookId)
-                // database.collection("reviewsList").where("forBookId", "==", bookId).get()
                     .then((querySnapshot) => {
                         let dbReviews = [];
                         querySnapshot.forEach((doc) => {
@@ -49,7 +46,7 @@ export default function Form({ bookId, getReviews, rating }) {
     return (
         <div className={styles.formContainer} id="form">
             <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} />
-            <Button value={"Publish your review"} onClick={setReview} />
+            {reviewBtn && <Button value={"Publish your review"} onClick={setReview} />}
         </div>
     )
 };

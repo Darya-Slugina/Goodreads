@@ -16,3 +16,8 @@ export const setNewReview = (text, bookId, rating, id, userImg, userName) => {
 export const getReviewsForCurrentBook = (bookId) => {
    return database.collection("reviewsList").where("forBookId", "==", bookId).get()
 }
+
+
+export const getReviewForCurrentBookAndUser = (bookId, userId) => {
+    return  database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+}

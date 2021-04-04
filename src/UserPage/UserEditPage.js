@@ -28,14 +28,22 @@ const initialUser = {
 export default function UserEditPage() {
   const [storageUser, setStorageUser] = useState(initialUser);
   const [file, setFile] = useState("");
+  const [btnState, setBtnState] = useState(true);
 
   const user = useSelector((state) => state.user.user);
 
   const storageUserUpdate = (value, type) => {
+    if (type === "fname" && value.trim().length > 3) {
+      setBtnState(true);
+      setStorageUser((prevUser) => ({ ...prevUser, [type]: value }));
+    } else if (type === "fname" && value.trim().length < 3) {
+      setBtnState(false);
+    }
     setStorageUser((prevUser) => ({ ...prevUser, [type]: value }));
   };
 
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback((acceptedFiles, fileRejections) => {
+    console.log('onDrop', fileRejections);
     setFile(acceptedFiles[0]);
   });
 
@@ -247,7 +255,7 @@ export default function UserEditPage() {
               </p>
 
               <div {...getRootProps()} className={styles.dragActive}>
-                <input {...getInputProps()} className={styles.dropInput} />
+                <input {...getInputProps()} className={styles.dropInput} maxSize={100} />
                 {isDragActive ? (
                   <p className={styles.imgInput}>Drop the files here ...</p>
                 ) : (
@@ -262,14 +270,7 @@ export default function UserEditPage() {
             </div>
           </div>
           <p>
-            {" "}
-            <input
-              type="submit"
-              name="commit"
-              value="Save Profile Settings"
-              className={styles.submitBtn}
-              onClick={upload}
-            />
+            {btnState && <input type="submit" name="commit" value="Save Profile Settings" className={styles.submitBtn} onClick={upload} />}
           </p>
         </form>
       </div>

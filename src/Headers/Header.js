@@ -10,12 +10,12 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 export default function Header() {
-    const loggedInUser = firebase.auth().currentUser;
+    const loggedInUser = useSelector((state) => state.user.user);
     const genresList = useSelector((state) => state.genres.genres);
     const history = useHistory();
 
     const goToMyBooksPage = () => {
-        if(loggedInUser) {
+        if(loggedInUser.id) {
             history.push('/')
         } else {
             history.push('/login')
@@ -26,7 +26,7 @@ export default function Header() {
         <header className={styles.headerLogged}>
             <div className={styles.headerWrapper}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                <a href="/genres" className={styles.logoLogged}></a>
+                {loggedInUser.id? <Link to="/genres" className={styles.logoLogged}></Link> : <Link to="/" className={styles.logoLogged}></Link>}
                 <nav className={styles.navLogged}>
                     <ul>
                         <Button variant='light' className={styles.navLoggedBtn} onClick={goToMyBooksPage}>My books</Button>
@@ -45,7 +45,7 @@ export default function Header() {
                     </ul>
                 </nav>
                 <SearchBar />
-                {loggedInUser ? <PersonalNavUser /> : <PersonalNavGuest />}
+                {loggedInUser.id ? <PersonalNavUser /> : <PersonalNavGuest />}
             </div>
         </header>
     )

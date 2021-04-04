@@ -58,9 +58,6 @@ export default function PersonalNavUser() {
                         console.error("Error updating document: ", error);
                     })
             })
-            return () => {
-                // subscription();
-            }
     }
 
     const removeFromNotifications = (id) => {
@@ -148,7 +145,7 @@ const allNotifications = [...notifications, ...rejected, ...approved];
             <div className={styles.notifications}>
                 <span className={styles.notificationIcon} onClick={showNotifications} />
                 <span className={allNotifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{allNotifications.length}</span>
-                <div className={styles.dropdownContainer} id="dropdownContainer">
+                <div className={btnState? styles.dropdownContainerShow : styles.dropdownContainer}>
                     <span className={allNotifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
                     {allNotifications.map(el => (
                         <div key={el.id} className={styles.messageContainer}>

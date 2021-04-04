@@ -4,10 +4,16 @@ import styles from './AboutUs.module.scss';
 import Carousel1 from "./../img/carousel1.jpg"
 import Carousel2 from "./../img/carousel2.jpg"
 import Carousel3 from "./../img/carousel3.jpg"
+import React, { useEffect } from 'react';
+import { Link, Redirect } from "react-router-dom";
 
 
 
 export default function AboutUs() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div className={styles.mainContent}>
             <div className={styles.aboutPageTitle}>
@@ -18,24 +24,18 @@ export default function AboutUs() {
                     FOLLOW US
                 <ul className={styles.followUsList}>
                         <li>
-                            <a href="https://www.facebook.com/Goodreads"><div className={styles.followUsFacebook}></div>
-                        /goodreads
-                        </a>
+                        <Link to={{ pathname: "https://www.facebook.com/Goodreads" }} target="_blank"><div className={styles.followUsFacebook}></div>/goodreads</Link>
                         </li>
                         <li>
-                            <a href="https://twitter.com/goodreads"><div className={styles.followUsTwitter}></div>
-                        @goodreads
-                        </a>
+                            <Link to={{ pathname: "https://twitter.com/goodreads"}} target="_blank"><div className={styles.followUsTwitter}></div>@goodreads</Link>
                         </li>
                         <li>
-                            <a href="http://www.linkedin.com/company/goodreads.com"><div className={styles.followUsLinkedin}></div>
+                            <Link to={{ pathname: "http://www.linkedin.com/company/goodreads.com"}} target="_blank"><div className={styles.followUsLinkedin}></div>
                         goodreads.com
-                        </a>
+                        </Link>
                         </li>
                         <li>
-                            <a href="http://pinterest.com/goodreads/"><div className={styles.followUsPinterest}></div>
-                        /goodreads
-                        </a>
+                            <Link to={{ pathname:"http://pinterest.com/goodreads/" }} target="_blank"><div className={styles.followUsPinterest}></div>/goodreads</Link>
                         </li>
                     </ul>
                 </div>

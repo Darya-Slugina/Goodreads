@@ -9,9 +9,8 @@ import moment from "moment"
 import { getReviewForCurrentBookAndUser, getReviewsForCurrentBook } from "./service";
 
 
-export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview, userId, getReviews, bookId }) {
+export default function Comments({ commentId, userName, userImg, date, rate, likes, review, userId, getReviews, bookId }) {
 
-    const [displayComment, setDisplayComment] = useState(false);
     const [text, setText] = useState(review);
     const [form, setForm] = useState(false);
     const [buttonState, setButtonState] = useState("Like");
@@ -25,6 +24,10 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         }
         return false;
     }, [userId, user])
+
+    useEffect(() => {
+        setText(review);
+    }, [review])
 
     useEffect(() => {
         getReviewForCurrentBookAndUser(bookId, userId)
@@ -53,12 +56,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         setForm(!form);
     }
 
-    console.log(form);
-
-    const displayOnScreen = () => {
-        setDisplayComment(!displayComment)
-    }
-
     const setReview = (ev) => {
         ev.preventDefault();
         getReviewForCurrentBookAndUser(bookId, userId)
@@ -67,7 +64,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                 snapshot.forEach(doc => {
                     id = doc.id;
                 })
-                if (rate > 0 || (text.length.trim() > 0 && text.length.trim() < 5000)) {
+                if (rate > 0 || (text.trim().length > 1 && text.trim().length < 5000)) {
                     setReviewBtn(true);
                     database.collection("reviewsList").doc(id).update({
                         review: text,
@@ -184,17 +181,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                         <span className={styles.date}>{moment(date).format("MMMM Do YYYY")}</span>
                     </div>
                     <div className={styles.commentInfo}>
-                        {hiddenReview &&
-                            <React.Fragment>
-                                <span className={styles.description} id="review">{review}</span>
-                                {displayComment ?
-                                    <React.Fragment>
-                                        <span className={styles.description}>{hiddenReview}</span>
-                                        <span className={styles.more} onClick={displayOnScreen}>...less</span>
-                                    </React.Fragment>
-                                    : <span className={styles.more} onClick={displayOnScreen}>...more</span>}
-                            </React.Fragment>
-                        }
                         {form ? (
                             <div id="form">
                                 <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} > {text}

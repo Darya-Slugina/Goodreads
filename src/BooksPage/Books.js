@@ -17,14 +17,18 @@ export default function Books() {
 
   const [reviews, setReviews] = useState([]);
   const [bookState, setBookState] = useState('Want To Read');
- 
+
   const user = useSelector((state) => state.user.user);
   const books = useSelector((state) => state.books.books);
 
   const currentId = Number(bookId);
   const currentBook = books.filter(book => book.id === currentId);
   const firstBook = currentBook[0] ? currentBook[0] : {};
+  console.log(currentId)
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [bookId])
 
   useEffect(() => {
     getReviewsForCurrentBook(currentId)
@@ -36,6 +40,8 @@ export default function Books() {
         setReviews(dbReviews);
       });
   }, [currentId]);
+
+  console.log(reviews);
 
   const reviewsCount = useMemo(() => {
     return reviews.filter(el => el.review).length;
@@ -54,7 +60,7 @@ export default function Books() {
 
   const isHavaReview = reviews.filter(el => el.userId === user.id && el.forBookId === currentId).length > 0;
 
-  useEffect( () => {
+  useEffect(() => {
     if (user) {
       let state = 'Want To Read';
       if (user.currentlyReading && user.currentlyReading.filter(el => el === currentId).length > 0) {
@@ -65,7 +71,7 @@ export default function Books() {
 
       setBookState(state);
     }
-  },[user, currentId]);
+  }, [user, currentId]);
 
 
 
@@ -129,12 +135,12 @@ export default function Books() {
   }
 
   const ascendingSort = () => {
-   const sortedRev =  [...reviews].sort((a, b) => b.rate - a.rate);
+    const sortedRev = [...reviews].sort((a, b) => b.rate - a.rate);
     setReviews(sortedRev);
   }
 
   const descendingSort = () => {
-    const sortedRev =  [...reviews].sort((a, b) => a.rate - b.rate);
+    const sortedRev = [...reviews].sort((a, b) => a.rate - b.rate);
     setReviews(sortedRev);
   }
 
@@ -157,7 +163,7 @@ export default function Books() {
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={firstBook.img} alt={firstBook.title} />
-            {user.id? <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} /> : <Link to="/login"><DropdownButton className={styles.ratingButton} bookState={bookState}/></Link>}
+            {user.id ? <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} /> : <Link to="/login"><DropdownButton className={styles.ratingButton} bookState={bookState} /></Link>}
           </div>
           <div className={styles.mainInfoContainer}>
             <div className={styles.mainInfo}>
@@ -202,7 +208,7 @@ export default function Books() {
               <BooksList books={books} genre={currentGenre} isShuffled={true} length={6} />
             </div>
           </div>
-          <div className={styles.h2Container}>
+          <div className={styles.h2Container} id={"reviews"}>
             <h2 className={styles.h2Title}>Community Reviews</h2>
             <div className={styles.bookMeta}>
               <div className={styles.staticRatingStars}>
@@ -236,7 +242,7 @@ export default function Books() {
           </div>
           <div className={styles.h2Container}>
             {reviews.map(review => (
-              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId}/>
+              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId} />
             ))}
 
           </div>

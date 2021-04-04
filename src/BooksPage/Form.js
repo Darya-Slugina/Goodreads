@@ -11,10 +11,10 @@ export default function Form({ bookId, getReviews, rating }) {
     const [text, setText] = useState("");
     const [reviewBtn, setReviewBtn] = useState(false)
     const user = useSelector((state) => state.user.user);
-    console.log(user);
+
 
     useEffect(() => {
-        if (rating > 0 || (text.trim().length > 0 && text.length.trim() < 5000)) {
+        if (rating > 0 || (text.trim().length > 0 && text.trim().length < 5000)) {
             setReviewBtn(true);
         } else if (rating <= 0 || text.trim().length <= 0) {
             setReviewBtn(false);

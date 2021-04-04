@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Button from "./../common/Button";
 import firebase, { database } from "../firebase";
 import moment from "moment"
+import { getReviewForCurrentBookAndUser, getReviewsForCurrentBook } from "./service";
 
 
 export default function Comments({ commentId, userName, userImg, date, rate, likes, review, hiddenReview, userId, getReviews, bookId }) {
@@ -14,10 +15,10 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
     const [text, setText] = useState(review);
     const [form, setForm] = useState(false);
     const [buttonState, setButtonState] = useState("Like");
+    const [reviewBtn, setReviewBtn] = useState(true);
 
     const user = useSelector((state) => state.user.user);
 
-    console.log(buttonState);
     const currentUser = useMemo(() => {
         if (user && userId === user.id) {
             return true;
@@ -31,6 +32,14 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         }
     }, [user, userId, setButtonState])
 
+    useEffect(() => {
+        if (text.trim().length <= 0) {
+            setReviewBtn(false);
+        } else if (text.trim().length > 0){
+            setReviewBtn(true);
+        }
+    }, [rate, text])
+
     const displayForm = () => {
         setForm(!form);
     }
@@ -43,22 +52,21 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
 
     const setReview = (ev) => {
         ev.preventDefault();
-
-        database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+        getReviewForCurrentBookAndUser(bookId, userId)
             .then(snapshot => {
                 let id = [];
                 snapshot.forEach(doc => {
-                    console.log(doc.data());
-                    console.log(doc.id);
                     id = doc.id;
                 })
+                if (rate > 0 || (text.length.trim() > 0 && text.length.trim()< 5000)) {
+                    setReviewBtn(true);
                 database.collection("reviewsList").doc(id).update({
                     review: text,
                 })
                     .then(() => {
                         console.log("Document successfully written!");
                         setForm(!form);
-                        database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                        getReviewsForCurrentBook(bookId)
                             .then((querySnapshot) => {
                                 let dbReviews = [];
                                 querySnapshot.forEach((doc) => {
@@ -71,14 +79,16 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                     .catch((error) => {
                         console.error("Error writing document: ", error);
                     });
-
+                }
             })
+       
     }
 
     const addLike = () => {
         if (buttonState === "Like") {
             console.log(buttonState);
-            database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+            getReviewForCurrentBookAndUser(bookId, userId)
+                // database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
                 .then(snapshot => {
                     let id = [];
                     snapshot.forEach(doc => {
@@ -92,7 +102,8 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                             console.log("Document successfully written!");
                             setButtonState("Dislike");
 
-                            database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                            getReviewsForCurrentBook(bookId)
+                                // database.collection("reviewsList").where("forBookId", "==", bookId).get()
                                 .then((querySnapshot) => {
                                     let dbReviews = [];
                                     querySnapshot.forEach((doc) => {
@@ -107,7 +118,8 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                         });
                 })
         } else if (buttonState === "Dislike") {
-            database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
+            getReviewForCurrentBookAndUser(bookId, userId)
+                // database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
                 .then(snapshot => {
                     let id = [];
                     snapshot.forEach(doc => {
@@ -121,7 +133,8 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                             setButtonState("Like")
                             console.log("Document successfully written!");
 
-                            database.collection("reviewsList").where("forBookId", "==", bookId).get()
+                            getReviewsForCurrentBook(bookId)
+                                // database.collection("reviewsList").where("forBookId", "==", bookId).get()
                                 .then((querySnapshot) => {
                                     let dbReviews = [];
                                     querySnapshot.forEach((doc) => {
@@ -135,10 +148,11 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                             console.error("Error writing document: ", error);
                         });
                 });
-           
+
         }
     }
 
+console.log(rate)
 
     return (
         <React.Fragment>
@@ -178,7 +192,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                             <div id="form">
                                 <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} > {text}
                                 </textarea>
-                                <Button value={"Publish your review"} onClick={setReview} />
+                                {reviewBtn && <Button value={"Update your review"} onClick={setReview} />}
                             </div>
                         ) : <span className={styles.description}>{review}</span>}
                     </div>
@@ -186,7 +200,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                         <span className={styles.likeItContainer}>
                             <span className={styles.likesCount}>{likes.length}&nbsp; likes</span>
                                     &nbsp;·&nbsp;
-                                   {user.id? <span className={styles.likeBtn} onClick={addLike} id={commentId}>{buttonState}</span> : <Link to="/login"><span className={styles.likeBtn} id={commentId}>{buttonState}</span></Link>}
+                                   {user.id ? <span className={styles.likeBtn} onClick={addLike} id={commentId}>{buttonState}</span> : <Link to="/login"><span className={styles.likeBtn} id={commentId}>{buttonState}</span></Link>}
                             {currentUser && <span className={styles.EditBtn} onClick={displayForm} id={commentId}> Edit </span>}
                         </span>
                     </div>

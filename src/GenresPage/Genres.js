@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import firebase, { database } from "../firebase";
 import { useEffect } from 'react';
 import { countOfMostWantedBoooks } from "../Constants";
+import { addInFavouriteGenres, removeFromFavouriteGenres } from './service';
+
 
 
 export default function Genres() {
@@ -32,14 +34,12 @@ export default function Genres() {
   }, [user, currentGenre])
 
   const addToFavourite = () => {
-    if (user) {
+    if (user.id) {
 
       if (buttonState === "Add to favourite") {
         setButtonState("Remove from favourite")
 
-        database.collection("users").doc(user.id).update({
-          favouriteGenres: firebase.firestore.FieldValue.arrayUnion(currentGenre),
-        })
+        addInFavouriteGenres(user.id, currentGenre)
           .then(() => {
             console.log("Document successfully written!");
           })
@@ -48,9 +48,8 @@ export default function Genres() {
           });
       } else if (buttonState === "Remove from favourite") {
         setButtonState("Add to favourite")
-        database.collection("users").doc(user.id).update({
-          favouriteGenres: firebase.firestore.FieldValue.arrayRemove(currentGenre),
-        })
+
+        removeFromFavouriteGenres(user.id, currentGenre)
           .then(() => {
             console.log("Document successfully written!");
           })
@@ -71,7 +70,7 @@ export default function Genres() {
         </div>
         <div className={styles.genreHeader}>
           <h1 className={styles.left}> {firstGenre.genre} </h1>
-          {user &&
+          {user.id &&
             <div className={styles.right}>
               <div className={styles.favoriteGenresButtonContainer}>
                 <Button value={buttonState} onClick={addToFavourite} />

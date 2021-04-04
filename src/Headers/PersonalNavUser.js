@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import firebase, { database } from "../firebase";
 import { useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { addToFriendsList } from "../RegistrationAndLoginPage/User.actions";
+import { addToFriendsList, fetchUserLoggedIn } from "../RegistrationAndLoginPage/User.actions";
 
 export default function PersonalNavUser() {
     const [notifications, setNotifications] = useState([]);
@@ -19,6 +19,7 @@ export default function PersonalNavUser() {
     const logoutUser = () => {
         firebase.auth().signOut().then(() => {
             console.log("Sign-out successful");
+            dispatch(fetchUserLoggedIn({}))
             history.push("/");
         }).catch((error) => {
             console.log("An error happened." + error);
@@ -39,6 +40,7 @@ export default function PersonalNavUser() {
                     console.log(doc.data());
                     console.log(doc.id);
                     id = doc.id;
+            
                 })
 
                 database.collection('friendsRequests').doc(id).update({
@@ -50,11 +52,8 @@ export default function PersonalNavUser() {
                         let newNote = notifications.filter(el => el.id !== docId)
                         console.log("newNote", newNote)
                         setNotifications(newNote);
-
-
                     })
                     .catch((error) => {
-                        // The document probably doesn't exist.
                         console.error("Error updating document: ", error);
                     })
             })
@@ -63,14 +62,34 @@ export default function PersonalNavUser() {
         }
     }
 
-    const removeFromNotifications = (id, action) => {
-        if (action === "approve") {
-            let newNotif = approved.filter(el => el.id !== id);
-            setApproved(newNotif);
-        } else if (action === "reject") {
-            let newNotif = rejected.filter(el => el.id !== id);
-            setRejected(newNotif);
-        }
+    const removeFromNotifications = (id) => {
+
+        let newRejectedNotif = rejected.filter(el => el.id !== id);
+        let newApprovedNotif = approved.filter(el => el.id !== id);
+
+        database.collection('friendsRequests').where('id', '==', id).get()
+
+        .then((querySnapshot) => {
+            let docId = [];
+            (querySnapshot).forEach(doc => {
+                console.log(doc.data());
+                console.log(doc.id);
+                docId = doc.id;
+            })
+
+            database.collection('friendsRequests').doc(docId).update({
+                status: "fulfilled",
+            })
+                .then(() => {
+                    console.log("Document successfully updated!!!");
+                    setRejected(newRejectedNotif);
+                    setApproved(newApprovedNotif);
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                })
+        })
+        
     }
 
     useEffect(() => {
@@ -101,7 +120,7 @@ export default function PersonalNavUser() {
                 setApproved(notif);
             })
         }
-    }, [user, dispatch])
+    }, [])
 
     useEffect(() => {
         if (user.id) {
@@ -112,27 +131,32 @@ export default function PersonalNavUser() {
                 snapshot.forEach(doc =>
                     notif.push(doc.data()))
                 setRejected(notif);
-                console.log("reject");
+                console.log("reject",notif);
 
             })
         }
 
     }, [user])
 
+const allNotifications = [...notifications, ...rejected, ...approved];
+
+    console.log(allNotifications.length);
+
     return (
         <nav className={styles.personalNav}>
             <div className={styles.notifications}>
                 <span className={styles.notificationIcon} onClick={showNotifications} />
-                <span className={notifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{[...notifications, ...rejected, ...approved].length}</span>
-                <div className={btnState ? styles.dropdownContainerShow : styles.dropdownContainer}  >
-                    <span className={notifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
-                    {[...notifications, ...rejected, ...approved].map(el => (
+                <span className={allNotifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{allNotifications.length}</span>
+                <div className={styles.dropdownContainer} id="dropdownContainer">
+                    <span className={allNotifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
+                    {allNotifications.map(el => (
                         <div key={el.id} className={styles.messageContainer}>
+                                {console.log("here", el.status)}
                             {el.status === "reject" &&
                                 <React.Fragment>
                                     <span className={styles.message} >{`Your friend request to ${el.requestFrom} was rejected`}</span>
                                     <div className={styles.buttonsContainer}>
-                                        <span className={styles.buttons} onClick={() => removeFromNotifications(el.id, "reject")}>X</span>
+                                        <span className={styles.buttons} onClick={() => removeFromNotifications(el.id)}>X</span>
                                     </div>
                                 </React.Fragment>}
 
@@ -140,7 +164,7 @@ export default function PersonalNavUser() {
                                 <React.Fragment>
                                     <span className={styles.message} >{`Your friend request to ${el.requestFrom} was approved`}</span>
                                     <div className={styles.buttonsContainer}>
-                                        <span className={styles.buttons} onClick={() => removeFromNotifications(el.id, "reject")}>X</span>
+                                        <span className={styles.buttons} onClick={() => removeFromNotifications(el.id)}>X</span>
                                     </div>
                                 </React.Fragment>}
 

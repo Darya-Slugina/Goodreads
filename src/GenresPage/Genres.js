@@ -6,25 +6,27 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import firebase, { database } from "../firebase";
 import { useEffect } from 'react';
+import { countOfMostWantedBoooks } from "../Constants";
 
 
-export default function Genres({ isLoggedIn, genresList, books }) {
+export default function Genres() {
 
   const { currentGenre } = useParams();
   const [buttonState, setButtonState] = useState("Add to favourite");
   const user = useSelector((state) => state.user.user);
+  const books = useSelector((state) => state.books.books);
+  const genresList = useSelector((state) => state.genres.genres);
 
-  let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre); 
+  let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre);
   const currentBooks = books.filter(el => el.genre.toLowerCase() === currentGenre);
 
   const mostWanted = [...books];
   mostWanted.sort(() => Math.random() - 0.5);
-  mostWanted.length = 12; //Magic number
+  mostWanted.length = countOfMostWantedBoooks;
 
 
-  //  TODO: some change, have bug on refresh
-  useEffect(()=> {
-    if(user && user.favouriteGenres && user.favouriteGenres.includes(currentGenre)){
+  useEffect(() => {
+    if (user && user.favouriteGenres && user.favouriteGenres.includes(currentGenre)) {
       setButtonState("Remove from favourite");
     }
   }, [user, currentGenre])
@@ -44,7 +46,7 @@ export default function Genres({ isLoggedIn, genresList, books }) {
           .catch((error) => {
             console.error("Error writing document: ", error);
           });
-      } else if (buttonState === "Remove from favourite"){
+      } else if (buttonState === "Remove from favourite") {
         setButtonState("Add to favourite")
         database.collection("users").doc(user.id).update({
           favouriteGenres: firebase.firestore.FieldValue.arrayRemove(currentGenre),
@@ -69,7 +71,7 @@ export default function Genres({ isLoggedIn, genresList, books }) {
         </div>
         <div className={styles.genreHeader}>
           <h1 className={styles.left}> {firstGenre.genre} </h1>
-          {isLoggedIn &&
+          {user &&
             <div className={styles.right}>
               <div className={styles.favoriteGenresButtonContainer}>
                 <Button value={buttonState} onClick={addToFavourite} />

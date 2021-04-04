@@ -24,8 +24,7 @@ export default function Login() {
   }
 
   // useEffect(() => {
-  //   console.log('tuk', user);
-  //   if(user !== null){
+  //   if(user.id){
   //     history.push("/");
   //   }
   // }, [history, user])
@@ -98,9 +97,7 @@ export default function Login() {
         <div className={styles.texture}>
           <div className={styles.clearfix}>
             <div>
-              <a href="/">
-                <img src="https://s.gr-assets.com/assets/layout/goodreads_logo_324-a908b923dc3ed9b7a13f3da4d1ffb2df.png" alt="Goodreads: Book reviews, recommendations, and discussion" className={styles.logo} />
-              </a>
+             <Link to="/"><img src="https://s.gr-assets.com/assets/layout/goodreads_logo_324-a908b923dc3ed9b7a13f3da4d1ffb2df.png" alt="Goodreads: Book reviews, recommendations, and discussion" className={styles.logo} /></Link>
             </div>
           </div>
           <div className={styles.wrapper}>

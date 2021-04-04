@@ -2,37 +2,28 @@ import styles from './AllGenres.module.scss';
 import { Link } from "react-router-dom";
 import BooksList from "../BooksPage/BookList";
 import Button from "./../common/Button";
-import React, { useState, useMemo, useEffect } from 'react';
-import { database } from "../firebase";
+import React, { useState, useMemo } from 'react';
+import { useSelector } from "react-redux";
+import { countOfMainGenresCategories } from "../Constants";
 
 
 
-export default function AllGenres({genresList, books}) {
+export default function AllGenres() {
 
     const [inputValue, setInputValue] = useState("");
-    // const [genresList, setGenresList] = useState([]);
 
-    // useEffect(() => {
-    //     database.collection("genresList").get()
-    //         .then((querySnapshot) => {
-    //             let dbGenres = [];
-    //             querySnapshot.forEach((doc) => {
-    //                 dbGenres.push(doc.data());
-    //             });
-
-    //             setGenresList(dbGenres);
-    //         });
-    // }, []);
+    const books = useSelector((state) => state.books.books);
+    const genresList = useSelector((state) => state.genres.genres);
 
 
     const onInputChange = (ev) => {
         setInputValue(ev.target.value);
     };
 
-    const { genreList} = useMemo(() => {
+    const { genreList } = useMemo(() => {
         const mygenres = [...genresList]
         mygenres.sort(() => Math.random() - 0.5);
-        mygenres.length = 3; //Magic number
+        mygenres.length = countOfMainGenresCategories;
         const genreList = mygenres.map(el => el.genre);
 
         return { genreList }
@@ -56,7 +47,7 @@ export default function AllGenres({genresList, books}) {
                                         <h2><Link to={"/genres/" + genre.toLowerCase()} className={styles.h2Title}>{genre}</Link></h2>
                                     </div>
                                     <div className={styles.boxBody}>
-                                        <BooksList isShuffled={true} genre={genre} books={books} length={5}/>
+                                        <BooksList isShuffled={true} genre={genre} books={books} length={5} />
                                         <div className={styles.moreLink}>
                                             <Link to={"/genres/" + genre.toLowerCase()} className={styles.actionLink}>More {genre} ... </Link>
                                         </div>

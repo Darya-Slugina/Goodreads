@@ -186,7 +186,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                         <span className={styles.likeItContainer}>
                             <span className={styles.likesCount}>{likes.length}&nbsp; likes</span>
                                     &nbsp;·&nbsp;
-                                    <span className={styles.likeBtn} onClick={addLike} id={commentId}>{buttonState}</span>
+                                   {user.id? <span className={styles.likeBtn} onClick={addLike} id={commentId}>{buttonState}</span> : <Link to="/login"><span className={styles.likeBtn} id={commentId}>{buttonState}</span></Link>}
                             {currentUser && <span className={styles.EditBtn} onClick={displayForm} id={commentId}> Edit </span>}
                         </span>
                     </div>

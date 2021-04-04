@@ -3,8 +3,11 @@ import React from "react"
 import { Link } from "react-router-dom";
 import HomePageHeader from "../Headers/HomePageHeader";
 import SearchBar from '../SearchBar'
+import { useSelector } from "react-redux";
 
-export default function HomePage({ genresList }) {
+export default function HomePage() {
+    const genresList = useSelector((state) => state.genres.genres);
+
     return (
         <React.Fragment>
             <HomePageHeader />

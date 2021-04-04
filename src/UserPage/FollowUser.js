@@ -19,7 +19,7 @@ export default function FollowUser( {userId} ) {
 
     return (
         <Link to={"/user/" + userId} className={styles.link}>
-            <img alt={user.fname} src={user.userImg} className={styles.img}/>
+            <img src={user.userImg} alt={user.fname} className={styles.img}/>
         </Link> 
     )
 }

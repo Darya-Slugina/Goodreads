@@ -23,7 +23,7 @@
             font-size: 14px;
             font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
             line-height: 18px;
-            color: #181818; 
+            color: #181818;
         }
 
         .btnContainer {
@@ -41,15 +41,12 @@
             }
         }
 
-        .errorText {
+        .errorTextShow {
             margin-top: 30px;
             display: block;
             font-size: 13px;
-            color: #8d1010; 
+            color: #8d1010;
             font-weight: 600;
-            display: none;
-
         }
-      
     }
 }

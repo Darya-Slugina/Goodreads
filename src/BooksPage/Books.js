@@ -1,6 +1,6 @@
 import styles from './Books.module.scss';
 import React, { useState, useEffect, useMemo } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import BooksList from "./BookList";
 import ReviewModul from "./ReviewModul";
 import Comments from "./Comments";
@@ -8,6 +8,7 @@ import DropdownButton from "../common/DroppdownButton"
 import firebase, { database } from "../firebase";
 import { useSelector } from "react-redux";
 import StarRatings from 'react-star-ratings';
+import { getReviewsForCurrentBook } from './service';
 
 
 export default function Books() {
@@ -26,7 +27,7 @@ export default function Books() {
 
 
   useEffect(() => {
-    database.collection("reviewsList").where("forBookId", "==", currentId).get()
+    getReviewsForCurrentBook(currentId)
       .then((querySnapshot) => {
         let dbReviews = [];
         querySnapshot.forEach((doc) => {
@@ -156,7 +157,7 @@ export default function Books() {
         <div className={styles.leftContainer}>
           <div className={styles.imgCol}>
             <img className={styles.coverImage} src={firstBook.img} alt={firstBook.title} />
-            <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} />
+            {user.id? <DropdownButton className={styles.ratingButton} onClick={changeStatus} bookState={bookState} setBookState={setBookState} /> : <Link to="/login"><DropdownButton className={styles.ratingButton} bookState={bookState}/></Link>}
           </div>
           <div className={styles.mainInfoContainer}>
             <div className={styles.mainInfo}>
@@ -220,7 +221,7 @@ export default function Books() {
               <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
               <div className={styles.sorterContainer}>
                 <div>
-                  <span className={styles.sortOption} onClick={ascendingSort}>Heighest rating</span>
+                  <span className={styles.sortOption} onClick={ascendingSort}>Highest rating</span>
                   <span className={styles.sortOption} onClick={descendingSort}>Lowest rating</span>
                 </div>
                 <div>

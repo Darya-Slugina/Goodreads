@@ -10,6 +10,7 @@ export default function PersonalNavUser() {
     const [notifications, setNotifications] = useState([]);
     const [rejected, setRejected] = useState([]);
     const [approved, setApproved] = useState([]);
+    const [btnState, setBtnState] = useState(false);
 
 
     const user = useSelector((state) => state.user.user);
@@ -27,8 +28,7 @@ export default function PersonalNavUser() {
     }
 
     const showNotifications = () => {
-        let dropdown = document.getElementById("dropdownContainer");
-        dropdown.classList.toggle("show");
+        setBtnState(!btnState);
     }
 
     const answerOnRequest = (docId, action) => {
@@ -58,6 +58,9 @@ export default function PersonalNavUser() {
                         console.error("Error updating document: ", error);
                     })
             })
+            return () => {
+                // subscription();
+            }
     }
 
     const removeFromNotifications = (id) => {
@@ -178,15 +181,14 @@ const allNotifications = [...notifications, ...rejected, ...approved];
                     )
                     )}
                 </div>
-
             </div>
             <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic" className={styles.profileBtn}>
+                <Dropdown.Toggle id="dropdown-basic" className={styles.profileBtn} variant='light'>
                     <div className={styles.profilePic}></div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={styles.profileBtnDropdown}>
                     <Dropdown.Item href={"/user/" + user.id} className={styles.profileName}>{user.fname}</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2" className={styles.signOutLink} onClick={logoutUser}>Sign out</Dropdown.Item>
+                    <Dropdown.Item href="/" className={styles.signOutLink} onClick={logoutUser}>Sign out</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </nav>

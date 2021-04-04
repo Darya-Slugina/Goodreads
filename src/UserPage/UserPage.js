@@ -7,6 +7,7 @@ import { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
 import FollowUser from "./FollowUser";
+import { getCurrentUser, getReviewsByUser } from "./service"
 
 
 
@@ -25,7 +26,7 @@ export default function UserPage() {
     const loggedInUser = useSelector((state) => state.user.user);
 
     useEffect(() => {
-        database.collection("users").where("id", "==", userId).get()
+        getCurrentUser(userId)
             .then((user) => {
                 user.forEach((doc) => {
                     setUser(doc.data());
@@ -34,7 +35,7 @@ export default function UserPage() {
     }, [userId]);
 
     useEffect(() => {
-        database.collection("reviewsList").where("userId", "==", userId).get()
+        getReviewsByUser(userId)
             .then((querySnapshot) => {
                 const dbReviews = [];
                 querySnapshot.forEach((doc) => {
@@ -116,12 +117,14 @@ export default function UserPage() {
     }
 
     const sendFriendRequest = () => {
-        database.collection("friendsRequests").doc().set({
-            requestFrom: loggedInUser.id,
-            requestTo: userId,
-            status: "sent",
-            id: Date.now(),
-        })
+        setFriendRequest(loggedInUser.id, loggedInUser.fname, userId)
+        // database.collection("friendsRequests").doc().set({
+        //     requestFrom: loggedInUser.id,
+        //     requestFromUser: loggedInUser.fname,
+        //     requestTo: userId,
+        //     status: "sent",
+        //     id: Date.now(),
+        // })
         setFriendRequest(!friendRequest)
     }
 
@@ -132,14 +135,14 @@ export default function UserPage() {
                     <img alt={user.fname} className={styles.profilePictureIcon} src={user.userImg}></img>
                     <div className={styles.profilePageStatsInfo}>
                         {reviews ?
-                            <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}>{rateCount} ratings</a>
+                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}>{rateCount} ratings</span>
                             :
-                            <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 ratings</a>
+                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 ratings</span>
                         }
                         {reviews ?
-                            <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> {reviews.length} reviews</a>
+                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> {reviews.length} reviews</span>
                             :
-                            <a href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 reviews</a>
+                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 reviews</span>
                         }
                     </div>
                 </div>
@@ -150,11 +153,11 @@ export default function UserPage() {
                     ) :
                         <React.Fragment>
                             <h1 className={styles.userProfileName}>  {user.fname}</h1>
-                            <div className={styles.friendFollowModule}>
+                            {loggedInUser.id ? <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
-                                <button className={styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
+                                <button className={friendRequest ? styles.friendButtonSent : styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
                                 <span className={friendRequest ? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span>
-                            </div>
+                            </div> : null}
                         </React.Fragment>
                     }
                     {(user.interests || user.city) ?

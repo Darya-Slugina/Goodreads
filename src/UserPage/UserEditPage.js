@@ -5,13 +5,8 @@ import { useState, useCallback } from "react";
 import { database, storage } from "../firebase";
 import { useDropzone } from "react-dropzone";
 import { useSelector } from "react-redux";
+import { getCountries, getCurrentUser } from "./service"
 
-
-const getCountries = () => {
-  return fetch("https://restcountries.eu/rest/v2/all").then((res) =>
-    res.json()
-  );
-};
 
 const initialUser = {
   fname: "",
@@ -33,23 +28,28 @@ const initialUser = {
 export default function UserEditPage() {
   const [storageUser, setStorageUser] = useState(initialUser);
   const [file, setFile] = useState("");
+  const [btnState, setBtnState] = useState(true);
 
   const user = useSelector((state) => state.user.user);
 
   const storageUserUpdate = (value, type) => {
+    if (type === "fname" && value.trim().length > 3) {
+      setBtnState(true);
+      setStorageUser((prevUser) => ({ ...prevUser, [type]: value }));
+    } else if (type === "fname" && value.trim().length < 3) {
+      setBtnState(false);
+    }
     setStorageUser((prevUser) => ({ ...prevUser, [type]: value }));
   };
 
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback((acceptedFiles, fileRejections) => {
+    console.log('onDrop', fileRejections);
     setFile(acceptedFiles[0]);
   });
 
   console.log(user);
   useEffect(() => {
-    database
-      .collection("users")
-      .where("id", "==", user.id)
-      .get()
+    getCurrentUser(user.id)
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setStorageUser((prevUser) => ({ ...prevUser, ...doc.data() }));
@@ -60,15 +60,16 @@ export default function UserEditPage() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   useEffect(() => {
-    getCountries().then((res) => {
-      res.forEach((country) => {
-        let datalist = document.getElementById("country");
-        let option = document.createElement("option");
-        option.value = country.name;
-        option.innerHTML = country.name;
-        datalist.append(option);
+    getCountries()
+      .then((res) => {
+        res.forEach((country) => {
+          let datalist = document.getElementById("country");
+          let option = document.createElement("option");
+          option.value = country.name;
+          option.innerHTML = country.name;
+          datalist.append(option);
+        });
       });
-    });
   }, []);
 
   const checkCountry = (ev) => {
@@ -88,7 +89,7 @@ export default function UserEditPage() {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
       },
-      (error) => {},
+      (error) => { },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log("File available at", downloadURL);
@@ -254,7 +255,7 @@ export default function UserEditPage() {
               </p>
 
               <div {...getRootProps()} className={styles.dragActive}>
-                <input {...getInputProps()} className={styles.dropInput}/>
+                <input {...getInputProps()} className={styles.dropInput} maxSize={100} />
                 {isDragActive ? (
                   <p className={styles.imgInput}>Drop the files here ...</p>
                 ) : (
@@ -269,14 +270,7 @@ export default function UserEditPage() {
             </div>
           </div>
           <p>
-            {" "}
-            <input
-              type="submit"
-              name="commit"
-              value="Save Profile Settings"
-              className={styles.submitBtn}
-              onClick={upload}
-            />
+            {btnState && <input type="submit" name="commit" value="Save Profile Settings" className={styles.submitBtn} onClick={upload} />}
           </p>
         </form>
       </div>

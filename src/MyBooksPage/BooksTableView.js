@@ -1,12 +1,23 @@
-import { useSelector } from "react-redux";
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
 import SimpleRating from "../BooksPage/Rating";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export default function BooksTable({ books }) {
-
+export default function BooksTable({ books }) {   
     
+    // const [booksToDisplay, setBooksToDisplay] = useState(books);
+
+    // const booksToDisplay = useMemo(() => {
+    //     if(books.length) {
+    //         books.sort((a, b) => a.title.localeCompare(b.title));
+    //         return books
+    //     }
+    // }, [books])
+    // console.log('BooksTableView ', booksToDisplay)
+
+    // useEffect(() => {
+
+    // }, [books])
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";
@@ -23,7 +34,6 @@ export default function BooksTable({ books }) {
                     <th className={styles.heading}>cover</th>
                     <th className={styles.heading}>title</th>
                     <th className={styles.heading}>author</th>
-                    <th className={styles.heading}>shelves</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +63,6 @@ export default function BooksTable({ books }) {
                         </td>
                         <td><p>{book.title}</p></td>
                         <td><p>{book.author}</p></td>
-                        <td><p>N/A</p></td>
                     </tr>
                 ))}
             </tbody>

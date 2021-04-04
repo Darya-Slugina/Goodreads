@@ -221,7 +221,7 @@ export default function Books() {
               <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
               <div className={styles.sorterContainer}>
                 <div>
-                  <span className={styles.sortOption} onClick={ascendingSort}>Heighest rating</span>
+                  <span className={styles.sortOption} onClick={ascendingSort}>Highest rating</span>
                   <span className={styles.sortOption} onClick={descendingSort}>Lowest rating</span>
                 </div>
                 <div>

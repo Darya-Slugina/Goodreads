@@ -1,5 +1,5 @@
 import React from "react";
-import MyBooks from "../MyBooks/MyBooks.js"
+import MyBooksPage from "../MyBooksPage/MyBooksPage.js"
 import Header from "../Headers/Header"
 
 
@@ -8,7 +8,7 @@ export default function HomePageLoggedIn() {
     return (
         <React.Fragment>
             <Header />
-            <MyBooks />
+            <MyBooksPage />
         </React.Fragment>
     )
 }

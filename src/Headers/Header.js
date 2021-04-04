@@ -6,10 +6,21 @@ import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
 import SearchBar from '../SearchBar'
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Header() {
     const loggedInUser = firebase.auth().currentUser;
     const genresList = useSelector((state) => state.genres.genres);
+    const history = useHistory();
+
+    const goToMyBooksPage = () => {
+        if(loggedInUser) {
+            history.push('/')
+        } else {
+            history.push('/login')
+        }
+    }
 
     return (
         <header className={styles.headerLogged}>
@@ -18,15 +29,17 @@ export default function Header() {
                 <a href="/genres" className={styles.logoLogged}></a>
                 <nav className={styles.navLogged}>
                     <ul>
-                        <Button className={styles.navLoggedBtn}>Home</Button>
-                        <Button className={styles.navLoggedBtn}>My books</Button>
+                        <Button variant='light' className={styles.navLoggedBtn} onClick={goToMyBooksPage}>My books</Button>
                         <Dropdown>
-                            <Dropdown.Toggle id="dropdown-basic" className={styles.navLoggedBtn}> Browse
+                            <Dropdown.Toggle variant='light' id="dropdown-basic" className={styles.navLoggedBtn}> Browse
                                     </Dropdown.Toggle>
-                            <Dropdown.Menu className={styles.navLoggedBtnDropdown}>
-                                {genresList.map(genre => (
-                                    <Dropdown.Item key={genre.id}>{genre.genre}</Dropdown.Item>
-                                ))}
+                            <Dropdown.Menu className={styles.dropdownWrapper} variant='light'>
+                                <div className={styles.navLoggedBtnDropdown}>
+                                    {genresList.sort((a, b) => a.genre.localeCompare(b.genre)).map(el => (
+                                        <Dropdown.Item key={el.id} variant='light'><Link to={"/genres/" + el.genre.toLowerCase()} className={styles.genreLink} >{el.genre}</Link></Dropdown.Item>
+                                    ))
+                                    }
+                                </div>
                             </Dropdown.Menu>
                         </Dropdown>
                     </ul>

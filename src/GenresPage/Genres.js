@@ -26,7 +26,10 @@ export default function Genres() {
   mostWanted.sort(() => Math.random() - 0.5);
   mostWanted.length = countOfMostWantedBoooks;
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
   useEffect(() => {
     if (user && user.favouriteGenres && user.favouriteGenres.includes(currentGenre)) {
       setButtonState("Remove from favourite");

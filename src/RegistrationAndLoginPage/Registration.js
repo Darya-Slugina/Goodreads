@@ -7,7 +7,7 @@ import firebase from "../firebase";
 import { useHistory } from "react-router-dom";
 import { database } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser, registerUserWithGoogle } from "./User.actions"
+import { registerUser, registerUserWithGoogle, registerUserWithFacebook } from "./User.actions"
 
 
 export default function Registration() {
@@ -31,28 +31,16 @@ export default function Registration() {
     dispatch(registerUserWithGoogle());
   };
 
+  const onFacebookLogin = () => {
+    dispatch(registerUserWithFacebook());
+  };
+
   useEffect(() => {
     if(user.id){
       history.replace("/genres");
     }
   }, [history, user])
 
- 
-  const onFacebookLogin = () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        const user = result.user;
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log("Error: ", errorMessage);
-
-      });
-  };
 
   return (
     <React.Fragment>

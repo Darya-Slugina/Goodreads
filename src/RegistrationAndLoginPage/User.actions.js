@@ -67,7 +67,7 @@ export const registerUser = (email, password, fname) => {
         })
         .catch((error) => {
           console.log("Error: ", error);
-          dispatch(fetchUserFailed());
+          dispatch(fetchUserFailed(error));
         });
     }
   }
@@ -92,10 +92,35 @@ export const registerUserWithGoogle = () => {
         })
         .catch((error) => {
           console.log("Error: ", error);
+          dispatch(fetchUserFailed(error));
         });
     }
   }
 
+}
+
+export const registerUserWithFacebook =() => {
+  return function (dispatch) {
+    dispatch(fetchUserRequested());
+    const provider = new firebase.auth.FacebookAuthProvider();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        const id = result.user.uid;
+          const fname = result.user.displayName;
+          const email= result.user.email;
+          console.log("Success: ", result);
+        dispatch(createUser(id, fname, email));
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log("Error: ", errorMessage);
+        dispatch(fetchUserFailed(error));
+
+      });
+  };
 }
 
 export const authenticateUser = (email, password) => {
@@ -109,7 +134,7 @@ export const authenticateUser = (email, password) => {
       })
       .catch((error) => {
         console.log("Error: ", error.message);
-        dispatch(fetchUserFailed(error.message));
+        dispatch(fetchUserFailed(error));
       });
   }
 }
@@ -129,7 +154,28 @@ export const authenticateUserWithGoogle =() => {
       })
       .catch((error) => {
         console.log("Error: ", error);
-        dispatch(fetchUserFailed(error.message));
+        dispatch(fetchUserFailed(error));
+      });
+  };
+}
+
+export const authenticateUserWithFacebook =() => {
+  return function (dispatch) {
+    dispatch(fetchUserRequested());
+    const provider = new firebase.auth.FacebookAuthProvider();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        dispatch(fetchUser(user.uid));
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log("Error: ", errorMessage);
+        dispatch(fetchUserFailed(error));
+
       });
   };
 }

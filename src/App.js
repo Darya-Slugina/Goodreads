@@ -32,7 +32,12 @@ import { fetchUser } from "./RegistrationAndLoginPage/User.actions";
 
 function App() {
   const dispatch = useDispatch();
-  const { user, error, isLoading } = useSelector((state) => state.user);
+  const { user, isLoading } = useSelector((state) => state.user);
+  const isLoadingBooks = useSelector((state) => state.books.isLoading);
+  const books = useSelector((state) => state.books.books);
+  const isLoadingGenres = useSelector((state) => state.genres.isLoading);
+
+  const isLoadingData = books.length === 0 || isLoadingBooks || isLoadingGenres || isLoading
 
 
   useEffect(() => {
@@ -48,20 +53,13 @@ function App() {
     });
   }, [dispatch]);
 
-  if (isLoading) {
+  if (isLoadingData) {
     return <div className="loader"><img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/Spinner-1s-384px.gif?alt=media&token=fb00c3cc-2dbc-4545-b238-c6181b20c473" alt="loader" className="loaderImg" /></div>
   }
 
   return (
     <BrowserRouter>
       <div className="App">
-
-        {error && (
-          <div className="error"> Something was wrong. Please try to login/register again
-            <Link to="/login">Login</Link> or continue like a gues user..
-          </div>
-        )}
-
         <Switch>
           <Route exact path="/">
             {user.id ? <HomePageLoggedIn /> : <HomePage />}
@@ -73,7 +71,7 @@ function App() {
           </Route>
 
           <Route path="/registration">
-           <Registration />
+            <Registration />
           </Route>
 
           <Route path="/genres/:currentGenre">

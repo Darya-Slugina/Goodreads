@@ -17,6 +17,7 @@ export default function Books() {
 
   const [reviews, setReviews] = useState([]);
   const [bookState, setBookState] = useState('Want To Read');
+  const [sorter, setSorter] = useState(null);
 
   const user = useSelector((state) => state.user.user);
   const books = useSelector((state) => state.books.books);
@@ -134,27 +135,25 @@ export default function Books() {
     e.target.nextSibling.classList.toggle("show");
   }
 
-  const ascendingSort = () => {
-    const sortedRev = [...reviews].sort((a, b) => b.rate - a.rate);
-    setReviews(sortedRev);
-  }
+  const sortedReviews = useMemo(() => {
+    if(!sorter) return reviews;
 
-  const descendingSort = () => {
-    const sortedRev = [...reviews].sort((a, b) => a.rate - b.rate);
-    setReviews(sortedRev);
-  }
+    if(sorter === 'ratingAscengind') {
+      return reviews.sort((a, b) => b.rate - a.rate);
+    }
 
-  const newest = () => {
-    let sortedArray = reviews.sort((a, b) => a.date - b.date);
-    console.log(sortedArray);
-    setReviews(sortedArray);
-  }
+    if(sorter === 'ratingDescending') {
+      return reviews.sort((a, b) => a.rate - b.rate);
+    }
 
-  const oldest = () => {
-    let sortedArray = reviews.sort((a, b) => a.date - b.date);
-    console.log(sortedArray);
-    setReviews(sortedArray);
-  }
+    if(sorter === 'dateAscenging') {
+      return reviews.sort((a, b) => b.date - a.date);
+    }
+
+    if(sorter === 'dateDescending') {
+      return reviews.sort((a, b) => a.date - b.date);
+    }
+  }, [sorter, reviews])
 
 
   return (
@@ -227,12 +226,12 @@ export default function Books() {
               <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
               <div className={styles.sorterContainer}>
                 <div>
-                  <span className={styles.sortOption} onClick={ascendingSort}>Highest rating</span>
-                  <span className={styles.sortOption} onClick={descendingSort}>Lowest rating</span>
+                  <span className={styles.sortOption} onClick={() => setSorter('ratingAscengind')}>Highest rating</span>
+                  <span className={styles.sortOption} onClick={() => setSorter('ratingDescending')}>Lowest rating</span>
                 </div>
                 <div>
-                  <span className={styles.sortOption} onClick={newest}>Newest rating</span>
-                  <span className={styles.sortOption} onClick={oldest}>Oldest rating</span>
+                  <span className={styles.sortOption} onClick={() => setSorter('dateAscenging')}>Newest rating</span>
+                  <span className={styles.sortOption} onClick={() => setSorter('dateDescending')}>Oldest rating</span>
                 </div>
               </div>
             </div>
@@ -241,7 +240,7 @@ export default function Books() {
             {!isHavaReview && <ReviewModul bookId={currentId} getReviews={setReviews} />}
           </div>
           <div className={styles.h2Container}>
-            {reviews.map(review => (
+            {sortedReviews.map(review => (
               <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId} />
             ))}
 

@@ -7,7 +7,7 @@ import { loginWithCredentials } from './service';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./User.actions";
-import { authenticateUser, authenticateUserWithGoogle } from "./User.actions"
+import { authenticateUser, authenticateUserWithGoogle, authenticateUserWithFacebook } from "./User.actions"
 
 export default function Login() {
 
@@ -19,10 +19,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const { user, error, isLoading } = useSelector((state) => state.user);
 
-  const userLogin = () => {
-    dispatch(authenticateUser(email, password));
-  }
-
   useEffect(() => {
     console.log(user.id);
     if (user.id) {
@@ -30,27 +26,16 @@ export default function Login() {
     }
   }, [history, user])
 
-
-  console.log(error);
+  const userLogin = () => {
+    dispatch(authenticateUser(email, password));
+  }
 
   const onGoogleLogin = () => {
     dispatch(authenticateUserWithGoogle());
   };
 
   const onFacebookLogin = () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        const user = result.user;
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log("Error: ", errorMessage);
-
-      });
+    dispatch(authenticateUserWithFacebook());
   };
 
 

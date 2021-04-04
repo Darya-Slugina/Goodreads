@@ -12,7 +12,6 @@ export default function PersonalNavUser() {
     const [approved, setApproved] = useState([]);
     const [btnState, setBtnState] = useState(false);
 
-
     const user = useSelector((state) => state.user.user);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -59,9 +58,9 @@ export default function PersonalNavUser() {
                         console.error("Error updating document: ", error);
                     })
             })
-            return () => {
-                // subscription();
-            }
+        return () => {
+            // subscription();
+        }
     }
 
     const removeFromNotifications = (id, action) => {
@@ -96,8 +95,9 @@ export default function PersonalNavUser() {
                 snapshot.forEach(doc => {
                     const request = doc.data();
                     dispatch(addToFriendsList(request.requestTo, user.id))
-                    notif.push(request)})
-  
+                    notif.push(request)
+                })
+
                 setApproved(notif);
             })
         }
@@ -124,7 +124,7 @@ export default function PersonalNavUser() {
             <div className={styles.notifications}>
                 <span className={styles.notificationIcon} onClick={showNotifications} />
                 <span className={notifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{[...notifications, ...rejected, ...approved].length}</span>
-                <div className={btnState? styles.dropdownContainerShow : styles.dropdownContainer}  >
+                <div className={btnState ? styles.dropdownContainerShow : styles.dropdownContainer}  >
                     <span className={notifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
                     {[...notifications, ...rejected, ...approved].map(el => (
                         <div key={el.id} className={styles.messageContainer}>

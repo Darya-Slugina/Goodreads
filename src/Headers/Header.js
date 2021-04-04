@@ -1,6 +1,5 @@
-import Dropdown from 'react-bootstrap/Dropdown'
-import Button from 'react-bootstrap/Button'
 import styles from './Header.module.scss'
+import '../common/DropdownMenu.scss'
 import firebase from "../firebase";
 import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
@@ -8,19 +7,44 @@ import SearchBar from '../SearchBar'
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { useRef, useState, useEffect } from 'react'
 
 export default function Header() {
     const loggedInUser = firebase.auth().currentUser;
     const genresList = useSelector((state) => state.genres.genres);
     const history = useHistory();
+    const [isActive, setIsActive] = useState(false);
+
+    const dropdownRef = useRef(null);
 
     const goToMyBooksPage = () => {
-        if(loggedInUser) {
+        if (loggedInUser) {
             history.push('/')
         } else {
             history.push('/login')
         }
     }
+
+    const showDropdown = () => {
+        setIsActive(true);
+    }
+
+    useEffect(() => {
+        const pageClickEvent = (e) => {
+            if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
+                setIsActive(!isActive);
+            }
+        };
+
+        if (isActive) {
+            window.addEventListener('click', pageClickEvent);
+        }
+
+        return () => {
+            window.removeEventListener('click', pageClickEvent);
+        }
+
+    }, [isActive]);
 
     return (
         <header className={styles.headerLogged}>
@@ -29,19 +53,18 @@ export default function Header() {
                 <a href="/" className={styles.logoLogged}></a>
                 <nav className={styles.navLogged}>
                     <ul>
-                        <Button variant='light' className={styles.navLoggedBtn} onClick={goToMyBooksPage}>My books</Button>
-                        <Dropdown>
-                            <Dropdown.Toggle variant='light' id="dropdown-basic" className={styles.navLoggedBtn}> Browse
-                                    </Dropdown.Toggle>
-                            <Dropdown.Menu className={styles.dropdownWrapper} variant='light'>
-                                <div className={styles.navLoggedBtnDropdown}>
+                        <button variant='light' className={styles.navLoggedBtn} onClick={goToMyBooksPage}>My books</button>
+                        <div>
+                            <button className={styles.navLoggedBtn} onClick={showDropdown}>Browse</button>
+                            <nav ref={dropdownRef} className={` ${styles.dropdownWrapper} menu ${isActive ? 'active' : 'inactive'}`}>
+                                <ul className={styles.navLoggedBtnDropdown}>
                                     {genresList.sort((a, b) => a.genre.localeCompare(b.genre)).map(el => (
-                                        <Dropdown.Item key={el.id} variant='light'><Link to={"/genres/" + el.genre.toLowerCase()} className={styles.genreLink} >{el.genre}</Link></Dropdown.Item>
+                                        <li key={el.id} ><Link to={"/genres/" + el.genre.toLowerCase()} className={styles.genreLink} >{el.genre}</Link></li>
                                     ))
                                     }
-                                </div>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                                </ul>
+                            </nav>
+                        </div>
                     </ul>
                 </nav>
                 <SearchBar />

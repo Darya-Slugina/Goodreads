@@ -20,11 +20,13 @@ export default function HomePage({ genresList }) {
                             <p>Chances are your friends are discussing their favorite (and least favorite) books on Goodreads.</p>
                         </div>
                     </div>
-                    <div className={styles.discoveryBox}></div>
+                    <div className={styles.discoveryBoxWrapper}>
+                        <div className={styles.discoveryBox}></div>
+                    </div>
                     <div id="browseBox">
                         <h2>Search and browse books</h2>
-                        <SearchBar />
-                        <div className= {styles.genreLinksWrapper}>
+                        <div className={styles.searchBarWrapper}><SearchBar /></div>
+                        <div className={styles.genreLinksWrapper}>
                             {genresList.sort((a, b) => a.genre.localeCompare(b.genre)).map(el => (
                                 <Link to={"/genres/" + el.genre.toLowerCase()} key={el.id} className={styles.genreLink} >{el.genre}</Link>
                             ))

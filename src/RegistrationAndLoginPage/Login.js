@@ -98,7 +98,9 @@ export default function Login() {
         <div className={styles.texture}>
           <div className={styles.clearfix}>
             <div>
-              <img src="https://s.gr-assets.com/assets/layout/goodreads_logo_324-a908b923dc3ed9b7a13f3da4d1ffb2df.png" alt="Goodreads: Book reviews, recommendations, and discussion" className={styles.logo} />
+              <a href="/">
+                <img src="https://s.gr-assets.com/assets/layout/goodreads_logo_324-a908b923dc3ed9b7a13f3da4d1ffb2df.png" alt="Goodreads: Book reviews, recommendations, and discussion" className={styles.logo} />
+              </a>
             </div>
           </div>
           <div className={styles.wrapper}>

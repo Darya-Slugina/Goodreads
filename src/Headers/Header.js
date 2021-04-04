@@ -15,7 +15,7 @@ export default function Header() {
         <header className={styles.headerLogged}>
             <div className={styles.headerWrapper}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                <a href="/" className={styles.logoLogged}></a>
+                <a href="/genres" className={styles.logoLogged}></a>
                 <nav className={styles.navLogged}>
                     <ul>
                         <Button className={styles.navLoggedBtn}>Home</Button>

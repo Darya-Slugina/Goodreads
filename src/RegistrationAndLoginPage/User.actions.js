@@ -28,7 +28,7 @@ export const fetchUserLoggedIn = (user) => ({
 
 export const fetchUserFailed = (err) => ({
   type: FETCH_USER_FAILED,
-  payload: err,
+  payload: err.message,
 });
 
 export const fetchUserRequested = () => ({
@@ -73,22 +73,65 @@ export const registerUser = (email, password, fname) => {
   }
 }
 
-export const authenticateUser = (email, password) => {
-  console.log(email)
+export const registerUserWithGoogle = () => {
+
   return function (dispatch, getState) {
+    const userTmp = getState().user.user;
+
+    if (!userTmp.length) {
+      dispatch(fetchUserRequested());
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider)
+         .then((result) => {
+          const id = result.user.uid;
+          const fname = result.user.displayName;
+          const email= result.user.email;
+          console.log("Success: ", result);
+          dispatch(createUser(id, fname, email));
+        })
+        .catch((error) => {
+          console.log("Error: ", error);
+        });
+    }
+  }
+
+}
+
+export const authenticateUser = (email, password) => {
+  return function (dispatch) {
     dispatch(fetchUserRequested());
     loginWithCredentials(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-      console.log(user);
+        console.log(user);
+        dispatch(fetchUser(user.uid));
+      })
+      .catch((error) => {
+        console.log("Error: ", error.message);
+        dispatch(fetchUserFailed(error.message));
+      });
+  }
+}
+
+export const authenticateUserWithGoogle =() => {
+  return function (dispatch) {
+    dispatch(fetchUserRequested());
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log("Success: ", result);
+        const user = result.user;
         dispatch(fetchUser(user.uid));
       })
       .catch((error) => {
         console.log("Error: ", error);
-        dispatch(fetchUserFailed());
+        dispatch(fetchUserFailed(error.message));
       });
-    // }
-  }
+  };
 }
 
 export const createUser = (id, fname, email) => {

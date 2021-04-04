@@ -7,7 +7,7 @@ import firebase from "../firebase";
 import { useHistory } from "react-router-dom";
 import { database } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "./User.actions"
+import { registerUser, registerUserWithGoogle } from "./User.actions"
 
 
 export default function Registration() {
@@ -15,12 +15,12 @@ export default function Registration() {
   const [fname, setFname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const {user, error, isLoading} = useSelector((state) => state.user);
   console.log(user);
 
   const userRegister = () => {
@@ -28,37 +28,16 @@ export default function Registration() {
   }
 
   const onGoogleLogin = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log("Success: ", result);
-
-        const user = firebase.auth().currentUser;
-
-        database
-          .collection("users")
-          .doc(user.uid)
-          .set({
-            id: user.uid,
-            fname: user.displayName,
-            email: user.email,
-          })
-          .then(() => {
-            console.log("Document successfully written!");
-          })
-          .catch((error) => {
-            console.error("Error writing document: ", error);
-          });
-
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
+    dispatch(registerUserWithGoogle());
   };
 
+  useEffect(() => {
+    if(user.id){
+      history.replace("/genres");
+    }
+  }, [history, user])
+
+ 
   const onFacebookLogin = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
 

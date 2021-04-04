@@ -118,13 +118,13 @@ export default function UserPage() {
 
     const sendFriendRequest = () => {
         setFriendRequest(loggedInUser.id, loggedInUser.fname, userId)
-        // database.collection("friendsRequests").doc().set({
-        //     requestFrom: loggedInUser.id,
-        //     requestFromUser: loggedInUser.fname,
-        //     requestTo: userId,
-        //     status: "sent",
-        //     id: Date.now(),
-        // })
+        database.collection("friendsRequests").doc().set({
+            requestFrom: loggedInUser.id,
+            requestFromUser: loggedInUser.fname,
+            requestTo: userId,
+            status: "sent",
+            id: Date.now(),
+        })
         setFriendRequest(!friendRequest)
     }
 

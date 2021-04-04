@@ -27,15 +27,24 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
     }, [userId, user])
 
     useEffect(() => {
-        if (user && user.likes && user.likes.includes(userId)) {
-            setButtonState("Dislike");
-        }
-    }, [user, userId, setButtonState])
+        getReviewForCurrentBookAndUser(bookId, userId)
+            .then(snapshot => {
+                let review = [];
+                snapshot.forEach(doc => {
+                    review = doc.data();
+                    console.log(review);
+                    if (review && review.likes && review.likes.includes(user.id)) {
+                        setButtonState("Dislike");
+                    }
+                })
+
+            })
+    }, [user, userId, bookId, setButtonState])
 
     useEffect(() => {
         if (text.trim().length <= 0) {
             setReviewBtn(false);
-        } else if (text.trim().length > 0){
+        } else if (text.trim().length > 0) {
             setReviewBtn(true);
         }
     }, [rate, text])
@@ -58,37 +67,36 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                 snapshot.forEach(doc => {
                     id = doc.id;
                 })
-                if (rate > 0 || (text.length.trim() > 0 && text.length.trim()< 5000)) {
+                if (rate > 0 || (text.length.trim() > 0 && text.length.trim() < 5000)) {
                     setReviewBtn(true);
-                database.collection("reviewsList").doc(id).update({
-                    review: text,
-                })
-                    .then(() => {
-                        console.log("Document successfully written!");
-                        setForm(!form);
-                        getReviewsForCurrentBook(bookId)
-                            .then((querySnapshot) => {
-                                let dbReviews = [];
-                                querySnapshot.forEach((doc) => {
-                                    dbReviews.push(doc.data());
-                                });
-                                getReviews(dbReviews);
-                            });
-
+                    database.collection("reviewsList").doc(id).update({
+                        review: text,
                     })
-                    .catch((error) => {
-                        console.error("Error writing document: ", error);
-                    });
+                        .then(() => {
+                            console.log("Document successfully written!");
+                            setForm(!form);
+                            getReviewsForCurrentBook(bookId)
+                                .then((querySnapshot) => {
+                                    let dbReviews = [];
+                                    querySnapshot.forEach((doc) => {
+                                        dbReviews.push(doc.data());
+                                    });
+                                    getReviews(dbReviews);
+                                });
+
+                        })
+                        .catch((error) => {
+                            console.error("Error writing document: ", error);
+                        });
                 }
             })
-       
+
     }
 
     const addLike = () => {
         if (buttonState === "Like") {
             console.log(buttonState);
             getReviewForCurrentBookAndUser(bookId, userId)
-                // database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
                 .then(snapshot => {
                     let id = [];
                     snapshot.forEach(doc => {
@@ -96,14 +104,13 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                     })
 
                     database.collection("reviewsList").doc(id).update({
-                        likes: firebase.firestore.FieldValue.arrayUnion(userId),
+                        likes: firebase.firestore.FieldValue.arrayUnion(user.id),
                     })
                         .then(() => {
                             console.log("Document successfully written!");
                             setButtonState("Dislike");
 
                             getReviewsForCurrentBook(bookId)
-                                // database.collection("reviewsList").where("forBookId", "==", bookId).get()
                                 .then((querySnapshot) => {
                                     let dbReviews = [];
                                     querySnapshot.forEach((doc) => {
@@ -127,7 +134,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                     })
 
                     database.collection("reviewsList").doc(id).update({
-                        likes: firebase.firestore.FieldValue.arrayRemove(userId),
+                        likes: firebase.firestore.FieldValue.arrayRemove(user.id),
                     })
                         .then(() => {
                             setButtonState("Like")
@@ -152,7 +159,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         }
     }
 
-console.log(rate)
+    console.log(rate)
 
     return (
         <React.Fragment>

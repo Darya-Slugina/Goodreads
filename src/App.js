@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import HomePageLoggedIn from "./HomePage/HomePageLoggedIn";
 import Login from "./RegistrationAndLoginPage/Login";
@@ -40,10 +40,10 @@ function App() {
     dispatch(fetchGenres());
 
     // When the user gets logged in
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user.uid) {
-        console.log('loggedInUser', user);
-        dispatch(fetchUser(user.uid));
+    firebase.auth().onAuthStateChanged((autenticUser) => {
+      if (autenticUser.uid) {
+        console.log('loggedInUser', autenticUser);
+        dispatch(fetchUser(autenticUser.uid));
       }
     });
   }, [dispatch]);
@@ -73,7 +73,7 @@ function App() {
           </Route>
 
           <Route path="/registration">
-            <Registration />
+           <Registration />
           </Route>
 
           <Route path="/genres/:currentGenre">

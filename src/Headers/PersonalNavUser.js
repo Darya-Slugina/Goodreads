@@ -20,7 +20,7 @@ export default function PersonalNavUser() {
     const logoutUser = () => {
         firebase.auth().signOut().then(() => {
             console.log("Sign-out successful");
-            history.push("/");
+            history.push("/genres");
         }).catch((error) => {
             console.log("An error happened." + error);
         });
@@ -62,6 +62,7 @@ export default function PersonalNavUser() {
     }
 
     const removeFromNotifications = (id, action) => {
+        console.log("nnn")
         if (action === "approve") {
             let newNotif = approved.filter(el => el.id !== id);
             setApproved(newNotif);

@@ -184,7 +184,7 @@ export default function UserPage() {
                 </div>
                 <div className={styles.bigBoxInfo}>
                     <div className={styles.h2Container}>
-                        <h2 class={styles.h2Title}>{user.fname}’s Recent Updates</h2>
+                        <h2 className={styles.h2Title}>{user.fname}’s Recent Updates</h2>
                         <Nav variant="tabs" defaultActiveKey={selectedTab} onSelect={onTabChange} className={styles.navBar}>
                             <Nav.Item>
                                 <Nav.Link eventKey="Currently Reading">Currently Reading</Nav.Link>

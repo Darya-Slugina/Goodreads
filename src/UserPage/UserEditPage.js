@@ -45,9 +45,9 @@ export default function UserEditPage() {
   const onDrop = useCallback((acceptedFiles, fileRejections) => {
     console.log('onDrop', fileRejections);
     setFile(acceptedFiles[0]);
-  });
+  },[]);
 
-  console.log(user);
+  
   useEffect(() => {
     getCurrentUser(user.id)
       .then((querySnapshot) => {

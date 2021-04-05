@@ -21,6 +21,8 @@ export const REMOVE_FROM_READ = "REMOVE_FROM_READ";
 export const ADD_TO_CURRENTLY_READING = "ADD_TO_CURRENTLY_READING";
 export const REMOVE_FROM_CURRENTLY_READING = "REMOVE_FROM_CURRENTLY_READING";
 
+
+
 // Normal action
 export const fetchUserRegister = (user) => ({
   type: FETCH_USER_REGISTER,
@@ -32,10 +34,10 @@ export const fetchUserLoggedIn = (user) => ({
   payload: user,
 });
 
-
-export const fetchUserFailed = (err) => ({
+export const fetchUserFailed = (err, type) => ({
   type: FETCH_USER_FAILED,
   payload: err.message,
+  errorType: type, 
 });
 
 export const fetchUserRequested = () => ({
@@ -114,7 +116,7 @@ export const registerUser = (email, password, fname) => {
         })
         .catch((error) => {
           console.log("Error: ", error);
-          dispatch(fetchUserFailed(error));
+          dispatch(fetchUserFailed(error, "registerError"));
         });
     }
   }
@@ -139,7 +141,7 @@ export const registerUserWithGoogle = () => {
         })
         .catch((error) => {
           console.log("Error: ", error);
-          dispatch(fetchUserFailed(error));
+          dispatch(fetchUserFailed(error, "registerError"));
         });
     }
   }
@@ -164,7 +166,7 @@ export const registerUserWithFacebook = () => {
       .catch((error) => {
         const errorMessage = error.message;
         console.log("Error: ", errorMessage);
-        dispatch(fetchUserFailed(error));
+        dispatch(fetchUserFailed(error, "registerError"));
 
       });
   };
@@ -181,7 +183,7 @@ export const authenticateUser = (email, password) => {
       })
       .catch((error) => {
         console.log("Error: ", error.message);
-        dispatch(fetchUserFailed(error));
+        dispatch(fetchUserFailed(error, "loginError"));
       });
   }
 }
@@ -201,7 +203,7 @@ export const authenticateUserWithGoogle = () => {
       })
       .catch((error) => {
         console.log("Error: ", error);
-        dispatch(fetchUserFailed(error));
+        dispatch(fetchUserFailed(error, "loginError"));
       });
   };
 }
@@ -221,7 +223,7 @@ export const authenticateUserWithFacebook = () => {
       .catch((error) => {
         const errorMessage = error.message;
         console.log("Error: ", errorMessage);
-        dispatch(fetchUserFailed(error));
+        dispatch(fetchUserFailed(error, "loginError"));
 
       });
   };
@@ -238,7 +240,7 @@ export const createUser = (id, fname, email) => {
         });
       })
       .catch((err) => {
-        dispatch(fetchUserFailed(err));
+        dispatch(fetchUserFailed(err, "registerError"));
       });
   };
 };
@@ -256,8 +258,8 @@ export const fetchUser = (id) => {
             dispatch(fetchUserLoggedIn(el.data()));
           });
         })
-        .catch((err) => {
-          dispatch(fetchUserFailed(err));
+        .catch((error) => {
+          dispatch(fetchUserFailed(error, "loginError"));
         });
     }
   };

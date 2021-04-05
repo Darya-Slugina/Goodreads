@@ -2,29 +2,39 @@ import styles from './Registration.module.scss';
 import LoginFooter from "../Footer/LoginFooter"
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import firebase from "../firebase";
-// import { registerWithCredentials } from './service';
 import { useHistory } from "react-router-dom";
-import { database } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser, registerUserWithGoogle, registerUserWithFacebook } from "./User.actions"
+import { registerUser, registerUserWithGoogle, registerUserWithFacebook, fetchUserFailed } from "./User.actions"
 
 
 export default function Registration() {
 
   const [fname, setFname] = useState("");
+  const [validName, setValidName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
 
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const {user, error, isLoading} = useSelector((state) => state.user);
+  const { user, error } = useSelector((state) => state.user);
   console.log(user);
 
+  const validateFname = (name) => {
+    const regEx = /[a-zA-Z]/gi;
+    console.log(name.match(regEx));
+    if (name.trim().length < 3 || !name.match(regEx)) {
+      dispatch(fetchUserFailed({message:"invalid Name"}, "registerError"))
+    } else {
+      setValidName(name);
+    }
+    setFname(name);
+  }
+
   const userRegister = () => {
-    dispatch(registerUser(email, password, fname));
+    if(validName.length){
+      dispatch(registerUser(email, password, fname));
+    }
   }
 
   const onGoogleLogin = () => {
@@ -36,7 +46,7 @@ export default function Registration() {
   };
 
   useEffect(() => {
-    if(user.id){
+    if (user.id) {
       history.replace("/genres");
     }
   }, [history, user])
@@ -71,7 +81,7 @@ export default function Registration() {
               <div className={styles.emailForm}>
                 <div className={styles.fieldPara}>
                   <label className={styles.fieldParaLabel} for="user_first_name">Name</label>
-                  <input className={styles.fieldParaInput} placeholder="Name" maxLength="50" size="50" type="text" name="user[first_name]" id="user_first_name" value={fname} onInput={(ev) => setFname(ev.target.value)} />
+                  <input className={styles.fieldParaInput} placeholder="Name" maxLength="50" size="50" type="text" name="user[first_name]" id="user_first_name" value={fname} onInput={(ev) => validateFname(ev.target.value)} />
                 </div>
                 <div className={styles.fieldPara}>
                   <label className={styles.fieldParaLabel} for="user_email">Email address</label>
@@ -81,7 +91,7 @@ export default function Registration() {
                   <label className={styles.fieldParaLabel} for="user_password">Password</label>
                   <input className={styles.fieldParaInput} maxLength="128" size="128" type="password" id="user_password" value={password} onInput={(ev) => setPassword(ev.target.value)} />
                 </div>
-                {error && <p className={styles.errorContainer}>{error}</p>}
+                {error.registerError && <p className={styles.errorContainer}>{error.registerError}</p>}
               </div>
               <div className={styles.submitPara}>
                 <input className={styles.submitBtn} name="next" type="submit" value="Sign up" onClick={userRegister} />

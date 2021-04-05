@@ -13,11 +13,10 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const { user, error, isLoading } = useSelector((state) => state.user);
+  const { user, error } = useSelector((state) => state.user);
 
   useEffect(() => {
     console.log(user.id);
@@ -73,7 +72,7 @@ export default function Login() {
                   <input className={styles.fieldParaInput} maxLength="128" size="128" type="password" id="user_password" value={password} onInput={(ev) => setPassword(ev.target.value)} />
                 </div>
               </div>
-              {error && <p className={styles.errorContainer}>{error}</p>}
+              {error.loginError && <p className={styles.errorContainer}>{error.loginError}</p>}
               <div className={styles.submitPara}>
                 <input className={styles.submitBtn} name="next" type="submit" value="Sign in" onClick={userLogin} />
                 <div className={styles.signUpOption}>

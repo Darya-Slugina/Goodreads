@@ -1,9 +1,6 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import styles from './MyBooks.module.scss'
-import BooksTableView from './BooksTableView'
-import BooksCoverView from './BooksCoverView'
-import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import BooksView from './BooksView'
 
@@ -63,7 +60,7 @@ export default function MyBooks() {
                                     <div>
                                         <Nav defaultActiveKey={selectedTab} onSelect={onShelveChange} className="flex-column">
                                             <Nav.Item>
-                                                <Nav.Link eventKey="All">All ({userAllBooks.length})</Nav.Link>
+                                                <Nav.Link eventKey="All" >All ({userAllBooks.length})</Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
                                                 <Nav.Link eventKey="Read">Read ({readBooks.length})</Nav.Link>
@@ -78,7 +75,7 @@ export default function MyBooks() {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className={styles.booksViewContainer}>
                                 {selectedTab === "Currently Reading" && <BooksView books={currentlyReading} />}
                                 {selectedTab === "Want to Read" && <BooksView books={wantToRead} />}
                                 {selectedTab === "Read" && <BooksView books={readBooks} />}

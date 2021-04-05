@@ -1,6 +1,5 @@
 import styles from './Header.module.scss'
 import '../common/DropdownMenu.scss'
-import firebase from "../firebase";
 import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
 import SearchBar from '../SearchBar'

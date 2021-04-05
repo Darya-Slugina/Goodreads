@@ -18,7 +18,10 @@ import {
 
 const INITIAL_STATE = {
   user: {},
-  error: null,
+  error: {
+    loginError: null,
+    registerError: null
+  },
   isLoading: false,
 };
 
@@ -49,7 +52,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case FETCH_USER_FAILED:
       return {
         ...state,
-        error: action.payload,
+        error: { ...state.error, [action.errorType]: action.payload },
         isLoading: false,
       };
 

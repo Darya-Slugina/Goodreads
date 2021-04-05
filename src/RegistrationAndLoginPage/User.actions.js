@@ -10,9 +10,16 @@ export const FETCH_USER_REQUESTED = "FETCH_USER_REQUESTED";
 export const FETCH_USER_REGISTER = "FETCH_USER_REGISTER";
 export const FETCH_USER_LOGGEDIN = "FETCH_USER_LOGGEDIN";
 export const ADD_TO_FAVOURITE_GENRES = "ADD_TO_FAVOURITE_GENRES";
+export const REMOVE_FROM_FAVOURITE_GENRES = "REMOVE_FROM_FAVOURITE_GENRES";
 export const ADD_TO_FAVOURITE_USERS = "ADD_TO_FAVOURITE_USERS";
 export const REMOVE_FROM_FAVOURITE_USERS = "REMOVE_FROM_FAVOURITE_USERS";
 export const ADD_TO_FRIENDS = "ADD_TO_FRIENDS";
+export const ADD_TO_WANT_TO_READ = "ADD_TO_WANT_TO_READ";
+export const REMOVE_FROM_WANT_TO_READ = "REMOVE_FROM_WANT_TO_READ";
+export const ADD_TO_READ = "ADD_TO_READ";
+export const REMOVE_FROM_READ = "REMOVE_FROM_READ";
+export const ADD_TO_CURRENTLY_READING = "ADD_TO_CURRENTLY_READING";
+export const REMOVE_FROM_CURRENTLY_READING = "REMOVE_FROM_CURRENTLY_READING";
 
 // Normal action
 export const fetchUserRegister = (user) => ({
@@ -50,6 +57,46 @@ export const addToFriends = (userId) => ({
   payload: userId,
 });
 
+export const addToFavouriteGenres = (genre) => ({
+  type: ADD_TO_FAVOURITE_GENRES,
+  payload: genre,
+});
+
+export const removeFromFavouriteGenres = (genre) => ({
+  type: REMOVE_FROM_FAVOURITE_GENRES,
+  payload: genre,
+});
+
+export const addToWantToRead = (bookId) => ({
+  type: ADD_TO_WANT_TO_READ,
+  payload: bookId,
+});
+
+export const removeFromWantToRead = (bookId) => ({
+  type: REMOVE_FROM_WANT_TO_READ,
+  payload: bookId,
+});
+
+export const addToRead = (bookId) => ({
+  type: ADD_TO_READ,
+  payload: bookId,
+});
+
+export const removeFromRead = (bookId) => ({
+  type: REMOVE_FROM_READ,
+  payload: bookId,
+});
+
+export const addToCurrentlyReading = (bookId) => ({
+  type: ADD_TO_CURRENTLY_READING,
+  payload: bookId,
+});
+
+export const removeFromCurrentlyReading = (bookId) => ({
+  type: REMOVE_FROM_CURRENTLY_READING,
+  payload: bookId,
+});
+
 
 
 
@@ -83,10 +130,10 @@ export const registerUserWithGoogle = () => {
       var provider = new firebase.auth.GoogleAuthProvider();
 
       firebase.auth().signInWithPopup(provider)
-         .then((result) => {
+        .then((result) => {
           const id = result.user.uid;
           const fname = result.user.displayName;
-          const email= result.user.email;
+          const email = result.user.email;
           console.log("Success: ", result);
           dispatch(createUser(id, fname, email));
         })
@@ -99,7 +146,7 @@ export const registerUserWithGoogle = () => {
 
 }
 
-export const registerUserWithFacebook =() => {
+export const registerUserWithFacebook = () => {
   return function (dispatch) {
     dispatch(fetchUserRequested());
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -109,9 +156,9 @@ export const registerUserWithFacebook =() => {
       .signInWithPopup(provider)
       .then((result) => {
         const id = result.user.uid;
-          const fname = result.user.displayName;
-          const email= result.user.email;
-          console.log("Success: ", result);
+        const fname = result.user.displayName;
+        const email = result.user.email;
+        console.log("Success: ", result);
         dispatch(createUser(id, fname, email));
       })
       .catch((error) => {
@@ -139,7 +186,7 @@ export const authenticateUser = (email, password) => {
   }
 }
 
-export const authenticateUserWithGoogle =() => {
+export const authenticateUserWithGoogle = () => {
   return function (dispatch) {
     dispatch(fetchUserRequested());
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -159,7 +206,7 @@ export const authenticateUserWithGoogle =() => {
   };
 }
 
-export const authenticateUserWithFacebook =() => {
+export const authenticateUserWithFacebook = () => {
   return function (dispatch) {
     dispatch(fetchUserRequested());
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -267,6 +314,133 @@ export const addToFriendsList = (userId, loggedUserId) => {
         .then(() => {
           console.log("Document successfully written!");
           dispatch(addToFriends(userId));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const addGenre = (id, genre) => {
+  return function (dispatch, getState) {
+    const favGenre = getState().user.user.favouriteGenres;
+    console.log("favGenre");
+
+    if (!favGenre.includes(genre)) {
+      database.collection("users").doc(id).update({
+        favouriteGenres: firebase.firestore.FieldValue.arrayUnion(genre),
+      })
+        .then(() => {
+          console.log("Document successfully written!");
+          dispatch(addToFavouriteGenres(genre));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const removeGenre = (id, genre) => {
+  return function (dispatch, getState) {
+    const favGenre = getState().user.user.favouriteGenres;
+
+    if (favGenre.length > 0 && favGenre.includes(genre)) {
+      database.collection("users").doc(id).update({
+        favouriteGenres: firebase.firestore.FieldValue.arrayRemove(genre),
+      })
+        .then(() => {
+          console.log("Document successfully written!");
+          dispatch(removeFromFavouriteGenres(genre));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const wantToRead = (bookId, userId) => {
+  return function (dispatch, getState) {
+    const wantToRead = getState().user.user.wantToRead;
+
+    if (!wantToRead.includes(bookId)) {
+
+      database.collection("users").doc(userId).update({
+        wantToRead: firebase.firestore.FieldValue.arrayUnion(bookId),
+      })
+        .then(() => {
+          console.log("Document successfully written!");
+          dispatch(addToWantToRead(bookId));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const read = (bookId, userId) => {
+  return function (dispatch, getState) {
+    const read = getState().user.user.read;
+
+    if (!read.includes(bookId)) {
+
+      database.collection("users").doc(userId).update({
+        read: firebase.firestore.FieldValue.arrayUnion(bookId),
+      })
+        .then(() => {
+          console.log("Document successfully written!");
+          dispatch(addToRead(bookId));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const currentlyReading = (bookId, userId) => {
+  return function (dispatch, getState) {
+    const currentlyReading = getState().user.user.currentlyReading;
+    console.log("currentlyReading");
+
+    if (!currentlyReading.includes(bookId)) {
+
+      database.collection("users").doc(userId).update({
+        currentlyReading: firebase.firestore.FieldValue.arrayUnion(bookId),
+      })
+        .then(() => {
+          console.log("Document successfully written!");
+          dispatch(addToCurrentlyReading(bookId));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const removeBooksFromReadList = (bookId, userId) => {
+  return function (dispatch, getState) {
+    const wantToRead = getState().user.user.wantToRead;
+    const read = getState().user.user.read;
+    const currentlyReading = getState().user.user.currentlyReading;
+    console.log("predi proverki", wantToRead, read, currentlyReading)
+    if (wantToRead.includes(bookId) || read.includes(bookId) || currentlyReading.includes(bookId)) {
+
+      console.log("proverki")
+      database.collection("users").doc(userId).update({
+        read: firebase.firestore.FieldValue.arrayRemove(bookId),
+        wantToRead: firebase.firestore.FieldValue.arrayRemove(bookId),
+        currentlyReading: firebase.firestore.FieldValue.arrayRemove(bookId),
+      })
+        .then(() => {
+          console.log("Document successfully deleted!");
+          dispatch(removeFromRead(bookId));
+          dispatch(removeFromWantToRead(bookId));
+          dispatch(removeFromCurrentlyReading(bookId));
         })
         .catch((error) => {
           console.error("Error writing document: ", error);

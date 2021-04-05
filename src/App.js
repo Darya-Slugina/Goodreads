@@ -18,12 +18,12 @@ import UserEditPage from "./UserPage/UserEditPage";
 import Destroy from "./UserPage/Destroy";
 import Header from "./Headers/Header";
 import Footer from "./Footer/Footer";
-import React, { useEffect, Link } from "react";
+import React, { useEffect } from "react";
 import Error from "./ErrorPage/Error";
 import firebase from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBooks } from "./Reducers/Books.actions";
-import { fetchGenres } from "./Reducers/Genres.actions";
+import { fetchBooks } from "./BooksPage/Books.actions";
+import { fetchGenres } from "./GenresPage/Genres.actions";
 import { fetchUser } from "./RegistrationAndLoginPage/User.actions";
 
 

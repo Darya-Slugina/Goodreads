@@ -10,7 +10,7 @@
 //     <span>
 //       {active && big &&
 //         <StarRatings
-//           rating={rating}
+//           rating={stars}
 //           starRatedColor="rgb(255, 145, 34)"
 //           starHoverColor="rgb(255, 145, 34)"
 //           starDimension="30px"

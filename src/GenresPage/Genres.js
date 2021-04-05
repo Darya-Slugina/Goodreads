@@ -3,11 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import Book from "./BookImg";
 import Button from "./../common/Button";
 import React, { useState } from 'react';
-import { useSelector } from "react-redux";
-import firebase, { database } from "../firebase";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { countOfMostWantedBoooks } from "../Constants";
-import { addInFavouriteGenres, removeFromFavouriteGenres } from './service';
+import { addGenre, removeGenre } from '../RegistrationAndLoginPage/User.actions';
 
 
 
@@ -19,6 +18,8 @@ export default function Genres() {
   const books = useSelector((state) => state.books.books);
   const genresList = useSelector((state) => state.genres.genres);
 
+  const dispatch = useDispatch();
+
   let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre);
   const currentBooks = books.filter(el => el.genre.toLowerCase() === currentGenre);
 
@@ -29,7 +30,7 @@ export default function Genres() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-  
+
   useEffect(() => {
     if (user && user.favouriteGenres && user.favouriteGenres.includes(currentGenre)) {
       setButtonState("Remove from favourite");
@@ -41,24 +42,10 @@ export default function Genres() {
 
       if (buttonState === "Add to favourite") {
         setButtonState("Remove from favourite")
-
-        addInFavouriteGenres(user.id, currentGenre)
-          .then(() => {
-            console.log("Document successfully written!");
-          })
-          .catch((error) => {
-            console.error("Error writing document: ", error);
-          });
+        dispatch(addGenre(user.id, currentGenre))
       } else if (buttonState === "Remove from favourite") {
         setButtonState("Add to favourite")
-
-        removeFromFavouriteGenres(user.id, currentGenre)
-          .then(() => {
-            console.log("Document successfully written!");
-          })
-          .catch((error) => {
-            console.error("Error writing document: ", error);
-          });
+        dispatch(removeGenre(user.id, currentGenre))
       }
     }
   }

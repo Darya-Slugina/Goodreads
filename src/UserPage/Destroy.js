@@ -21,12 +21,13 @@ export default function Destroy() {
             database.collection("users").doc(user.uid).delete()
                 .then(() => {
                     console.log("Document successfully deleted!");
+                    history.push("/");
                 }).catch((err) => {
                     setErrorText(true);
                     console.log("error", errorText);
-                    console.error("Error removing document: ", err.message);
+                    console.log("Error removing document: ", err.message);
                 });
-            history.push("/");
+            
         });
     }
 

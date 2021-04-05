@@ -6,9 +6,10 @@ import ReviewModul from "./ReviewModul";
 import Comments from "./Comments";
 import DropdownButton from "../common/DroppdownButton"
 import firebase, { database } from "../firebase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import StarRatings from 'react-star-ratings';
 import { getReviewsForCurrentBook } from './service';
+import { currentlyReading, removeBooksFromReadList, read, wantToRead } from '../RegistrationAndLoginPage/User.actions';
 
 
 export default function Books() {
@@ -21,6 +22,8 @@ export default function Books() {
 
   const user = useSelector((state) => state.user.user);
   const books = useSelector((state) => state.books.books);
+
+  const dispatch = useDispatch();
 
   const currentId = Number(bookId);
   const currentBook = books.filter(book => book.id === currentId);
@@ -75,59 +78,19 @@ export default function Books() {
   }, [user, currentId]);
 
 
-
-  function removeFromReadList() {
-
-    database.collection("users").doc(user.id).update({
-      read: firebase.firestore.FieldValue.arrayRemove(currentId),
-      wantToRead: firebase.firestore.FieldValue.arrayRemove(currentId),
-      currentlyReading: firebase.firestore.FieldValue.arrayRemove(currentId),
-    })
-      .then(() => {
-        console.log("Document successfully deleted!");
-      })
-      .catch((error) => {
-        console.error("Error writing document: ", error);
-      });
-  }
-
   const changeStatus = (value) => {
 
-    if (bookState) {
-      removeFromReadList()
-    }
+    dispatch(removeBooksFromReadList(currentId, user.id))
+
 
     if (value === "CurrentlyReading") {
-      database.collection("users").doc(user.id).update({
-        currentlyReading: firebase.firestore.FieldValue.arrayUnion(currentId),
-      })
-        .then(() => {
-          console.log("Document successfully written!");
-        })
-        .catch((error) => {
-          console.error("Error writing document: ", error);
-        });
+      dispatch(currentlyReading(currentId, user.id))
 
     } else if (value === "Read") {
-      database.collection("users").doc(user.id).update({
-        read: firebase.firestore.FieldValue.arrayUnion(currentId),
-      })
-        .then(() => {
-          console.log("Document successfully written!");
-        })
-        .catch((error) => {
-          console.error("Error writing document: ", error);
-        });
+      dispatch(read(currentId, user.id))
+
     } else if (value === "WantToRead") {
-      database.collection("users").doc(user.id).update({
-        wantToRead: firebase.firestore.FieldValue.arrayUnion(currentId),
-      })
-        .then(() => {
-          console.log("Document successfully written!");
-        })
-        .catch((error) => {
-          console.error("Error writing document: ", error);
-        });
+      dispatch(wantToRead(currentId, user.id))
     }
   }
 
@@ -136,21 +99,21 @@ export default function Books() {
   }
 
   const sortedReviews = useMemo(() => {
-    if(!sorter) return reviews;
+    if (!sorter) return reviews;
 
-    if(sorter === 'ratingAscengind') {
+    if (sorter === 'ratingAscengind') {
       return reviews.sort((a, b) => b.rate - a.rate);
     }
 
-    if(sorter === 'ratingDescending') {
+    if (sorter === 'ratingDescending') {
       return reviews.sort((a, b) => a.rate - b.rate);
     }
 
-    if(sorter === 'dateAscenging') {
+    if (sorter === 'dateAscenging') {
       return reviews.sort((a, b) => b.date - a.date);
     }
 
-    if(sorter === 'dateDescending') {
+    if (sorter === 'dateDescending') {
       return reviews.sort((a, b) => a.date - b.date);
     }
   }, [sorter, reviews])

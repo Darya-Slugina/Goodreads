@@ -1,11 +1,13 @@
 .texture {
     background: url(./../img/tan-bg-texture.jpg) repeat;
-    min-height: 93vh;
+    min-height: 96.9vh;
     height: auto !important;
+    margin-top: -20px;
 
     .clearfix {
         width: 100%;
         margin-bottom: 16px;
+        padding-top: 15px;
 
         .logo {
             display: flex;
@@ -79,6 +81,10 @@
                         font-size: 14px;
                         border-radius: 3px;
                         padding: 7px 12px;
+
+                        &:hover {
+                            background-color: rgb(252, 248, 237);
+                        }
                     }
 
                     .googleLogo {
@@ -105,6 +111,10 @@
                         font-size: 14px;
                         padding: 8px 12px;
                         text-align: center;
+
+                        &:hover {
+                            background-color: #4c6aac;
+                        }
                     }
 
                     .facebookIcon {

@@ -2,8 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
 // Import all reducers
-import booksReducer from "./Reducers/Books.reducer";
-import genresReducer from "./Reducers/Genres.reducer"
+import booksReducer from "./BooksPage/Books.reducer";
+import genresReducer from "./GenresPage/Genres.reducer"
 import userReducer from "./RegistrationAndLoginPage/User.reducer";
 
 

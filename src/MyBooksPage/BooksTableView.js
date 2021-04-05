@@ -32,15 +32,6 @@ export default function BooksTable({ books }) {
                                     <div className={styles.wrapper}>
                                         <h1 id="bookTitle" className={styles.bookInfoContainerTitle}>{book.title}</h1>
                                         <p className={styles.bookInfoContainerText}>by {book.author}</p>
-                                        <div className={styles.bookMeta}>
-                                            <div className={styles.staticRatingStars}>
-                                                {/* error - expects a string, gets an object */}
-                                                {/* <SimpleRating stars={book.rating} /> */}
-                                            </div>
-                                            <span className={styles.staticRating}> {book.rating} rating </span>
-                                            <div className={styles.ratingCount} > - {book.ratingsCount} ratings </div>
-                                            <div className={styles.reviewCount} > - {book.reviewsCount} reviews </div>
-                                        </div>
                                         <p className={styles.bookInfoContainerText}>{book.description}</p>
                                     </div>
                                 </div>

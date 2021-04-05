@@ -1,5 +1,5 @@
-.mainContainer{
-    background: #FFFFFF;    
+.mainContainer {
+    background: #ffffff;
     margin-top: 50px;
     display: flex;
     height: 100%;
@@ -55,19 +55,15 @@
                 display: block;
                 color: #00635d;
             }
-        }
-        .heading{
-            font-weight: bold;
-            font-size: larger;
-            margin-bottom: 5px;
-        }
 
         .subheading{
             padding: 2px 0;
         }
-    }
+    
 
     .booksViewWrapper{
         width: 100%;
     }
+    }
+}
 }

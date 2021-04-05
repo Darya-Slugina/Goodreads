@@ -2,7 +2,7 @@ import styles from './AllGenres.module.scss';
 import { Link } from "react-router-dom";
 import BooksList from "../BooksPage/BookList";
 import Button from "./../common/Button";
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { countOfMainGenresCategories } from "../Constants";
 
@@ -15,6 +15,9 @@ export default function AllGenres() {
     const books = useSelector((state) => state.books.books);
     const genresList = useSelector((state) => state.genres.genres);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     const onInputChange = (ev) => {
         setInputValue(ev.target.value);

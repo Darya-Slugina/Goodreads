@@ -27,7 +27,7 @@ export default function Books() {
   const currentId = Number(bookId);
   const currentBook = books.filter(book => book.id === currentId);
   const firstBook = currentBook[0] ? currentBook[0] : {};
-  console.log(currentId)
+
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -44,7 +44,6 @@ export default function Books() {
       });
   }, [currentId]);
 
-  console.log(reviews);
 
   const reviewsCount = useMemo(() => {
     return reviews.filter(el => el.review).length;

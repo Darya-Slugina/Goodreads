@@ -16,7 +16,6 @@ export default function Destroy() {
 
     const deleteAccount = () => {
         const user = firebase.auth().currentUser;
-        console.log(user.uid);
 
         user.delete().then(function () {
             console.log("User deleted");
@@ -27,7 +26,6 @@ export default function Destroy() {
                     history.push("/");
                 }).catch((err) => {
                     setError(true);
-                    console.log("error", error);
                     console.log("Error removing document: ", err.message);
                 });
             

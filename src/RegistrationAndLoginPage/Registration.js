@@ -18,7 +18,6 @@ export default function Registration() {
 
   const dispatch = useDispatch();
   const { user, error } = useSelector((state) => state.user);
-  console.log(user);
 
   const validateFname = (name) => {
     const regEx = /[a-zA-Z]/gi;
@@ -80,18 +79,18 @@ export default function Registration() {
 
               <div className={styles.emailForm}>
                 <div className={styles.fieldPara}>
-                  <label className={styles.fieldParaLabel} for="user_first_name">Name</label>
+                  <label className={styles.fieldParaLabel} htmlFor="user_first_name">Name</label>
                   <input className={styles.fieldParaInput} placeholder="Name" maxLength="50" size="50" type="text" name="user[first_name]" id="user_first_name" value={fname} onInput={(ev) => validateFname(ev.target.value)} />
                 </div>
                 <div className={styles.fieldPara}>
-                  <label className={styles.fieldParaLabel} for="user_email">Email address</label>
+                  <label className={styles.fieldParaLabel} htmlFor="user_email">Email address</label>
                   <input className={styles.fieldParaInput} placeholder="you@yours.com" type="email" id="user_email" value={email} onInput={(ev) => setEmail(ev.target.value)} />
                 </div>
                 <div className={styles.fieldPara}>
-                  <label className={styles.fieldParaLabel} for="user_password">Password</label>
+                  <label className={styles.fieldParaLabel} htmlFor="user_password">Password</label>
                   <input className={styles.fieldParaInput} maxLength="128" size="128" type="password" id="user_password" value={password} onInput={(ev) => setPassword(ev.target.value)} />
                 </div>
-                {error.registerError && <p className={styles.errorContainer}>{error.registerError}</p>}
+                {error && error.registerError && <p className={styles.errorContainer}>{error.registerError}</p>}
               </div>
               <div className={styles.submitPara}>
                 <input className={styles.submitBtn} name="next" type="submit" value="Sign up" onClick={userRegister} />

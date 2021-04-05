@@ -35,7 +35,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                 let review = [];
                 snapshot.forEach(doc => {
                     review = doc.data();
-                    console.log(review);
                     if (review && review.likes && review.likes.includes(user.id)) {
                         setButtonState("Dislike");
                     }
@@ -92,7 +91,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
 
     const addLike = () => {
         if (buttonState === "Like") {
-            console.log(buttonState);
             getReviewForCurrentBookAndUser(bookId, userId)
                 .then(snapshot => {
                     let id = [];
@@ -123,7 +121,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                 })
         } else if (buttonState === "Dislike") {
             getReviewForCurrentBookAndUser(bookId, userId)
-                // database.collection("reviewsList").where("forBookId", "==", bookId).where("userId", "==", userId).get()
                 .then(snapshot => {
                     let id = [];
                     snapshot.forEach(doc => {
@@ -138,7 +135,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                             console.log("Document successfully written!");
 
                             getReviewsForCurrentBook(bookId)
-                                // database.collection("reviewsList").where("forBookId", "==", bookId).get()
                                 .then((querySnapshot) => {
                                     let dbReviews = [];
                                     querySnapshot.forEach((doc) => {
@@ -156,7 +152,6 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
         }
     }
 
-    console.log(rate)
 
     return (
         <React.Fragment>

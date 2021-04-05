@@ -2,12 +2,10 @@ import styles from './Registration.module.scss';
 import LoginFooter from "../Footer/LoginFooter"
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import firebase from "../firebase";
-import { loginWithCredentials } from './service';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "./User.actions";
 import { authenticateUser, authenticateUserWithGoogle, authenticateUserWithFacebook } from "./User.actions"
+
 
 export default function Login() {
 
@@ -19,7 +17,6 @@ export default function Login() {
   const { user, error } = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log(user.id);
     if (user.id) {
       history.replace("/genres");
     }
@@ -64,15 +61,15 @@ export default function Login() {
 
               <div className={styles.emailForm}>
                 <div className={styles.fieldPara}>
-                  <label className={styles.fieldParaLabel} for="user_email">Email address</label>
+                  <label className={styles.fieldParaLabel} htmlFor="user_email">Email address</label>
                   <input className={styles.fieldParaInput} spellCheck="false" placeholder="you@yours.com" autoFocus="autofocus" type="email" id="user_email" value={email} onInput={(ev) => setEmail(ev.target.value)} />
                 </div>
                 <div className={styles.fieldPara}>
-                  <label className={styles.fieldParaLabel} for="user_password">Password</label>
+                  <label className={styles.fieldParaLabel} htmlFor="user_password">Password</label>
                   <input className={styles.fieldParaInput} maxLength="128" size="128" type="password" id="user_password" value={password} onInput={(ev) => setPassword(ev.target.value)} />
                 </div>
               </div>
-              {error.loginError && <p className={styles.errorContainer}>{error.loginError}</p>}
+              {error && error.loginError && <p className={styles.errorContainer}>{error.loginError}</p>}
               <div className={styles.submitPara}>
                 <input className={styles.submitBtn} name="next" type="submit" value="Sign in" onClick={userLogin} />
                 <div className={styles.signUpOption}>

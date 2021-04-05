@@ -1,7 +1,6 @@
 import styles from './FollowUser.module.scss';
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { database } from "../firebase";
 import { getCurrentUser } from './service';
  
 export default function FollowUser( {userId} ) {
@@ -10,7 +9,6 @@ export default function FollowUser( {userId} ) {
 
     useEffect(() => {
         getCurrentUser(userId)
-        // database.collection("users").where("id", "==", userId).get()
             .then((user) => {
                 user.forEach((doc) => {
                     setUser(doc.data());

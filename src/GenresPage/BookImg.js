@@ -2,7 +2,6 @@ import styles from "./BookImg.module.scss"
 import { Link } from "react-router-dom";
 import React, {useMemo, useState, useEffect} from "react";
 import StarRatings from 'react-star-ratings';
-import { database } from "../firebase";
 import {getReviewsForCurrentBook} from "./service"
 
 
@@ -12,7 +11,6 @@ export default function Book({ img, id, genre, title, description, author, ratin
 
   useEffect(() => {
     getReviewsForCurrentBook(id)
-    // database.collection("reviewsList").where("forBookId", "==", id).get()
       .then((querySnapshot) => {
         let dbReviews = [];
         querySnapshot.forEach((doc) => {

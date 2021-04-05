@@ -43,7 +43,6 @@ export default function UserEditPage() {
   };
 
   const onDrop = useCallback((acceptedFiles, fileRejections) => {
-    console.log('onDrop', fileRejections);
     setFile(acceptedFiles[0]);
   },[]);
 
@@ -92,7 +91,6 @@ export default function UserEditPage() {
       (error) => {  console.log("Upload failed" + error)},
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          console.log("File available at", downloadURL);
           let newImg = '';
           if (downloadURL) {
             newImg = downloadURL;

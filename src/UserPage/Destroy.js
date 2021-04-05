@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import Button from "./../common/Button";
 import firebase, { database } from "../firebase";
 import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
 
 
 export default function Destroy() {
+
+    const [errorText, setErrorText] = useState(false);
 
     const history = useHistory();
 
@@ -18,9 +21,10 @@ export default function Destroy() {
             database.collection("users").doc(user.uid).delete()
                 .then(() => {
                     console.log("Document successfully deleted!");
-                }).catch((error) => {
-                    console.error("Error removing document: ", error);
-                    document.getElementById("error").style.display = "block";
+                }).catch((err) => {
+                    setErrorText(true);
+                    console.log("error", errorText);
+                    console.error("Error removing document: ", err.message);
                 });
             history.push("/");
         });
@@ -37,7 +41,7 @@ export default function Destroy() {
                     <Button value={"Delete My Account"} onClick={deleteAccount} />
                     <Link href="/user/edit" className={styles.cancel}>cancel</Link>
                 </div>
-                <span className={styles.errorText} id="error">Please, logout and login again, if you want to delete your account.</span>
+               {errorText && <span className={styles.errorTextShow} >Please, logout and login again, if you want to delete your account.</span>}
             </div>
         </div>
     )

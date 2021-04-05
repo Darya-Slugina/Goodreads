@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './Review.module.css';
 import userPic from "./../img/userPic.png";
 import Form from "./Form";
-import { useState } from "react";
 import StarRatings from 'react-star-ratings';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 export default function ReviewModul({ bookId, getReviews }) {
 
     const [form, setForm] = useState(false)
     const [rating, setRating] = useState(0);
+
+    const user = useSelector((state) => state.user.user);
 
     const displayForm = () => {
         setForm(!form);
@@ -26,7 +29,7 @@ export default function ReviewModul({ bookId, getReviews }) {
                     <span >Rules</span>
                 </div>
                 <div className={styles.reviewCtaControls}>
-                    <StarRatings
+                    {user.id ? <StarRatings
                         rating={rating}
                         starRatedColor="rgb(255, 145, 34)"
                         starHoverColor="rgb(255, 145, 34)"
@@ -35,11 +38,19 @@ export default function ReviewModul({ bookId, getReviews }) {
                         changeRating={(rating) => setRating(rating)}
                         numberOfStars={5}
                         name='rating'
-                    />
-                    <button className={styles.reviewButton} onClick={displayForm}> Write a review</button>
+                    /> : <Link to="/login"><StarRatings
+                        rating={rating}
+                        starRatedColor="rgb(255, 145, 34)"
+                        starHoverColor="rgb(255, 145, 34)"
+                        starDimension="30px"
+                        starSpacing="3px"
+                        numberOfStars={5}
+                        name='rating'
+                    /></Link> }
+                    {user.id? <button className={styles.reviewButton} onClick={displayForm}> Write a review</button> : <Link to="/login"><button className={styles.reviewButton}> Write a review</button></Link>}
                 </div>
                 <div className={styles.ownReviewContainer}>
-                    {form && <Form bookId={bookId} getReviews={getReviews} rating={rating}/>}
+                    {form && <Form bookId={bookId} getReviews={getReviews} rating={rating} />}
                 </div>
             </div>
         </div>

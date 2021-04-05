@@ -6,11 +6,13 @@ import {
     ADD_TO_FAVOURITE_GENRES,
     ADD_TO_FAVOURITE_USERS,
     REMOVE_FROM_FAVOURITE_USERS,
+    ADD_TO_FRIENDS,
   } from "./User.actions";
   
   const INITIAL_STATE = {
     user: {},
     error: null,
+    isLoading: false,
   };
   
   const userReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +20,7 @@ import {
       case FETCH_USER_REQUESTED:
         return {
           ...state,
+          isLoading: true,
         };
   
       case FETCH_USER_REGISTER:
@@ -25,6 +28,7 @@ import {
           ...state,
           user: action.payload,
           error: null,
+          isLoading: false,
         };
 
         case FETCH_USER_LOGGEDIN:
@@ -32,13 +36,17 @@ import {
           ...state,
           user: action.payload,
           error: null,
+          isLoading: false,
         };
   
       case FETCH_USER_FAILED:
         return {
           ...state,
           error: action.payload,
+          isLoading: false,
         };
+
+
 
         // case ADD_TO_FAVOURITE_GENRES:
         // return {
@@ -57,6 +65,12 @@ import {
             ...state,
           user: {...state.user, favouritesUser: [...state.user.favouritesUser].filter(id => id !== action.payload)},
           };
+
+          case ADD_TO_FRIENDS:
+        return {
+          ...state,
+          user: {...state.user, favouritesUser: [...state.user.favouritesUser, action.payload]},
+        };
   
       default:
         return state;

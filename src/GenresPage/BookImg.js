@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React, {useMemo, useState, useEffect} from "react";
 import StarRatings from 'react-star-ratings';
 import { database } from "../firebase";
+import {getReviewsForCurrentBook} from "./service"
 
 
 export default function Book({ img, id, genre, title, description, author, rating, }) {
@@ -10,7 +11,8 @@ export default function Book({ img, id, genre, title, description, author, ratin
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    database.collection("reviewsList").where("forBookId", "==", id).get()
+    getReviewsForCurrentBook(id)
+    // database.collection("reviewsList").where("forBookId", "==", id).get()
       .then((querySnapshot) => {
         let dbReviews = [];
         querySnapshot.forEach((doc) => {

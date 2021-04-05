@@ -42,39 +42,3 @@ export const fetchBooks = () => {
     }
   };
 };
-
-// export const postAdded = (post) => ({
-//   type: "POST_ADDED",
-//   payload: post,
-// });
-
-// // Thunk actions
-// export const subscribeToRealTimePosts = () => {
-//   return function (dispatch, getState) {
-//     database.collection("posts").onSnapshot((snapshot) => {
-//       // code....
-//       // if new post was added:
-//       dispatch(postAdded({name: 'haha'}));
-
-//     });
-
-//     //   if (!posts.length) {
-//     //     dispatch(fetchPostsRequested());
-//     //     getPosts
-//     //       .then((users) => {
-//     //         let dbPosts = [];
-
-//     //         users.forEach((doc) => {
-//     //           console.log(doc.data());
-//     //           dbPosts.push(doc.data());
-//     //         });
-
-//     //         dispatch(fetchPostsSucceded(dbPosts));
-//     //       })
-//     //       .catch((err) => {
-//     //         dispatch(fetchPostsFailed(err));
-//     //       });
-//     //   }
-//   };
-// };
-  

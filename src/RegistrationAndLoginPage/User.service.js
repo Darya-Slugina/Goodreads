@@ -1,4 +1,4 @@
-import { database } from "../firebase";
+import firebase, { database } from "../firebase";
 
 // Requests
 
@@ -26,6 +26,13 @@ export const setUser = (id, fname, email) => {
             currentlyReading: [],
             favouritesUser: [],
             favouriteGenres: [],
+            myFriends: [],
         })
 }
+
+export const registerWithCredentials = (email, password) =>
+firebase.auth().createUserWithEmailAndPassword(email, password);
+
+export const loginWithCredentials = (email, password) =>
+firebase.auth().signInWithEmailAndPassword(email, password);
 

@@ -1,8 +1,7 @@
 import { getUser, setUser } from "./User.service";
-import { loginWithCredentials } from './service';
-import { registerWithCredentials } from './service';
+import { loginWithCredentials } from './User.service';
+import { registerWithCredentials } from './User.service';
 import firebase, { database } from "../firebase";
-import { ContactlessOutlined } from "@material-ui/icons";
 
 
 
@@ -13,6 +12,7 @@ export const FETCH_USER_LOGGEDIN = "FETCH_USER_LOGGEDIN";
 export const ADD_TO_FAVOURITE_GENRES = "ADD_TO_FAVOURITE_GENRES";
 export const ADD_TO_FAVOURITE_USERS = "ADD_TO_FAVOURITE_USERS";
 export const REMOVE_FROM_FAVOURITE_USERS = "REMOVE_FROM_FAVOURITE_USERS";
+export const ADD_TO_FRIENDS = "ADD_TO_FRIENDS";
 
 // Normal action
 export const fetchUserRegister = (user) => ({
@@ -42,6 +42,11 @@ export const addToFavouriteUsers = (userId) => ({
 
 export const removeFromFavouriteUsers = (userId) => ({
   type: REMOVE_FROM_FAVOURITE_USERS,
+  payload: userId,
+});
+
+export const addToFriends = (userId) => ({
+  type: ADD_TO_FRIENDS,
   payload: userId,
 });
 
@@ -125,8 +130,9 @@ export const fetchUser = (id) => {
 export const addToFavourite = (userId, loggedUserId) => {
   return function (dispatch, getState) {
     const favUser = getState().user.user.favouritesUser;
+    console.log("favUser");
 
-    if (favUser.length > 0 && !favUser.includes(userId)) {
+    if (!favUser.includes(userId)) {
       database.collection("users").doc(loggedUserId).update({
         favouritesUser: firebase.firestore.FieldValue.arrayUnion(userId),
       })
@@ -152,6 +158,26 @@ export const removeFromFavourite = (userId, loggedUserId) => {
         .then(() => {
           console.log("Document successfully written!");
           dispatch(removeFromFavouriteUsers(userId));
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+  }
+}
+
+export const addToFriendsList = (userId, loggedUserId) => {
+  return function (dispatch, getState) {
+    const myFriends = getState().user.user.myFriends;
+    console.log("favUser");
+
+    if (!myFriends.includes(userId)) {
+      database.collection("users").doc(loggedUserId).update({
+        myFriends: firebase.firestore.FieldValue.arrayUnion(userId),
+      })
+        .then(() => {
+          console.log("Document successfully written!");
+          dispatch(addToFriends(userId));
         })
         .catch((error) => {
           console.error("Error writing document: ", error);

@@ -6,49 +6,50 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import firebase, { database } from "../firebase";
 import { useEffect } from 'react';
+import { countOfMostWantedBoooks } from "../Constants";
+import { addInFavouriteGenres, removeFromFavouriteGenres } from './service';
 
 
-export default function Genres({ isLoggedIn, genresList, books }) {
+
+export default function Genres() {
 
   const { currentGenre } = useParams();
   const [buttonState, setButtonState] = useState("Add to favourite");
   const user = useSelector((state) => state.user.user);
+  const books = useSelector((state) => state.books.books);
+  const genresList = useSelector((state) => state.genres.genres);
 
-  let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre); 
+  let thisGenre = genresList.filter(el => el.genre.toLowerCase() === currentGenre);
   const currentBooks = books.filter(el => el.genre.toLowerCase() === currentGenre);
 
   const mostWanted = [...books];
   mostWanted.sort(() => Math.random() - 0.5);
-  mostWanted.length = 12; //Magic number
+  mostWanted.length = countOfMostWantedBoooks;
 
 
-  //  TODO: some change, have bug on refresh
-  useEffect(()=> {
-    if(user && user.favouriteGenres && user.favouriteGenres.includes(currentGenre)){
+  useEffect(() => {
+    if (user && user.favouriteGenres && user.favouriteGenres.includes(currentGenre)) {
       setButtonState("Remove from favourite");
     }
   }, [user, currentGenre])
 
   const addToFavourite = () => {
-    if (user) {
+    if (user.id) {
 
       if (buttonState === "Add to favourite") {
         setButtonState("Remove from favourite")
 
-        database.collection("users").doc(user.id).update({
-          favouriteGenres: firebase.firestore.FieldValue.arrayUnion(currentGenre),
-        })
+        addInFavouriteGenres(user.id, currentGenre)
           .then(() => {
             console.log("Document successfully written!");
           })
           .catch((error) => {
             console.error("Error writing document: ", error);
           });
-      } else if (buttonState === "Remove from favourite"){
+      } else if (buttonState === "Remove from favourite") {
         setButtonState("Add to favourite")
-        database.collection("users").doc(user.id).update({
-          favouriteGenres: firebase.firestore.FieldValue.arrayRemove(currentGenre),
-        })
+
+        removeFromFavouriteGenres(user.id, currentGenre)
           .then(() => {
             console.log("Document successfully written!");
           })
@@ -69,7 +70,7 @@ export default function Genres({ isLoggedIn, genresList, books }) {
         </div>
         <div className={styles.genreHeader}>
           <h1 className={styles.left}> {firstGenre.genre} </h1>
-          {isLoggedIn &&
+          {user.id &&
             <div className={styles.right}>
               <div className={styles.favoriteGenresButtonContainer}>
                 <Button value={buttonState} onClick={addToFavourite} />

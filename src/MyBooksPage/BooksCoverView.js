@@ -1,15 +1,13 @@
-import { useSelector } from "react-redux";
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
-import React from "react";
 import SimpleRating from "../BooksPage/Rating";
-import { useEffect } from "react";
+import React from "react";
+import { useState, useCallback } from "react";
 
 export default function BooksCoverView({books}) {
 
-    useEffect(() => {
-        console.log(books)
-    }, [books])
+    const [booksToDisplay, setBooksToDisplay] = useState(books);
+    console.log('BooksCoverView ', booksToDisplay)
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";
@@ -33,7 +31,7 @@ export default function BooksCoverView({books}) {
                                     <p className={styles.bookInfoContainerText}>by {book.author}</p>
                                     <div className={styles.bookMeta}>
                                         <div className={styles.staticRatingStars}>
-                                            <SimpleRating stars={book.rating} />
+                                            {/* <SimpleRating stars={book.rating} /> */}
                                         </div>
                                         <span className={styles.staticRating}> {book.rating} rating </span>
                                         <div className={styles.ratingCount} > - {book.ratingsCount} ratings </div>

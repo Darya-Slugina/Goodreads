@@ -24,40 +24,13 @@ export default function Login() {
   }
 
   // useEffect(() => {
-  //   console.log('tuk', user);
-  //   if(user !== null){
+  //   if(user.id){
   //     history.push("/");
   //   }
   // }, [history, user])
 
 
-  // firebase.auth().signOut().then(() => {
-  //   // Sign-out successful.
-  // }).catch((error) => {
-  //   // An error happened.
-  // });
-
-
-  // const loggedinUser = useSelector((state) => state.user.user);
-
-
-  // const onLogin = () => {
-  //   loginWithCredentials(email, password)
-  //     .then((userCredential) => {
-  //       const user = userCredential.user;
-  //       history.push("/");
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error: ", error);
-  //       setError(error.message);
-  //     });
-
-  //     dispatch(fetchUser());
-  // };
-
-  // const addUserToStore = () => {
-  //   dispatch(fetchUser());
-  // }
+  
 
   const onGoogleLogin = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -98,7 +71,7 @@ export default function Login() {
         <div className={styles.texture}>
           <div className={styles.clearfix}>
             <div>
-              <img src="https://s.gr-assets.com/assets/layout/goodreads_logo_324-a908b923dc3ed9b7a13f3da4d1ffb2df.png" alt="Goodreads: Book reviews, recommendations, and discussion" className={styles.logo} />
+             <Link to="/"><img src="https://s.gr-assets.com/assets/layout/goodreads_logo_324-a908b923dc3ed9b7a13f3da4d1ffb2df.png" alt="Goodreads: Book reviews, recommendations, and discussion" className={styles.logo} /></Link>
             </div>
           </div>
           <div className={styles.wrapper}>

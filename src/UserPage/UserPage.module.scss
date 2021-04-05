@@ -6,7 +6,7 @@
 .mainContent {
     margin: 0px auto;
     text-align: left;
-    width: 800px;
+    width: 1000px;
     background: #ffffff;
     font-size: 12px;
     min-height: 71vh;
@@ -142,6 +142,10 @@
                     }
                 }
 
+                .friendButtonSent {
+                    display: none;
+                }
+
                 .friendRequest {
                     font-size: 13px;
                     color: #7a2d2d;
@@ -230,6 +234,9 @@
     }
 
     .rightContainer {
+        padding-left: 15px;
+        width: 250px;
+
         .h2Container {
             border-bottom: 1px solid #d8d8d8;
             overflow: hidden;
@@ -257,6 +264,34 @@
         .followingContainer {
             padding: 0 0 10px 0;
             width: 100%;
+            min-height: 80px;
+        }
+
+        .friendsContainer{
+            padding: 0 0 10px 0;
+            width: 100%;
+            min-height: 80px;
+        }
+
+        .genresContainer {
+            padding: 0 0 10px 0;
+            width: 100%;
+            min-height: 80px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .genre {
+                color: #00635d;
+                text-decoration: none;
+                font-weight: 500;
+                text-align: left;
+                margin-right: 5px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

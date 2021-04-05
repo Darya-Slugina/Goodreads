@@ -157,6 +157,7 @@ export const registerUserWithFacebook = () => {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
+        console.log(result)
         const id = result.user.uid;
         const fname = result.user.displayName;
         const email = result.user.email;

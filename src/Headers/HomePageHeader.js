@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from 'react';
 import { authenticateUser } from "../RegistrationAndLoginPage/User.actions";
 import { registerUser, fetchUserFailed } from "../RegistrationAndLoginPage/User.actions";
+import { useEffect } from 'react';
 
 export default function HomePageHeader() {
 
@@ -27,9 +28,10 @@ export default function HomePageHeader() {
         const regEx = /[a-zA-Z]/gi;
         console.log(name.match(regEx));
         if (name.trim().length < 3 || !name.match(regEx)) {
-          dispatch(fetchUserFailed({message:"invalid Name"}, "registerError"))
+          dispatch(fetchUserFailed({message:"invalid Name"}, "registerError"));
         } else {
           setValidName(name);
+          dispatch(fetchUserFailed({message:" "}, "registerError"));
         }
         setFname(name);
       }
@@ -57,7 +59,7 @@ export default function HomePageHeader() {
                         <Button variant="dark" className={`${styles.button} ${styles.buttonDark}`} onClick={userLogin}>Sign in</Button>
                     </div>
                 </nav>
-                {(error.loginError && !validName) && <p className={styles.errorLoginContainer}>{error.loginError}</p>}
+                {(error.loginError && !fname) && <p className={styles.errorLoginContainer}>{error.loginError}</p>}
             </div>
             {/* banner */}
             <div className={styles.wrapper}>

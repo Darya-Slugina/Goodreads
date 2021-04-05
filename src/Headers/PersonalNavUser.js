@@ -57,9 +57,6 @@ export default function PersonalNavUser() {
                         console.error("Error updating document: ", error);
                     })
             })
-        return () => {
-            // subscription();
-        }
     }
 
     const removeFromNotifications = (id) => {
@@ -94,7 +91,7 @@ export default function PersonalNavUser() {
 
     useEffect(() => {
         if (user.id) {
-            database.collection('friendsRequests').where('requestTo', '==', user.id).where("status", "==", "sent").onSnapshot(snapshot => {
+            database.collection('friendsRequests').where('requestToId', '==', user.id).where("status", "==", "sent").onSnapshot(snapshot => {
 
                 let notif = [];
                 snapshot.forEach(doc =>
@@ -108,12 +105,13 @@ export default function PersonalNavUser() {
 
     useEffect(() => {
         if (user.id) {
-            database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
+            database.collection('friendsRequests').where('requestFromId', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
 
+                console.log("nnn")
                 let notif = [];
                 snapshot.forEach(doc => {
                     const request = doc.data();
-                    dispatch(addToFriendsList(request.requestTo, user.id))
+                    dispatch(addToFriendsList(request.requestToId, user.id))
                     notif.push(request)
                 })
 
@@ -125,7 +123,7 @@ export default function PersonalNavUser() {
     useEffect(() => {
         if (user.id) {
 
-            database.collection('friendsRequests').where('requestFrom', '==', user.id).where("status", "==", "reject").onSnapshot(snapshot => {
+            database.collection('friendsRequests').where('requestFromId', '==', user.id).where("status", "==", "reject").onSnapshot(snapshot => {
 
                 let notif = [];
                 snapshot.forEach(doc =>
@@ -140,21 +138,18 @@ export default function PersonalNavUser() {
 
 const allNotifications = [...notifications, ...rejected, ...approved];
 
-    console.log(allNotifications.length);
-
     return (
         <nav className={styles.personalNav}>
             <div className={styles.notifications}>
                 <span className={styles.notificationIcon} onClick={showNotifications} />
                 <span className={allNotifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{allNotifications.length}</span>
-                <div className={styles.dropdownContainer} id="dropdownContainer">
+                <div className={btnState? styles.dropdownContainerShow : styles.dropdownContainer}>
                     <span className={allNotifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
                     {allNotifications.map(el => (
                         <div key={el.id} className={styles.messageContainer}>
-                                {console.log("here", el.status)}
                             {el.status === "reject" &&
                                 <React.Fragment>
-                                    <span className={styles.message} >{`Your friend request to ${el.requestFrom} was rejected`}</span>
+                                    <span className={styles.message} >{`Your friend request to ${el.requestToUser} was rejected`}</span>
                                     <div className={styles.buttonsContainer}>
                                         <span className={styles.buttons} onClick={() => removeFromNotifications(el.id)}>X</span>
                                     </div>
@@ -162,7 +157,7 @@ const allNotifications = [...notifications, ...rejected, ...approved];
 
                             {el.status === "approve" &&
                                 <React.Fragment>
-                                    <span className={styles.message} >{`Your friend request to ${el.requestFrom} was approved`}</span>
+                                    <span className={styles.message} >{`Your friend request to ${el.requestToUser} was approved`}</span>
                                     <div className={styles.buttonsContainer}>
                                         <span className={styles.buttons} onClick={() => removeFromNotifications(el.id)}>X</span>
                                     </div>
@@ -170,7 +165,7 @@ const allNotifications = [...notifications, ...rejected, ...approved];
 
                             {el.status === "sent" &&
                                 <React.Fragment>
-                                    <span className={styles.message} >{`You have friend request from ${el.requestFrom}`}</span>
+                                    <span className={styles.message} >{`You have friend request from ${el.requestFromUser}`}</span>
                                     <div className={styles.buttonsContainer}>
                                         <span className={styles.buttons} onClick={() => answerOnRequest(el.id, "approve")}>Approve</span>
                                         <span className={styles.buttons} onClick={() => answerOnRequest(el.id, "reject")}>X</span>

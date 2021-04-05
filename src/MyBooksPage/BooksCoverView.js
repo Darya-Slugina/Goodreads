@@ -1,13 +1,9 @@
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
-import SimpleRating from "../BooksPage/Rating";
 import React from "react";
-import { useState, useCallback } from "react";
+
 
 export default function BooksCoverView({books}) {
-
-    const [booksToDisplay, setBooksToDisplay] = useState(books);
-    console.log('BooksCoverView ', booksToDisplay)
 
     const onMouseEnterHandler = (e) => {
         e.target.nextSibling.style.display = "block";
@@ -29,14 +25,6 @@ export default function BooksCoverView({books}) {
                                 <div className={styles.wrapper}>
                                     <h1 id="bookTitle" className={styles.bookInfoContainerTitle}>{book.title}</h1>
                                     <p className={styles.bookInfoContainerText}>by {book.author}</p>
-                                    <div className={styles.bookMeta}>
-                                        <div className={styles.staticRatingStars}>
-                                            {/* <SimpleRating stars={book.rating} /> */}
-                                        </div>
-                                        <span className={styles.staticRating}> {book.rating} rating </span>
-                                        <div className={styles.ratingCount} > - {book.ratingsCount} ratings </div>
-                                        <div className={styles.reviewCount} > - {book.reviewsCount} reviews </div>
-                                    </div>
                                     <p className={styles.bookInfoContainerText}>{book.description}</p>
                                 </div>
                             </div>

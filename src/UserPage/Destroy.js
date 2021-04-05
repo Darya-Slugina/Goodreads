@@ -4,13 +4,15 @@ import Button from "./../common/Button";
 import firebase, { database } from "../firebase";
 import { useHistory } from "react-router-dom";
 import React, { useState } from 'react';
-
+import { useDispatch } from "react-redux";
+import { fetchUserLoggedIn } from "../RegistrationAndLoginPage/User.actions";
 
 export default function Destroy() {
 
-    const [errorText, setErrorText] = useState(false);
+    const [error, setError] = useState(false);
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const deleteAccount = () => {
         const user = firebase.auth().currentUser;
@@ -21,12 +23,14 @@ export default function Destroy() {
             database.collection("users").doc(user.uid).delete()
                 .then(() => {
                     console.log("Document successfully deleted!");
+                    dispatch(fetchUserLoggedIn({}))
+                    history.push("/");
                 }).catch((err) => {
-                    setErrorText(true);
-                    console.log("error", errorText);
-                    console.error("Error removing document: ", err.message);
+                    setError(true);
+                    console.log("error", error);
+                    console.log("Error removing document: ", err.message);
                 });
-            history.push("/");
+            
         });
     }
 
@@ -41,7 +45,7 @@ export default function Destroy() {
                     <Button value={"Delete My Account"} onClick={deleteAccount} />
                     <Link href="/user/edit" className={styles.cancel}>cancel</Link>
                 </div>
-               {errorText && <span className={styles.errorTextShow} >Please, logout and login again, if you want to delete your account.</span>}
+               {error && <span className={styles.errorTextShow} >Please, logout and login again, if you want to delete your account.</span>}
             </div>
         </div>
     )

@@ -1,6 +1,5 @@
 import styles from './Header.module.scss'
 import '../common/DropdownMenu.scss'
-import firebase from "../firebase";
 import PersonalNavGuest from './PersonalNavGuest'
 import PersonalNavUser from './PersonalNavUser'
 import SearchBar from '../SearchBar'
@@ -10,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import { useRef, useState, useEffect } from 'react'
 
 export default function Header() {
-    const loggedInUser = firebase.auth().currentUser;
+    const loggedInUser = useSelector((state) => state.user.user);
     const genresList = useSelector((state) => state.genres.genres);
     const history = useHistory();
     const [isActive, setIsActive] = useState(false);
@@ -18,7 +17,7 @@ export default function Header() {
     const dropdownRef = useRef(null);
 
     const goToMyBooksPage = () => {
-        if (loggedInUser) {
+        if(loggedInUser.id) {
             history.push('/')
         } else {
             history.push('/login')
@@ -50,7 +49,7 @@ export default function Header() {
         <header className={styles.headerLogged}>
             <div className={styles.headerWrapper}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                <a href="/" className={styles.logoLogged}></a>
+                {loggedInUser.id? <Link to="/genres" className={styles.logoLogged}></Link> : <Link to="/" className={styles.logoLogged}></Link>}
                 <nav className={styles.navLogged}>
                     <ul>
                         <button variant='light' className={styles.navLoggedBtn} onClick={goToMyBooksPage}>My books</button>
@@ -68,7 +67,7 @@ export default function Header() {
                     </ul>
                 </nav>
                 <SearchBar />
-                {loggedInUser ? <PersonalNavUser /> : <PersonalNavGuest />}
+                {loggedInUser.id ? <PersonalNavUser /> : <PersonalNavGuest />}
             </div>
         </header>
     )

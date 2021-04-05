@@ -1,8 +1,12 @@
 import styles from './Privacy.module.scss';
 import { Link } from "react-router-dom";
-
+import React, { useEffect } from 'react';
 
 export default function Terms() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div className={styles.mainContentContainer}>
             <div className={styles.container}>

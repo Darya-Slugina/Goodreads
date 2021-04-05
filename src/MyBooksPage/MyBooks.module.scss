@@ -1,138 +1,143 @@
-.mainContainer{
-    background: #FFFFFF;    
+.mainContainer {
+    background: #ffffff;
     margin-top: 50px;
     display: flex;
-    height: 100%;
-}
+    min-height: 72vh;
 
-.myBooksWrapper{
-    text-align: left;
-    margin: 0px auto;
-    padding-bottom: 25px;
-    width: 970px;
-    
-}
+    .myBooksWrapper {
+        text-align: left;
+        margin: 0px auto;
+        padding-bottom: 25px;
+        width: 970px;
 
+        .main {
+            float: left;
+            width: 100%;
+            margin-top: 15px;
+            margin-left: 5px;
+            font-size: 12px;
 
-.main{
-    float: left;
-    width: 100%;
-    margin-top: 15px;
-    margin-left: 5px;
-    font-size: 12px;
-    
-}
+            .header {
+                margin-bottom: 10px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #ebe8d5;
+                color: #bbb596;
+                display: flex;
+                justify-content: space-between;
 
+                .title {
+                    color: #00635d;
+                    font-size: 20px;
+                    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+                    font-weight: bold;
+                }
+            }
 
-.header{
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #EBE8D5;
-    color: #BBB596;
-    display: flex;
-    justify-content: space-between;
-}
+            .contentWrapper {
+                display: flex;
 
-.title{
-    color: #00635d;
-    font-size: 20px;
-    font-family: "Merriweather", Georgia, "Times New Roman", serif;
-    font-weight: bold;
-}
+                .sidebar {
+                    margin-right: 20px;
+                    width: 150px;
 
-.controls{
-    /* float: right; */
-    padding-bottom: 2px;
-    display: flex;
-}
+                    .shelvesSection {
+                        border-bottom: 1px solid #d8d8d8;
+                        width: 150px;
 
-.searchField{
-    /* float: left; */
-    /* margin-right: -30px; */
-    color: #666;
-    display: flex;
-}
+                        * {
+                            display: block;
+                            color: #00635d;
+                        }
+                    }
+                    .heading {
+                        font-weight: bold;
+                        font-size: larger;
+                        margin-bottom: 5px;
+                    }
 
-.searchIcon{
-    background-image: url(../img/search_icon.png);
-    background-size: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-    top: 2px;
-    right: 20px;
-    width: 16px;
-    height: 16px;
-}
+                    .subheading {
+                        margin-bottom: 5px;
+                    }
+                }
 
-.listViewIcon, .gridViewIcon{
-    position: relative;
-    right: 5px;
-    top: 7px;
-    background-size: 23px;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 23px;
-    width: 21px;
-    background-color: transparent;
-    border: 0;
-}
+                .booksViewContainer {
+                    width: 700px;
 
-.listViewIcon:hover, .gridViewIcon:hover{
-    background-color: #f4f2e9;
-}
+                    .controls {
+                        display: flex;
+                        justify-content: flex-end;
+                        padding-bottom: 2px;
+                        display: flex;
 
-.listViewIcon:active, .gridViewIcon:active{
-    background-color: #f4f2e9;
-    border: 0;
-}
+                        .searchField {
+                            /* float: left; */
+                            /* margin-right: -30px; */
+                            color: #666;
+                            display: flex;
 
-.listViewIcon{
-    background-image: url(../img/list_view_icon.png);
-}
+                            .searchIcon {
+                                background-image: url(../img/search_icon.png);
+                                background-size: 16px;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                position: relative;
+                                top: 2px;
+                                right: 20px;
+                                width: 16px;
+                                height: 16px;
+                            }
+                        }
 
-.gridViewIcon{
-    background-image: url("../img/grid_view_icon.png");
-}
+                        .listViewIcon,
+                        .gridViewIcon {
+                            position: relative;
+                            right: 5px;
+                            top: 7px;
+                            background-size: 23px;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            height: 23px;
+                            width: 21px;
+                            background-color: transparent;
+                            border: 0;
+                        }
 
-.contentWrapper{
-    display: flex;
+                        .listViewIcon:hover,
+                        .gridViewIcon:hover {
+                            background-color: #f4f2e9;
+                        }
 
-    .sidebar{
-        margin-right: 20px;
-        
-        .shelvesSection{
-            border-bottom: 1px solid #D8D8D8;
-            width: 100px;
+                        .listViewIcon:active,
+                        .gridViewIcon:active {
+                            background-color: #f4f2e9;
+                            border: 0;
+                        }
 
-            *{
-                display: block;
-                color: #00635d;
+                        .listViewIcon {
+                            background-image: url(../img/list_view_icon.png);
+                        }
+                        
+                        .gridViewIcon {
+                            background-image: url("../img/grid_view_icon.png");
+                        }
+                    }
+
+                    .filters {
+                        display: flex;
+                        justify-content: space-around;
+
+                        .filters label {
+                            margin: 0 5px;
+                        }
+                    }
+                }
             }
         }
-        .heading{
-            font-weight: bold;
-            font-size: larger;
-            margin-bottom: 5px;
-        }
-
-        .subheading{
-            margin-bottom: 5px;
-        }
-    }
-
-    .booksViewWrapper{
-        margin-top: 20px;
     }
 }
 
 
-.filters{
-    display: flex;
-    justify-content: space-around;
-   
-}
 
-.filters label{
-    margin: 0 5px;
-}
+
+
+

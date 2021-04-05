@@ -15,6 +15,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
     const [form, setForm] = useState(false);
     const [buttonState, setButtonState] = useState("Like");
     const [reviewBtn, setReviewBtn] = useState(true);
+    const [rating, setRating] = useState(0);
 
     const user = useSelector((state) => state.user.user);
 
@@ -67,6 +68,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                     setReviewBtn(true);
                     database.collection("reviewsList").doc(id).update({
                         review: text,
+                        rate: rating,
                     })
                         .then(() => {
                             console.log("Document successfully written!");
@@ -155,7 +157,7 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
 
     return (
         <React.Fragment>
-            <div className={styles.commentsContainer}>
+            <div className={currentUser ? styles.commentsContainerUser : styles.commentsContainer}>
                 <div className={styles.userImgContainer}>
                     <Link to={"/user/" + userId}><img src={userImg} alt={userName} className={styles.userImg} /></Link>
                 </div>
@@ -164,14 +166,24 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                         <div>
                             <Link to={"/user/" + userId}><span className={styles.userName}> {userName} </span></Link>
                             <span className={styles.rating}>  rated  it </span>
-                            <StarRatings
-                                rating={rate}
-                                starRatedColor="#e84225"
-                                starDimension="18px"
-                                starSpacing="0px"
+                            {form ? <StarRatings
+                                rating={rating}
+                                starRatedColor="rgb(255, 145, 34)"
+                                starHoverColor="rgb(255, 145, 34)"
+                                starDimension="30px"
+                                starSpacing="3px"
+                                changeRating={(rating) => setRating(rating)}
                                 numberOfStars={5}
                                 name='rating'
-                            />
+                            /> :
+                                <StarRatings
+                                    rating={rate}
+                                    starRatedColor="#e84225"
+                                    starDimension="18px"
+                                    starSpacing="0px"
+                                    numberOfStars={5}
+                                    name='rating'
+                                />}
                         </div>
                         <span className={styles.date}>{moment(date).format("MMMM Do YYYY")}</span>
                     </div>

@@ -10,7 +10,7 @@ export default function DropdownButton({ onClick, bookState, setBookState }) {
     };
 
     return (
-        <Dropdown onSelect={changeButton} eventKey={bookState} >
+        <Dropdown onSelect={changeButton} eventkey={bookState} >
             <Dropdown.Toggle variant="success" id="dropdown-basic" >
                 {bookState}
             </Dropdown.Toggle>

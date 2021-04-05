@@ -202,7 +202,7 @@ export default function Books() {
           </div>
           <div className={styles.h2Container}>
             {sortedReviews.map(review => (
-              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId} />
+              <Comments key={review.date} {...review} getReviews={setReviews} bookId={currentId} />
             ))}
 
           </div>

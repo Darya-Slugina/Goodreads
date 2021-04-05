@@ -44,7 +44,7 @@ export default function Form({ bookId, getReviews, rating }) {
     }
 
     return (
-        <div className={styles.formContainer} id="form">
+        <div className={styles.formContainer}>
             <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} />
             {reviewBtn && <Button value={"Publish your review"} onClick={setReview} />}
         </div>

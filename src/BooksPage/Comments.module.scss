@@ -1,5 +1,6 @@
-.commentsContainer {
-    width: 750px;
+.commentsContainer,
+.commentsContainerUser {
+    width: 780px;
     display: flex;
     margin-top: 10px;
 
@@ -86,7 +87,8 @@
                 color: #00635d;
             }
 
-            .likeBtn, .EditBtn {
+            .likeBtn,
+            .EditBtn {
                 border-radius: 3px;
                 border: 1px solid #d6d0c4;
                 font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -100,7 +102,18 @@
                 line-height: 1;
                 padding: 3px 8px;
                 margin-right: 10px;
+
+                &:hover {
+                    background-color: #dad4c9;
+                }
             }
         }
     }
+}
+
+.commentsContainerUser {
+    background-color: #f7f6f4;
+    border: 1px solid #dedbd7;
+    border-radius: 5px;
+
 }

@@ -14,11 +14,12 @@ export const getReviewsByUser = (id) => {
     return database.collection("reviewsList").where("userId", "==", id).get()
 }
 
-export const setFriendRequest = (userFrom, userFronName, userTo) => {
+export const setNewFriendRequest = (userFromId, userFromName, userToId, userToName) => {
     return database.collection("friendsRequests").doc().set({
-        requestFrom: userFrom,
-        requestFromUser: userFronName,
-        requestTo: userTo,
+        requestFromId: userFromId,
+        requestFromUser: userFromName,
+        requestToId: userToId,
+        requestToUser: userToName,
         status: "sent",
         id: Date.now(),
     })

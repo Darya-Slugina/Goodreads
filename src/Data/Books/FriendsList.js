@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const genresList = [
+const friendrequests = [
   {
     requestFrom: "",
     requestTo: "", 
@@ -24,8 +24,8 @@ const genresList = [
 
 var db = firebase.firestore();
 
-genresList.forEach(obj => {
-  db.collection("friendsList").add({
+friendrequests.forEach(obj => {
+  db.collection("friendsRequests").add({
     requestFrom: obj.requestFrom,
     requestTo: obj.requestTo,
   })

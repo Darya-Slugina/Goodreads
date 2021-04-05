@@ -89,15 +89,22 @@ export default function UserEditPage() {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
       },
-      (error) => { },
+      (error) => {  console.log("Upload failed" + error)},
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log("File available at", downloadURL);
-          storageUserUpdate(downloadURL, "userImg");
+          let newImg = '';
+          if (downloadURL) {
+            newImg = downloadURL;
+            storageUserUpdate(newImg, "userImg");
+          } else {
+            newImg = "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/default-profile-big.png?alt=media&token=e1cc93c3-ccd2-4269-8fd3-156fb157dd5a"
+          }
+          
           database
             .collection("users")
             .doc(user.id)
-            .set({ ...storageUser, userImg: downloadURL }, { merge: true })
+            .set({ ...storageUser, userImg: newImg }, { merge: true })
             .then(() => {
               console.log("Document successfully written!");
             })
@@ -124,7 +131,7 @@ export default function UserEditPage() {
           <div className={styles.flexContainer}>
             <div className={styles.leftBox}>
               <p className={styles.formInput}>
-                <label className={styles.formLabel} for="user_first_name">
+                <label className={styles.formLabel} htmlFor="user_first_name">
                   First Name <span className={styles.required}>*</span>
                 </label>
                 <br />
@@ -139,13 +146,13 @@ export default function UserEditPage() {
                 />
               </p>
               <p className={styles.formInput}>
-                <label for="user_last_name" className={styles.formLabel}>
+                <label htmlFor="user_last_name" className={styles.formLabel}>
                   Last Name
                 </label>
                 <br />
                 <input
                   size="30"
-                  maxlength="50"
+                  maxLength="50"
                   className={styles.formClassInput}
                   type="text"
                   id="user_last_name"
@@ -155,7 +162,7 @@ export default function UserEditPage() {
               </p>
               <div id="gender_fields">
                 <div id="gender_selector">
-                  <label for="user_gender" className={styles.formLabel}>
+                  <label htmlFor="user_gender" className={styles.formLabel}>
                     Gender
                   </label>
                   <br />
@@ -173,7 +180,7 @@ export default function UserEditPage() {
                 </div>
               </div>
               <p id="city" className={styles.formInput}>
-                <label for="user_city" className={styles.formLabel}>
+                <label htmlFor="user_city" className={styles.formLabel}>
                   City
                 </label>
                 <br />
@@ -187,7 +194,7 @@ export default function UserEditPage() {
                 />
               </p>
               <p className={styles.formInput}>
-                <label for="country" className={styles.formLabel}>
+                <label htmlFor="country" className={styles.formLabel}>
                   Country
                 </label>
                 <br />
@@ -201,7 +208,7 @@ export default function UserEditPage() {
               </p>
 
               <p className={styles.formInput}>
-                <label for="user_expert_tags" className={styles.formLabel}>
+                <label htmlFor="user_expert_tags" className={styles.formLabel}>
                   My Interests
                 </label>{" "}
                 — favorite subjects, or really anything you know a lot about{" "}
@@ -221,7 +228,7 @@ export default function UserEditPage() {
                 />
               </p>
               <p className={styles.formInput}>
-                <label for="user_favorite_books" className={styles.formLabel}>
+                <label htmlFor="user_favorite_books" className={styles.formLabel}>
                   What Kind of Books Do You Like to Read?
                 </label>
                 <br />
@@ -255,7 +262,7 @@ export default function UserEditPage() {
               </p>
 
               <div {...getRootProps()} className={styles.dragActive}>
-                <input {...getInputProps()} className={styles.dropInput} maxSize={100} />
+                <input {...getInputProps()} className={styles.dropInput} />
                 {isDragActive ? (
                   <p className={styles.imgInput}>Drop the files here ...</p>
                 ) : (

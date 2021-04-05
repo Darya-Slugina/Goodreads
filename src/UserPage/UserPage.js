@@ -3,11 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import styles from './UserPage.module.scss';
 import { Nav } from "react-bootstrap";
 import MyBooks from "./MyBooks";
-import { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../RegistrationAndLoginPage/User.actions";
 import FollowUser from "./FollowUser";
-import { getCurrentUser, getReviewsByUser } from "./service"
+import { getCurrentUser, getReviewsByUser, setNewFriendRequest } from "./service"
 
 
 
@@ -17,7 +16,8 @@ export default function UserPage() {
     const [user, setUser] = useState({});
     const [reviews, setReviews] = useState([]);
     const [buttonState, setButtonState] = useState("Follow");
-    const [friendRequest, setFriendRequest] = useState(false)
+    const [friendRequest, setFriendRequest] = useState(false);
+    const [approvedFriend, setApprovedFriend] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -45,6 +45,12 @@ export default function UserPage() {
                 setReviews(dbReviews);
             });
     }, [userId]);
+
+    useEffect(() => {
+        if (loggedInUser.myFriends.includes(userId)) {
+            setApprovedFriend(true);
+        }
+    }, [userId, loggedInUser.myFriends])
 
     const isCurrentUser = useMemo(() => {
         if (loggedInUser && userId === loggedInUser.id) {
@@ -117,14 +123,7 @@ export default function UserPage() {
     }
 
     const sendFriendRequest = () => {
-        setFriendRequest(loggedInUser.id, loggedInUser.fname, userId)
-        database.collection("friendsRequests").doc().set({
-            requestFrom: loggedInUser.id,
-            requestFromUser: loggedInUser.fname,
-            requestTo: userId,
-            status: "sent",
-            id: Date.now(),
-        })
+        setNewFriendRequest(loggedInUser.id, loggedInUser.fname, userId, user.fname)
         setFriendRequest(!friendRequest)
     }
 
@@ -155,8 +154,8 @@ export default function UserPage() {
                             <h1 className={styles.userProfileName}>  {user.fname}</h1>
                             {loggedInUser.id ? <div className={styles.friendFollowModule}>
                                 <button className={styles.friendFollowButton} onClick={addToFolowers}>{buttonState}</button>
-                                <button className={friendRequest ? styles.friendButtonSent : styles.friendButton} onClick={sendFriendRequest}>Add Friend</button>
-                                <span className={friendRequest ? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span>
+                             {!approvedFriend &&  <button className={friendRequest ? styles.friendButtonSent : styles.friendButton} onClick={sendFriendRequest}>Add Friend</button> }
+                             {!approvedFriend &&  <span className={friendRequest ? styles.friendRequest : styles.friendRequestNone}> Your request has been successfully sent </span> }
                             </div> : null}
                         </React.Fragment>
                     }
@@ -177,10 +176,10 @@ export default function UserPage() {
                             <div className={styles.infoBoxRowTitle}>Interests</div>
                             <div className={styles.infoBoxRowItem}> {user.interests} </div>
                         </div>) : null}
-                    {user.favouriteBook ?
+                    {user.favouriteBooks ?
                         (<div className={styles.infoBoxWrapper}>
                             <div className={styles.infoBoxRowTitle}>Favorite Books</div>
-                            <div className={styles.infoBoxRowItem}> {user.favouriteBook}</div>
+                            <div className={styles.infoBoxRowItem}> {user.favouriteBooks}</div>
                         </div>) : null}
                 </div>
                 <div className={styles.bigBoxInfo}>

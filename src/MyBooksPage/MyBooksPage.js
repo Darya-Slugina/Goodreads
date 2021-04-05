@@ -63,22 +63,22 @@ export default function MyBooks() {
                                     <div>
                                         <Nav defaultActiveKey={selectedTab} onSelect={onShelveChange} className="flex-column">
                                             <Nav.Item>
-                                                <Nav.Link eventKey="All">All ({userAllBooks.length})</Nav.Link>
+                                                <Nav.Link eventKey="All" className={styles.subheading}>All ({userAllBooks.length})</Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
-                                                <Nav.Link eventKey="Read">Read ({readBooks.length})</Nav.Link>
+                                                <Nav.Link eventKey="Read" className={styles.subheading}>Read ({readBooks.length})</Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
-                                                <Nav.Link eventKey="Currently Reading">Currently Reading ({currentlyReading.length})</Nav.Link>
+                                                <Nav.Link eventKey="Currently Reading" className={styles.subheading}>Currently Reading ({currentlyReading.length})</Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
-                                                <Nav.Link eventKey="Want to Read">Want to Read ({wantToRead.length})</Nav.Link>
+                                                <Nav.Link eventKey="Want to Read" className={styles.subheading}>Want to Read ({wantToRead.length})</Nav.Link>
                                             </Nav.Item>
                                         </Nav>
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className={styles.booksViewWrapper}>
                                 {selectedTab === "Currently Reading" && <BooksView books={currentlyReading} />}
                                 {selectedTab === "Want to Read" && <BooksView books={wantToRead} />}
                                 {selectedTab === "Read" && <BooksView books={readBooks} />}

@@ -40,70 +40,16 @@
     font-weight: bold;
 }
 
-.controls{
-    /* float: right; */
-    padding-bottom: 2px;
-    display: flex;
-}
-
-.searchField{
-    /* float: left; */
-    /* margin-right: -30px; */
-    color: #666;
-    display: flex;
-}
-
-.searchIcon{
-    background-image: url(../img/search_icon.png);
-    background-size: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-    top: 2px;
-    right: 20px;
-    width: 16px;
-    height: 16px;
-}
-
-.listViewIcon, .gridViewIcon{
-    position: relative;
-    right: 5px;
-    top: 7px;
-    background-size: 23px;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 23px;
-    width: 21px;
-    background-color: transparent;
-    border: 0;
-}
-
-.listViewIcon:hover, .gridViewIcon:hover{
-    background-color: #f4f2e9;
-}
-
-.listViewIcon:active, .gridViewIcon:active{
-    background-color: #f4f2e9;
-    border: 0;
-}
-
-.listViewIcon{
-    background-image: url(../img/list_view_icon.png);
-}
-
-.gridViewIcon{
-    background-image: url("../img/grid_view_icon.png");
-}
-
 .contentWrapper{
     display: flex;
 
     .sidebar{
-        margin-right: 20px;
+        margin-right: 10px;
+        width: 150px;
         
         .shelvesSection{
             border-bottom: 1px solid #D8D8D8;
-            width: 100px;
+            width: 100%;
 
             *{
                 display: block;
@@ -117,22 +63,11 @@
         }
 
         .subheading{
-            margin-bottom: 5px;
+            padding: 2px 0;
         }
     }
 
     .booksViewWrapper{
-        margin-top: 20px;
+        width: 100%;
     }
-}
-
-
-.filters{
-    display: flex;
-    justify-content: space-around;
-   
-}
-
-.filters label{
-    margin: 0 5px;
 }

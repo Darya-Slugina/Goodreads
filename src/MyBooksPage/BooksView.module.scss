@@ -1,12 +1,85 @@
+.controls{
+    padding-bottom: 2px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.searchField{
+    color: #666;
+    display: flex;
+}
+
+.searchIcon{
+    background-image: url(../img/search_icon.png);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: 2px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
+}
+
+.viewToggleWrapper{
+    display: flex;
+}
+
+.listViewIcon, .gridViewIcon{
+    position: relative;
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 23px;
+    width: 21px;
+    background-color: transparent;
+    border: 0;
+}
+
+.listViewIcon:hover, .gridViewIcon:hover{
+    background-color: #f4f2e9;
+}
+
+.listViewIcon:active, .gridViewIcon:active{
+    background-color: #f4f2e9;
+    border: 0;
+}
+
+.listViewIcon{
+    background-image: url(../img/list_view_icon.png);
+}
+
+.gridViewIcon{
+    background-image: url("../img/grid_view_icon.png");
+}
+
+
+
+
+.filters{
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+.filters label{
+    margin: 0 5px;
+}
+
+
+
 // Table View-----------------------------------
 .table{
     margin-bottom: 10px;
+    table-layout: fixed;
+    width: 100%;
+    
 }
 
 .heading{
     color: #382110;
     font-weight: bold;
-    width: 50px;
+    width: 100%;
     vertical-align: bottom;
 }
 
@@ -17,12 +90,19 @@
     td{
         vertical-align: top;
         padding: 12px 5px 5px 0;
+     
 
         img{
             width: 50px;
         }
+
+        a{
+            color: #00635d;
+        }
     }
 }
+
+
 
 // Cover View-----------------------------------
 

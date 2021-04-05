@@ -15,8 +15,8 @@ export default function BooksView({ books }) {
     const [booksToDisplay, setBooksToDisplay] = useState(books);
     const [sortState, setSortState] = useState('');
     const [isAscOrder, setIsAscOrder] = useState("order_a");
-    const [countState, setCountState] = useState('')
-    const [pageCount, setPageCount] = useState(0)
+    const [paginationItems, setPaginationItems] = useState([])
+    const [perPage, setPerPage] = useState()
 
 
     useEffect(() => {
@@ -24,14 +24,16 @@ export default function BooksView({ books }) {
     }, [books])
 
 
-    const sortBooks = (value) => {
-        if (value === 'Title') {
+    const sortBooks = (state) => {
+        if (state === 'Title') {
             let sorted = booksToDisplay.sort((a, b) => a.title.localeCompare(b.title));
             setBooksToDisplay(sorted);
-        } else if (value === 'Author') {
+            setIsAscOrder("order_a");
+        } else if (state === 'Author') {
             const sorted = booksToDisplay.sort((a, b) => a.author.localeCompare(b.author));
             setBooksToDisplay(sorted);
-        } else if (value === 'Random') {
+            setIsAscOrder("order_a");
+        } else if (state === 'Random') {
             const sorted = booksToDisplay.sort(() => Math.random() - 0.5);
             setBooksToDisplay(sorted)
         }
@@ -45,7 +47,7 @@ export default function BooksView({ books }) {
 
     const handleOrder = (ev) => {
         let value = ev.target.value;
-        if (sortState !== 'Random') {
+        if (sortState && sortState !== 'Random') {
             if (value === 'order_a') {
                 setIsAscOrder("order_a");
                 let totalSorted = booksToDisplay.sort((a, b) => a[sortState.toLowerCase()].localeCompare(b[sortState.toLowerCase()]));
@@ -53,7 +55,7 @@ export default function BooksView({ books }) {
 
             } else {
                 setIsAscOrder("order_d");
-                let totalSorted = books.sort((a, b) => b[sortState.toLowerCase()].localeCompare(a[sortState.toLowerCase()]));
+                let totalSorted = booksToDisplay.sort((a, b) => b[sortState.toLowerCase()].localeCompare(a[sortState.toLowerCase()]));
                 setBooksToDisplay(totalSorted)
             }
         }
@@ -61,19 +63,36 @@ export default function BooksView({ books }) {
     }
 
     const handleCount = (ev) => {
-        let value = ev.target.value;
-        setCountState(value)
+        let perPageValue = Number(ev.target.value);
+        setPerPage(perPageValue)
+        setBooksToDisplay(books)
 
-        // let numberOfPages = Math.ceil(booksToDisplay.length / Number(countState))
-        // console.log("number of pages: " , numberOfPages)
-        // setPageCount()
+        let numberOfPages = Math.ceil(books.length / perPageValue)
+        let newPageCount = []
+        for (let i = 1; i <= numberOfPages; i++) {
+            newPageCount.push(i)
+        }
 
+        setPaginationItems(newPageCount)
+        showSelectedPage(0, perPageValue)
+    }
+
+
+    const handleEvent = (ev) => {
+        let selectedPageValue = Number(ev.target.innerHTML) - 1;
+        showSelectedPage(selectedPageValue, perPage)
+    }
+
+    const showSelectedPage = (selectedPageValue, perPageValue) => {
+        let copiedBooks = [...books]
+        let booksFromPagination = copiedBooks.slice(selectedPageValue * perPageValue, selectedPageValue * perPageValue + perPageValue)
+
+        setBooksToDisplay(booksFromPagination)
     }
 
     const showSearchResults = (ev) => {
         let value = ev.target.value;
         let filteredBooks = books.filter(book => book.title.toLowerCase().includes(value) || book.author.toLowerCase().includes(value));
-        console.log(filteredBooks)
         setBooksToDisplay(filteredBooks)
     }
 
@@ -82,7 +101,7 @@ export default function BooksView({ books }) {
         <React.Fragment>
             <div className={styles.controls}>
                 <div className={styles.searchField}>
-                    <input className={styles.searchInput} placeholder="Search your books" onChange={showSearchResults} />
+                    <input className={styles.searchInput} placeholder="Search all of your books" onChange={showSearchResults} />
                     <div className={styles.searchIcon}></div>
                 </div>
                 <div className={styles.viewToggleWrapper}>
@@ -118,13 +137,6 @@ export default function BooksView({ books }) {
                     </OverlayTrigger>
                 </div>
             </div>
-            <div className={styles.paginationControls}>
-                {!!countState && <Pagination size="sm">
-                    <Pagination.Item key={countState}>
-                        {countState}
-                    </Pagination.Item>
-                </Pagination>}
-            </div>
             {!booksToDisplay.length ? <p>No added books yet.</p> : <div className={styles.booksViewWrapper}>
                 {isTableView ? <BooksTableView books={booksToDisplay} /> : <BooksCoverView books={booksToDisplay} />}
             </div>}
@@ -137,6 +149,16 @@ export default function BooksView({ books }) {
                         <option>2</option>
                         <option>1</option>
                     </select>
+                    <div className={styles.paginationControls}>
+                    <Pagination size="sm" className={styles.paginationWrapper}>
+                        {!!paginationItems.length && paginationItems.map((el) => (
+                            <Button variant='light' key={el} onClick={handleEvent} className={styles.pagItem} >
+                                {el}
+                            </Button>
+                        )
+                        )}
+                    </Pagination>
+                </div>
                 </div>
                 <div>
                     <label htmlFor="sort">sort</label>
@@ -151,7 +173,7 @@ export default function BooksView({ books }) {
                     <input type="radio" name="order" id='order_a' value='order_a' onChange={handleOrder} checked={isAscOrder === 'order_a' ? true : false}></input>
                     <label htmlFor="order_a">asc.</label>
                     <input type="radio" name="order" id='order_d' value='order_d' onChange={handleOrder} checked={isAscOrder === 'order_d' ? true : false}></input>
-                    <label htmlFor="order_d" defaultValue>desc.</label>
+                    <label htmlFor="order_d">desc.</label>
                 </div>
             </div>
         </React.Fragment>

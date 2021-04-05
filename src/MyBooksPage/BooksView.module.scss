@@ -53,9 +53,6 @@
     background-image: url("../img/grid_view_icon.png");
 }
 
-
-
-
 .filters{
     display: flex;
     justify-content: space-around;
@@ -64,6 +61,22 @@
 
 .filters label{
     margin: 0 5px;
+}
+
+.pagination{
+    display: flex;
+}
+
+.paginationWrapper{
+    margin: 0;
+    border: 0;
+}
+
+.pagItem{
+    color: #00635d;
+    margin: 0 5px;
+    padding: 0 5px;
+    font-size: 14px;
 }
 
 

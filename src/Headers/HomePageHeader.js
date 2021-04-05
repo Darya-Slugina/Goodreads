@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from 'react';
 import { authenticateUser } from "../RegistrationAndLoginPage/User.actions";
 import { registerUser } from "../RegistrationAndLoginPage/User.actions";
-import { useHistory } from "react-router-dom";
 
 export default function HomePageHeader() {
 
@@ -14,8 +13,7 @@ export default function HomePageHeader() {
     const [emailFromReg, setEmailFromReg] = useState("");
     const [passwordFromReg, setPasswordFromReg] = useState("");
     const [fname, setFname] = useState("");
-
-    const history = useHistory();
+    const [nameError, setNameError] = useState("");
 
 
     const dispatch = useDispatch();
@@ -26,7 +24,10 @@ export default function HomePageHeader() {
     }
 
     const userRegister = () => {
+        if(fname.length > 3){
         dispatch(registerUser(emailFromReg, passwordFromReg, fname));
+        }
+        setNameError("You must enter a name with a length of at least 3 characters");
     }
 
 
@@ -43,10 +44,11 @@ export default function HomePageHeader() {
                         <div className={styles.formBox}>
                             <Form.Control type="password" placeholder="Password" value={passwordFromLogin} onInput={(ev) => setPasswordFromLogin(ev.target.value)} />
                         </div>
-                        {error && <p className={styles.errorContainer}>{error}</p>}
                         <Button variant="dark" className={`${styles.button} ${styles.buttonDark}`} onClick={userLogin}>Sign in</Button>
                     </div>
                 </nav>
+                {error && <p className={styles.errorContainer}>{error}</p>}
+                {nameError && <p className={styles.NameErrorContainer}>{nameError}</p>}
             </div>
             {/* banner */}
             <div className={styles.wrapper}>

@@ -5,7 +5,6 @@ import BooksList from "./BookList";
 import ReviewModul from "./ReviewModul";
 import Comments from "./Comments";
 import DropdownButton from "../common/DroppdownButton"
-import firebase, { database } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import StarRatings from 'react-star-ratings';
 import { getReviewsForCurrentBook } from './service';

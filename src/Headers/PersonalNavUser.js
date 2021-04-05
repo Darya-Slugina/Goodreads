@@ -12,7 +12,6 @@ export default function PersonalNavUser() {
     const [approved, setApproved] = useState([]);
     const [btnState, setBtnState] = useState(false);
 
-
     const user = useSelector((state) => state.user.user);
     const history = useHistory();
     const dispatch = useDispatch();

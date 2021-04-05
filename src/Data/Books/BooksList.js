@@ -1144,7 +1144,614 @@ const books = [
              to the UNHCR (the UN Refugee Agency) and The Khaled Hosseini Foundation to help fund lifesaving relief efforts to help 
              refugees around the globe. Hosseini is also a Goodwill Envoy to the UNHCR, and the founder of The Khaled Hosseini Foundation,
               a nonprofit that provides humanitarian assistance to the people of Afghanistan.`,
-    }
+    },
+    {
+        id: 49,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/45178637._SY475_.jpg?alt=media&token=76cc9283-3fb5-4a3a-b870-38776f8e4a67",
+        title: "Bridge of Souls",
+        author: "Victoria Schwab",
+        info: "ebook, 304 pages",
+        published: "March 2nd 2021 by Scholastic Press",
+        genre: "Childrens",
+        description: `Where there are ghosts, Cassidy Blake follows ... unless it's the other way around?
+        Cass thinks she might have this ghost-hunting thing down. After all, she and her ghost best friend, Jacob, have survived two haunted cities while travelling for her parents' TV show.
+        But nothing can prepare Cass for New Orleans, which wears all of its hauntings on its sleeve. In a city of ghost tours and tombs, raucous music and all kinds of magic, Cass could get lost in all the colourful, grisly local legends. And the city's biggest surprise is a foe Cass never expected to face: a servant of Death itself.
+        Cass takes on her most dangerous challenge yet...`,
+    },
+    {
+        id: 50,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54458127._SY475_.jpg?alt=media&token=ca09de27-f408-436c-abb9-c594cab41c98",
+        title: "Starfish",
+        author: "Lisa Fipps",
+        info: "Hardcover, 256 pages",
+        published: "March 9th 2021 by Crown Books for Young Readers",
+        genre: "Childrens",
+        description: `Ellie is tired of being fat-shamed and does something about it in this poignant debut novel-in-verse.
+        Ever since Ellie wore a whale swimsuit and made a big splash at her fifth birthday party, she’s been bullied about her weight. To cope, she tries to live by the Fat Girl Rules–like “no making waves,” “avoid eating in public,” and “don’t move so fast that your body jiggles.” And she’s found her safe space–her swimming pool–where she feels weightless in a fat-obsessed world. In the water, she can stretch herself out like a starfish and take up all the room she wants. It’s also where she can get away from her pushy mom, who thinks criticizing Ellie’s weight will motivate her to diet. Fortunately, Ellie has allies in her dad, her therapist, and her new neighbor, Catalina, who loves Ellie for who she is. With this support buoying her, Ellie might finally be able to cast aside the Fat Girl Rules and starfish in real life–by unapologetically being her own fabulous self. `,
+    },
+    {
+        id: 51,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54492656.jpg?alt=media&token=310e8397-882f-4bf7-857b-916a049637bf",
+        title: "Starfish",
+        author: "James Patterson, Chris Grabenstein",
+        info: "Hardcover, 304 pages",
+        published: "March 15th 2021 by Jimmy Patterson",
+        genre: "Childrens",
+        description: `Pasha & Poop, two adorable housecats take on Ebeneezer, the Grinch of all Cats. James Patterson’s funniest animal adventure since Katt vs. Dogg.
+        When shelter cats Pasha and Poop move in with their new human family, they find themselves up against a ghostly bully. Scaredy Cat demands they follow his rules or he'll cause all kinds of trouble-knock over lamps, spill kitty litter, and even get them shipped back to the animal shelter!   
+        But Pasha and Poop are stubborn and rebellious. They won't follow the Scaredy Cat's ridiculous rules like all of the other pets on the block. Together, they set out to find the truth behind who the Scaredy Cat really is, and how they can end his mischief-making for good.`,
+    },
+    {
+        id: 52,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54333457.jpg?alt=media&token=06371f50-c8ab-4755-81a3-c007a73b9a7f",
+        title: "The House That Wasn't There",
+        author: "Elana K. Arnold",
+        info: "Hardcover, 288 pages",
+        published: "March 30th 2021 by Walden Pond Press",
+        genre: "Childrens",
+        description: `Award-winning author Elana K. Arnold returns with an unforgettable story of the strange, wondrous threads that run between all of us, whether we know they’re there or not.
+        Alder has always lived in his cozy little house in Southern California. And for as long as he can remember, the old, reliable, comforting walnut tree has stood between his house and the one next door. That is, until a new family—with a particularly annoying girl his age—moves into the neighboring house and, without warning, cuts it down.     
+        Oak doesn’t understand why her family had to move to Southern California. She has to attend a new school, find new friends, and live in a new house that isn’t even ready—her mother had to cut down a tree on their property line in order to make room for a second floor. And now a strange boy next door won’t stop staring at her, like she did something wrong moving here in the first place.
+        As Oak and Alder start school together, they can’t imagine ever becoming friends. But the two of them soon discover a series of connections between them—mysterious, possibly even magical puzzles they can’t put together. At least not without each other’s help.`,
+    },
+    {
+        id: 53,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54304028.jpg?alt=media&token=93682f07-72a6-4af2-80c7-077ad7b00649",
+        title: "Hunt, Gather, Parent: What Ancient Cultures Can Teach Us About the Lost Art of Raising Happy, Helpful Little Humans",
+        author: "Michaeleen Doucleff",
+        info: "Hardcover, 352 pages",
+        published: "March 2nd 2021 by Avid Reader Press / Simon Schuster",
+        genre: "Childrens",
+        description: `NEW YORK TIMES BESTSELLER
+        The oldest cultures in the world have mastered the art of raising happy, well-adjusted children. What can we learn from them?
+        “Hunt, Gather, Parent is full of smart ideas that I immediately wanted to force on my own kids.” —Pamela Druckerman, The New York Times Book Review
+        When Dr. Michaeleen Doucleff becomes a mother, she examines the studies behind modern parenting guidance and finds the evidence frustratingly limited and the conclusions often ineffective. Curious to learn about more effective parenting approaches, she visits a Maya village in the Yucatán Peninsula. There she encounters moms and dads who parent in a totally different way than we do—and raise extraordinarily kind, generous, and helpful children without yelling, nagging, or issuing timeouts. What else, Doucleff wonders, are Western parents missing out on?
+        In Hunt, Gather, Parent, Doucleff sets out with her three-year-old daughter in tow to learn and practice parenting strategies from families in three of the world’s most venerable communities: Maya families in Mexico, Inuit families above the Arctic Circle, and Hadzabe families in Tanzania. She sees that these cultures don’t have the same problems with children that Western parents do. Most strikingly, parents build a relationship with young children that is vastly different from the one many Western parents develop—it’s built on cooperation instead of control, trust instead of fear, and personalized needs instead of standardized development milestones.`,
+    },
+    {
+        id: 54,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54313378.jpg?alt=media&token=eaf81771-5eea-420d-bc82-17e952d0401f",
+        title: "The Elephant in the Room",
+        author: "Holly Goldberg Sloan",
+        info: "Hardcover, 256 pages",
+        published: "March 2nd 2021 by Dial Books",
+        genre: "Childrens",
+        description: `From the New York Times bestselling author of Counting by 7s comes a heartfelt story about the importance of compassion and bravery when facing life's challenges" (Kirkus) for fans of The One and Only Ivan and Front Desk.
+
+        It's been almost a year since Sila's mother traveled halfway around the world to Turkey, hoping to secure the immigration paperwork that would allow her to return to her family in the United States.
+        
+        The long separation is almost impossible for Sila to withstand. But things change when Sila accompanies her father (who is a mechanic) outside their Oregon town to fix a truck. There, behind an enormous stone wall, she meets a grandfatherly man who only months before won the state lottery. Their new alliance leads to the rescue of a circus elephant named Veda, and then to a friendship with an unusual boy named Mateo, proving that comfort and hope come in the most unlikely of places.
+        
+        A moving story of family separation and the importance of the connection between animals and humans, this novel has the enormous heart and uplifting humor that readers have come to expect from the beloved author of Counting by 7s.`,
+    },
+    {
+        id: 55,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/51082340.jpg?alt=media&token=d641a115-201c-4f83-9054-3b3394bf6845",
+        title: "Amber and Clay",
+        author: "Laura Amy Schlitz, Julia Iredale",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Childrens",
+        description: `From the New York Times bestselling author of Counting by 7s comes a heartfelt story about the importance of compassion and bravery when facing life's challenges" (Kirkus) for fans of The One and Only Ivan and Front Desk.
+
+        It's been almost a year since Sila's mother traveled halfway around the world to Turkey, hoping to secure the immigration paperwork that would allow her to return to her family in the United States.
+        
+        The long separation is almost impossible for Sila to withstand. But things change when Sila accompanies her father (who is a mechanic) outside their Oregon town to fix a truck. There, behind an enormous stone wall, she meets a grandfatherly man who only months before won the state lottery. Their new alliance leads to the rescue of a circus elephant named Veda, and then to a friendship with an unusual boy named Mateo, proving that comfort and hope come in the most unlikely of places.
+        
+        A moving story of family separation and the importance of the connection between animals and humans, this novel has the enormous heart and uplifting humor that readers have come to expect from the beloved author of Counting by 7s.`,
+    },
+    {
+        id: 56,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54655853._SY475_.jpg?alt=media&token=9ad5b4f1-364c-45c7-830f-990040ebc4ba",
+        title: "Stella",
+        author: "McCall Hoyle",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Childrens",
+        description: `Ever since she was a puppy, Stella was trained to use her powerful beagle nose to sniff out dangerous chemicals and help her handler keep people safe. But during a routine security inspection, Stella misses the scent of an explosive. The sound of the blast is loud and scary. Unable to go back to work because of her anxiety, Stella is retired as a working dog.
+
+        When a young girl named Cloe wants to adopt Stella, the beagle knows this is her last chance to prove her worth. But how? When Stella smells a strange chemical inside Cloe’s body, a scent that surges just before the girl has a seizure, Stella’s nose makes the connection. But how can Stella warn her new family without them thinking she’s having an anxiety attack? How can she convince others that she can be a new kind of service dog and hopefully save Cloe’s life?
+        
+        Told from Stella’s perspective, this story is about a special dog who must find the courage to overcome her fears in order to help save a young girl with epilepsy. `,
+    },
+    {
+        id: 57,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54304163.jpg?alt=media&token=a866582b-9cb7-4454-9609-d9643d6737f7",
+        title: "Amina's Song",
+        author: "Hena Khan",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Childrens",
+        description: `In the companion novel to the beloved and award-winning Amina’s Voice, Amina once again uses her voice to bridge the places, people, and communities she loves—this time across continents.
+
+        It’s the last few days of her vacation in Pakistan, and Amina has loved every minute of it. The food, the shops, the time she’s spent with her family—all of it holds a special place in Amina’s heart. Now that the school year is starting again, she’s sad to leave, but also excited to share the wonders of Pakistan with her friends back in Greendale.
+        
+        After she’s home, though, her friends don’t seem overly interested in her trip. And when she decides to do a presentation on Pakistani hero Malala Yousafzai, her classmates focus on the worst parts of the story. How can Amina share the beauty of Pakistan when no one wants to listen? `,
+    },
+    {
+        id: 58,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53746452.jpg?alt=media&token=b78e8fed-8e02-490f-baf9-bd1450d6f39a",
+        title: "The Only",
+        author: "Katherine Applegate",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Childrens",
+        description: `The thrilling conclusion to the epic middle grade fantasy trilogy from Katherine Applegate, the New York Times bestselling and Newbery Award-winning author of The One and Only Ivan (now a major motion picture!), The One and Only Bob, Wishtree, and Crenshaw!
+
+        In the beginning, Byx’s original quest was to discover if there were more of her kind, or if she was destined to become an endling—the last dairne alive. She did indeed find more dairnes, and along the way she also created allies among other creatures in her world, including humans, felivets, raptidons, and wobbyks.
+        
+        But Byx and her new friends soon learned that it wasn’t just dairnes in jeopardy of extinction, but that everyone was at risk. With the world in unprecedented danger, Byx must rally creatures of all kinds to lead a revolution.`,
+    },
+    {
+        id: 59,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54222364.jpg?alt=media&token=79a8da4c-d81c-4b29-891e-d89aa2b61c1d",
+        title: "Across the Pondё",
+        author: "Joy McCullough",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Childrens",
+        description: `From the author of A Field Guide to Getting Lost comes a heartwarming story about new beginnings, burgeoning friendships, and finding your flock.
+
+        Callie can’t wait for her new life to start. After a major friendship breakup in San Diego, moving overseas to Scotland gives her the perfect chance to reinvent herself. On top of that, she’s going to live in a real-life castle!
+        
+        But as romantic as life in a castle sounds, the reality is a little less comfortable: it’s run-down, freezing, and crawling with critters. Plus, starting off on the wrong foot with the gardener’s granddaughter doesn’t help her nerves about making new friends. So she comes up with the perfect solution: she’ll be homeschooled. Her parents agree, on one condition: she has to participate in a social activity.
+        
+        Inspired by a journal that she finds hidden in her bedroom, Callie decides to join a birding club. Sure, it sounds unusual, but at least it’s not sports or performing. But when she clashes with the club leader, she risks losing a set of friends all over again. Will she ever be able to find her flock and make this strange new place feel like home?`,
+    },
+    {
+        id: 60,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49087613.jpg?alt=media&token=c96e4786-52ba-4027-a955-6d596f34fab7",
+        title: "The Accidental Apprentice",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Childrens",
+        description: `A boy who accidentally bonds with a magical Beast must set off on an adventure in the mysterious Woods.
+
+        The last thing Barclay Thorne ever wanted was an adventure.
+        
+        Thankfully, as an apprentice to the town’s mushroom farmer, Barclay need only work hard and follow the rules to one day become the head mushroom farmer himself. No danger required. But then Barclay accidentally breaks his town’s most sacred rule: never ever EVER stray into the Woods, for within the Woods lurk vicious magical Beasts.
+        
+        To Barclay’s horror, he faces a fate far worse than being eaten: he unwittingly bonds with a Beast and is run out of town by an angry mob. Determined to break this bond and return home, Barclay journeys to find the mysterious town of Lore Keepers, people who have also bonded with Beasts and share their powers.
+        
+        But after making new friends, entering a dangerous apprenticeship exam, and even facing the legendary Beast of the Woods, Barclay must make a difficult choice: return to the home and rules he’s always known, or embrace the adventure awaiting him.`,
+    },
+    {
+        id: 61,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53911822.jpg?alt=media&token=887f4289-47c9-44a3-ba6b-4e271ab0f561",
+        title: "Miriam's Song",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `A boy who accidentally bonds with a magical Beast must set off on an adventure in the mysterious Woods.
+
+        The last thing Barclay Thorne ever wanted was an adventure.
+        
+        Thankfully, as an apprentice to the town’s mushroom farmer, Barclay need only work hard and follow the rules to one day become the head mushroom farmer himself. No danger required. But then Barclay accidentally breaks his town’s most sacred rule: never ever EVER stray into the Woods, for within the Woods lurk vicious magical Beasts.
+        
+        To Barclay’s horror, he faces a fate far worse than being eaten: he unwittingly bonds with a Beast and is run out of town by an angry mob. Determined to break this bond and return home, Barclay journeys to find the mysterious town of Lore Keepers, people who have also bonded with Beasts and share their powers.
+        
+        But after making new friends, entering a dangerous apprenticeship exam, and even facing the legendary Beast of the Woods, Barclay must make a difficult choice: return to the home and rules he’s always known, or embrace the adventure awaiting him.`,
+    },
+    {
+        id: 62,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53912070.jpg?alt=media&token=a17a5467-dd12-42ae-8a58-c163708c3595",
+        title: "Facing the Dawn",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `A boy who accidentally bonds with a magical Beast must set off on an adventure in the mysterious Woods.
+
+        The last thing Barclay Thorne ever wanted was an adventure.
+        
+        Thankfully, as an apprentice to the town’s mushroom farmer, Barclay need only work hard and follow the rules to one day become the head mushroom farmer himself. No danger required. But then Barclay accidentally breaks his town’s most sacred rule: never ever EVER stray into the Woods, for within the Woods lurk vicious magical Beasts.
+        
+        To Barclay’s horror, he faces a fate far worse than being eaten: he unwittingly bonds with a Beast and is run out of town by an angry mob. Determined to break this bond and return home, Barclay journeys to find the mysterious town of Lore Keepers, people who have also bonded with Beasts and share their powers.
+        
+        But after making new friends, entering a dangerous apprenticeship exam, and even facing the legendary Beast of the Woods, Barclay must make a difficult choice: return to the home and rules he’s always known, or embrace the adventure awaiting him.`,
+    },
+    {
+        id: 63,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53911931.jpg?alt=media&token=d0fb2d84-968f-4f04-ab8f-009372cfad0e",
+        title: "Dreams Rekindled",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Though she hopes for a quiet, uncomplicated life for herself, Dorothy Clark wants nothing more than to stir others up. Specifically, she dreams of writing something that will challenge people as much as Harriet Beecher Stowe's Uncle Tom's Cabin seems to have. But in 1850s Mesquite Springs, there are few opportunities for writers--until newspaperman Brandon Holloway arrives, that is.
+
+        Brandon Holloway has seen the disastrous effects of challenging others and has no intention of repeating that mistake. Instead of following his dreams, he's committed to making a new--and completely uncontroversial--start in the Hill Country.
+        
+        As Dorothy's involvement in the fledgling newspaper grows from convenient to essential, the same change seems to be happening in Brandon's heart. But before romance can bloom, Dorothy and Brandon must work together to discover who's determined to divide the town and destroy Brandon's livelihood.
+        
+        With this second novel in the Mesquite Springs series, bestselling author Amanda Cabot invites you to discover the healing power of truth`,
+    },
+    {
+        id: 64,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53911298.jpg?alt=media&token=f00ac58f-087c-4e10-a965-46262a2e70b7",
+        title: "Braced for Love",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Though she hopes for a quiet, uncomplicated life for herself, Dorothy Clark wants nothing more than to stir others up. Specifically, she dreams of writing something that will challenge people as much as Harriet Beecher Stowe's Uncle Tom's Cabin seems to have. But in 1850s Mesquite Springs, there are few opportunities for writers--until newspaperman Brandon Holloway arrives, that is.
+
+        Brandon Holloway has seen the disastrous effects of challenging others and has no intention of repeating that mistake. Instead of following his dreams, he's committed to making a new--and completely uncontroversial--start in the Hill Country.
+        
+        As Dorothy's involvement in the fledgling newspaper grows from convenient to essential, the same change seems to be happening in Brandon's heart. But before romance can bloom, Dorothy and Brandon must work together to discover who's determined to divide the town and destroy Brandon's livelihood.
+        
+        With this second novel in the Mesquite Springs series, bestselling author Amanda Cabot invites you to discover the healing power of truth`,
+    },
+    {
+        id: 65,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53901470.jpg?alt=media&token=52397016-6a59-4f22-8fc9-c80fa0546940",
+        title: "My Dear Miss Dupré (American Royalty, #1)",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Though she hopes for a quiet, uncomplicated life for herself, Dorothy Clark wants nothing more than to stir others up. Specifically, she dreams of writing something that will challenge people as much as Harriet Beecher Stowe's Uncle Tom's Cabin seems to have. But in 1850s Mesquite Springs, there are few opportunities for writers--until newspaperman Brandon Holloway arrives, that is.
+
+        Brandon Holloway has seen the disastrous effects of challenging others and has no intention of repeating that mistake. Instead of following his dreams, he's committed to making a new--and completely uncontroversial--start in the Hill Country.
+        
+        As Dorothy's involvement in the fledgling newspaper grows from convenient to essential, the same change seems to be happening in Brandon's heart. But before romance can bloom, Dorothy and Brandon must work together to discover who's determined to divide the town and destroy Brandon's livelihood.
+        
+        With this second novel in the Mesquite Springs series, bestselling author Amanda Cabot invites you to discover the healing power of truth`,
+    },
+    {
+        id: 66,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54999159.jpg?alt=media&token=08a05418-62a9-4af5-bd9f-136ade78dbb4",
+        title: "The Indebted Earl",
+        author: "Amanda Foody",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Though she hopes for a quiet, uncomplicated life for herself, Dorothy Clark wants nothing more than to stir others up. Specifically, she dreams of writing something that will challenge people as much as Harriet Beecher Stowe's Uncle Tom's Cabin seems to have. But in 1850s Mesquite Springs, there are few opportunities for writers--until newspaperman Brandon Holloway arrives, that is.
+
+        Brandon Holloway has seen the disastrous effects of challenging others and has no intention of repeating that mistake. Instead of following his dreams, he's committed to making a new--and completely uncontroversial--start in the Hill Country.
+        
+        As Dorothy's involvement in the fledgling newspaper grows from convenient to essential, the same change seems to be happening in Brandon's heart. But before romance can bloom, Dorothy and Brandon must work together to discover who's determined to divide the town and destroy Brandon's livelihood.
+        
+        With this second novel in the Mesquite Springs series, bestselling author Amanda Cabot invites you to discover the healing power of truth`,
+    },
+    {
+        id: 67,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53911386.jpg?alt=media&token=78fa0abc-b9c0-4725-a20f-07792295434d",
+        title: "A Tapestry of Light",
+        author: "Kimberly Duffy",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Though she hopes for a quiet, uncomplicated life for herself, Dorothy Clark wants nothing more than to stir others up. Specifically, she dreams of writing something that will challenge people as much as Harriet Beecher Stowe's Uncle Tom's Cabin seems to have. But in 1850s Mesquite Springs, there are few opportunities for writers--until newspaperman Brandon Holloway arrives, that is.
+
+        Brandon Holloway has seen the disastrous effects of challenging others and has no intention of repeating that mistake. Instead of following his dreams, he's committed to making a new--and completely uncontroversial--start in the Hill Country.
+        
+        As Dorothy's involvement in the fledgling newspaper grows from convenient to essential, the same change seems to be happening in Brandon's heart. But before romance can bloom, Dorothy and Brandon must work together to discover who's determined to divide the town and destroy Brandon's livelihood.
+        
+        With this second novel in the Mesquite Springs series, bestselling author Amanda Cabot invites you to discover the healing power of truth`,
+    },
+    {
+        id: 68,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54025221.jpg?alt=media&token=8b3fe2fb-4a8e-462f-af70-e3e864211f46",
+        title: "The Curator's Daughter",
+        author: "Melanie Dobson",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `A young girl, kidnapped on the eve of World War II, changes the lives of a German archaeologist forced into the Nazi Party and--decades later--a researcher trying to overcome her own trauma.
+        1940. Hanna Tillich cherishes her work as an archaeologist for the Third Reich, searching for the Holy Grail and other artifacts to bolster evidence of a master Aryan race. But when she is reassigned to work as a museum curator in Nuremberg, then forced to marry an SS officer and adopt a young girl, Hanna begins to see behind the Nazi facade. A prayer labyrinth becomes a storehouse for Hanna's secrets, but as she comes to love Lilly as her own daughter, she fears that what she's hiding--and what she begins to uncover--could put them both in mortal danger.
+        
+        Eighty years later, Ember Ellis is a Holocaust researcher intent on confronting hatred toward the Jewish people and other minorities. She reconnects with a former teacher on Martha's Vineyard after she learns that Mrs. Kiehl's mother once worked with the Nazi Ahnenerbe. And yet, Mrs. Kiehl describes her mother as "a friend to the Jewish people." Wondering how both could be true, Ember helps Mrs. Kiehl regain her fractured childhood memories of World War II while at the same time confronting the heartache of her own secret past--and the person who wants to silence Ember forever.`,
+    },
+    {
+        id: 69,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53911759.jpg?alt=media&token=e1a26349-a2fe-4c63-b69e-6f75679b3790",
+        title: "A Dance in Donegal",
+        author: "Jennifer Deibel",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `All of her life, Irish-American Moira Doherty has relished her mother's descriptions of Ireland. When her mother dies unexpectedly in the summer of 1920, Moira decides to fulfill her mother's wish that she become the teacher in Ballymann, her home village in Donegal, Ireland.
+
+        After an arduous voyage, Moira arrives to a new home and a new job in an ancient country. Though a few locals offer a warm welcome, others are distanced by superstition and suspicion. Rumors about Moira's mother are unspoken in her presence but threaten to derail everything she's journeyed to Ballymann to do. Moira must rely on the kindness of a handful of friends--and the strength of Sean, an unsettlingly handsome thatcher who keeps popping up unannounced--as she seeks to navigate a life she'd never dreamed of . . . but perhaps was meant to live.
+        
+        Jennifer Deibel's debut novel delights the senses, bringing to life the sights, sounds, smells, and language of a lush country and a colorful people. Historical romance fans will embrace her with open arms.`,
+    },
+    {
+        id: 70,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54080850.jpg?alt=media&token=3ae111e6-ff1b-426a-a33a-744adbdd55d5",
+        title: "The Moonlight Schoolv",
+        author: "Suzanne Woods Fisher",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Haunted by her sister's mysterious disappearance, Lucy Wilson arrives in Rowan County, Kentucky, in the spring of 1911 to work for Cora Wilson Stewart, superintendent of education. When Cora sends Lucy into the hills to act as scribe for the mountain people, she is repelled by the primitive conditions and intellectual poverty she encounters. Few adults can read and write.
+
+        Born in those hills, Cora knows the plague of illiteracy. So does Brother Wyatt, a singing schoolmaster who travels through the hills. Involving Lucy and Wyatt, Cora hatches a plan to open the schoolhouses to adults on moonlit nights. The best way to combat poverty, she believes, is to eliminate illiteracy. But will the people come?
+        
+        As Lucy emerges from a life in the shadows, she finds purpose; or maybe purpose finds her. With purpose comes answers to her questions, and something else she hadn't expected: love.
+        
+        Inspired by the true events of the Moonlight Schools, this standalone novel from bestselling author Suzanne Woods Fisher brings to life the story that shocked the nation into taking adult literacy seriously. You'll finish the last page of this enthralling story with deep gratitude for the gift of reading.`,
+    },
+    {
+        id: 71,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/11422._SX318_.jpg?alt=media&token=3d4707cc-a5c2-4897-8926-168ffb11f4dd",
+        title: "Redeeming Love",
+        author: "Francine Rivers",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `California’s gold country, 1850. A time when men sold their souls for a bag of gold and women sold their bodies for a place to sleep.
+
+        Angel expects nothing from men but betrayal. Sold into prostitution as a child, she survives by keeping her hatred alive. And what she hates most are the men who use her, leaving her empty and dead inside.
+        
+        Then she meets Michael Hosea. A man who seeks his Father’s heart in everything, Michael Hosea obeys God’s call to marry Angel and to love her unconditionally. Slowly, day by day, he defies Angel’s every bitter expectation until, despite her resistance her frozen heart begins to thaw.
+        
+        But with her unexpected softening come overwhelming feelings of unworthiness and fear. And so Angel runs. Back to the darkness, away from her husband’s pursuing love, terrified of the truth she can no longer deny: Her final healing must come from the One who loves her even more than Michael Hosea does…the One who will never let her go.
+        
+        A life-changing story of God’s unconditional, redemptive, all-consuming love.`,
+    },
+    {
+        id: 72,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/100915.jpg?alt=media&token=096987d8-003c-4320-b946-da9414efcd8f",
+        title: "The Lion, the Witch and the Wardrobe",
+        author: "C.S. Lewis",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Christian",
+        description: `Narnia… the land beyond the wardrobe door, a secret place frozen in eternal winter, a magical country waiting to be set free.
+
+        Lucy is the first to find the secret of the wardrobe in the professor's mysterious old house. At first her brothers and sister don't believe her when she tells of her visit to the land of Narnia. But soon Edmund, then Peter and Susan step through the wardrobe themselves. In Narnia they find a country buried under the evil enchantment of the White Witch. When they meet the Lion Aslan, they realize they've been called to a great adventure and bravely join the battle to free Narnia from the Witch's sinister spell.`,
+    },
+    {
+        id: 73,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/14935._SY475_.jpg?alt=media&token=f013e14a-827b-49c8-8197-f40122bac3be",
+        title: "Sense and Sensibility",
+        author: " Jane Austen, Tony Tanner",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Classics",
+        description: `Alternate cover edition of ISBN 9780141439662
+
+        'The more I know of the world, the more am I convinced that I shall never see a man whom I can really love. I require so much!'
+        
+        Marianne Dashwood wears her heart on her sleeve, and when she falls in love with the dashing but unsuitable John Willoughby she ignores her sister Elinor's warning that her impulsive behaviour leaves her open to gossip and innuendo. Meanwhile Elinor, always sensitive to social convention, is struggling to conceal her own romantic disappointment, even from those closest to her. Through their parallel experience of love—and its threatened loss—the sisters learn that sense must mix with sensibility if they are to find personal happiness in a society where status and money govern the rules of love.
+        
+        This edition includes explanatory notes, textual variants between the first and second editions, and Tony Tanner's introduction to the original Penguin Classic edition.`,
+    },
+    {
+        id: 74,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/7624.jpg?alt=media&token=a5537d9b-e3aa-41d3-8f9f-611c39fd7087",
+        title: "Lord of the Flies",
+        author: "William Golding",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Classics",
+        description: `At the dawn of the next world war, a plane crashes on an uncharted island, stranding a group of schoolboys. At first, with no adult supervision, their freedom is something to celebrate; this far from civilization the boys can do anything they want. Anything. They attempt to forge their own society, failing, however, in the face of terror, sin and evil. And as order collapses, as strange howls echo in the night, as terror begins its reign, the hope of adventure seems as far from reality as the hope of being rescued. Labeled a parable, an allegory, a myth, a morality tale, a parody, a political treatise, even a vision of the apocalypse, Lord of the Flies is perhaps our most memorable novel about “the end of innocence, the darkness of man’s heart.”`,
+    },
+    {
+        id: 75,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/890._SX318_.jpg?alt=media&token=a74f03db-8a4d-4a43-8378-3e002322ac04",
+        title: "Of Mice and Men",
+        author: "John Steinbeck",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Classics",
+        description: `An intimate portrait of two men who cherish the slim bond between them and the dream they share in a world marred by petty tyranny, misunderstanding, jealousy, and callousness. Clinging to each other in their Loneliness and alienation, George and his simple-minded friend Lenny dream, as drifters will, of a place to call their own—a couple of acres and a few pigs, chickens, and rabbits back in Hill Country where land is cheap. But after they come to work on a ranch in the fer- tile Salinas Valley of California, their hopes, like "the best laid schemes o' mice an' men," begin to go awry.
+
+        Of Mice and Men also represents an experiment in form, as Steinbeck described his work, "a kind of playable novel, written in novel form but so scened and set that it can be played as it stands." A rarity in American letters, it achieved remarkable success as a novel, a Broadway play, and three acclaimed films. Steinbeck's tale of commitment, loneliness, hope, and loss remains one of America's most widely read and beloved novels.`,
+    },
+    {
+        id: 76,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/18135._SY475_.jpg?alt=media&token=9442117e-0c4e-4c67-bf85-19cec4f40dfd",
+        title: "Romeo and Juliet",
+        author: "William Shakespeare",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Classics",
+        description: `In Romeo and Juliet, Shakespeare creates a violent world, in which two young people fall in love. It is not simply that their families disapprove; the Montagues and the Capulets are engaged in a blood feud.
+
+        In this death-filled setting, the movement from love at first sight to the lovers’ final union in death seems almost inevitable. And yet, this play set in an extraordinary world has become the quintessential story of young love. In part because of its exquisite language, it is easy to respond as if it were about all young lovers.`,
+    },
+    {
+        id: 77,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/5297.jpg?alt=media&token=2275f5c1-5d3b-45df-b177-e5bffbc5cb09",
+        title: "The Picture of Dorian Gray",
+        author: "Oscar Wilde, Jeffrey Eugenides",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Classics",
+        description: `Written in his distinctively dazzling manner, Oscar Wilde’s story of a fashionable young man who sells his soul for eternal youth and beauty is the author’s most popular work. The tale of Dorian Gray’s moral disintegration caused a scandal when it ﬁrst appeared in 1890, but though Wilde was attacked for the novel’s corrupting inﬂuence, he responded that there is, in fact, “a terrible moral in Dorian Gray.” Just a few years later, the book and the aesthetic/moral dilemma it presented became issues in the trials occasioned by Wilde’s homosexual liaisons, which resulted in his imprisonment. Of Dorian Gray’s relationship to autobiography, Wilde noted in a letter, “Basil Hallward is what I think I am: Lord Henry what the world thinks me: Dorian what I would like to be—in other ages, perhaps. `,
+    },
+    {
+        id: 78,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/10210._SY475_.jpg?alt=media&token=07337d36-fd89-4f07-9fc1-7eeb4e2ab65e",
+        title: "Jane Eyre",
+        author: "Charlotte Brontë, Michael Mason",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Classics",
+        description: `Orphaned as a child, Jane has felt an outcast her whole young life. Her courage is tested once again when she arrives at Thornfield Hall, where she has been hired by the brooding, proud Edward Rochester to care for his ward Adèle. Jane finds herself drawn to his troubled yet kind spirit. She falls in love. Hard.
+
+        But there is a terrifying secret inside the gloomy, forbidding Thornfield Hall. Is Rochester hiding from Jane? Will Jane be left heartbroken and exiled once again?`,
+    },
+    {
+        id: 79,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/44540687._SY475_.jpg?alt=media&token=0a54400f-176f-447b-ba6b-0ef297e2c33e",
+        title: "Bruised",
+        author: "Tanya Boteju ",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Comics",
+        description: `To Daya Wijesinghe, a bruise is a mixture of comfort and control. Since her parents died in an accident she survived, bruises have become a way to keep her pain on the surface of her skin so she doesn’t need to deal with the ache deep in her heart.
+
+        So when chance and circumstances bring her to a roller derby bout, Daya is hooked. Yes, the rules are confusing and the sport seems to require the kind of teamwork and human interaction Daya generally avoids. But the opportunities to bruise are countless, and Daya realizes that if she’s going to keep her emotional pain at bay, she’ll need all the opportunities she can get.
+        
+        The deeper Daya immerses herself into the world of roller derby, though, the more she realizes it’s not the simple physical pain-fest she was hoping for. Her rough-and-tumble teammates and their fans push her limits in ways she never imagined, bringing Daya to big truths about love, loss, strength, and healing.`,
+    },
+    {
+        id: 80,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54303701.jpg?alt=media&token=ab455b34-6f10-46b7-a181-88a654cd2b2f",
+        title: "The Many Lives of Pusheen the Cat",
+        author: "Claire Belton",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Comics",
+        description: `A delightful new collection of comics from Pusheen in all of her adorable forms—from the classic gray tabby you know and love, to her unicorn, dragon, alien, mermaid, dinosaur, and even dog alter egos—Pusheen always lives life to the fullest!
+        We all know Pusheen, the pleasantly plump cat who has warmed hearts and tickled funny bones of millions worldwide with her signature animated bops, bounces, and tail wiggles. Now you can learn what makes her purr and find out why so many have already fallen in love with her. This delightful collection of comics and illustrations features some of the most popular and purr-fectly adorable Pusheen comics you know and love, plus a healthy serving of never-before-seen material. The Many Lives of Pusheen the Cat is a treat for cat lovers and comics fans alike.`,
+    },
+    {
+        id: 81,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/55102443.jpg?alt=media&token=96facf09-be20-47cc-bd7f-92731d936c03",
+        title: "My Last Summer with Cass",
+        author: "Mark Crilley",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Comics",
+        description: `This One Summer meets The Edge of Seventeen in this poignant coming-of-age YA graphic novel about two childhood friends at a crossroads in their lives and art from the author of Mastering Manga.
+
+        Megan and Cass have been joined at the brush for as long as they can remember. For years, while spending summers together at a lakeside cabin, they created art together, from sand to scribbles . . . to anything available. Then Cass moved away to New York.
+        
+        When Megan finally convinces her parents to let her spend a week in the city, too, it seems like Cass has completely changed. She has tattoos, every artist in the city knows her. She even eats chicken feet now! At least one thing has stayed the same: They still make their best art together.
+        
+        But when one girl betrays the other's trust on the eve of what is supposed to be their greatest artistic feat yet, can their friendship survive? Can their art?`,
+    },
+    {
+        id: 82,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54776117.jpg?alt=media&token=bd7121cf-6567-4ae6-985a-f59db441fa5b",
+        title: "Flash Forward: An Illustrated Guide to Possible (and Not So Possible) Tomorrows",
+        author: "Rose Eveleth ",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Comics",
+        description: `An exploration of potential tomorrows from the host of the massively popular and critically acclaimed podcast Flash Forward
+
+        Flash Forward: An Illustrated Guide to Possible (And Not So Possible) Tomorrows takes readers on a journey from speculative fiction to speculative “fact.” Producer and host of the podcast Flash Forward, Rose Eveleth poses provocative questions about our future, which are brought to life by 12 of the most imaginative comics and graphic artists at work, including Matt Lubchanksy, Sophie Goldstein, Ben Passmore, and Box Brown. Each artist chooses a subject close to their heart—Ignatz Award nominee Julia Gfrörer, for instance, will imagine a future in which robots make art—and presents their chosen future in their own style. Drawing on her interviews with experts in various fields of study, Eveleth will then report on what is complete fantasy and what is only just out of reach in insightful essays following the comics. This book introduces compelling visions of the future and vividly explores the human consequences of developing technologies. Flash Forward reveals how complicated, messy, incredible, frightening, and strange our future might be.`,
+    },
+    {
+        id: 83,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54075292.jpg?alt=media&token=be1af68b-7804-4374-82a1-66375d18c10d",
+        title: "Feelings: A Story in Seasons",
+        author: "Manjit Thapp",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Comics",
+        description: `A gorgeous visual journey through one young woman's year of emotions--from the saturated highs of early summer to the grey isolation of late winter.
+
+        Enter Manjit Thapp's world, where you'll find moods that change as quickly as the weather; the different shades of anxiety and hope that each new season brings; and the stages of joy and pain that fuel our growth. From the spark of possibility and jolt of creativity in High Summer, to the need for release from anxiety and pressure during Monsoon, to the desolation and numbness of Winter, Thapp implores us to consider the seasons of our own emotional journeys.
+        
+        Articulating and validating the range of feelings we all experience, this is a book that allows us to feel connected and comforted by the experiences that make us human.`,
+    },
+    {
+        id: 84,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53458048.jpg?alt=media&token=99a5c8ad-cc0a-4c93-86fa-cd8117a5fa0e",
+        title: "Red Rock Baby Candy",
+        author: "Shira Spector",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Comics",
+        description: `Shira Spector literally paints a vivid portrait of the most eventful 10 years of her life, encompassing her tenacious struggle to get pregnant, the emotional turmoil of her father’s cancer diagnosis and eventual death, and her recollections of past relationships with her parents and her partner. Set in a kaleidoscope of Montreal and Toronto, Red Rock Baby Candy unfolds as one of the most formally inventive comics in the history of the medium. It begins in subtle, tonal shades of black ink, introduces color slowly over the next 50 pages until it explodes into a glorious full color palette. The irreverent characters begin to bloom and to live life fully, resurrecting the dead in order to map the geography among infertility, sexuality, choice, and mortality. The drawing is visceral, symbolic, and naturalistic. The visual storytelling eschews traditional comics panels in favor of a series of unique page compositions that convey both a stream of consciousness and the tactile reality of life, both the subjective impressions of the author at each moment of her life and the objective series of events that shape her narrative. It is the most formally revolutionary visual storytelling since Emil Ferris’s My Favorite Thing is Monsters.`,
+    },
+    {
+        id: 85,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/49204960.jpg?alt=media&token=8cc94e0e-ce16-487f-85b4-1d0f8adfdca4",
+        title: "Perfect on Paper",
+        author: "Sophie Gonzales",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Contemporary",
+        description: `In Perfect on Paper, Leah on the Offbeat meets To All the Boys I've Loved Before: a bisexual girl who gives anonymous love advice to her classmates is hired by the hot guy to help him get his ex back
+
+        Her advice, spot on. Her love life, way off.
+        
+        However, when Brougham catches her in the act of collecting letters from locker 89―out of which she’s been running her questionably legal, anonymous relationship advice service―that’s exactly what happens. In exchange for keeping her secret, Darcy begrudgingly agrees to become his personal dating coach―at a generous hourly rate, at least. The goal? To help him win his ex-girlfriend back.
+        
+        Darcy has a good reason to keep her identity secret. If word gets out that she’s behind the locker, some things she's not proud of will come to light, and there’s a good chance Brooke will never speak to her again.
+        
+        Okay, so all she has to do is help an entitled, bratty, (annoyingly hot) guy win over a girl who’s already fallen for him once? What could go wrong?`,
+    },
+    {
+        id: 86,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/45553600._SY475_.jpg?alt=media&token=4d05d284-43f3-4fd4-a1d1-c42c10eafb9b",
+        title: "Second First Impressions",
+        author: "Sally Thorne",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Contemporary",
+        description: `Ruthie Midona has worked the front desk at the Providence Luxury Retirement Villa for six years, dedicating her entire adult life to caring for the Villa’s residents, maintaining the property (with an assist from DIY YouTube tutorials), and guarding the endangered tortoises that live in the Villa’s gardens. Somewhere along the way, she’s forgotten that she’s young and beautiful, and that there’s a world outside of work—until she meets the son of the property developer who just acquired the retirement center.
+
+        Teddy Prescott has spent the last few years partying, sleeping in late, tattooing himself when bored, and generally not taking life too seriously—something his father, who dreams of grooming Teddy into his successor, can’t understand. When Teddy needs a place to crash, his father seizes the chance to get him to grow up. He’ll let Teddy stay in one of the on-site cottages at the retirement home, but only if he works to earn his keep. Teddy agrees—he can change a few lightbulbs and clip some hedges, no sweat. But Ruthie has plans for Teddy too.
+        
+        Her two wealthiest and most eccentric residents have just placed an ad (yet another!) seeking a new personal assistant to torment. The women are ninety-year-old, four-foot-tall menaces, and not one of their assistants has lasted a full week. Offering up Teddy seems like a surefire way to get rid of the tall, handsome, unnerving man who won’t stop getting under her skin.
+        
+        Ruthie doesn’t count on the fact that in Teddy Prescott, the Biddies may have finally met their match. He’ll pick up Chanel gowns from the dry cleaner and cut Big Macs into bite-sized bits. He’ll do repairs around the property, make the residents laugh, and charm the entire villa. He might even remind Ruthie what it’s like to be young and fun again. But when she finds out Teddy’s father’s only fixing up the retirement home to sell it, putting everything she cares about in jeopardy, she’s left wondering if Teddy’s magic was all just a façade.`,
+    },
+    {
+        id: 87,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/43562313._SX318_.jpg?alt=media&token=d07f6e66-c6c4-4221-b069-3f9436519e91",
+        title: "Yolk",
+        author: "Mary H.K. Choi",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Contemporary",
+        description: `From New York Times bestselling author Mary H.K. Choi comes a funny and emotional story about two estranged sisters switching places and committing insurance fraud to save one of their lives.
+
+        Jayne Baek is barely getting by. She shuffles through fashion school, saddled with a deadbeat boyfriend, clout-chasing friends, and a wretched eating disorder that she’s not fully ready to confront. But that’s New York City, right? At least she isn’t in Texas anymore, and is finally living in a city that feels right for her.
+        
+        On the other hand, her sister June is dazzlingly rich with a high-flying finance job and a massive apartment. Unlike Jayne, June has never struggled a day in her life. Until she’s diagnosed with uterine cancer.
+        
+        Suddenly, these estranged sisters who have nothing in common are living together. Because sisterly obligations are kind of important when one of you is dying.`,
+    },
+    {
+        id: 88,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/53138197.jpg?alt=media&token=bd262ad3-c4bd-41a5-98ba-5503c68d7e93",
+        title: "Of Women and Salt",
+        author: "Gabriela Garcia ",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Contemporary",
+        description: `A daughter's fateful choice, a mother motivated by her own past, and a family legacy that begins in Cuba before either of them were born
+
+        In present-day Miami, Jeanette is battling addiction. Daughter of Carmen, a Cuban immigrant, she is determined to learn more about her family history from her reticent mother and makes the snap decision to take in the daughter of a neighbor detained by ICE. Carmen, still wrestling with the trauma of displacement, must process her difficult relationship with her own mother while trying to raise a wayward Jeanette. Steadfast in her quest for understanding, Jeanette travels to Cuba to see her grandmother and reckon with secrets from the past destined to erupt.
+        
+        From 19th-century cigar factories to present-day detention centers, from Cuba to Mexico, Gabriela Garcia's Of Women and Salt is a kaleidoscopic portrait of betrayals--personal and political, self-inflicted and those done by others--that have shaped the lives of these extraordinary women. A haunting meditation on the choices of mothers, the legacy of the memories they carry, and the tenacity of women who choose to tell their stories despite those who wish to silence them, this is more than a diaspora story; it is a story of America's most tangled, honest, human roots.`,
+    },
+    {
+        id: 89,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/54017982.jpg?alt=media&token=06b99d3d-2080-4e4e-b9cb-779b1de377b4",
+        title: "Float Plan",
+        author: "Trish Doller",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Contemporary",
+        description: `Critically acclaimed author Trish Doller's unforgettable and romantic adult debut about setting sail, starting over, and finding yourself...
+
+        Since the loss of her fiancé, Anna has been shipwrecked by grief—until a reminder goes off about a trip they were supposed to take together. Impulsively, Anna goes to sea in their sailboat, intending to complete the voyage alone.
+        
+        But after a treacherous night’s sail, she realizes she can’t do it by herself and hires Keane, a professional sailor, to help. Much like Anna, Keane is struggling with a very different future than the one he had planned. As romance rises with the tide, they discover that it’s never too late to chart a new course.
+        
+        In Trish Doller’s unforgettable Float Plan, starting over doesn't mean letting go of your past, it means making room for your future. `,
+    },
+    {
+        id: 90,
+        img: "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/51591602.jpg?alt=media&token=58c33377-4a47-4f2a-815f-be0185e1c3b3",
+        title: "She's Too Pretty to Burn",
+        author: "Wendy Heard",
+        info: "Hardcover, 544 pages",
+        published: "March 9th 2021 by Candlewick Press",
+        genre: "Contemporary",
+        description: `CAn electric romance set against a rebel art scene sparks lethal danger for two girls in this expertly plotted YA thriller. For fans of E. Lockhart, Lauren Oliver and Kara Thomas.
+
+        The summer is winding down in San Diego. Veronica is bored, caustically charismatic, and uninspired in her photography. Nico is insatiable, subversive, and obsessed with chaotic performance art. They’re artists first, best friends second. But that was before Mick. Delicate, lonely, magnetic Mick: the perfect subject, and Veronica’s dream girl. The days are long and hot―full of adventure―and soon they are falling in love. Falling so hard, they never imagine what comes next. One fire. Two murders. Three drowning bodies. One suspect . . . one stalker. This is a summer they won’t survive.
+        
+        Inspired by The Picture of Dorian Gray, this sexy psychological thriller explores the intersections of love, art, danger, and power.
+        
+        "Wild and satisfying." —Kirkus Starred Review `,
+    },
+
+
 ]
 
 

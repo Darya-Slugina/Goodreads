@@ -37,8 +37,6 @@ export default function PersonalNavUser() {
             .then((querySnapshot) => {
                 let id = [];
                 (querySnapshot).forEach(doc => {
-                    console.log(doc.data());
-                    console.log(doc.id);
                     id = doc.id;
             
                 })
@@ -48,9 +46,7 @@ export default function PersonalNavUser() {
                 })
                     .then(() => {
                         console.log("Document successfully updated!!!");
-                        console.log("el.id", notifications[0].id, "id", docId)
                         let newNote = notifications.filter(el => el.id !== docId)
-                        console.log("newNote", newNote)
                         setNotifications(newNote);
                     })
                     .catch((error) => {
@@ -69,8 +65,6 @@ export default function PersonalNavUser() {
         .then((querySnapshot) => {
             let docId = [];
             (querySnapshot).forEach(doc => {
-                console.log(doc.data());
-                console.log(doc.id);
                 docId = doc.id;
             })
 
@@ -96,7 +90,6 @@ export default function PersonalNavUser() {
                 let notif = [];
                 snapshot.forEach(doc =>
                     notif.push(doc.data()))
-                console.log("sent");
 
                 setNotifications(notif);
             })
@@ -107,7 +100,6 @@ export default function PersonalNavUser() {
         if (user.id) {
             database.collection('friendsRequests').where('requestFromId', '==', user.id).where("status", "==", "approve").onSnapshot(snapshot => {
 
-                console.log("nnn")
                 let notif = [];
                 snapshot.forEach(doc => {
                     const request = doc.data();
@@ -129,7 +121,6 @@ export default function PersonalNavUser() {
                 snapshot.forEach(doc =>
                     notif.push(doc.data()))
                 setRejected(notif);
-                console.log("reject",notif);
 
             })
         }

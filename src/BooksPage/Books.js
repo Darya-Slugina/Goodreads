@@ -30,7 +30,7 @@ export default function Books() {
   const currentId = Number(bookId);
   const currentBook = books.filter(book => book.id === currentId);
   const firstBook = currentBook[0] ? currentBook[0] : {};
-  console.log(currentId)
+
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -47,7 +47,6 @@ export default function Books() {
       });
   }, [currentId]);
 
-  console.log(reviews);
 
   const reviewsCount = useMemo(() => {
     return reviews.filter(el => el.review).length;
@@ -225,7 +224,7 @@ export default function Books() {
           </div>
           <div className={styles.h2Container}>
             {sortedReviews.map(review => (
-              <Comments key={review.commentId} {...review} getReviews={setReviews} bookId={currentId} />
+              <Comments key={review.date} {...review} getReviews={setReviews} bookId={currentId} />
             ))}
 
           </div>

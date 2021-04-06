@@ -47,10 +47,10 @@ export default function UserPage() {
     }, [userId]);
 
     useEffect(() => {
-        if (loggedInUser.myFriends.includes(userId)) {
+        if (loggedInUser && loggedInUser.myFriends && loggedInUser.myFriends.includes(userId)) {
             setApprovedFriend(true);
         }
-    }, [userId, loggedInUser.myFriends])
+    }, [userId, loggedInUser.myFriends, loggedInUser])
 
     const isCurrentUser = useMemo(() => {
         if (loggedInUser && userId === loggedInUser.id) {
@@ -134,14 +134,14 @@ export default function UserPage() {
                     <img alt={user.fname} className={styles.profilePictureIcon} src={user.userImg}></img>
                     <div className={styles.profilePageStatsInfo}>
                         {reviews ?
-                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}>{rateCount} ratings</span>
+                            <span  className={styles.link}>{rateCount} ratings</span>
                             :
-                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 ratings</span>
+                            <span  className={styles.link}> 0 ratings</span>
                         }
                         {reviews ?
-                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> {reviews.length} reviews</span>
+                            <span  className={styles.link}> {reviews.length} reviews</span>
                             :
-                            <span href="/review/list/4685500-angela-m?order=d&amp;sort=review&amp;view=reviews" className={styles.link}> 0 reviews</span>
+                            <span  className={styles.link}> 0 reviews</span>
                         }
                     </div>
                 </div>

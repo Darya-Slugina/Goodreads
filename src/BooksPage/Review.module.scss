@@ -1,0 +1,39 @@
+.reviewContainer {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #dfdfdf;
+    padding-top: 30px;
+    width: 750px;
+
+    .reviewCta {
+        .prifileIcon {
+            margin-right: 15px;
+        }
+    }
+
+    .reviewCtaRight {
+        width: 550px;
+        position: relative;
+
+        .reviewCtaLabel {
+            font-size: 15px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .reviewCtaControls {
+            display: flex;
+            margin-top: 8px;
+            align-items: center;
+        }
+
+        .ownReviewContainer {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+        
+    }
+}

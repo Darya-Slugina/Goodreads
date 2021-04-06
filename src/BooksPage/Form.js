@@ -1,4 +1,4 @@
-import styles from "./Form.module.css";
+import styles from "./Form.module.scss";
 import Button from "./../common/Button";
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ export default function Form({ bookId, getReviews, rating }) {
     }
 
     return (
-        <div className={styles.formContainer} id="form">
+        <div className={styles.formContainer}>
             <textarea rows="6" cols="70" value={text} onInput={(ev) => { setText(ev.target.value) }} />
             {reviewBtn && <Button value={"Publish your review"} onClick={setReview} />}
         </div>

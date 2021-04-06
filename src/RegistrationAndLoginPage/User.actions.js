@@ -157,12 +157,12 @@ export const registerUserWithFacebook = () => {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result)
         const id = result.user.uid;
         const fname = result.user.displayName;
         const email = result.user.email;
+        const userImg = result.user.photoURL;
         console.log("Success: ", result);
-        dispatch(createUser(id, fname, email));
+        dispatch(createUser(id, fname, email, userImg));
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -179,7 +179,6 @@ export const authenticateUser = (email, password) => {
     loginWithCredentials(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         dispatch(fetchUser(user.uid));
       })
       .catch((error) => {
@@ -230,10 +229,10 @@ export const authenticateUserWithFacebook = () => {
   };
 }
 
-export const createUser = (id, fname, email) => {
+export const createUser = (id, fname, email, userImg) => {
   return function (dispatch, getState) {
     dispatch(fetchUserRequested());
-    setUser(id, fname, email);
+    setUser(id, fname, email, userImg);
     getUser(id)
       .then((user) => {
         user.forEach((el) => {
@@ -249,7 +248,6 @@ export const createUser = (id, fname, email) => {
 export const fetchUser = (id) => {
   return function (dispatch, getState) {
     const user = getState().user.user;
-    console.log(user);
 
     if (!user.length) {
       dispatch(fetchUserRequested());
@@ -269,7 +267,6 @@ export const fetchUser = (id) => {
 export const addToFavourite = (userId, loggedUserId) => {
   return function (dispatch, getState) {
     const favUser = getState().user.user.favouritesUser;
-    console.log("favUser");
 
     if (!favUser.includes(userId)) {
       database.collection("users").doc(loggedUserId).update({
@@ -308,7 +305,6 @@ export const removeFromFavourite = (userId, loggedUserId) => {
 export const addToFriendsList = (userId, loggedUserId) => {
   return function (dispatch, getState) {
     const myFriends = getState().user.user.myFriends;
-    console.log("favUser");
 
     if (!myFriends.includes(userId)) {
       database.collection("users").doc(loggedUserId).update({
@@ -328,7 +324,6 @@ export const addToFriendsList = (userId, loggedUserId) => {
 export const addGenre = (id, genre) => {
   return function (dispatch, getState) {
     const favGenre = getState().user.user.favouriteGenres;
-    console.log("favGenre");
 
     if (!favGenre.includes(genre)) {
       database.collection("users").doc(id).update({
@@ -407,7 +402,6 @@ export const read = (bookId, userId) => {
 export const currentlyReading = (bookId, userId) => {
   return function (dispatch, getState) {
     const currentlyReading = getState().user.user.currentlyReading;
-    console.log("currentlyReading");
 
     if (!currentlyReading.includes(bookId)) {
 
@@ -430,10 +424,9 @@ export const removeBooksFromReadList = (bookId, userId) => {
     const wantToRead = getState().user.user.wantToRead;
     const read = getState().user.user.read;
     const currentlyReading = getState().user.user.currentlyReading;
-    console.log("predi proverki", wantToRead, read, currentlyReading)
+
     if (wantToRead.includes(bookId) || read.includes(bookId) || currentlyReading.includes(bookId)) {
 
-      console.log("proverki")
       database.collection("users").doc(userId).update({
         read: firebase.firestore.FieldValue.arrayRemove(bookId),
         wantToRead: firebase.firestore.FieldValue.arrayRemove(bookId),

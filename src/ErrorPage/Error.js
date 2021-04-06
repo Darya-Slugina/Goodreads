@@ -9,9 +9,9 @@ export default function Error() {
                     <div className={styles.leftContainer}>
                         <h4 className={styles.errorHeader}>We’re sorry, you seem to have stumbled on a bad link.</h4>
                         <div className={styles.rightContainer}>
-                            <img src="https://s.gr-assets.com/assets/error_pages/not_found/frost_book-63a7b8d45d1a90d855083d4dea811026.png" alt="The Road Not Taken and Other Poems cover image" />
+                            <img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/frost_book-63a7b8d45d1a90d855083d4dea811026.png?alt=media&token=e049a014-af81-49a7-957f-c64efc69688d" alt="The Road Not Taken and Other Poems cover" />
                             <span className={styles.author}>
-                                <img src="https://s.gr-assets.com/assets/error_pages/not_found/frost_author-5ca4ea23d1c35dd6db39c432abcff0cf.png" alt="Robert Frost" className={styles.authorImg} />
+                                <img src="https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/frost_author-5ca4ea23d1c35dd6db39c432abcff0cf.png?alt=media&token=e503fe4c-fd61-4b9a-add9-7abe6bdfb1b8" alt="Robert Frost" className={styles.authorImg} />
                             </span>
                         </div>
                         <p className={styles.errorText}>

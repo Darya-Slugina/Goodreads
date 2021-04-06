@@ -57,14 +57,21 @@
                 color: #00635d;
             }
 
+            .heading{
+                font-weight: bold;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
         .subheading{
             padding: 2px 0;
         }
     
 
-    .booksViewWrapper{
-        width: 700px;
+    
     }
-    }
+}
+.booksViewWrapper{
+    width: 100%;
 }
 }

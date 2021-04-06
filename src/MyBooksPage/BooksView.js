@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import BooksTableView from './BooksTableView'
 import BooksCoverView from './BooksCoverView'
-import styles from './BooksView.module.scss'
 import Pagination from 'react-bootstrap/Pagination'
 import { useState } from "react";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Button from 'react-bootstrap/Button'
 import Tooltip from 'react-bootstrap/Tooltip'
-
+import '../common/DropdownMenu.scss'
+import styles from './BooksView.module.scss'
 
 export default function BooksView({ books }) {
 
@@ -17,6 +17,7 @@ export default function BooksView({ books }) {
     const [isAscOrder, setIsAscOrder] = useState("order_a");
     const [paginationItems, setPaginationItems] = useState([])
     const [perPage, setPerPage] = useState()
+    const [selectedBtn, setSelectedBtn] = useState()
 
 
     useEffect(() => {
@@ -75,12 +76,15 @@ export default function BooksView({ books }) {
 
         setPaginationItems(newPageCount)
         showSelectedPage(0, perPageValue)
+        setSelectedBtn(1)
     }
 
 
     const handleEvent = (ev) => {
         let selectedPageValue = Number(ev.target.innerHTML) - 1;
+
         showSelectedPage(selectedPageValue, perPage)
+        setSelectedBtn(selectedPageValue + 1)
     }
 
     const showSelectedPage = (selectedPageValue, perPageValue) => {
@@ -93,6 +97,7 @@ export default function BooksView({ books }) {
     const showSearchResults = (ev) => {
         let value = ev.target.value;
         let filteredBooks = books.filter(book => book.title.toLowerCase().includes(value) || book.author.toLowerCase().includes(value));
+
         setBooksToDisplay(filteredBooks)
     }
 
@@ -145,20 +150,24 @@ export default function BooksView({ books }) {
                     <label htmlFor="per_page">per page</label>
                     <select name="per_page" onChange={handleCount}>
                         <option>choose</option>
-                        <option>3</option>
-                        <option>2</option>
-                        <option>1</option>
+                        <option>15</option>
+                        <option>10</option>
+                        <option>5</option>
                     </select>
                     <div className={styles.paginationControls}>
-                    <Pagination size="sm" className={styles.paginationWrapper}>
-                        {!!paginationItems.length && paginationItems.map((el) => (
-                            <Button variant='light' key={el} onClick={handleEvent} className={styles.pagItem} >
-                                {el}
-                            </Button>
-                        )
-                        )}
-                    </Pagination>
-                </div>
+                        <Pagination size="sm" className={styles.paginationWrapper}>
+                            {!!paginationItems.length && paginationItems.map((el) => (
+                                <Button
+                                    variant='light'
+                                    key={el}
+                                    onClick={handleEvent}
+                                    className={`${styles.pagItem} ${selectedBtn === el ? 'selected' : 'notSelected'}`}>
+                                    {el}
+                                </Button>
+                            )
+                            )}
+                        </Pagination>
+                    </div>
                 </div>
                 <div>
                     <label htmlFor="sort">sort</label>

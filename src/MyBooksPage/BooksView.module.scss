@@ -79,7 +79,14 @@
     font-size: 14px;
 }
 
+.pagItem:focus{
+    background-color: transparent;
+    border-color: #382110;
+}
 
+.booksViewWrapper{
+    width: 100%;
+}
 
 // Table View-----------------------------------
 .table{

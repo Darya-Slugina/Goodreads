@@ -33,6 +33,10 @@
     margin-left: 20px;
 }
 
+.reviewButton :hover {
+    background-color: #f7edd8;
+}
+
 .reviewCtaRight {
     width: 550px;
     position: relative;

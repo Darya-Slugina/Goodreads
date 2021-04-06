@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 export default function BooksList({ isShuffled, genre, books, length }) {
 
   const { shuffled } = useMemo(() => {
-    const booksByGenre = books.filter(el => el.genre.toLowerCase() === genre);
+    const booksByGenre = books.filter(el => el.genre.toLowerCase() === genre.toLowerCase());
+    console.log("booksByGenre", booksByGenre);
     const shuffled = [...booksByGenre];
     shuffled.sort(() => Math.random() - 0.5);
     shuffled.length = length;

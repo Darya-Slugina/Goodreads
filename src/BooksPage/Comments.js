@@ -64,7 +64,8 @@ export default function Comments({ commentId, userName, userImg, date, rate, lik
                 snapshot.forEach(doc => {
                     id = doc.id;
                 })
-                if (rate > 0 || (text.trim().length > 1 && text.trim().length < 5000)) {
+                if (rate > 0 || (text.trim().length > 0 && text.trim().length < 5000)) {
+                    
                     setReviewBtn(true);
                     database.collection("reviewsList").doc(id).update({
                         review: text,

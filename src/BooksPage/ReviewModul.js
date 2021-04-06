@@ -5,6 +5,7 @@ import Form from "./Form";
 import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Button from "./../common/Button";
 
 
 export default function ReviewModul({ bookId, getReviews }) {
@@ -47,7 +48,7 @@ export default function ReviewModul({ bookId, getReviews }) {
                         numberOfStars={5}
                         name='rating'
                     /></Link> }
-                    {user.id? <button className={styles.reviewButton} onClick={displayForm}> Write a review</button> : <Link to="/login"><button className={styles.reviewButton}> Write a review</button></Link>}
+                    {user.id? <Button value={"Write a review"}  onClick={displayForm} /> : <Link to="/login"><Button value={"Write a review"} /></Link>}
                 </div>
                 <div className={styles.ownReviewContainer}>
                     {form && <Form bookId={bookId} getReviews={getReviews} rating={rating} />}

@@ -268,26 +268,6 @@ export default function UserEditPage() {
                 )}
               </div>
 
-              {/* <Dropzone
-                onDrop={onDrop}
-                accept="image/png"
-                minSize={0}
-                maxSize={1000000}
-              >
-                {({ getRootProps, getInputProps, isDragActive, isDragReject }) => {
-                 
-                  return (
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      {!isDragActive && 'Click here or drop a file to upload!'}
-                      {isDragActive && !isDragReject && "Drop it like it's hot!"}
-                      {isDragReject && "File type not accepted, sorry!"}
-                    </div>
-                  )
-                }
-                }
-              </Dropzone> */}
-
               <p className={styles.formInput}>
                 <Link to="/user/destroy" className={styles.actionLinkNotice} >
                   Delete my account

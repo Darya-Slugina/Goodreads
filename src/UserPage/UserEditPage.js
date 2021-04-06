@@ -3,9 +3,9 @@ import styles from "./UserEditPage.module.scss";
 import { Link } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { database, storage } from "../firebase";
-import { useDropzone } from "react-dropzone";
+import Dropzone, { useDropzone } from "react-dropzone";
 import { useSelector } from "react-redux";
-import { getCountries, getCurrentUser } from "./service"
+import { getCountries, getCurrentUser } from "./service";
 
 
 const initialUser = {
@@ -44,9 +44,9 @@ export default function UserEditPage() {
 
   const onDrop = useCallback((acceptedFiles, fileRejections) => {
     setFile(acceptedFiles[0]);
-  },[]);
+  }, []);
 
-  
+
   useEffect(() => {
     getCurrentUser(user.id)
       .then((querySnapshot) => {
@@ -56,7 +56,7 @@ export default function UserEditPage() {
       });
   }, [user.id]);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({ onDrop });
 
   useEffect(() => {
     getCountries()
@@ -88,7 +88,7 @@ export default function UserEditPage() {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
       },
-      (error) => {  console.log("Upload failed" + error)},
+      (error) => { console.log("Upload failed" + error) },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           let newImg = '';
@@ -98,7 +98,7 @@ export default function UserEditPage() {
           } else {
             newImg = "https://firebasestorage.googleapis.com/v0/b/goodreads-9c368.appspot.com/o/default-profile-big.png?alt=media&token=e1cc93c3-ccd2-4269-8fd3-156fb157dd5a"
           }
-          
+
           database
             .collection("users")
             .doc(user.id)
@@ -267,6 +267,27 @@ export default function UserEditPage() {
                   <p className={styles.imgInput}>Drop the files here, or click to select files</p>
                 )}
               </div>
+
+              {/* <Dropzone
+                onDrop={onDrop}
+                accept="image/png"
+                minSize={0}
+                maxSize={1000000}
+              >
+                {({ getRootProps, getInputProps, isDragActive, isDragReject }) => {
+                 
+                  return (
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      {!isDragActive && 'Click here or drop a file to upload!'}
+                      {isDragActive && !isDragReject && "Drop it like it's hot!"}
+                      {isDragReject && "File type not accepted, sorry!"}
+                    </div>
+                  )
+                }
+                }
+              </Dropzone> */}
+
               <p className={styles.formInput}>
                 <Link to="/user/destroy" className={styles.actionLinkNotice} >
                   Delete my account

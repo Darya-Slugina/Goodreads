@@ -47,10 +47,10 @@ export default function UserPage() {
     }, [userId]);
 
     useEffect(() => {
-        if (loggedInUser.myFriends.includes(userId)) {
+        if (loggedInUser && loggedInUser.myFriends && loggedInUser.myFriends.includes(userId)) {
             setApprovedFriend(true);
         }
-    }, [userId, loggedInUser.myFriends])
+    }, [userId, loggedInUser.myFriends, loggedInUser])
 
     const isCurrentUser = useMemo(() => {
         if (loggedInUser && userId === loggedInUser.id) {

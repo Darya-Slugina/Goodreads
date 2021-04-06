@@ -2,9 +2,9 @@
 
 ## *IT Talents S12 final project*
 
-#### Creating a copy of the website Goodreads.com
+### Creating a copy of the website Goodreads.com
 
-### Tehnologies and libraries:
+#### Tehnologies and libraries:
 - Javascript
 - React
 - Redux
@@ -17,7 +17,7 @@
 - moment
 - Firebase
 
-### Main functionalities:
+#### Main functionalities:
 - Login
 - Register
 - Logout

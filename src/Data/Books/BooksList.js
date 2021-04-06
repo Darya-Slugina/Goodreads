@@ -3091,7 +3091,7 @@ const books = [
 var db = firebase.firestore();
 
 books.forEach(obj => {
-    db.collection("books").add({
+    db.collection("booksList").add({
         id: obj.id,
         img: obj.img,
         title: obj.title,

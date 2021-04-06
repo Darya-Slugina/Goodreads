@@ -1,6 +1,6 @@
 import {database} from "../firebase"
 
-export const getBooks = database.collection("books").get()
+export const getBooks = database.collection("booksList").get()
 
 export const setNewReview = (text, bookId, rating, id, userImg, userName) => {
     return  database.collection("reviewsList").doc().set({

@@ -1,6 +1,5 @@
 import styles from './BooksView.module.scss'
 import { Link } from "react-router-dom";
-import SimpleRating from "../BooksPage/Rating";
 
 export default function BooksTable({ books }) {   
 

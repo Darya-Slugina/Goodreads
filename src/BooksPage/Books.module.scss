@@ -53,8 +53,6 @@
 }
 
 
-
-
 .ratingText {
     color: #999;
     background: transparent;
@@ -110,12 +108,14 @@
     flex-wrap: nowrap;
 
     .sorterContainer {
-        display: none;
+        // display: none;
         margin: 0 10px;
         margin-top: -3px;
         border: 3px solid #c5c5c3;
         background-color: #fff8f0;
         border-radius: 5px;
+        opacity: 0;
+        visibility: hidden;
 
         .sortOption {
             color: #333;
@@ -127,9 +127,9 @@
         }
     }
 
-    .show {
-        display: flex;
-    }
+    // .show {
+    //     display: flex;
+    // }
 }
 
 .staticRating {

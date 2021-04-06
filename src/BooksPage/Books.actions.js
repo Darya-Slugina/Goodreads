@@ -33,7 +33,7 @@ export const fetchBooks = () => {
           books.forEach((book) => {
             dbBooks.push(book.data());
           });
-
+          
           dispatch(fetchBooksSucceded(dbBooks));
         })
         .catch((err) => {

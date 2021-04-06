@@ -46,7 +46,7 @@ function App() {
 
     // When the user gets logged in
     firebase.auth().onAuthStateChanged((autenticUser) => {
-      if (autenticUser.uid) {
+      if (autenticUser && autenticUser.uid) {
         console.log('loggedInUser', autenticUser);
         dispatch(fetchUser(autenticUser.uid));
       }

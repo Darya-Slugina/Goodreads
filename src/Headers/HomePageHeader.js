@@ -2,9 +2,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import styles from './HomePageHeader.module.scss';
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState, Link } from 'react';
+import React, { useState } from 'react';
 import { authenticateUser } from "../RegistrationAndLoginPage/User.actions";
 import { registerUser, fetchUserFailed } from "../RegistrationAndLoginPage/User.actions";
+import { Link } from "react-router-dom";
 
 export default function HomePageHeader() {
 

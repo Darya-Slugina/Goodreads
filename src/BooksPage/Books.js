@@ -96,8 +96,7 @@ export default function Books() {
   }
 
   const showSorters = () => {
-    // e.target.nextSibling.classList.toggle("show");
-    setIsActive(true);
+    setIsActive(!isActive);
   }
 
   const sortedReviews = useMemo(() => {
@@ -205,7 +204,7 @@ export default function Books() {
               <div className={styles.ratingCount} > {ratingsCount} ratings </div>
               <div className={styles.reviewCount} > {reviewsCount} reviews </div>
               <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
-              <div ref={dropdownRef} className={`${styles.sorterContainer} ${isActive ? 'active' : 'inactive'}`}>
+              <div ref={dropdownRef} className={isActive ? styles.sorterContainerActive : styles.sorterContainer}>
                 <div className={styles.sorterContainer}>
                   <div>
                     <span className={styles.sortOption} onClick={() => setSorter('ratingAscengind')}>Highest rating</span>

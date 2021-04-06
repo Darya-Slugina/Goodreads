@@ -42,7 +42,7 @@ export default function UserEditPage() {
     setStorageUser((prevUser) => ({ ...prevUser, [type]: value }));
   };
 
-  const onDrop = useCallback((acceptedFiles, fileRejections) => {
+  const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
   }, []);
 
@@ -56,7 +56,7 @@ export default function UserEditPage() {
       });
   }, [user.id]);
 
-  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   useEffect(() => {
     getCountries()

@@ -1,6 +1,6 @@
 import styles from './Books.module.scss';
 import '../common/DropdownMenu.scss'
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from "react-router-dom";
 import BooksList from "./BookList";
 import ReviewModul from "./ReviewModul";
@@ -25,7 +25,6 @@ export default function Books() {
   const books = useSelector((state) => state.books.books);
 
   const dispatch = useDispatch();
-  const dropdownRef = useRef(null);
 
   const currentId = Number(bookId);
   const currentBook = books.filter(book => book.id === currentId);
@@ -119,23 +118,6 @@ export default function Books() {
     }
   }, [sorter, reviews])
 
-  useEffect(() => {
-    const pageClickEvent = (e) => {
-        if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target)) {
-            setIsActive(!isActive);
-        }
-    };
-    
-    if (isActive) {
-        window.addEventListener('click', pageClickEvent);
-    }
-
-    return () => {
-        window.removeEventListener('click', pageClickEvent);
-    }
-
-}, [isActive]);
-
   return (
     <div className={styles.mainContentContainer} >
       <div className={styles.mainContent}>
@@ -204,16 +186,14 @@ export default function Books() {
               <div className={styles.ratingCount} > {ratingsCount} ratings </div>
               <div className={styles.reviewCount} > {reviewsCount} reviews </div>
               <span className={styles.sortComment} onClick={showSorters}>Sort order</span>
-              <div ref={dropdownRef} className={isActive ? styles.sorterContainerActive : styles.sorterContainer}>
-                <div className={styles.sorterContainer}>
-                  <div>
-                    <span className={styles.sortOption} onClick={() => setSorter('ratingAscengind')}>Highest rating</span>
-                    <span className={styles.sortOption} onClick={() => setSorter('ratingDescending')}>Lowest rating</span>
-                  </div>
-                  <div>
-                    <span className={styles.sortOption} onClick={() => setSorter('dateAscenging')}>Newest rating</span>
-                    <span className={styles.sortOption} onClick={() => setSorter('dateDescending')}>Oldest rating</span>
-                  </div>
+              <div className={isActive ? styles.sorterContainerActive : styles.sorterContainer}>
+                <div>
+                  <span className={styles.sortOption} onClick={() => setSorter('ratingAscengind')}>Highest rating</span>
+                  <span className={styles.sortOption} onClick={() => setSorter('ratingDescending')}>Lowest rating</span>
+                </div>
+                <div>
+                  <span className={styles.sortOption} onClick={() => setSorter('dateAscenging')}>Newest rating</span>
+                  <span className={styles.sortOption} onClick={() => setSorter('dateDescending')}>Oldest rating</span>
                 </div>
               </div>
             </div>

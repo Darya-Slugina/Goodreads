@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import styles from './HomePageHeader.module.scss';
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState } from 'react';
+import React, { useState, Link } from 'react';
 import { authenticateUser } from "../RegistrationAndLoginPage/User.actions";
 import { registerUser, fetchUserFailed } from "../RegistrationAndLoginPage/User.actions";
 
@@ -45,8 +45,7 @@ export default function HomePageHeader() {
         <header className={styles.headerNotLogged}>
             <div className={styles.navWrapper}>
                 <nav className={styles.navNotLogged}>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                    <a href="/" className={styles.logo}></a>
+                    <Link to="/" className={styles.logo} />
                     <div className={styles.formWrapper}>
                         <div className={styles.formBox}>
                             <Form.Control type="email" placeholder="Enter email" value={emailFromLogin} onInput={(ev) => setEmailFromLogin(ev.target.value)} />

@@ -1,4 +1,4 @@
-import styles from "./Form.module.css";
+import styles from "./Form.module.scss";
 import Button from "./../common/Button";
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";

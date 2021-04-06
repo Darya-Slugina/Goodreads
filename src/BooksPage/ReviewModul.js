@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from './Review.module.css';
+import styles from './Review.module.scss';
 import userPic from "./../img/userPic.png";
 import Form from "./Form";
 import StarRatings from 'react-star-ratings';

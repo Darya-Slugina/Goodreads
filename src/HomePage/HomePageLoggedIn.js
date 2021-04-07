@@ -1,5 +1,5 @@
 import React from "react";
-import AllGenres from "../GenresPage/AllGenres";
+import MyBooksPage from "../MyBooksPage/MyBooksPage";
 import Header from "../Headers/Header"
 
 
@@ -8,7 +8,7 @@ export default function HomePageLoggedIn() {
     return (
         <React.Fragment>
             <Header />
-            <AllGenres />
+            <MyBooksPage />
         </React.Fragment>
     )
 }

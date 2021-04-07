@@ -32,6 +32,7 @@
 - Edit review
 - Rate book
 - Like/ dislike reviews
+- Sort review by date/rating
 - Follow genres
 - Bookshelves
 - Sort books

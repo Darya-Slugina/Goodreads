@@ -104,7 +104,6 @@ export default function PersonalNavUser() {
                 snapshot.forEach(doc => {
                     const request = doc.data();
                     dispatch(addToFriendsList(request.requestToId, user.id))
-                    dispatch(addToFriendsList(user.id, request.requestToId))
                     notif.push(request)
                 })
 

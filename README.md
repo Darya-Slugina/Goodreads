@@ -4,11 +4,11 @@
 
 ### Creating a copy of the website Goodreads.com
 
-#### Tehnologies and libraries:
+#### Technologies and libraries:
 - Javascript
 - React
 - Redux
-- Redux Tunk
+- Redux Thunk
 - SASS modules
 - React Bootstrap
 - React Star Ratings
@@ -22,16 +22,17 @@
 - Register
 - Logout
 - Update user profile
-- Show users profiles (my or other person's profile)
+- Show users profiles (mine or other person's profile)
 - Follow user
-- Friend request with notification
+- Friend requests with notification
 - Accept/reject friend request
 - Search book by title or author
 - Show book page
-- Writing review
+- Write review
 - Edit review
 - Rate book
 - Like/ dislike reviews
+- Sort reviews by date/rating
 - Follow genres
 - Bookshelves
 - Sort books
@@ -39,6 +40,8 @@
 
 
 Link to the project: [Goodreads](https://goodreads-9c368.web.app/)
+
+[Presentation](https://github.com/Darya-Slugina/Goodreads/blob/7831f8871f88e15095b445aa014ef43a8326c1d1/Goodreads_presentation.pdf)
 
 Contributors: [Olga](https://github.com/OlgaKaikchiyan) and [Darya](https://github.com/Darya-Slugina)
 

@@ -36,9 +36,11 @@ export default function PersonalNavUser() {
 
             .then((querySnapshot) => {
                 let id = [];
+                let friend = [];
                 (querySnapshot).forEach(doc => {
                     id = doc.id;
-            
+                    friend.push(doc.data());
+
                 })
 
                 database.collection('friendsRequests').doc(id).update({
@@ -48,6 +50,11 @@ export default function PersonalNavUser() {
                         console.log("Document successfully updated!!!");
                         let newNote = notifications.filter(el => el.id !== docId)
                         setNotifications(newNote);
+                        if (action === "approve") {
+                            console.log(action);
+                            console.log(friend);
+                            dispatch(addToFriendsList(friend[0].requestFromId, user.id))
+                        }
                     })
                     .catch((error) => {
                         console.error("Error updating document: ", error);
@@ -62,25 +69,25 @@ export default function PersonalNavUser() {
 
         database.collection('friendsRequests').where('id', '==', id).get()
 
-        .then((querySnapshot) => {
-            let docId = [];
-            (querySnapshot).forEach(doc => {
-                docId = doc.id;
+            .then((querySnapshot) => {
+                let docId = [];
+                (querySnapshot).forEach(doc => {
+                    docId = doc.id;
+                })
+
+                database.collection('friendsRequests').doc(docId).update({
+                    status: "fulfilled",
+                })
+                    .then(() => {
+                        console.log("Document successfully updated!!!");
+                        setRejected(newRejectedNotif);
+                        setApproved(newApprovedNotif);
+                    })
+                    .catch((error) => {
+                        console.error("Error updating document: ", error);
+                    })
             })
 
-            database.collection('friendsRequests').doc(docId).update({
-                status: "fulfilled",
-            })
-                .then(() => {
-                    console.log("Document successfully updated!!!");
-                    setRejected(newRejectedNotif);
-                    setApproved(newApprovedNotif);
-                })
-                .catch((error) => {
-                    console.error("Error updating document: ", error);
-                })
-        })
-        
     }
 
     useEffect(() => {
@@ -103,6 +110,7 @@ export default function PersonalNavUser() {
                 let notif = [];
                 snapshot.forEach(doc => {
                     const request = doc.data();
+                    console.log(request);
                     dispatch(addToFriendsList(request.requestToId, user.id))
                     notif.push(request)
                 })
@@ -127,14 +135,14 @@ export default function PersonalNavUser() {
 
     }, [user])
 
-const allNotifications = [...notifications, ...rejected, ...approved];
+    const allNotifications = [...notifications, ...rejected, ...approved];
 
     return (
         <nav className={styles.personalNav}>
             <div className={styles.notifications}>
                 <span className={styles.notificationIcon} onClick={showNotifications} />
                 <span className={allNotifications.length > 0 ? styles.notifCount : styles.notifCountNone}>{allNotifications.length}</span>
-                <div className={btnState? styles.dropdownContainerShow : styles.dropdownContainer}>
+                <div className={btnState ? styles.dropdownContainerShow : styles.dropdownContainer}>
                     <span className={allNotifications.length ? styles.dropdownTextNone : styles.dropdownText}>No notifications</span>
                     {allNotifications.map(el => (
                         <div key={el.id} className={styles.messageContainer}>
